@@ -1,28 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import "rbx/index.css";
-import { Button, Card, Container, Content } from 'rbx';
-import { match } from './matcher.js';
+import { Box, Button, Card, Container, Content, Heading, Level, Title } from 'rbx';
+import { createBrowserHistory } from 'history';
+import { conceptMatch } from './matcher.js';
 
-const sample = {
-  "textBlocks":[
-    {
-      "label":"square.rat",
-      "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
-      "type":"sourceCode"
-    },
-    {
-      "label":"compilerOutput",
-      "text":"function call: expected a function after the open parenthesis, but received #<image>.",
-      "type":"computerOutput"
-    }
-  ],
-  "message":"I'm getting an error using function beside",
-  "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=54\" target=\"_blank\">Piazza Link</a>",
-  "student":{
-    "name": "Cathy",
-    "id": "clj8621"
-  }
+const history = createBrowserHistory();
+
+const sampleParam = () => (
+  (new URLSearchParams(window.location.search)).get('sample') || 'sample-1'
+);
+
+const setSampleParam = (name) => {
+  history.push({ search: `sample=${name}` });
 };
+
+const fetchJson = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) throw response;
+  return response.json();
+};
+
+const diagnose = (sample, kb) => (
+  Object.values(kb.diagnoses).map(diagnosis => 
+    [diagnosis, conceptMatch(diagnosis.pattern, sample, kb.concepts)]
+  ).filter(result => result[1].length)
+);
+
+const instantiate = (text, blist) => (
+  Object.keys(blist).reduce((text, key) => text.replace(new RegExp(`\\${key}`, "g"), blist[key]), text)
+);
+
+const instances = (text, blists) => (
+  blists.map(blist => instantiate(text, blist))
+);
+
+const Field = ({ title, text }) => (
+  <div>
+    <Heading>{ title }</Heading>
+    <Title size={4}>{ text }</Title>
+  </div>
+);
 
 const Entry = ({ title, text }) => (
   <Card>
@@ -35,41 +52,70 @@ const Entry = ({ title, text }) => (
   </Card>  
 );
 
-const fetchJson = async (url) => {
-  const response = await fetch(url);
-  if (!response.ok) throw response;
-  return response.json();
-}
-
-const matchPatterns = (pats, obj) => (
-  pats.map(pat => [pat, match(pat.pattern, obj)])
-   .filter(result => result[1].length)
+const MatchResults = ({ sample, diagnoses }) => (
+  <Container>
+    <Level>
+      <Level.Item textAlign="centered">
+        <Field title="Name" text={sample.student.name} />
+      </Level.Item>
+      <Level.Item textAlign="centered">
+        <Field title="Exercise" text={sample.source} />
+      </Level.Item>
+    </Level>
+    <Entry title="Message" text={sample.message} />
+    <Entry title="Data" text={ sample.textBlocks.map(block => (
+      <Entry key={block.label} title={block.label} text={block.text} />
+    ))}
+    />
+    <Entry title="Diagnoses" text ={ 
+      diagnoses.map(([diagnosis, blists]) =>
+        <Box key={diagnosis.name}>{instances(diagnosis.summary, blists)}</Box>
+      )}
+    />
+  </Container>
 );
 
-const App = () => {
-  const [patterns, setPatterns] = useState([]);
-  useEffect(() => {
-    const fetchPatterns = async (url) => {
-      setPatterns(await fetchJson(url));
-    };
-    fetchPatterns('./data/patterns.json');
-  }, []);
-  const matches = matchPatterns(patterns, sample);
+const Sample = ({ name, state }) => (
+  <Button 
+    color={ name === state.sampleName ? 'success' : null }
+    onClick={ () => state.setSampleName(name) }
+  >{name.slice('sample-'.length)}</Button>
+)
+
+const Tester = ({ state, kb }) => {
+  const sample = kb.samples[state.sampleName];
   return (
-    <Container>
-      <Entry title="Name" text={sample.student.name} />
-      <Entry title="Message" text={sample.message} />
-      <Entry title="Data" text={ sample.textBlocks.map(block => (
-        <Entry key={block.label} title={block.label} text={block.text} />
-      ))}
-      />
-      <Entry title="Suggestions" text ={ 
-        matches.map(([pat, blists], i) =>
-          <Button key={i}>{pat.diagnosis} {blists.length} </Button>
-        )}
-      />
-    </Container>
+    <React.Fragment>
+      { Object.keys(kb.samples).map(key => <Sample key={key} name={key} state={ state } />) }
+      <MatchResults sample={ sample } diagnoses={ diagnose(sample, kb) } />
+   </React.Fragment>
   );
+};
+
+const App = () => {
+  const [kb, setKb] = useState({ });
+  const [sampleName, setSampleName] = useState(sampleParam());
+  const sampleState = { sampleName, setSampleName: setSampleParam };
+
+  useEffect(() => {
+    const unlisten = history.listen((location) => {
+      setSampleName(sampleParam());
+    });
+
+    const fetchKb = async () => {
+      const [diagnoses, concepts, samples] = await Promise.all([
+        fetchJson('./data/diagnoses.json'),
+        fetchJson('./data/concepts.json'),
+        fetchJson('./data/samples.json')
+      ]);
+      setKb({ diagnoses, concepts, samples });
+    };
+    fetchKb();
+    return unlisten;
+  }, []);
+  return kb.samples
+    ? <Tester state={ sampleState } kb={ kb } />
+    : <div>Loading data...</div>;
 };
 
 export default App;

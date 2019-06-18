@@ -1,6 +1,7 @@
-[
-  {
-    "diagnosis": "Students have problems calling function and passing correct parameters.",
+{
+  "function-expected": {
+    "name": "function-expected",
+    "summary": "Students have problems calling function and passing correct parameters.",
     "pattern": {
       "textBlocks": {
         "some": {
@@ -12,8 +13,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Students should have basic skills to check whether they already defined the function before they call them.",
+  "function-is-not-defined": {
+    "name": "function-is-not-defined",
+    "summary": "Students should have basic skills to check whether they already defined the function before they call them.",
     "pattern": {
       "textBlocks": {
         "some": {
@@ -28,8 +30,28 @@
       }
     }
   },
-  {
-    "diagnosis": "Students have trouble understanding how to correctly pass arguments to function, and they should understand that when they put parenthesis around variable, this means function call.",
+  "library-function-is-not-defined": {
+    "name": "library-function-is-not-defined",
+    "summary": "A library was not loaded.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "function ([^\\s]+)( is)? (?:not defined|undefined)",
+            "pats": [
+              {
+                "concept": "library-function"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "function-expected-2": {
+    "name": "function-expected-2",
+    "summary": "Students have trouble understanding how to correctly pass arguments to function, and they should understand that when they put parenthesis around variable, this means function call.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -57,39 +79,26 @@
       }
     }
   },
-  {
-    "diagnosis": "Students don't understand they should define function before call it, or they have typo of calling function in their code.",
+  "var-not-defined": {
+    "name": "var-not-defined",
+    "summary": "?y -- misspelled? not assigned? missing string quotes?",
     "pattern": {
       "textBlocks": {
-        "and": [
-          {
-            "some": {
-              "type": "sourceCode",
-              "text": {
-                "reg": "\\(([^\\s]+) [^\\(]+",
-                "pats": [
-                  "?x"
-                ]
-              }
-            }
-          },
-          {
-            "some": {
-              "type": "computerOutput",
-              "text": {
-                "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
-                "pats": [
-                  "?y"
-                ]
-              }
-            }
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
+            "pats": [
+              "?y"
+            ]
           }
-        ]
+        }
       }
     }
   },
-  {
-    "diagnosis": "Students aren't passing the correct number of arguments to function.",
+  "wrong-number-of-arguments": {
+    "name": "wrong-number-of-arguments",
+    "summary": "Students aren't passing the correct number of arguments to function.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -116,8 +125,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Students don't understand when to put parenthesis correctly.",
+  "function-expected-3": {
+    "name": "function-expected-3",
+    "summary": "Students don't understand when to put parenthesis correctly.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -144,8 +154,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Student is passing wrong type of arguments to the function.",
+  "wrong-argument": {
+    "name": "wrong-argument",
+    "summary": "Student is passing wrong type of arguments to the function.",
     "pattern": {
       "textBlocks": {
         "some": {
@@ -160,44 +171,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Student is passing wrong type of arguments to the function.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Student doesn't know this concept - ?x.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Student has trouble distinguish difference between concept ?x and ?y.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Can't diagnosis, students didn't give their confusion inputs.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Student got stuck on the usage of ?x.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Student got stuck of ?x.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Students don't know how to check and define variables in their code.",
+  "var-not-defined-2": {
+    "name": "var-not-defined-2",
+    "summary": "Students don't know how to check and define variables in their code.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -227,27 +203,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Students have problem with their code, it seems the output doesn't match against expected.",
-    "pattern": {
-      "textBlocks": {
-        "some": {
-          "type": "computerOutput",
-          "text": {
-            "reg": "\\(\\)"
-          }
-        }
-      }
-    }
-  },
-  {
-    "diagnosis": "Student stuck at doing ?x.",
-    "pattern": {
-      "textBlocks": null
-    }
-  },
-  {
-    "diagnosis": "Student is passing wrong type of arguments to the function.",
+  "wrong-argument-2": {
+    "name": "wrong-argument-2",
+    "summary": "Student is passing wrong type of arguments to the function.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -275,8 +233,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Student doesn't how to check undefined error of function call. And let them to take a look at ?x documentation.",
+  "var-not-defined-3": {
+    "name": "var-not-defined-3",
+    "summary": "Student doesn't how to check undefined error of function call. And let them to take a look at ?x documentation.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -303,8 +262,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
+  "wrong-argument-3": {
+    "name": "wrong-argument-3",
+    "summary": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -328,8 +288,9 @@
       }
     }
   },
-  {
-    "diagnosis": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
+  "closing-expected": {
+    "name": "closing-expected",
+    "summary": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -353,8 +314,8 @@
       }
     }
   },
-  {
-    "diagnosis": "For this exercise, student should understand difference between leaf and branch.",
+  "undefined": {
+    "summary": "For this exercise, student should understand difference between leaf and branch.",
     "pattern": {
       "textBlocks": {
         "some": {
@@ -366,4 +327,4 @@
       }
     }
   }
-]
+}

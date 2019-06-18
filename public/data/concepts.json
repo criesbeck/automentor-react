@@ -1,0 +1,11 @@
+{
+  "overlay": {
+    "absts": ["image-function"]
+  },
+  "image-function": {
+    "absts": ["library-function"],
+    "slots": {
+      "library": "image.rkt"
+    }
+  }
+}
