@@ -1,0 +1,369 @@
+[
+  {
+    "diagnosis": "Students have problems calling function and passing correct parameters.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "expected a function .* but"
+          }
+        }
+      }
+    }
+  },
+  {
+    "diagnosis": "Students should have basic skills to check whether they already defined the function before they call them.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "function ([^\\s]+)( is)? (?:not defined|undefined)",
+            "pats": [
+              "?x"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "diagnosis": "Students have trouble understanding how to correctly pass arguments to function, and they should understand that when they put parenthesis around variable, this means function call.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+) \\(([^\\s]+)\\)",
+                "pats": [
+                  "?x",
+                  "?y"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "expected a function .* but"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Students don't understand they should define function before call it, or they have typo of calling function in their code.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+) [^\\(]+",
+                "pats": [
+                  "?x"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
+                "pats": [
+                  "?y"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Students aren't passing the correct number of arguments to function.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+) [^\\(]+",
+                "pats": [
+                  "?x"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "expects only \\d+ arguments, but found \\d+"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Students don't understand when to put parenthesis correctly.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+) [^\\(]+",
+                "pats": [
+                  "?x"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "expected a function .* but"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Student is passing wrong type of arguments to the function.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but)",
+            "pats": [
+              "?x"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "diagnosis": "Student is passing wrong type of arguments to the function.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Student doesn't know this concept - ?x.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Student has trouble distinguish difference between concept ?x and ?y.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Can't diagnosis, students didn't give their confusion inputs.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Student got stuck on the usage of ?x.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Student got stuck of ?x.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Students don't know how to check and define variables in their code.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+) [^\\(]+",
+                "pats": [
+                  "?x"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "variable ([^\\s]+).*undefined",
+                "pats": [
+                  "?y"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Students have problem with their code, it seems the output doesn't match against expected.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "computerOutput",
+          "text": {
+            "reg": "\\(\\)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "diagnosis": "Student stuck at doing ?x.",
+    "pattern": {
+      "textBlocks": null
+    }
+  },
+  {
+    "diagnosis": "Student is passing wrong type of arguments to the function.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+)"
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but) \\(([^\\\\)]+)",
+                "pats": [
+                  "?x",
+                  "?y"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Student doesn't how to check undefined error of function call. And let them to take a look at ?x documentation.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(([^\\s]+)"
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "function ([^\\s]+).*not defined",
+                "pats": [
+                  "?x"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(\\(.*\\)\\)"
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "([^\\s]+):.*expected.*(?:given|but)"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
+    "pattern": {
+      "textBlocks": {
+        "and": [
+          {
+            "some": {
+              "type": "sourceCode",
+              "text": {
+                "reg": "\\(.*[^\\)]$"
+              }
+            }
+          },
+          {
+            "some": {
+              "type": "computerOutput",
+              "text": {
+                "reg": "([^\\s]+): expected.*\\) to close \\("
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "diagnosis": "For this exercise, student should understand difference between leaf and branch.",
+    "pattern": {
+      "textBlocks": {
+        "some": {
+          "type": "sourceCode",
+          "text": {
+            "reg": "\\(\\+ 1\\(count-tree \\((?:branch-left|branch-right) tree"
+          }
+        }
+      }
+    }
+  }
+]
