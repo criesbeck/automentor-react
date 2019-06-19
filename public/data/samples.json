@@ -2,12 +2,12 @@
   "sample-1": {
     "textBlocks": [
       {
-        "label": "square.rat",
+        "label": "square.rkt",
         "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "function call: expected a function after the open parenthesis, but received #<image>.",
         "type": "computerOutput"
       }
@@ -27,7 +27,7 @@
   "sample-2": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "function overlay is not defined.",
         "type": "computerOutput"
       }
@@ -46,12 +46,12 @@
   "sample-3": {
     "textBlocks": [
       {
-        "label": "square.rat",
+        "label": "square.rkt",
         "text": "(interpolate-colors blue red 0.5)",
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "blue: this variable is not defined.",
         "type": "computerOutput"
       }
@@ -70,12 +70,12 @@
   "sample-4": {
     "textBlocks": [
       {
-        "label": "square.rat",
+        "label": "square.rkt",
         "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "overlay/xy: expects only 4 arguments, but found 11.",
         "type": "computerOutput"
       }
@@ -94,12 +94,12 @@
   "sample-5": {
     "textBlocks": [
       {
-        "label": "square.rat",
-        "text": "(make-color 0 0 255 255)",
+        "label": "square.rkt",
+        "text": "(interpolate-color (color1) (color2)",
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
         "type": "computerOutput"
       }
@@ -118,7 +118,7 @@
   "sample-6": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "function Iterated-overlay not defined.",
         "type": "computerOutput"
       }
@@ -135,19 +135,7 @@
     "diagnosis": "Student doesn't know how to call function Iterated-overlay in Racket, and need to know how to deal with situation with not defined error."
   },
   "sample-7": {
-    "textBlocks": [
-      {
-        "label": "swatch.rat",
-        "text": "(make-color 0 0 255 255)",
-        "type": "sourceCode"
-      },
-      {
-        "label": "compilerOutput",
-        "text": "function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255).",
-        "type": "computerOutput"
-      }
-    ],
-    "message": "When run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure.",
+    "message": "When I run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure: function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255)  I was under the impression that 'color' or 'make-color' is a function, is it not? ",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=102\" target=\"_blank\">Piazza Link</a>",
     "student": {
       "name": "Cathy",
@@ -161,7 +149,7 @@
   "sample-8": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "iterated-beside: expects procedure, given #< image >",
         "type": "computerOutput"
       }
@@ -180,7 +168,7 @@
   "sample-9": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
         "type": "computerOutput"
       }
@@ -199,7 +187,7 @@
   "sample-10": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
         "type": "computerOutput"
       }
@@ -218,12 +206,12 @@
   "sample-11": {
     "textBlocks": [
       {
-        "label": "branch.rat",
+        "label": "branch.rkt",
         "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "branch-val: expects a branch, given (make-leaf 1).",
         "type": "computerOutput"
       }
@@ -242,7 +230,7 @@
   "sample-12": {
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "+: expects a number as 1st argument, given leaf-val",
         "type": "computerOutput"
       }
@@ -495,12 +483,12 @@
     "diagnosis": "The student is using a filter predicate that never returns true.",
     "textBlocks": [
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "'()",
         "type": "computerOutput"
       },
       {
-        "label": "expectedCompilerOutput",
+        "label": "expectedcomputerOutput",
         "text": "'(JOHN_CHO KEVIN_SPACEY CHRIS_COOPER)",
         "type": "expectedOutput"
       }
@@ -537,7 +525,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "variable Beyonce? is undefined.",
         "type": "computerOutput"
       }
@@ -579,7 +567,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "function overhay is not defined.",
         "type": "computerOutput"
       }
@@ -602,7 +590,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
         "type": "computerOutput"
       }
@@ -625,7 +613,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "compilerOutput",
+        "label": "computerOutput",
         "text": "read-syntax: expected a ) to close (",
         "type": "computerOutput"
       }

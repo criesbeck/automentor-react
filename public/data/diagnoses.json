@@ -1,20 +1,5 @@
 {
-  "function-expected": {
-    "name": "function-expected",
-    "summary": "Students have problems calling function and passing correct parameters.",
-    "pattern": {
-      "textBlocks": {
-        "some": {
-          "type": "computerOutput",
-          "text": {
-            "reg": "expected a function .* but"
-          }
-        }
-      }
-    }
-  },
   "function-is-not-defined": {
-    "name": "function-is-not-defined",
     "summary": "Students should have basic skills to check whether they already defined the function before they call them.",
     "pattern": {
       "textBlocks": {
@@ -31,27 +16,23 @@
     }
   },
   "library-function-is-not-defined": {
-    "name": "library-function-is-not-defined",
-    "summary": "A library was not loaded.",
+    "summary": "?fn is a library function - library not loaded?",
     "pattern": {
       "textBlocks": {
         "some": {
           "type": "computerOutput",
           "text": {
-            "reg": "function ([^\\s]+)( is)? (?:not defined|undefined)",
+            "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
-              {
-                "concept": "library-function"
-              }
+              { "and": [ { "concept": "library-function" }, "?fn" ] }
             ]
           }
         }
       }
     }
   },
-  "function-expected-2": {
-    "name": "function-expected-2",
-    "summary": "Students have trouble understanding how to correctly pass arguments to function, and they should understand that when they put parenthesis around variable, this means function call.",
+  "function-expected": {
+    "summary": "Extra parentheses around ?arg?",
     "pattern": {
       "textBlocks": {
         "and": [
@@ -59,10 +40,10 @@
             "some": {
               "type": "sourceCode",
               "text": {
-                "reg": "\\(([^\\s]+) \\(([^\\s]+)\\)",
+                "reg": "\\(([^\\s]+) +\\(([^\\s]+)\\)",
                 "pats": [
-                  "?x",
-                  "?y"
+                  "?fn",
+                  "?arg"
                 ]
               }
             }
@@ -80,8 +61,7 @@
     }
   },
   "var-not-defined": {
-    "name": "var-not-defined",
-    "summary": "?y -- misspelled? not assigned? missing string quotes?",
+    "summary": "?var -- misspelled? not assigned? missing string quotes?",
     "pattern": {
       "textBlocks": {
         "some": {
@@ -89,7 +69,7 @@
           "text": {
             "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
             "pats": [
-              "?y"
+              "?var"
             ]
           }
         }
@@ -97,7 +77,6 @@
     }
   },
   "wrong-number-of-arguments": {
-    "name": "wrong-number-of-arguments",
     "summary": "Students aren't passing the correct number of arguments to function.",
     "pattern": {
       "textBlocks": {
@@ -125,37 +104,15 @@
       }
     }
   },
-  "function-expected-3": {
-    "name": "function-expected-3",
-    "summary": "Students don't understand when to put parenthesis correctly.",
+  "function-expected-no-source-code": {
+    "summary": "Extra parentheses around an expression?",
     "pattern": {
-      "textBlocks": {
-        "and": [
-          {
-            "some": {
-              "type": "sourceCode",
-              "text": {
-                "reg": "\\(([^\\s]+) [^\\(]+",
-                "pats": [
-                  "?x"
-                ]
-              }
-            }
-          },
-          {
-            "some": {
-              "type": "computerOutput",
-              "text": {
-                "reg": "expected a function .* but"
-              }
-            }
-          }
-        ]
+      "message": {
+        "reg": "expected a function .* but"
       }
     }
   },
-  "wrong-argument": {
-    "name": "wrong-argument",
+  "wrong-argument-type": {
     "summary": "Student is passing wrong type of arguments to the function.",
     "pattern": {
       "textBlocks": {
@@ -172,7 +129,6 @@
     }
   },
   "var-not-defined-2": {
-    "name": "var-not-defined-2",
     "summary": "Students don't know how to check and define variables in their code.",
     "pattern": {
       "textBlocks": {
@@ -203,67 +159,35 @@
       }
     }
   },
-  "wrong-argument-2": {
-    "name": "wrong-argument-2",
-    "summary": "Student is passing wrong type of arguments to the function.",
+  "function-misspelled": {
+    "summary": "?fn misspelled as ?error",
     "pattern": {
-      "textBlocks": {
-        "and": [
-          {
-            "some": {
-              "type": "sourceCode",
-              "text": {
-                "reg": "\\(([^\\s]+)"
-              }
-            }
-          },
-          {
-            "some": {
-              "type": "computerOutput",
-              "text": {
-                "reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but) \\(([^\\\\)]+)",
-                "pats": [
-                  "?x",
-                  "?y"
-                ]
-              }
-            }
+      "and": [
+        {
+          "message": {
+            "reg": "function ([^\\s,]+).*not defined",
+            "pats": [
+              "?fn"
+            ]
           }
-        ]
-      }
-    }
-  },
-  "var-not-defined-3": {
-    "name": "var-not-defined-3",
-    "summary": "Student doesn't how to check undefined error of function call. And let them to take a look at ?x documentation.",
-    "pattern": {
-      "textBlocks": {
-        "and": [
-          {
-            "some": {
-              "type": "sourceCode",
-              "text": {
-                "reg": "\\(([^\\s]+)"
-              }
-            }
-          },
-          {
+        },
+        {
+          "textBlocks": {
             "some": {
               "type": "computerOutput",
               "text": {
                 "reg": "function ([^\\s]+).*not defined",
                 "pats": [
-                  "?x"
+                  { "and": [{ "not": "?fn" }, "?error"] }
                 ]
               }
             }
           }
-        ]
-      }
+        }
+      ]
     }
   },
-  "wrong-argument-3": {
-    "name": "wrong-argument-3",
+  "wrong-argument-type-3": {
     "summary": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
     "pattern": {
       "textBlocks": {
@@ -288,8 +212,7 @@
       }
     }
   },
-  "closing-expected": {
-    "name": "closing-expected",
+  "close-paren-expected": {
     "summary": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
     "pattern": {
       "textBlocks": {
@@ -314,14 +237,14 @@
       }
     }
   },
-  "undefined": {
-    "summary": "For this exercise, student should understand difference between leaf and branch.",
+  "branch-leaf-confusion": {
+    "summary": "Code not keeping branches and leaves straight?",
     "pattern": {
       "textBlocks": {
         "some": {
-          "type": "sourceCode",
+          "type": "computerOutput",
           "text": {
-            "reg": "\\(\\+ 1\\(count-tree \\((?:branch-left|branch-right) tree"
+            "reg": "expects a branch, given .*make-leaf"
           }
         }
       }

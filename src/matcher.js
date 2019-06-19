@@ -5,6 +5,15 @@ const conceptMatch = (pat, obj, lst) => {
   return match(pat, obj);
 };
 
+/* match trace kludge
+const matchx = (pat, obj, blists = [{}])  => {
+  console.log(`${JSON.stringify(pat)} = ${JSON.stringify(obj)} ${JSON.stringify(blists)}`)
+  const result = matchx(pat, obj, blists);
+  console.log(`=> ${JSON.stringify(blists)}`)
+  return result;
+};
+*/
+
 const match = (pat, obj, blists = [{}])  => {
   if (blists.length === 0) {
     return blists;
@@ -91,14 +100,14 @@ const matchObject = (pat, obj, blists)  => {
 }
 
 const matchingLoop = (pat, obj, blists)  => (
-  Object.keys(pat).reduce((accumulator, key) => (
-    match(pat[key], obj[key], accumulator)
+  Object.keys(pat).reduce((blists, key) => (
+    match(pat[key], obj[key], blists)
   ), blists)
 );
 
 const matchAnd = (pat, obj, blists)  => {
-  return Object.keys(pat).reduce((accumulator, key) => (
-      match(pat[key], obj, accumulator)
+  return Object.keys(pat).reduce((blists, key) => (
+      match(pat[key], obj, blists)
   ), blists);
 }
 
@@ -115,7 +124,7 @@ const matchNot = (pat, obj, blists)  => {
 }
 
 const matchSome = (pat, obj, blists)  => {
-  return Object.keys(obj).reduce((accumulator, key) => (
+  return !obj ? [] : Object.keys(obj).reduce((accumulator, key) => (
     accumulator.concat(match(pat, obj[key], blists))
   ), []);
 }

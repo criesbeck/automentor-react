@@ -4,6 +4,7 @@ import { Box, Button, Card, Container, Content, Heading, Level, Title } from 'rb
 import { createBrowserHistory } from 'history';
 import { conceptMatch } from './matcher.js';
 
+
 const history = createBrowserHistory();
 
 const sampleParam = () => (
@@ -21,9 +22,9 @@ const fetchJson = async (url) => {
 };
 
 const diagnose = (sample, kb) => (
-  Object.values(kb.diagnoses).map(diagnosis => 
-    [diagnosis, conceptMatch(diagnosis.pattern, sample, kb.concepts)]
-  ).filter(result => result[1].length)
+  Object.entries(kb.diagnoses).map(([name, diagnosis]) => 
+    ({ name, diagnosis, blists: conceptMatch(diagnosis.pattern, sample, kb.concepts) })
+  ).filter(result => result.blists.length)
 );
 
 const instantiate = (text, blist) => (
@@ -63,13 +64,15 @@ const MatchResults = ({ sample, diagnoses }) => (
       </Level.Item>
     </Level>
     <Entry title="Message" text={sample.message} />
-    <Entry title="Data" text={ sample.textBlocks.map(block => (
-      <Entry key={block.label} title={block.label} text={block.text} />
-    ))}
-    />
+    { sample.textBlocks &&
+      <Entry title="Data" text={ sample.textBlocks.map(block => (
+        <Entry key={block.label} title={block.label} text={block.text} />
+      ))}
+      />
+    }
     <Entry title="Diagnoses" text ={ 
-      diagnoses.map(([diagnosis, blists]) =>
-        <Box key={diagnosis.name}>{instances(diagnosis.summary, blists)}</Box>
+      diagnoses.map(({ name, diagnosis, blists }) =>
+        <Box key={name}>{instances(diagnosis.summary, blists)}</Box>
       )}
     />
   </Container>
@@ -82,11 +85,22 @@ const Sample = ({ name, state }) => (
   >{name.slice('sample-'.length)}</Button>
 )
 
+const SampleSelector = ({ names, state }) => (
+  <Level>
+    { names.map(name => (
+        <Level.Item  key={name}>
+          <Sample name={name} state={ state } />
+        </Level.Item>
+      ))
+    }
+  </Level>
+);
+
 const Tester = ({ state, kb }) => {
   const sample = kb.samples[state.sampleName];
   return (
     <React.Fragment>
-      { Object.keys(kb.samples).map(key => <Sample key={key} name={key} state={ state } />) }
+      <SampleSelector names={ Object.keys(kb.samples) } state={ state } />
       <MatchResults sample={ sample } diagnoses={ diagnose(sample, kb) } />
    </React.Fragment>
   );
@@ -113,6 +127,7 @@ const App = () => {
     fetchKb();
     return unlisten;
   }, []);
+  
   return kb.samples
     ? <Tester state={ sampleState } kb={ kb } />
     : <div>Loading data...</div>;
