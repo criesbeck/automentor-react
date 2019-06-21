@@ -1,29 +1,27 @@
+import firedb from './firebase';
+
+const ticketDb = firedb.ref('tickets');
+
 const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',
 };
 
 const addTicket = async (ticket) => {
-  const data = getTicketData();
-  const id = Object.keys(data).length + 1;
-  data[id] = {id: id, ...ticket};
-  localStorage.setItem('tickets', JSON.stringify(data));
+  ticketDb.push(ticket);
 };
 
-const getTicketData = () => {
-  const text = localStorage.getItem('tickets');
-  return text ? JSON.parse(text) : {};
+const getTicket = async id => {
+  const snap = await ticketDb.once('value');
+  return snap.val()[id];
 };
 
-const getTicket = async id => (
-  getTicketData()[id]
-);
-
-const getTickets = async () => (
-  Object.values(getTicketData())
-);
+const getTickets = async () => {
+  const snap = await ticketDb.once('value');
+  return Object.entries(snap.val() || {});
+};
 
 const ticketTime = (ts) => (
   new Date(ts).toLocaleString('en-US', ticketTimeFormat)
 );
 
-export { addTicket, getTicket, getTickets, ticketTime };
+export { addTicket, getTicket, getTickets, ticketDb, ticketTime };

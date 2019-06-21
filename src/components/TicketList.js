@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { A } from 'hookrouter';
 import 'rbx/index.css';
 import { Container, Message, Section, Table } from 'rbx';
-import { getTickets, ticketTime } from '../utils/tickets';
+import { ticketDb, ticketTime } from '../utils/tickets';
 
-const TicketRow = ({ id, date, student, exercise, message }) => (
+const TicketRow = ({ id, ticket: { date, student, exercise, message } } ) => (
   <Table.Row>
     <Table.Cell>{ticketTime(date)}</Table.Cell>
     <Table.Cell>{student}</Table.Cell>
@@ -17,15 +17,16 @@ const TicketList = ({netid}) => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    const fetchTickets = async () => {
-      const tickets = await getTickets();
-      setTickets(tickets);
-    };
-    fetchTickets();
-  }, []); 
+    const handleData = snap => {
+      setTickets(Object.entries(snap.val() || {}));
+    }
+    ticketDb.on('value', handleData, error => alert(error));
 
-  const rows = tickets.map(ticket => (
-    <TicketRow key={ticket.id} ticket={ticket} />
+    return () => { ticketDb.off('value', handleData); };
+  }, []);
+
+  const rows = tickets.map(([id, ticket]) => (
+    <TicketRow key={id} id={id} ticket={ticket} />
   ));
 
   return (
