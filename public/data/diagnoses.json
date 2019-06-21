@@ -6,7 +6,7 @@
         "some": {
           "type": "computerOutput",
           "text": {
-            "reg": "function ([^\\s]+)( is)? (?:not defined|undefined)",
+            "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
               "?x"
             ]
@@ -24,7 +24,7 @@
           "text": {
             "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
-              { "and": [ { "concept": "library-function" }, "?fn" ] }
+              { "and": [ { "isa": "library-function" }, "?fn" ] }
             ]
           }
         }

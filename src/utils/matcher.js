@@ -1,12 +1,17 @@
+// conceptMatch() for patterns of the form { "isa": "function"}
+// see concepts.json for example ontology
 let concepts = {};
 
-const conceptMatch = (pat, obj, lst) => {
-  if (lst) concepts = lst;
+const conceptMatch = (pat, obj, tree = {}) => {
+  concepts = tree;
   return match(pat, obj);
 };
 
 /* match trace kludge
-const matchx = (pat, obj, blists = [{}])  => {
+const traceMatch = () => {
+
+}
+const match = (pat, obj, blists = [{}])  => {
   console.log(`${JSON.stringify(pat)} = ${JSON.stringify(obj)} ${JSON.stringify(blists)}`)
   const result = matchx(pat, obj, blists);
   console.log(`=> ${JSON.stringify(blists)}`)
@@ -35,8 +40,8 @@ const match = (pat, obj, blists = [{}])  => {
     return matchSome(pat["some"], obj, blists);
   } else if (pat.reg) {
     return matchRegex(pat, obj, blists);
-  } else if (pat.concept) {
-    return matchConcept(pat.concept, obj, blists);
+  } else if (pat.isa) {
+    return matchIsa(pat.isa, obj, blists);
   } else if (typeof pat === "object") {
     return matchObject(pat, obj, blists);
   } else {
@@ -66,7 +71,7 @@ const isa = (spec, abst) => (
   spec === abst || absts(spec).some(x => isa(x, abst))
 );
 
-const matchConcept = (pat, obj, blists) => (
+const matchIsa = (pat, obj, blists) => (
   isa(obj, pat) ? blists : []
 );
 
