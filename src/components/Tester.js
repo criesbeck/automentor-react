@@ -4,7 +4,7 @@ import { Box, Button, Card, Container, Content, Heading, Icon, Level, Title } fr
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { createBrowserHistory } from 'history';
-import { conceptMatch } from '../utils/matcher';
+import { conceptMatch, traceIf } from '../utils/matcher';
 
 // pick sample name from URL
 const history = createBrowserHistory();
@@ -55,14 +55,18 @@ const highlightTextMatches = (elt, rexps) =>  {
 const highlightPageMatches = (pats) => {
   if (!pats) return;
   const rexps = pats.map(pat => new RegExp(pat, "g"));
-  const elts = Array.from(document.querySelectorAll('[data-source-text'));
+  const elts = Array.from(document.querySelectorAll('[data-is-source'));
   elts.forEach(elt => { highlightTextMatches(elt, rexps); });
 };
+
+const matchSample = (name, diagnosis, sample, kb) => (
+  conceptMatch(diagnosis.pattern, sample, kb.concepts)
+);
 
 // apply the knowledge base (patterns, concepts) to diagnose a sample request
 const diagnose = (sample, kb) => (
   Object.entries(kb.diagnoses).map(([name, diagnosis]) => 
-    ({ name, diagnosis, blists: conceptMatch(diagnosis.pattern, sample, kb.concepts) })
+    ({ name, diagnosis, blists: matchSample(name, diagnosis, sample, kb) })
   ).filter(result => result.blists.length)
 );
 
@@ -77,42 +81,51 @@ const instances = (text, blists) => (
 
 // The page components
 
-const Field = ({ title, text }) => (
+const Field = ({ title, children }) => (
   <div>
     <Heading>{ title }</Heading>
-    <Title size={4}>{ text }</Title>
+    <Title size={4}>{ children }</Title>
   </div>
 );
 
-const Entry = ({ title, text, textSource }) => (
+const Entry = ({ title, isSource, children }) => (
   <Card>
     <Card.Header>
       <Card.Header.Title>{ title }</Card.Header.Title>
     </Card.Header>
     <Card.Content>
-      <Content data-source-text={textSource}>{ text }</Content>
+      <Content data-is-source={isSource}>{ children }</Content>
     </Card.Content>
   </Card>  
 );
 
+const PiazzaLink = ({url}) => (
+  <a href={url || '#'} rel="noopener noreferrer" target="_blank">{url || '---'}</a>
+)
+
 // for student input data 
 const StudentData = ({ sample }) => {
-  const sources = sample.textBlocks &&
-    <Entry title="Data" text={ sample.textBlocks.map(block => (
-      <Entry key={block.label} title={block.label} text={block.text}  textSource="text-block"/>
-    )) } />;
+  const sources = sample.blocks && sample.blocks.map(block => (
+    <Entry key={block.timestamp} title={block.source} isSource={true}>
+      {block.text}
+    </Entry>
+  ));
 
   return (
     <React.Fragment>
       <Level>
         <Level.Item textAlign="centered">
-          <Field title="Name" text={sample.student.name} />
+          <Field title="Name">{sample.student}</Field> 
         </Level.Item>
         <Level.Item textAlign="centered">
-          <Field title="Exercise" text={sample.source} />
+          <Field title="Exercise">{sample.exercise}</Field>
+        </Level.Item>
+        <Level.Item textAlign="centered">
+          <Field title="Piazza">
+            <PiazzaLink url={sample.url} />
+          </Field>
         </Level.Item>
       </Level>
-      <Entry title="Message" text={sample.message} textSource="message" />
       { sources }
     </React.Fragment>
   );
@@ -137,7 +150,7 @@ const Diagnoses = ({ results }) => {
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} />
   ));
   
-  return  <Entry title="Diagnoses" text={ diagnoses } />
+  return  <Entry title="Diagnoses">{ diagnoses }</Entry>
 };
 
 // for selecting a sample to test

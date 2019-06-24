@@ -1,25 +1,29 @@
 // conceptMatch() for patterns of the form { "isa": "function"}
 // see concepts.json for example ontology
 let concepts = {};
+let depth = 0;
 
 const conceptMatch = (pat, obj, tree = {}) => {
   concepts = tree;
   return match(pat, obj);
 };
 
-/* match trace kludge
-const traceMatch = () => {
+const traceIf = (trace) => {
+  depth = 0;
+  match = trace ? _traceMatch : _match;
+};
 
-}
-const match = (pat, obj, blists = [{}])  => {
-  console.log(`${JSON.stringify(pat)} = ${JSON.stringify(obj)} ${JSON.stringify(blists)}`)
-  const result = matchx(pat, obj, blists);
-  console.log(`=> ${JSON.stringify(blists)}`)
+const _traceMatch = (pat, obj, blists = [{}])  => {
+  const indent = ' '.repeat(depth)
+  console.log(`${indent}${JSON.stringify(pat)} = ${JSON.stringify(obj)} ${JSON.stringify(blists)}`)
+  depth += 2;
+  const result = _match(pat, obj, blists);
+  depth -= 2;
+  console.log(`${indent}=> ${JSON.stringify(result)}`)
   return result;
 };
-*/
 
-const match = (pat, obj, blists = [{}])  => {
+const _match = (pat, obj, blists = [{}])  => {
   if (blists.length === 0) {
     return blists;
   } else if (isVar(pat)) {
@@ -90,17 +94,17 @@ const matchRegex = (pat, obj, blists)  => {
 
 const matchArray = (pat, obj, blists)  => {
   if (pat.length > obj.length) {
-      return [];
+    return [];
   }
   return matchingLoop(pat, obj, blists);
 }
 
 const matchObject = (pat, obj, blists)  => {
   if (isPrimitive(obj) || Array.isArray(obj) ||
-      (Object.keys(pat).length > Object.keys(obj).length)) {
-      return [];
+    (Object.keys(pat).length > Object.keys(obj).length)) {
+    return [];
   } else {
-      return matchingLoop(pat, obj, blists);
+    return matchingLoop(pat, obj, blists);
   }
 }
 
@@ -161,4 +165,6 @@ const isVar = (x)  => {
   return (typeof x) === 'string' && x.startsWith('?');
 }
 
-export { conceptMatch };
+let match = _match;
+
+export { conceptMatch, traceIf };

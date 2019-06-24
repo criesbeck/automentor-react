@@ -1,631 +1,670 @@
 {
   "sample-1": {
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": "exercise1",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=54",
+    "blocks": [
       {
-        "label": "square.rkt",
-        "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
-        "type": "sourceCode"
+        "text": "I'm getting an error using function beside",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
       },
       {
-        "label": "computerOutput",
+        "source": "square.rkt",
+        "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
+        "isCode": true,
+        "timestamp": 1516428060000
+      },
+      {
+        "source": "computerOutput",
         "text": "function call: expected a function after the open parenthesis, but received #<image>.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516428090000
       }
-    ],
-    "message": "I'm getting an error using function beside",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=54\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "patterns": null,
-    "category": "Error",
-    "source": "exercise1",
-    "diagnosis": "The student is putting too much parentheses in their code."
+    ]
   },
   "sample-2": {
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=71",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "I’m getting an error when I try to use function overlay",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
+      },
+      {
+        "source": "computerOutput",
         "text": "function overlay is not defined.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516428060000
       }
-    ],
-    "message": "I’m getting an error when I try to use function overlay",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=71\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Don't know how to call function overlay in Racket, and need to know the basic debug skills."
+    ]
   },
   "sample-3": {
-    "textBlocks": [
+    "timestamp": 1516773600000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=76",
+    "blocks": [
       {
-        "label": "square.rkt",
-        "text": "(interpolate-colors blue red 0.5)",
-        "type": "sourceCode"
+        "text": "I’m getting an error when I try to use function interpolate-colors",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516773630000
       },
       {
-        "label": "computerOutput",
+        "source": "square.rkt",
+        "text": "(interpolate-colors blue red 0.5)",
+        "isCode": true,
+        "timestamp": 1516773660000
+      },
+      {
+        "source": "computerOutput",
         "text": "blue: this variable is not defined.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516773690000
       }
-    ],
-    "message": "I’m getting an error when I try to use function interpolate-colors",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=76\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Don't know how to call function interpolate-colors correctly in Racket, and need to know the basic debug skills."
+    ]
   },
   "sample-4": {
-    "textBlocks": [
+    "timestamp": 1516514400000,
+    "student": "clj8621",
+    "exercise": "exercise1",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=61",
+    "blocks": [
       {
-        "label": "square.rkt",
-        "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
-        "type": "sourceCode"
+        "text": "I’m getting an error when I try to use function overlay/xy",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516514430000
       },
       {
-        "label": "computerOutput",
+        "source": "square.rkt",
+        "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
+        "isCode": true,
+        "timestamp": 1516514460000
+      },
+      {
+        "source": "computerOutput",
         "text": "overlay/xy: expects only 4 arguments, but found 11.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516514490000
       }
-    ],
-    "message": "I’m getting an error when I try to use function overlay/xy",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=61\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise1",
-    "diagnosis": "Don't know how to call function overlay/xy in Racket, and need to know how to use function by referring Racket document."
+    ]
   },
   "sample-5": {
-    "textBlocks": [
+    "timestamp": 1516773603000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=81",
+    "blocks": [
       {
-        "label": "square.rkt",
-        "text": "(interpolate-color (color1) (color2)",
-        "type": "sourceCode"
+        "text": "I'm getting error when I worte (make-color 0 0 255 255), and I'm not sure where this is coming from, and the section racket highlights is \\\"color1\\\"",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516773633000
       },
       {
-        "label": "computerOutput",
+        "source": "square.rkt",
+        "text": "(interpolate-color (color1) (color2)",
+        "isCode": true,
+        "timestamp": 1516773663000
+      },
+      {
+        "source": "computerOutput",
         "text": "function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516773693000
       }
-    ],
-    "message": "I'm getting error when I worte (make-color 0 0 255 255), and I'm not sure where this is coming from, and the section racket highlights is \\\"color1\\\"",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=81\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Don't know how to call function make-color in Racket, and need to know how to define function arguments by referring Racket document."
+    ]
   },
   "sample-6": {
-    "textBlocks": [
+    "timestamp": 1516946400000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "I'm getting error using Iterated-overlay function.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516946430000
+      },
+      {
+        "source": "computerOutput",
         "text": "function Iterated-overlay not defined.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516946460000
       }
-    ],
-    "message": "I'm getting error using Iterated-overlay function.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=94\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Student doesn't know how to call function Iterated-overlay in Racket, and need to know how to deal with situation with not defined error."
+    ]
   },
   "sample-7": {
-    "message": "When I run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure: function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255)  I was under the impression that 'color' or 'make-color' is a function, is it not? ",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=102\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Student has difficulty calling function make-color, and it's due to they are not familiar with how to pass correct arguments to the function make-color"
+    "timestamp": 1517119200000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=102",
+    "blocks": [
+      {
+        "text": "When I run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure: function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255)  I was under the impression that 'color' or 'make-color' is a function, is it not? ",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517119230000
+      }
+    ]
   },
   "sample-8": {
-    "textBlocks": [
+    "timestamp": 1517205600000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=114",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "Able to define swatch, but when I go to call swatch I get an error.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517205630000
+      },
+      {
+        "source": "computerOutput",
         "text": "iterated-beside: expects procedure, given #< image >",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1517205660000
       }
-    ],
-    "message": "Able to define swatch, but when I go to call swatch I get an error.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=114\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise2",
-    "diagnosis": "Student doesn't know how to call function swatch in Racket, should take a look how to define arguments by referring the Racket documentation."
+    ]
   },
   "sample-9": {
-    "textBlocks": [
+    "timestamp": 1517810400000,
+    "student": "clj8621",
+    "exercise": "exercise3",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=147",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "I'm getting an error when using function string=?. What could be causing the error?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517810430000
+      },
+      {
+        "source": "computerOutput",
         "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1517810460000
       }
-    ],
-    "message": "I'm getting an error when using function string=?. What could be causing the error?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=147\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise3",
-    "diagnosis": "Don't know how to pass arguments to function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    ]
   },
   "sample-10": {
-    "textBlocks": [
+    "timestamp": 1518069600000,
+    "student": "clj8621",
+    "exercise": "exercise4",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1518069630000
+      },
+      {
+        "source": "computerOutput",
         "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1518069660000
       }
-    ],
-    "message": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=188\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise4",
-    "diagnosis": "Don't know how to pass correct type of arguments to function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    ]
   },
   "sample-11": {
-    "textBlocks": [
+    "timestamp": 1518415200000,
+    "student": "clj8621",
+    "exercise": "exercise4",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=230",
+    "blocks": [
       {
-        "label": "branch.rkt",
-        "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
-        "type": "sourceCode"
+        "text": "Difficulty Looping through Branches. The issue is that I get an error of: branch-val: expects a branch, given (make-leaf 1).",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1518415230000
       },
       {
-        "label": "computerOutput",
+        "source": "branch.rkt",
+        "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
+        "isCode": true,
+        "timestamp": 1518415260000
+      },
+      {
+        "source": "computerOutput",
         "text": "branch-val: expects a branch, given (make-leaf 1).",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1518415290000
       }
-    ],
-    "message": "Difficulty Looping through Branches. The issue is that I get an error of: branch-val: expects a branch, given (make-leaf 1).",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=230\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise4",
-    "diagnosis": "Don't know how to correctly call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    ]
   },
   "sample-12": {
-    "textBlocks": [
+    "timestamp": 1518588000000,
+    "student": "clj8621",
+    "exercise": "exercise4",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=239",
+    "blocks": [
       {
-        "label": "computerOutput",
+        "text": "When I try to run my sum-tree function, I get this error message.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1518588030000
+      },
+      {
+        "source": "computerOutput",
         "text": "+: expects a number as 1st argument, given leaf-val",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1518588060000
       }
-    ],
-    "message": "When I try to run my sum-tree function, I get this error message.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=239\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": "exercise4",
-    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    ]
   },
   "sample-13": {
-    "textBlocks": [
+    "timestamp": 1516687200000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=70",
+    "blocks": [
       {
-        "label": "Function",
-        "text": "What is function interpolate-colors?",
-        "type": "confusionInputs"
+        "text": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516687230000
       },
       {
-        "label": "Parameters",
+        "source": "Function",
+        "text": "What is function interpolate-colors?",
+        "isCode": false,
+        "timestamp": 1516687260000
+      },
+      {
+        "source": "Parameters",
         "text": "What does weight refers to?",
-        "type": "confusionInputs"
+        "isCode": false,
+        "timestamp": 1516687290000
       }
-    ],
-    "message": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=70\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Confused",
-    "source": "exercise2",
-    "diagnosis": "Should know how to call function in Racket by referring to the official documents."
+    ]
   },
   "sample-14": {
-    "textBlocks": [
+    "timestamp": 1517637600000,
+    "student": "clj8621",
+    "exercise": "exercise3",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=139",
+    "blocks": [
       {
-        "label": "Function",
+        "text": "Any tips on what function to use to get a boolean answer at the end?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517637630000
+      },
+      {
+        "source": "Function",
         "text": "What function to use to get a boolean answer at the end?",
-        "type": "confusionInputs"
+        "isCode": false,
+        "timestamp": 1517637660000
       }
-    ],
-    "message": "Any tips on what function to use to get a boolean answer at the end?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=139\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Confused",
-    "source": "exercise3",
-    "diagnosis": "Don't have basic knowledge of the logic judgement in programming."
+    ]
   },
   "sample-15": {
-    "textBlocks": [
+    "timestamp": 1517983200000,
+    "student": "clj8621",
+    "exercise": "exam",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=177",
+    "blocks": [
       {
-        "label": "Concept",
+        "text": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517983230000
+      },
+      {
+        "source": "Concept",
         "text": "What the difference between ordinary, tail and iterative recursion?",
-        "type": "confusionInputs"
+        "isCode": false,
+        "timestamp": 1517983260000
       }
-    ],
-    "message": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=177\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Confused",
-    "diagnosis": null,
-    "source": "exam"
+    ]
   },
   "sample-16": {
-    "diagnosis": null,
-    "textBlocks": [
+    "timestamp": 1515996000000,
+    "student": "clj8621",
+    "exercise": "exercise1",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=27",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "How to move Image in Scheme?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1515996030000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "How to move the stars from left to center?",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1515996060000
       }
-    ],
-    "message": "How to move Image in Scheme?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=27\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise1"
+    ]
   },
   "sample-17": {
-    "diagnosis": "The student is not using overlay/xy",
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": "exercise1",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=52",
+    "blocks": [
       {
-        "label": "StuckQuestion",
         "text": "How to align images to the correct position?",
-        "type": "stuckInput"
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
+      },
+      {
+        "source": "StuckQuestion",
+        "text": "How to align images to the correct position?",
+        "isCode": false,
+        "timestamp": 1516428060000
       }
-    ],
-    "message": "How to align images to the correct position?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=52\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise1"
+    ]
   },
   "sample-18": {
-    "diagnosis": null,
-    "textBlocks": [
+    "timestamp": 1516773600000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=78",
+    "blocks": [
       {
-        "label": "StuckQuestion",
         "text": "How to add the alpha component when using the interpolate-colors?",
-        "type": "stuckInput"
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516773630000
+      },
+      {
+        "source": "StuckQuestion",
+        "text": "How to add the alpha component when using the interpolate-colors?",
+        "isCode": false,
+        "timestamp": 1516773660000
       }
-    ],
-    "message": "How to add the alpha component when using the interpolate-colors?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=78\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-19": {
-    "diagnosis": "The student is iterating too many times.",
-    "textBlocks": [
+    "timestamp": 1516773604000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=79",
+    "blocks": [
       {
-        "label": "StuckQuestion",
         "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
-        "type": "stuckInput"
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516773634000
+      },
+      {
+        "source": "StuckQuestion",
+        "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
+        "isCode": false,
+        "timestamp": 1516773664000
       }
-    ],
-    "message": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=79\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-20": {
-    "diagnosis": "Student is using quotient instead of / for division",
-    "textBlocks": [
+    "timestamp": 1516946400000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=95",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "Stuck in the swatch part. Notice that each fraction should be n*[1/(num-squares-1)] but when tried to use the quotient function, it's always rounded so does not work.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516946430000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "Stuck in the swatch part.",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1516946460000
       }
-    ],
-    "message": "Stuck in the swatch part. Notice that each fraction should be n*[1/(num-squares-1)] but when tried to use the quotient function, it's always rounded so does not work.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=95\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-21": {
-    "diagnosis": "The student is not considering the reuse of the swatch function.",
-    "textBlocks": [
+    "timestamp": 1517032800000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=98",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "How to use interpolate-colors to get the rows slowly transitioning to black. Where to put that in the code. Do you nest iterated-beside inside iterated-above?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517032830000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1517032860000
       }
-    ],
-    "message": "How to use interpolate-colors to get the rows slowly transitioning to black. Where to put that in the code. Do you nest iterated-beside inside iterated-above?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=98\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-22": {
-    "diagnosis": "The student is trying to use a variable out of its scope.",
-    "textBlocks": [
+    "timestamp": 1517032807000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=99",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "How can we interpolate the specific number of squares one inputs when calling swatch? If I put num-squares for the number of iterations, it isn't defined. I tried putting iterated-beside after lambda, but that didn't work either.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517032837000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1517032867000
       }
-    ],
-    "message": "How can we interpolate the specific number of squares one inputs when calling swatch? If I put num-squares for the number of iterations, it isn't defined. I tried putting iterated-beside after lambda, but that didn't work either.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=99\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-23": {
-    "diagnosis": "The student is having a hard time figuring out how to reuse code.",
-    "textBlocks": [
+    "timestamp": 1517119203000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=100",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "Having difficulty coming up with the correct use/order of swatch, iterated-above, etc. Any tips on how to start it off would be much appreciated.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517119233000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "How to up correctly use/order of swatch, iterated-above?",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1517119263000
       }
-    ],
-    "message": "Having difficulty coming up with the correct use/order of swatch, iterated-above, etc. Any tips on how to start it off would be much appreciated.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=100\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-24": {
-    "diagnosis": "The student is unsure how to compose higher order functions.",
-    "textBlocks": [
+    "timestamp": 1517119204000,
+    "student": "clj8621",
+    "exercise": "exercise2",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=103",
+    "blocks": [
       {
-        "label": "StuckQuestion",
+        "text": "How do we give iterated-beside a function that satisfies it when the only function we need the iterator for is inside the rectangle function?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517119234000
+      },
+      {
+        "source": "StuckQuestion",
         "text": "How to give iterated-beside a function?",
-        "type": "stuckInput"
+        "isCode": false,
+        "timestamp": 1517119264000
       }
-    ],
-    "message": "How do we give iterated-beside a function that satisfies it when the only function we need the iterator for is inside the rectangle function?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=103\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise2"
+    ]
   },
   "sample-25": {
-    "diagnosis": "The student is using a filter predicate that never returns true.",
-    "textBlocks": [
+    "timestamp": 1517637604000,
+    "student": "clj8621",
+    "exercise": "exercise3",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=136",
+    "blocks": [
       {
-        "label": "computerOutput",
-        "text": "'()",
-        "type": "computerOutput"
+        "text": "I used a similar code with question 3, but I'm keep getting en empty list, '( ) as an output when I use artist-genres. Why is this happening? How can I get list of strings out of list of album using filter? Any ideas?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517637634000
       },
       {
-        "label": "expectedcomputerOutput",
-        "text": "'(JOHN_CHO KEVIN_SPACEY CHRIS_COOPER)",
-        "type": "expectedOutput"
+        "source": "computerOutput",
+        "text": "'()",
+        "isCode": true,
+        "timestamp": 1517637664000
       }
-    ],
-    "message": "How can I get list of strings out of list of album using filter?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=136\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Output doesn't match expected",
-    "source": "exercise3"
+    ]
   },
   "sample-26": {
-    "diagnosis": "The student is trying to create a list from singleton elements with append instead of list.",
-    "textBlocks": [],
-    "message": "I cannot combine the name and the number by append.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=142\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Output doesn't match expected",
-    "source": "exercise3"
+    "timestamp": 1517724005000,
+    "student": "clj8621",
+    "exercise": "exercise3",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=142",
+    "blocks": [
+      {
+        "text": "I cannot combine the name and the number by append.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517724035000
+      }
+    ]
   },
   "sample-27": {
-    "diagnosis": "The student is using an undefined predicate.",
-    "textBlocks": [
+    "timestamp": 1517810406000,
+    "student": "clj8621",
+    "exercise": "exercise3",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
+    "blocks": [
       {
-        "label": "inputCode",
-        "text": "(filter Beatles? testing-library-1)",
-        "type": "sourceCode"
+        "text": "Stuck on Question 4, filter seems can't to get it to work with strings.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1517810436000
       },
       {
-        "label": "computerOutput",
+        "source": "inputCode",
+        "text": "(filter Beatles? testing-library-1)",
+        "isCode": true,
+        "timestamp": 1517810466000
+      },
+      {
+        "source": "computerOutput",
         "text": "variable Beyonce? is undefined.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1517810496000
       }
-    ],
-    "message": "Stuck on Question 4, filter seems can't to get it to work with strings.",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=148\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Stuck",
-    "source": "exercise3"
+    ]
   },
   "sample-28": {
-    "diagnosis": "The student needs to include whitespace between the 1 and the open paren.",
-    "textBlocks": [
+    "timestamp": 1518501600000,
+    "student": "clj8621",
+    "exercise": "exercise4",
+    "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=237",
+    "blocks": [
       {
-        "label": "inputCode",
+        "text": "Having difficulty with Count-tree. Do not know where to add one to include the original branch-val. Are we allowed to use local for the ordinary recursion part of the assignment?",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1518501630000
+      },
+      {
+        "source": "inputCode",
         "text": "(define (count-tree tree) (cond [(leaf? tree) (leaf-val tree)] [else (+ (+ 1(count-tree (branch-left tree))) (+ 1(count-tree (branch-right tree)))))])",
-        "type": "sourceCode"
+        "isCode": true,
+        "timestamp": 1518501660000
       }
-    ],
-    "message": "Having difficulty with Count-tree. Do not know where to add one to include the original branch-val. Are we allowed to use local for the ordinary recursion part of the assignment?",
-    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=237\" target=\"_blank\">Piazza Link</a>",
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Confused",
-    "source": "exercise4"
+    ]
   },
   "sample-29": {
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": null,
+    "url": null,
+    "blocks": [
       {
-        "label": "inputCode",
-        "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
-        "type": "sourceCode"
+        "text": "Getting error defining function overlay, not defined.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
       },
       {
-        "label": "computerOutput",
+        "source": "inputCode",
+        "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
+        "isCode": true,
+        "timestamp": 1516428060000
+      },
+      {
+        "source": "computerOutput",
         "text": "function overhay is not defined.",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516428090000
       }
-    ],
-    "message": "Getting error defining function overlay, not defined.",
-    "url": null,
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": null
+    ]
   },
   "sample-30": {
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": null,
+    "url": null,
+    "blocks": [
       {
-        "label": "inputCode",
-        "text": "((+ 1 2))",
-        "type": "sourceCode"
+        "text": "Getting error when I want to calculate sum of numbers.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
       },
       {
-        "label": "computerOutput",
+        "source": "inputCode",
+        "text": "((+ 1 2))",
+        "isCode": true,
+        "timestamp": 1516428060000
+      },
+      {
+        "source": "computerOutput",
         "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516428090000
       }
-    ],
-    "message": "Getting error when I want to calculate sum of numbers.",
-    "url": null,
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": null
+    ]
   },
   "sample-31": {
-    "textBlocks": [
+    "timestamp": 1516428000000,
+    "student": "clj8621",
+    "exercise": null,
+    "url": null,
+    "blocks": [
       {
-        "label": "inputCode",
-        "text": "(define (ancestors-names-2 pers",
-        "type": "sourceCode"
+        "text": "Getting error when defining my own functions.",
+        "source": "message",
+        "isCode": false,
+        "timestamp": 1516428030000
       },
       {
-        "label": "computerOutput",
+        "source": "inputCode",
+        "text": "(define (ancestors-names-2 pers",
+        "isCode": true,
+        "timestamp": 1516428060000
+      },
+      {
+        "source": "computerOutput",
         "text": "read-syntax: expected a ) to close (",
-        "type": "computerOutput"
+        "isCode": true,
+        "timestamp": 1516428090000
       }
-    ],
-    "message": "Getting error when defining my own functions.",
-    "url": null,
-    "student": {
-      "name": "Cathy",
-      "id": "clj8621"
-    },
-    "responses": [],
-    "category": "Error",
-    "source": null
+    ]
   }
 }

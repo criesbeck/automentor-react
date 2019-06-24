@@ -20,8 +20,12 @@ const getTickets = async () => {
   return Object.entries(snap.val() || {});
 };
 
-const ticketTime = (ts) => (
-  new Date(ts).toLocaleString('en-US', ticketTimeFormat)
+const ticketSummary  = ticket => (
+  ticket.blocks[0].text
+)
+
+const ticketTime = ticket => (
+  new Date(ticket.timestamp).toLocaleString('en-US', ticketTimeFormat)
 );
 
-export { addTicket, getTicket, getTickets, ticketDb, ticketTime };
+export { addTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime };

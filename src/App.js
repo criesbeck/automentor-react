@@ -2,18 +2,18 @@ import React from 'react';
 import { useRoutes } from 'hookrouter';
 import Login from './components/Login'
 import NotFound from './components/NotFound';
-import Request from './components/Request';
 import RequestList from './components/RequestList';
 import Tester from './components/Tester';
-import Ticket from './components/Ticket';
+import TicketResponder from './components/TicketResponder';
 import TicketList from './components/TicketList';
+import TicketMaker from './components/TicketMaker';
 
 const routes = {
   '/': () => <Login />,
-  '/request/:netid': ({netid}) => <Request netid={netid} />,
+  '/request/:netid': ({netid}) => <TicketMaker netid={netid} />,
   '/requests/:netid': ({netid}) => <RequestList netid={netid} />,
   '/tester': () => <Tester />,
-  '/ticket/:id': ({id}) => <Ticket id={id} />,
+  '/ticket/:id': ({id}) => <TicketResponder id={id} />,
   '/tickets/:netid': ({netid}) => <TicketList netid={netid} />,
 };
 

@@ -2,9 +2,9 @@
   "function-is-not-defined": {
     "summary": "Students should have basic skills to check whether they already defined the function before they call them.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "some": {
-          "type": "computerOutput",
+          "isCode": true,
           "text": {
             "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
@@ -18,9 +18,9 @@
   "library-function-is-not-defined": {
     "summary": "?fn is a library function - library not loaded?",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "some": {
-          "type": "computerOutput",
+          "isCode": true,
           "text": {
             "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
@@ -34,11 +34,11 @@
   "function-expected": {
     "summary": "Extra parentheses around ?arg?",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "and": [
           {
             "some": {
-              "type": "sourceCode",
+              "isCode": true,
               "text": {
                 "reg": "\\(([^\\s]+) +\\(([^\\s]+)\\)",
                 "pats": [
@@ -50,7 +50,7 @@
           },
           {
             "some": {
-              "type": "computerOutput",
+              "isCode": true,
               "text": {
                 "reg": "expected a function .* but"
               }
@@ -63,9 +63,9 @@
   "var-not-defined": {
     "summary": "?var -- misspelled? not assigned? missing string quotes?",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "some": {
-          "type": "computerOutput",
+          "isCode": true,
           "text": {
             "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
             "pats": [
@@ -79,11 +79,11 @@
   "wrong-number-of-arguments": {
     "summary": "Students aren't passing the correct number of arguments to function.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "and": [
           {
             "some": {
-              "type": "sourceCode",
+              "isCode": true,
               "text": {
                 "reg": "\\(([^\\s]+) [^\\(]+",
                 "pats": [
@@ -94,7 +94,7 @@
           },
           {
             "some": {
-              "type": "computerOutput",
+              "isCode": true,
               "text": {
                 "reg": "expects only \\d+ arguments, but found \\d+"
               }
@@ -107,17 +107,22 @@
   "function-expected-no-source-code": {
     "summary": "Extra parentheses around an expression?",
     "pattern": {
-      "message": {
-        "reg": "expected a function .* but"
+      "blocks": {
+        "some": {
+          "isCode": false,
+          "text": {
+            "reg": "expected a function .* but"
+          }
+        }
       }
     }
   },
   "wrong-argument-type": {
     "summary": "Student is passing wrong type of arguments to the function.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "some": {
-          "type": "computerOutput",
+          "isCode": true,
           "text": {
             "reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but)",
             "pats": [
@@ -131,11 +136,11 @@
   "var-not-defined-2": {
     "summary": "Students don't know how to check and define variables in their code.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "and": [
           {
             "some": {
-              "type": "sourceCode",
+              "isCode": true,
               "text": {
                 "reg": "\\(([^\\s]+) [^\\(]+",
                 "pats": [
@@ -146,7 +151,7 @@
           },
           {
             "some": {
-              "type": "computerOutput",
+              "isCode": true,
               "text": {
                 "reg": "variable ([^\\s]+).*undefined",
                 "pats": [
@@ -162,19 +167,22 @@
   "function-misspelled": {
     "summary": "?fn misspelled as ?error",
     "pattern": {
-      "and": [
-        {
-          "message": {
-            "reg": "function ([^\\s,]+).*not defined",
-            "pats": [
-              "?fn"
-            ]
-          }
-        },
-        {
-          "textBlocks": {
+      "blocks": {
+        "and": [
+          {
             "some": {
-              "type": "computerOutput",
+              "isCode": false,
+              "text": {
+                "reg": "function ([^\\s,]+).*not defined",
+                "pats": [
+                  "?fn"
+                ]
+              }
+            }
+          },
+          {
+            "some": {
+              "isCode": true,
               "text": {
                 "reg": "function ([^\\s]+).*not defined",
                 "pats": [
@@ -183,18 +191,18 @@
               }
             }
           }
-        }
-      ]
+        ]
+      }
     }
   },
   "wrong-argument-type-3": {
     "summary": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "and": [
           {
             "some": {
-              "type": "sourceCode",
+              "isCode": true,
               "text": {
                 "reg": "\\(\\(.*\\)\\)"
               }
@@ -202,7 +210,7 @@
           },
           {
             "some": {
-              "type": "computerOutput",
+              "isCode": true,
               "text": {
                 "reg": "([^\\s]+):.*expected.*(?:given|but)"
               }
@@ -215,11 +223,11 @@
   "close-paren-expected": {
     "summary": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "and": [
           {
             "some": {
-              "type": "sourceCode",
+              "isCode": true,
               "text": {
                 "reg": "\\(.*[^\\)]$"
               }
@@ -227,7 +235,7 @@
           },
           {
             "some": {
-              "type": "computerOutput",
+              "isCode": true,
               "text": {
                 "reg": "([^\\s]+): expected.*\\) to close \\("
               }
@@ -240,9 +248,9 @@
   "branch-leaf-confusion": {
     "summary": "Code not keeping branches and leaves straight?",
     "pattern": {
-      "textBlocks": {
+      "blocks": {
         "some": {
-          "type": "computerOutput",
+          "isCode": true,
           "text": {
             "reg": "expects a branch, given .*make-leaf"
           }

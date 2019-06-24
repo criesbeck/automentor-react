@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import 'rbx/index.css';
 import { Container, Message, Section, Table } from 'rbx';
-import { ticketDb, ticketTime } from '../utils/tickets';
+import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 
-const RequestRow = ({ ticket: { date, exercise, message } }) => (
+const RequestRow = ({ ticket }) => (
   <Table.Row>
-    <Table.Cell>{ticketTime(date)}</Table.Cell>
-    <Table.Cell>{exercise}</Table.Cell>
-    <Table.Cell>{message}</Table.Cell>
+    <Table.Cell>{ticketTime(ticket)}</Table.Cell>
+    <Table.Cell>{ticket.exercise}</Table.Cell>
+    <Table.Cell>{ticketSummary(ticket)}</Table.Cell>
   </Table.Row>
 );
 

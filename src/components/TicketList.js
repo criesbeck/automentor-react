@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { A } from 'hookrouter';
 import 'rbx/index.css';
 import { Container, Message, Section, Table } from 'rbx';
-import { ticketDb, ticketTime } from '../utils/tickets';
+import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 
-const TicketRow = ({ id, ticket: { date, student, exercise, message } } ) => (
+const TicketRow = ({ id, ticket } ) => (
   <Table.Row>
-    <Table.Cell>{ticketTime(date)}</Table.Cell>
-    <Table.Cell>{student}</Table.Cell>
-    <Table.Cell>{exercise}</Table.Cell>
-    <Table.Cell><A href={`/ticket/${id}`}>{message}</A></Table.Cell>
+    <Table.Cell>{ticketTime(ticket)}</Table.Cell>
+    <Table.Cell>{ticket.student}</Table.Cell>
+    <Table.Cell>{ticket.exercise}</Table.Cell>
+    <Table.Cell><A href={`/ticket/${id}`}>{ticketSummary(ticket)}</A></Table.Cell>
   </Table.Row>
 );
 

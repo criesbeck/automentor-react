@@ -15,9 +15,13 @@ const Entry = ({ title, text }) => (
   </Card>  
 );
 
-const Ticket = ({id}) => {
+const TicketResponder = ({id}) => {
   const [ values, handleChange ] = useForm(['response', 'note']);
   const [ ticket, setTicket ] = useState(null);
+
+  const blockSource = block => (
+    block.source || (block.isCode ? 'Code' : 'Text')
+  );
 
   useEffect(() => {
     const fetchTicket = async (id) => {
@@ -40,11 +44,13 @@ const Ticket = ({id}) => {
         <Column.Group>
           <Column size={4} offset={4}>
             <Entry title="Student" text={ticket.student} />
-            <Entry title="Date" text={ticketTime(ticket.date)} />
+            <Entry title="Date" text={ticketTime(ticket)} />
             <Entry title="Exercise" text={ticket.exercise} />
-            <Entry title="Message" text={ticket.message} />
-            <Entry title="Source code" text={ticket.sourceCode} />
-            <Entry title="Computer output" text={ticket.computerOutput} />
+            {
+              ticket.blocks.map(block => (
+                <Entry key={block.timestamp} title={blockSource(block)} text={block.text} />
+              ))
+            }
             <form onSubmit={respond}>
               <Field>
                 <Control>
@@ -71,4 +77,4 @@ const Ticket = ({id}) => {
   );
 };
 
-export default Ticket;
+export default TicketResponder;
