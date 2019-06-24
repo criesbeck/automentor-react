@@ -5,15 +5,15 @@ import { addTicket } from '../utils/tickets';
 import 'rbx/index.css';
 import { Button, Column, Container, Control, Field, Input, Message, Section, Select, Textarea } from 'rbx';
 
-const Request = ({netid}) => {
+const Request = ({context}) => {
   const [ values, handleChange ] = useForm(['exercise', 'message', 'sourceCode', 'computerOutput']);
 
   function submitRequest(event) {
     event.preventDefault();
-    values.author = netid;
+    values.author = context.netid;
     values.date = Date.now();
     addTicket(values);
-    navigate(`/requests/${netid}`);
+    navigate('/requests');
   }
 
   return (
@@ -22,7 +22,7 @@ const Request = ({netid}) => {
         <Column.Group>
           <Column size={4} offset={4}>
             <Message>
-              <Message.Header>Welcome, {netid}</Message.Header>
+              <Message.Header>Welcome, {context.netid}</Message.Header>
             </Message>
             <form onSubmit={submitRequest}>
               <Field>

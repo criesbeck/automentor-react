@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRoutes } from 'hookrouter';
 import Login from './components/Login'
 import NotFound from './components/NotFound';
@@ -9,16 +9,26 @@ import TicketList from './components/TicketList';
 import TicketMaker from './components/TicketMaker';
 
 const routes = {
-  '/': () => <Login />,
-  '/request/:netid': ({netid}) => <TicketMaker netid={netid} />,
-  '/requests/:netid': ({netid}) => <RequestList netid={netid} />,
-  '/tester': () => <Tester />,
-  '/ticket/:id': ({id}) => <TicketResponder id={id} />,
-  '/tickets/:netid': ({netid}) => <TicketList netid={netid} />,
+  '/': () => (context, setContext) => <Login state={ [context, setContext] }/>,
+  '/request': () => context => <TicketMaker context={context} />,
+  '/requests': () => context => <RequestList context={context} />,
+  '/tester': () => () => <Tester />,
+  '/ticket/:id': ({id}) => context => <TicketResponder id={id} context={context} />,
+  '/tickets': () => context => <TicketList context={context} />,
 };
 
-const App = () => (
-  useRoutes(routes) || <NotFound />
+const reroute = (route, context, setContext) => (
+  !context.netid
+  ? <Login state={ [context, setContext] }/>
+  : !route ? <NotFound />
+  : route(context, setContext)
 );
+
+const App = () => {
+  const [context, setContext] = useState({})
+
+  const route = useRoutes(routes);
+  return reroute(route, context, setContext);
+};
 
 export default App;

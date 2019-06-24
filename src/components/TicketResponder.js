@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTitle } from 'hookrouter';
 import "rbx/index.css";
-import { Button, Card, Column, Container, Content, Control, Field, Section, Textarea } from 'rbx';
+import { Button, Card, Column, Container, Content, Control, Field, Level, Section, Textarea } from 'rbx';
 import useForm from "../utils/useForm";
 import { getTicket, ticketTime } from '../utils/tickets';
 
@@ -16,7 +16,7 @@ const Entry = ({ title, children }) => (
   </Card>  
 );
 
-const TicketResponder = ({id}) => {
+const TicketResponder = ({context, id}) => {
   useTitle('Ticket Responder');
   const [ values, handleChange ] = useForm(['response', 'note']);
   const [ ticket, setTicket ] = useState(null);
@@ -36,7 +36,7 @@ const TicketResponder = ({id}) => {
   function respondToStudent(event) {
     event.preventDefault();
     values.isMentor = true;
-    values.author = id;
+    values.author = context.netid;
     values.date = Date.now();
     values.ticketId = id;
     console.log(values);
@@ -47,9 +47,17 @@ const TicketResponder = ({id}) => {
       <Container>
         <Column.Group>
           <Column size={10} offset={1}>
-            <Entry title="Student">{ticket.author}</Entry>
-            <Entry title="Date">{ticketTime(ticket)}</Entry>
-            <Entry title="Exercise">{ticket.exercise}</Entry>
+            <Level>
+              <Level.Item>
+                <Entry title="Student">{ticket.author}</Entry>
+              </Level.Item>
+              <Level.Item>
+                <Entry title="Date">{ticketTime(ticket)}</Entry>
+              </Level.Item>
+              <Level.Item>
+                <Entry title="Exercise">{ticket.exercise}</Entry>
+              </Level.Item>
+            </Level>
             {
               ticket.blocks.map(block => (
                 <Entry key={block.timestamp} title={blockSource(block)}>{block.text}</Entry>

@@ -10,7 +10,7 @@ const FilledField = ({block}) => (
   <Box as={block.isCode ? 'pre' : 'div'}>{block.text}</Box>
 );
 
-const TicketMaker = ({netid}) => {
+const TicketMaker = ({context}) => {
   useTitle('Ticket Maker');
   const [ values, handleChange ] = useForm(['exercise', 'block']);
   const [ blocks, setBlocks ] = useState([]);
@@ -41,8 +41,8 @@ const TicketMaker = ({netid}) => {
 
   const submitRequest = (event) => {
     event.preventDefault();
-    addTicket({ author: netid, timestamp: Date.now(), exercise: values.exercise, blocks });
-    navigate(`/requests/${netid}`);
+    addTicket({ author: context.netid, timestamp: Date.now(), exercise: values.exercise, blocks });
+    navigate('/requests');
   };
 
   const boxes = blocks.map(block => (
@@ -66,7 +66,7 @@ const TicketMaker = ({netid}) => {
                 </Control>
               </Field>
               <Message>
-                <Message.Header>Welcome, {netid}</Message.Header>
+                <Message.Header>Welcome, {context.netid}</Message.Header>
                 <Message.Body>
                   { boxes }
                 </Message.Body>

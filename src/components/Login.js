@@ -6,14 +6,17 @@ import useForm from "../utils/useForm";
 
 const isMentor = netid => ['ckr'].includes(netid);
 
-const Login = () => {
+const Login = ({ state }) => {
   useTitle('HelpTicket Login');
+  const [context, setContext] = state;
+
   const [ values, handleChange,] = useForm(['netid', 'password']);
 
   function login(event) {
     event.preventDefault();
     const { netid } = values;
-    navigate(isMentor(netid) ? `/tickets/${netid}` : `/request/${netid}`);
+    setContext({...context, netid, isMentor: isMentor(netid) });
+    navigate(isMentor(netid) ? '/tickets' : '/request');
   }
 
   return (

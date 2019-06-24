@@ -13,7 +13,7 @@ const TicketRow = ({ id, ticket } ) => (
   </Table.Row>
 );
 
-const TicketList = ({netid}) => {
+const TicketList = ({context}) => {
   useTitle('Ticket List');
   const [tickets, setTickets] = useState([]);
 
@@ -34,7 +34,7 @@ const TicketList = ({netid}) => {
     <Section>
       <Container>
         <Message>
-          <Message.Header>Welcome, {netid}</Message.Header>
+          <Message.Header>Welcome, {context.netid}</Message.Header>
         </Message>
         <Table>
           <Table.Head>

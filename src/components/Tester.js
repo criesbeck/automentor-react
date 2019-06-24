@@ -4,14 +4,7 @@ import "rbx/index.css";
 import { Box, Button, Card, Container, Content, Heading, Icon, Level, Title } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
-import { conceptMatch, traceIf } from '../utils/matcher';
-
-// for console debugging printing
-const showObject = (tag, x) => { 
-  console.log(tag)
-  console.log(x); 
-  return x;
-};
+import { conceptMatch } from '../utils/matcher';
 
 // general JSON fetcher
 const fetchJson = async (url) => {
@@ -106,7 +99,7 @@ const StudentData = ({ sample }) => {
         <Level.Item textAlign="left">
           <Field title="Name">{sample.author}</Field> 
         </Level.Item>
-        <Level.Item textAlign="centered">
+        <Level.Item textAlign="left">
           <Field title="Exercise">{sample.exercise}</Field>
         </Level.Item>
         <Level.Item textAlign="right">

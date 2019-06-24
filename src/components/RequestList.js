@@ -12,19 +12,19 @@ const RequestRow = ({ ticket }) => (
   </Table.Row>
 );
 
-const RequestList = ({netid}) => {
+const RequestList = ({context}) => {
   useTitle('My Tickets');
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
     const handleData = snap => {
       const tickets = Object.entries(snap.val() || {});
-      setTickets(tickets.filter(([id, ticket]) => ticket.author === netid));
+      setTickets(tickets.filter(([id, ticket]) => ticket.author === context.netid));
     }
     ticketDb.on('value', handleData, error => alert(error));
 
     return () => { ticketDb.off('value', handleData); };
-  }, [netid]);
+  }, [context.netid]);
 
   const rows = tickets.map(([id, ticket]) => (
     <RequestRow key={id} ticket={ticket} />
@@ -34,7 +34,7 @@ const RequestList = ({netid}) => {
     <Section>
       <Container>
         <Message>
-          <Message.Header>Welcome, {netid}</Message.Header>
+          <Message.Header>Welcome, {context.netid}</Message.Header>
         </Message>
         <Table>
           <Table.Head>
