@@ -1,7 +1,7 @@
 {
   "sample-1": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=54",
     "blocks": [
@@ -27,7 +27,7 @@
   },
   "sample-2": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=71",
     "blocks": [
@@ -47,7 +47,7 @@
   },
   "sample-3": {
     "timestamp": 1516773600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=76",
     "blocks": [
@@ -73,7 +73,7 @@
   },
   "sample-4": {
     "timestamp": 1516514400000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=61",
     "blocks": [
@@ -99,7 +99,7 @@
   },
   "sample-5": {
     "timestamp": 1516773603000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=81",
     "blocks": [
@@ -125,7 +125,7 @@
   },
   "sample-6": {
     "timestamp": 1516946400000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
     "blocks": [
@@ -145,7 +145,7 @@
   },
   "sample-7": {
     "timestamp": 1517119200000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=102",
     "blocks": [
@@ -159,7 +159,7 @@
   },
   "sample-8": {
     "timestamp": 1517205600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=114",
     "blocks": [
@@ -179,7 +179,7 @@
   },
   "sample-9": {
     "timestamp": 1517810400000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=147",
     "blocks": [
@@ -199,7 +199,7 @@
   },
   "sample-10": {
     "timestamp": 1518069600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
     "blocks": [
@@ -219,7 +219,7 @@
   },
   "sample-11": {
     "timestamp": 1518415200000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=230",
     "blocks": [
@@ -245,7 +245,7 @@
   },
   "sample-12": {
     "timestamp": 1518588000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=239",
     "blocks": [
@@ -265,7 +265,7 @@
   },
   "sample-13": {
     "timestamp": 1516687200000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=70",
     "blocks": [
@@ -291,7 +291,7 @@
   },
   "sample-14": {
     "timestamp": 1517637600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=139",
     "blocks": [
@@ -311,7 +311,7 @@
   },
   "sample-15": {
     "timestamp": 1517983200000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exam",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=177",
     "blocks": [
@@ -331,7 +331,7 @@
   },
   "sample-16": {
     "timestamp": 1515996000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=27",
     "blocks": [
@@ -351,7 +351,7 @@
   },
   "sample-17": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=52",
     "blocks": [
@@ -371,7 +371,7 @@
   },
   "sample-18": {
     "timestamp": 1516773600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=78",
     "blocks": [
@@ -391,7 +391,7 @@
   },
   "sample-19": {
     "timestamp": 1516773604000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=79",
     "blocks": [
@@ -411,7 +411,7 @@
   },
   "sample-20": {
     "timestamp": 1516946400000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=95",
     "blocks": [
@@ -431,7 +431,7 @@
   },
   "sample-21": {
     "timestamp": 1517032800000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=98",
     "blocks": [
@@ -451,7 +451,7 @@
   },
   "sample-22": {
     "timestamp": 1517032807000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=99",
     "blocks": [
@@ -471,7 +471,7 @@
   },
   "sample-23": {
     "timestamp": 1517119203000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=100",
     "blocks": [
@@ -491,7 +491,7 @@
   },
   "sample-24": {
     "timestamp": 1517119204000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=103",
     "blocks": [
@@ -511,7 +511,7 @@
   },
   "sample-25": {
     "timestamp": 1517637604000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=136",
     "blocks": [
@@ -531,7 +531,7 @@
   },
   "sample-26": {
     "timestamp": 1517724005000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=142",
     "blocks": [
@@ -545,7 +545,7 @@
   },
   "sample-27": {
     "timestamp": 1517810406000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
     "blocks": [
@@ -571,7 +571,7 @@
   },
   "sample-28": {
     "timestamp": 1518501600000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=237",
     "blocks": [
@@ -591,7 +591,7 @@
   },
   "sample-29": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": null,
     "url": null,
     "blocks": [
@@ -617,7 +617,7 @@
   },
   "sample-30": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": null,
     "url": null,
     "blocks": [
@@ -643,7 +643,7 @@
   },
   "sample-31": {
     "timestamp": 1516428000000,
-    "student": "clj8621",
+    "author": "clj8621",
     "exercise": null,
     "url": null,
     "blocks": [

@@ -1,6 +1,6 @@
 {
   "function-is-not-defined": {
-    "summary": "Students should have basic skills to check whether they already defined the function before they call them.",
+    "summary": "function not defined -- misspelled? didn't realize they have to define it?",
     "pattern": {
       "blocks": {
         "some": {
@@ -77,7 +77,7 @@
     }
   },
   "wrong-number-of-arguments": {
-    "summary": "Students aren't passing the correct number of arguments to function.",
+    "summary": "wrong number of arguments - if too few, forgot one? if too many, missing parentheses?",
     "pattern": {
       "blocks": {
         "and": [
@@ -118,7 +118,7 @@
     }
   },
   "wrong-argument-type": {
-    "summary": "Student is passing wrong type of arguments to the function.",
+    "summary": "wrong argument type -- incorrect order of arguments?",
     "pattern": {
       "blocks": {
         "some": {
@@ -134,7 +134,7 @@
     }
   },
   "var-not-defined-2": {
-    "summary": "Students don't know how to check and define variables in their code.",
+    "summary": "undefined variable -- misspelled? not in scope?",
     "pattern": {
       "blocks": {
         "and": [
@@ -196,7 +196,7 @@
     }
   },
   "wrong-argument-type-3": {
-    "summary": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call.",
+    "summary": "incorrect argument - incorrect parenthisization?",
     "pattern": {
       "blocks": {
         "and": [
@@ -221,7 +221,7 @@
     }
   },
   "close-paren-expected": {
-    "summary": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call.",
+    "summary": "unbalanced parentheses", 
     "pattern": {
       "blocks": {
         "and": [

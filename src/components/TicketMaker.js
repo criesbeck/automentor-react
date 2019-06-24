@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { navigate } from 'hookrouter';
+import { navigate, useTitle } from 'hookrouter';
 import useForm from '../utils/useForm';
 import { addTicket } from '../utils/tickets';
 import BlockEditor from './BlockEditor';
@@ -11,6 +11,7 @@ const FilledField = ({block}) => (
 );
 
 const TicketMaker = ({netid}) => {
+  useTitle('Ticket Maker');
   const [ values, handleChange ] = useForm(['exercise', 'block']);
   const [ blocks, setBlocks ] = useState([]);
 
@@ -39,9 +40,8 @@ const TicketMaker = ({netid}) => {
   };
 
   const submitRequest = (event) => {
-    debugger;
     event.preventDefault();
-    addTicket({ student: netid, timestamp: Date.now(), exercise: values.exercise, blocks });
+    addTicket({ author: netid, timestamp: Date.now(), exercise: values.exercise, blocks });
     navigate(`/requests/${netid}`);
   };
 

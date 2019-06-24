@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate } from 'hookrouter';
+import { navigate, useTitle } from 'hookrouter';
 import 'rbx/index.css';
 import { Button, Column, Container, Control, Field, Input, Section } from 'rbx';
 import useForm from "../utils/useForm";
@@ -7,6 +7,7 @@ import useForm from "../utils/useForm";
 const isMentor = netid => ['ckr'].includes(netid);
 
 const Login = () => {
+  useTitle('HelpTicket Login');
   const [ values, handleChange,] = useForm(['netid', 'password']);
 
   function login(event) {

@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useQueryParams, useTitle } from 'hookrouter';
 import "rbx/index.css";
 import { Box, Button, Card, Container, Content, Heading, Icon, Level, Title } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
-import { createBrowserHistory } from 'history';
 import { conceptMatch, traceIf } from '../utils/matcher';
-
-// pick sample name from URL
-const history = createBrowserHistory();
-
-const sampleParam = () => (
-  (new URLSearchParams(window.location.search)).get('sample') || 'sample-1'
-);
-
-const setSampleParam = (name) => {
-  history.push({ search: `sample=${name}` });
-};
 
 // for console debugging printing
 const showObject = (tag, x) => { 
@@ -114,13 +103,13 @@ const StudentData = ({ sample }) => {
   return (
     <React.Fragment>
       <Level>
-        <Level.Item textAlign="centered">
-          <Field title="Name">{sample.student}</Field> 
+        <Level.Item textAlign="left">
+          <Field title="Name">{sample.author}</Field> 
         </Level.Item>
         <Level.Item textAlign="centered">
           <Field title="Exercise">{sample.exercise}</Field>
         </Level.Item>
-        <Level.Item textAlign="centered">
+        <Level.Item textAlign="right">
           <Field title="Piazza">
             <PiazzaLink url={sample.url} />
           </Field>
@@ -173,16 +162,12 @@ const SampleSelector = ({ names, state }) => (
 );
 
 const Tester = () => {
-  const [sampleName, setSampleName] = useState(sampleParam());
-  const state = { sampleName, setSampleName: setSampleParam };
+  useTitle('Diagnosis Tester');
+  const [queryParams, setQueryParams] = useQueryParams();
+  const { sample: sampleName = 'sample-1' } = queryParams;
+  const setSampleName = sample => { setQueryParams({ sample }); };
+  const state = { sampleName, setSampleName };
   const [kb, setKb] = useState({});
-
-  useEffect(() => {
-    const unlisten = history.listen((location) => {
-      setSampleName(sampleParam());
-    });
-    return unlisten;
-  }, []);
 
   useEffect(() => {
     const fetchKb = async () => {

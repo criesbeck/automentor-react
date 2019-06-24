@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { A } from 'hookrouter';
+import { A, useTitle } from 'hookrouter';
 import 'rbx/index.css';
 import { Container, Message, Section, Table } from 'rbx';
 import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
@@ -7,13 +7,14 @@ import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 const TicketRow = ({ id, ticket } ) => (
   <Table.Row>
     <Table.Cell>{ticketTime(ticket)}</Table.Cell>
-    <Table.Cell>{ticket.student}</Table.Cell>
+    <Table.Cell>{ticket.author}</Table.Cell>
     <Table.Cell>{ticket.exercise}</Table.Cell>
     <Table.Cell><A href={`/ticket/${id}`}>{ticketSummary(ticket)}</A></Table.Cell>
   </Table.Row>
 );
 
 const TicketList = ({netid}) => {
+  useTitle('Ticket List');
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {

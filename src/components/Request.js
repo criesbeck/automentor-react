@@ -10,7 +10,7 @@ const Request = ({netid}) => {
 
   function submitRequest(event) {
     event.preventDefault();
-    values.student = netid;
+    values.author = netid;
     values.date = Date.now();
     addTicket(values);
     navigate(`/requests/${netid}`);

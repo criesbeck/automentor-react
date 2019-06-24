@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTitle } from 'hookrouter';
 import 'rbx/index.css';
 import { Container, Message, Section, Table } from 'rbx';
 import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
@@ -12,12 +13,13 @@ const RequestRow = ({ ticket }) => (
 );
 
 const RequestList = ({netid}) => {
+  useTitle('My Tickets');
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
     const handleData = snap => {
       const tickets = Object.entries(snap.val() || {});
-      setTickets(tickets.filter(([id, ticket]) => ticket.student === netid));
+      setTickets(tickets.filter(([id, ticket]) => ticket.author === netid));
     }
     ticketDb.on('value', handleData, error => alert(error));
 
