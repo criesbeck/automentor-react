@@ -7,20 +7,20 @@
     "blocks": [
       {
         "text": "I'm getting an error using function beside",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "square.rkt",
+        "label": "square.rkt",
         "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
         "isCode": true,
         "timestamp": 1516428060000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "function call: expected a function after the open parenthesis, but received #<image>.",
         "isCode": true,
         "timestamp": 1516428090000,
@@ -36,13 +36,13 @@
     "blocks": [
       {
         "text": "I’m getting an error when I try to use function overlay",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "function overlay is not defined.",
         "isCode": true,
         "timestamp": 1516428060000,
@@ -58,20 +58,20 @@
     "blocks": [
       {
         "text": "I’m getting an error when I try to use function interpolate-colors",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516773630000,
         "author": "clj8621"
       },
       {
-        "source": "square.rkt",
+        "label": "square.rkt",
         "text": "(interpolate-colors blue red 0.5)",
         "isCode": true,
         "timestamp": 1516773660000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "blue: this variable is not defined.",
         "isCode": true,
         "timestamp": 1516773690000,
@@ -87,20 +87,20 @@
     "blocks": [
       {
         "text": "I’m getting an error when I try to use function overlay/xy",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516514430000,
         "author": "clj8621"
       },
       {
-        "source": "square.rkt",
+        "label": "square.rkt",
         "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
         "isCode": true,
         "timestamp": 1516514460000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "overlay/xy: expects only 4 arguments, but found 11.",
         "isCode": true,
         "timestamp": 1516514490000,
@@ -116,20 +116,20 @@
     "blocks": [
       {
         "text": "I'm getting error when I worte (make-color 0 0 255 255), and I'm not sure where this is coming from, and the section racket highlights is \\\"color1\\\"",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516773633000,
         "author": "clj8621"
       },
       {
-        "source": "square.rkt",
+        "label": "square.rkt",
         "text": "(interpolate-color (color1) (color2)",
         "isCode": true,
         "timestamp": 1516773663000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
         "isCode": true,
         "timestamp": 1516773693000,
@@ -145,13 +145,13 @@
     "blocks": [
       {
         "text": "I'm getting error using Iterated-overlay function.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516946430000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "function Iterated-overlay not defined.",
         "isCode": true,
         "timestamp": 1516946460000,
@@ -167,7 +167,7 @@
     "blocks": [
       {
         "text": "When I run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure: function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255)  I was under the impression that 'color' or 'make-color' is a function, is it not? ",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517119230000,
         "author": "clj8621"
@@ -182,13 +182,13 @@
     "blocks": [
       {
         "text": "Able to define swatch, but when I go to call swatch I get an error.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517205630000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "iterated-beside: expects procedure, given #< image >",
         "isCode": true,
         "timestamp": 1517205660000,
@@ -204,13 +204,13 @@
     "blocks": [
       {
         "text": "I'm getting an error when using function string=?. What could be causing the error?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517810430000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
         "isCode": true,
         "timestamp": 1517810460000,
@@ -226,13 +226,13 @@
     "blocks": [
       {
         "text": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1518069630000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
         "isCode": true,
         "timestamp": 1518069660000,
@@ -248,20 +248,20 @@
     "blocks": [
       {
         "text": "Difficulty Looping through Branches. The issue is that I get an error of: branch-val: expects a branch, given (make-leaf 1).",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1518415230000,
         "author": "clj8621"
       },
       {
-        "source": "branch.rkt",
+        "label": "branch.rkt",
         "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
         "isCode": true,
         "timestamp": 1518415260000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "branch-val: expects a branch, given (make-leaf 1).",
         "isCode": true,
         "timestamp": 1518415290000,
@@ -277,13 +277,13 @@
     "blocks": [
       {
         "text": "When I try to run my sum-tree function, I get this error message.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1518588030000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "+: expects a number as 1st argument, given leaf-val",
         "isCode": true,
         "timestamp": 1518588060000,
@@ -299,20 +299,20 @@
     "blocks": [
       {
         "text": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516687230000,
         "author": "clj8621"
       },
       {
-        "source": "Function",
+        "label": "Function",
         "text": "What is function interpolate-colors?",
         "isCode": false,
         "timestamp": 1516687260000,
         "author": "clj8621"
       },
       {
-        "source": "Parameters",
+        "label": "Parameters",
         "text": "What does weight refers to?",
         "isCode": false,
         "timestamp": 1516687290000,
@@ -328,13 +328,13 @@
     "blocks": [
       {
         "text": "Any tips on what function to use to get a boolean answer at the end?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517637630000,
         "author": "clj8621"
       },
       {
-        "source": "Function",
+        "label": "Function",
         "text": "What function to use to get a boolean answer at the end?",
         "isCode": false,
         "timestamp": 1517637660000,
@@ -350,13 +350,13 @@
     "blocks": [
       {
         "text": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517983230000,
         "author": "clj8621"
       },
       {
-        "source": "Concept",
+        "label": "Concept",
         "text": "What the difference between ordinary, tail and iterative recursion?",
         "isCode": false,
         "timestamp": 1517983260000,
@@ -372,13 +372,13 @@
     "blocks": [
       {
         "text": "How to move Image in Scheme?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1515996030000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to move the stars from left to center?",
         "isCode": false,
         "timestamp": 1515996060000,
@@ -394,13 +394,13 @@
     "blocks": [
       {
         "text": "How to align images to the correct position?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to align images to the correct position?",
         "isCode": false,
         "timestamp": 1516428060000,
@@ -416,13 +416,13 @@
     "blocks": [
       {
         "text": "How to add the alpha component when using the interpolate-colors?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516773630000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to add the alpha component when using the interpolate-colors?",
         "isCode": false,
         "timestamp": 1516773660000,
@@ -438,13 +438,13 @@
     "blocks": [
       {
         "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516773634000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
         "isCode": false,
         "timestamp": 1516773664000,
@@ -460,13 +460,13 @@
     "blocks": [
       {
         "text": "Stuck in the swatch part. Notice that each fraction should be n*[1/(num-squares-1)] but when tried to use the quotient function, it's always rounded so does not work.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516946430000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "Stuck in the swatch part.",
         "isCode": false,
         "timestamp": 1516946460000,
@@ -482,13 +482,13 @@
     "blocks": [
       {
         "text": "How to use interpolate-colors to get the rows slowly transitioning to black. Where to put that in the code. Do you nest iterated-beside inside iterated-above?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517032830000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
         "isCode": false,
         "timestamp": 1517032860000,
@@ -504,13 +504,13 @@
     "blocks": [
       {
         "text": "How can we interpolate the specific number of squares one inputs when calling swatch? If I put num-squares for the number of iterations, it isn't defined. I tried putting iterated-beside after lambda, but that didn't work either.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517032837000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
         "isCode": false,
         "timestamp": 1517032867000,
@@ -526,13 +526,13 @@
     "blocks": [
       {
         "text": "Having difficulty coming up with the correct use/order of swatch, iterated-above, etc. Any tips on how to start it off would be much appreciated.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517119233000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to up correctly use/order of swatch, iterated-above?",
         "isCode": false,
         "timestamp": 1517119263000,
@@ -548,13 +548,13 @@
     "blocks": [
       {
         "text": "How do we give iterated-beside a function that satisfies it when the only function we need the iterator for is inside the rectangle function?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517119234000,
         "author": "clj8621"
       },
       {
-        "source": "StuckQuestion",
+        "label": "StuckQuestion",
         "text": "How to give iterated-beside a function?",
         "isCode": false,
         "timestamp": 1517119264000,
@@ -570,13 +570,13 @@
     "blocks": [
       {
         "text": "I used a similar code with question 3, but I'm keep getting en empty list, '( ) as an output when I use artist-genres. Why is this happening? How can I get list of strings out of list of album using filter? Any ideas?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517637634000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "'()",
         "isCode": true,
         "timestamp": 1517637664000,
@@ -592,7 +592,7 @@
     "blocks": [
       {
         "text": "I cannot combine the name and the number by append.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517724035000,
         "author": "clj8621"
@@ -607,20 +607,20 @@
     "blocks": [
       {
         "text": "Stuck on Question 4, filter seems can't to get it to work with strings.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1517810436000,
         "author": "clj8621"
       },
       {
-        "source": "inputCode",
+        "label": "inputCode",
         "text": "(filter Beatles? testing-library-1)",
         "isCode": true,
         "timestamp": 1517810466000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "variable Beyonce? is undefined.",
         "isCode": true,
         "timestamp": 1517810496000,
@@ -636,13 +636,13 @@
     "blocks": [
       {
         "text": "Having difficulty with Count-tree. Do not know where to add one to include the original branch-val. Are we allowed to use local for the ordinary recursion part of the assignment?",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1518501630000,
         "author": "clj8621"
       },
       {
-        "source": "inputCode",
+        "label": "inputCode",
         "text": "(define (count-tree tree) (cond [(leaf? tree) (leaf-val tree)] [else (+ (+ 1(count-tree (branch-left tree))) (+ 1(count-tree (branch-right tree)))))])",
         "isCode": true,
         "timestamp": 1518501660000,
@@ -658,20 +658,20 @@
     "blocks": [
       {
         "text": "Getting error defining function overlay, not defined.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "inputCode",
+        "label": "inputCode",
         "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
         "isCode": true,
         "timestamp": 1516428060000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "function overhay is not defined.",
         "isCode": true,
         "timestamp": 1516428090000,
@@ -687,20 +687,20 @@
     "blocks": [
       {
         "text": "Getting error when I want to calculate sum of numbers.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "inputCode",
+        "label": "inputCode",
         "text": "((+ 1 2))",
         "isCode": true,
         "timestamp": 1516428060000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
         "isCode": true,
         "timestamp": 1516428090000,
@@ -716,20 +716,20 @@
     "blocks": [
       {
         "text": "Getting error when defining my own functions.",
-        "source": "message",
+        "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "clj8621"
       },
       {
-        "source": "inputCode",
+        "label": "inputCode",
         "text": "(define (ancestors-names-2 pers",
         "isCode": true,
         "timestamp": 1516428060000,
         "author": "clj8621"
       },
       {
-        "source": "computerOutput",
+        "label": "computerOutput",
         "text": "read-syntax: expected a ) to close (",
         "isCode": true,
         "timestamp": 1516428090000,

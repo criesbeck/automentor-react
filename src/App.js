@@ -1,34 +1,48 @@
-import React, { useState } from 'react';
-import { useRoutes } from 'hookrouter';
-import Login from './components/Login'
-import NotFound from './components/NotFound';
-import RequestList from './components/RequestList';
-import Tester from './components/Tester';
-import TicketResponder from './components/TicketResponder';
+import React, { useEffect, useState } from 'react';
+import { Column, Container, Section } from 'rbx';
+import Login from './components/Login';
 import TicketList from './components/TicketList';
 import TicketMaker from './components/TicketMaker';
+import TopMenu from './components/TopMenu';
 
-const routes = {
-  '/': () => (context, setContext) => <Login state={ [context, setContext] }/>,
-  '/request': () => context => <TicketMaker context={context} />,
-  '/requests': () => context => <RequestList context={context} />,
-  '/tester': () => () => <Tester />,
-  '/ticket/:id': ({id}) => context => <TicketResponder id={id} context={context} />,
-  '/tickets': () => context => <TicketList context={context} />,
+const getLocalState = () => (
+  window.localStorage.getItem('ccContext')
+  ? JSON.parse(localStorage.getItem('ccContext'))
+  : {}
+);
+
+const setLocalState = (context) => {
+  window.localStorage.setItem('ccContext', JSON.stringify(context));
 };
 
-const reroute = (route, context, setContext) => (
-  !context.netid
-  ? <Login state={ [context, setContext] }/>
-  : !route ? <NotFound />
-  : route(context, setContext)
+const MainScreen = ({context}) => (
+  <React.Fragment>
+    <TicketList context={ context } />
+    <TicketMaker context={ context } />
+  </React.Fragment>
 );
 
 const App = () => {
-  const [context, setContext] = useState({})
+  const state = useState(getLocalState());
+  const [context] = state;
+  console.log(context);
 
-  const route = useRoutes(routes);
-  return reroute(route, context, setContext);
+  useEffect(() => setLocalState(context), [context]);
+
+  return (
+    <Section>
+      <Container>
+        <Column.Group>
+          <Column size={10} offset={1}>
+            <TopMenu state={state} />
+            {
+              context.netid ? <MainScreen context={context} /> : <Login state={ state }/>
+            }
+          </Column>
+        </Column.Group>
+      </Container>
+    </Section>
+  )
 };
 
 export default App;

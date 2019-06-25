@@ -1,56 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { A, useTitle } from 'hookrouter';
+import { A, setQueryParams } from 'hookrouter';
 import 'rbx/index.css';
-import { Container, Message, Section, Table } from 'rbx';
-import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
+import { Button, Control, Field, Table } from 'rbx';
+import { emptyTicket, ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 
-const TicketRow = ({ id, ticket } ) => (
+const TicketRow = ({ id, ticket, context } ) => (
   <Table.Row>
     <Table.Cell>{ticketTime(ticket)}</Table.Cell>
-    <Table.Cell>{ticket.author}</Table.Cell>
+    { context.isMentor && <Table.Cell>{ticket.author}</Table.Cell> }
     <Table.Cell>{ticket.exercise}</Table.Cell>
-    <Table.Cell><A href={`/ticket/${id}`}>{ticketSummary(ticket)}</A></Table.Cell>
+    <Table.Cell><A href="#" onClick={() => setQueryParams({tid: id})}>{ticketSummary(ticket)}</A></Table.Cell>
   </Table.Row>
 );
 
 const TicketList = ({context}) => {
-  useTitle('Ticket List');
   const [tickets, setTickets] = useState([]);
-
+  
   useEffect(() => {
+    const canSeeTicket = ([id, ticket]) => (
+      !ticket.isClosed && (context.isMentor || context.netid === ticket.author)
+    );
     const handleData = snap => {
-      setTickets(Object.entries(snap.val() || {}));
-    }
+      const tickets = Object.entries(snap.val() || {}).filter(canSeeTicket);
+      setTickets(tickets.length ? tickets : context.isMentor ? [] : [emptyTicket()]);
+    };
     ticketDb.on('value', handleData, error => alert(error));
 
     return () => { ticketDb.off('value', handleData); };
-  }, []);
+  }, [context]);
 
   const rows = tickets.map(([id, ticket]) => (
-    <TicketRow key={id} id={id} ticket={ticket} />
+    <TicketRow key={id} id={id} ticket={ticket} context={context} />
   ));
 
   return (
-    <Section>
-      <Container>
-        <Message>
-          <Message.Header>Welcome, {context.netid}</Message.Header>
-        </Message>
-        <Table>
-          <Table.Head>
-            <Table.Row>
-              <Table.Heading>Date</Table.Heading>
-              <Table.Heading>Student</Table.Heading>
-              <Table.Heading>Exercise</Table.Heading>
-              <Table.Heading>Message</Table.Heading>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            { rows }
-          </Table.Body>
-        </Table>
-      </Container>
-    </Section>
+    <React.Fragment>
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.Heading>Date</Table.Heading>
+            { context.isMentor && <Table.Heading>Student</Table.Heading> }
+            <Table.Heading>Exercise</Table.Heading>
+            <Table.Heading>Message</Table.Heading>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          { rows }
+        </Table.Body>
+      </Table>
+      {
+        context.isMentor ? null : (
+          <Field horizontal align="center">
+            <Control>
+              <Button onClick={() => setQueryParams({tid: '*'})}>New ticket</Button>
+            </Control>
+          </Field>
+        )
+      }
+    </React.Fragment>
   );
 };
 

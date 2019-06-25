@@ -88,7 +88,7 @@ const PiazzaLink = ({url}) => (
 // for student input data 
 const StudentData = ({ sample }) => {
   const sources = sample.blocks && sample.blocks.map(block => (
-    <Entry key={block.timestamp} title={block.source} isSource={true}>
+    <Entry key={block.timestamp} title={block.label} isSource={true}>
       {block.text}
     </Entry>
   ));

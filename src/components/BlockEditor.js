@@ -1,28 +1,22 @@
 import React from 'react';
 import useForm from '../utils/useForm';
 import 'rbx/index.css';
-import { Button, Checkbox, Column, Control, Field, Input, Label, Textarea } from 'rbx';
+import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 
 const BlockEditor = ({submitBlockHandler}) => {
-  const [ values, handleChange ] = useForm(['isCode', 'source', 'text']);
+  const [ values, handleChange ] = useForm(['isCode', 'label', 'text']);
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
+
+  const submitBlock = (event) => {
+    event.preventDefault();
+    submitBlockHandler({...values});
+    Object.keys(values).forEach(key => values[key] = '');
+  }
 
   return (
     <Column.Group>
       <Column size={12}>
-        <Field>
-          <Control>
-            <Label>
-              Source
-              <Input type="text" name="source" placeholder="[Optional] E.g., source code file, console output, ..."
-                onChange={handleChange} value={values.source} />
-            </Label>
-          </Control>
-        </Field>
-        <Label>
-          <Checkbox name="isCode" onChange={handleChange} checked={values.isCode} /> This is code or code output
-        </Label>
         <Field>
           <Control>
             <Textarea rows={5} size="small" name="text" 
@@ -30,12 +24,33 @@ const BlockEditor = ({submitBlockHandler}) => {
               onChange={handleChange} value={values.text} required />
           </Control>
         </Field>
-        <Field>
-          <Control>
-            <Button color="outlined" onClick={(event) => submitBlockHandler(values, event)}>
-              Save field
-            </Button>
-          </Control>
+        <Field horizontal>
+          <Field.Label as="label" htmlFor="isCode">Code or output</Field.Label>
+          <Field>
+            <Control>
+              <Checkbox id="isCode" name="isCode" onChange={handleChange} checked={values.isCode} />
+            </Control>
+          </Field>
+          <Field.Label>
+            Source tag
+          </Field.Label>
+          <Field.Body>
+            <Field>
+              <Control>
+                  <Input type="text" name="label" placeholder="[Optional] e.g., file name, console output, ..."
+                    onChange={handleChange} value={values.label}
+                  />
+              </Control>
+            </Field>
+            <Field />
+            <Field>
+              <Control>
+                <Button color="outlined" onClick={submitBlock}>
+                  Save field
+                </Button>
+              </Control>
+            </Field>
+          </Field.Body>
         </Field>
       </Column>
     </Column.Group>

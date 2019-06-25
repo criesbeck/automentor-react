@@ -6,9 +6,9 @@ const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',
 };
 
-const addTicket = async (ticket) => {
-  ticketDb.push(ticket);
-};
+const emptyTicket = () => ({
+  blocks: []
+});
 
 const getTicket = async id => {
   const snap = await ticketDb.once('value');
@@ -28,4 +28,12 @@ const ticketTime = ticket => (
   new Date(ticket.timestamp).toLocaleString('en-US', ticketTimeFormat)
 );
 
-export { addTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime };
+const updateTicket = async (id, ticket) => {
+  if (id) {
+    ticketDb.child(id).set(ticket);
+  } else {
+    ticketDb.push(ticket);
+  }
+};
+
+export { emptyTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime, updateTicket };
