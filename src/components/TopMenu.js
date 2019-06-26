@@ -28,7 +28,7 @@ const TopMenu = ({state}) => (
     <Navbar.Menu>
       <Navbar.Segment align="start">
       {
-        state[0].netid ? <Navbar.Item><Content size="large" textColor="white">Welcome, {state[0].netid}!</Content></Navbar.Item> : null
+        state[0].netid ? <Navbar.Item as="div"><Content size="large" textColor="white">Welcome, {state[0].netid}!</Content></Navbar.Item> : null
       }
       </Navbar.Segment>
       <Navbar.Segment align="end">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { A, setQueryParams } from 'hookrouter';
 import 'rbx/index.css';
 import { Button, Control, Field, Table } from 'rbx';
-import { emptyTicket, ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
+import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 
 const TicketRow = ({ id, ticket, context } ) => (
   <Table.Row>
@@ -22,7 +22,7 @@ const TicketList = ({context}) => {
     );
     const handleData = snap => {
       const tickets = Object.entries(snap.val() || {}).filter(canSeeTicket);
-      setTickets(tickets.length ? tickets : context.isMentor ? [] : [emptyTicket()]);
+      setTickets(tickets.length ? tickets : []);
     };
     ticketDb.on('value', handleData, error => alert(error));
 

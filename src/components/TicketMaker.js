@@ -145,7 +145,7 @@ const TicketMaker = ({context}) => {
   values.exercise = ticket && ticket.exercise;
 
   return (
-    !ticket ? null : (
+    (!ticket || !kb) ? null : (
       <React.Fragment>
         <Divider color="primary">problem report</Divider>
         <Exercise />

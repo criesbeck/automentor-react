@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Column, Container, Section } from 'rbx';
+import { setQueryParams } from 'hookrouter';
 import Login from './components/Login';
 import TicketList from './components/TicketList';
 import TicketMaker from './components/TicketMaker';
@@ -28,6 +29,11 @@ const App = () => {
   console.log(context);
 
   useEffect(() => setLocalState(context), [context]);
+
+  if (!context.netid) {
+    setQueryParams({}, true);
+  };
+  
 
   return (
     <Section>
