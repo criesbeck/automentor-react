@@ -4,10 +4,24 @@ import useForm from '../utils/useForm';
 import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
 import BlockEditor from './BlockEditor';
 import 'rbx/index.css';
-import { Box, Button, Control, Divider, Field, Select } from 'rbx';
+import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
 
-const FilledField = ({block}) => (
-  <Box as={block.isCode ? 'pre' : 'div'}>{block.text}</Box>
+const authorStyle = isMentor => (
+  isMentor ?  { backgroundColor: 'honeydew'} : { backgroundColor: 'lightyellow'}
+);
+
+const exercises = {
+  'ex-1': { name: 'Exercise 1' },
+  'ex-2': { name: 'Exercise 2' },
+  'ex-3': { name: 'Exercise 3' }
+};
+
+const FilledField = ({block, mentor}) => (
+  <Column size={10} offset={mentor ? 0 : 2}>
+    <Box as={block.isCode ? 'pre' : 'div'} style={authorStyle(mentor)}>
+      {mentor ? <Content as="span">{mentor}:</Content> : null} {block.text}
+    </Box>
+  </Column>
 );
 
 const TicketMaker = ({context}) => {
@@ -20,6 +34,7 @@ const TicketMaker = ({context}) => {
     const fetchTicket = async (tid) => {
       const ticket = await (!tid ? null : tid === '*' ? emptyTicket() : getTicket(tid));
       setTicket(ticket);
+      console.log(ticket)
     };
     fetchTicket(tid);
   }, [tid]);
@@ -49,30 +64,36 @@ const TicketMaker = ({context}) => {
     }
   };
 
+  const updatedTicket = () => {
+    ticket.author = ticket.author || context.netid;
+    ticket.exercise = values.exercise || ticket.exercise || 'ex-1';
+    ticket.timestamp = Date.now();
+    return ticket;
+  }
+
   const submitTicket = (event) => {
     event.preventDefault();
     const id = tid && tid !== '*' ? tid : null;
-    const newTicket = {...ticket, author: context.netid, timestamp: Date.now(), exercise: values.exercise };
-    updateTicket(id, newTicket);
+    updateTicket(id, updatedTicket());
     window.scrollTo(0, 0);
   };
 
   const Exercise = () => (
-    ticket.exercise ? (
-      <FilledField block={ { label: 'Exercise', text: ticket.exercise } } />
-    ) : (
+    <Column size={10} offset={2}>
       <Field>
         <Control>
           <Select.Container>
             <Select name="exercise" onChange={handleChange} value={values.exercise}>
-              <Select.Option value="ex-1">Exercise 1</Select.Option>
-              <Select.Option value="ex-2">Exercise 2</Select.Option>
-              <Select.Option value="ex-3">Exercise 3</Select.Option>
+              {
+                Object.entries(exercises).map(([id, ex]) => (
+                  <Select.Option key={id} value={id}>{ex.name}</Select.Option>
+                ))
+              }
             </Select>
           </Select.Container>
         </Control>
       </Field>
-    )
+    </Column>
   );
 
   const getBlocks = () => (
@@ -80,8 +101,11 @@ const TicketMaker = ({context}) => {
   );
 
   const boxes = getBlocks().map(block => (
-    <FilledField key={block.timestamp} block={block} />
+    <FilledField key={block.timestamp} block={block} mentor={block.fromMentor} />
   ));
+
+  values.exercise = ticket && ticket.exercise;
+  console.log(values.exercise);
 
   return (
     !ticket ? null : (
@@ -90,12 +114,14 @@ const TicketMaker = ({context}) => {
         <Exercise />
         { boxes }
         <Divider color="primary">end of problem report</Divider>
-        <BlockEditor submitBlockHandler={saveBlock} />
+        <BlockEditor submitBlockHandler={saveBlock} context={context} />
         <Divider color="primary">
           { context.isMentor ? 'respond to problem' : 'edit problem report' }</Divider>
         <Field>
           <Control>
-            <Button color="primary" onClick={submitTicket}>Send to mentors</Button>
+            <Button color="primary" onClick={submitTicket}>
+              { context.isMentor ? 'Send to student' : 'Send to mentors' }
+            </Button>
           </Control>
         </Field>
       </React.Fragment>

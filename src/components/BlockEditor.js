@@ -3,20 +3,20 @@ import useForm from '../utils/useForm';
 import 'rbx/index.css';
 import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 
-const BlockEditor = ({submitBlockHandler}) => {
+const BlockEditor = ({context, submitBlockHandler}) => {
   const [ values, handleChange ] = useForm(['isCode', 'label', 'text']);
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
 
   const submitBlock = (event) => {
     event.preventDefault();
-    submitBlockHandler({...values});
+    submitBlockHandler({...values, author: context.netid});
     Object.keys(values).forEach(key => values[key] = '');
   }
 
   return (
     <Column.Group>
-      <Column size={12}>
+      <Column size={10} offset={1}>
         <Field>
           <Control>
             <Textarea rows={5} size="small" name="text" 
@@ -25,14 +25,14 @@ const BlockEditor = ({submitBlockHandler}) => {
           </Control>
         </Field>
         <Field horizontal>
-          <Field.Label as="label" htmlFor="isCode">Code or output</Field.Label>
+          <Field.Label as="label" htmlFor="isCode">Format as code</Field.Label>
           <Field>
             <Control>
               <Checkbox id="isCode" name="isCode" onChange={handleChange} checked={values.isCode} />
             </Control>
           </Field>
           <Field.Label>
-            Source tag
+            Helpful tag
           </Field.Label>
           <Field.Body>
             <Field>
