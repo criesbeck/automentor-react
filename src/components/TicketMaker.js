@@ -71,8 +71,16 @@ const TicketMaker = ({context}) => {
     return ticket;
   }
 
+  const blockIsUnsaved = () => (
+    document.querySelector('textarea[name=text]').value
+  );
+
   const submitTicket = (event) => {
     event.preventDefault();
+    if (blockIsUnsaved()) {
+      alert('Please save or clear current field first');
+      return;
+    };
     const id = tid && tid !== '*' ? tid : null;
     updateTicket(id, updatedTicket());
     window.scrollTo(0, 0);
@@ -104,8 +112,8 @@ const TicketMaker = ({context}) => {
     <FilledField key={block.timestamp} block={block} mentor={block.fromMentor} />
   ));
 
+  // reset exercise to previous setting, if any
   values.exercise = ticket && ticket.exercise;
-  console.log(values.exercise);
 
   return (
     !ticket ? null : (

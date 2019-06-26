@@ -8,11 +8,16 @@ const BlockEditor = ({context, submitBlockHandler}) => {
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
 
+  const resetValues = () => {
+    Object.keys(values).forEach(key => values[key] = '');
+  };
+
   const submitBlock = (event) => {
     event.preventDefault();
-    submitBlockHandler({...values, author: context.netid});
-    Object.keys(values).forEach(key => values[key] = '');
-  }
+    values[context.isMentor ? 'fromMentor' : 'author'] = context.netid;
+    submitBlockHandler(values);
+    resetValues()
+  };
 
   return (
     <Column.Group>
