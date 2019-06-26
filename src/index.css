@@ -13,5 +13,6 @@ code {
 }
 
 .matched {
-  background-color: yellow;
+  background-color: #27AE60;
+  color: white;
 }

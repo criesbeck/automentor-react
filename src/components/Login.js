@@ -1,7 +1,7 @@
 import React from 'react';
 import 'rbx/index.css';
 import { Button, Column, Container, Control, Field, Input, Section } from 'rbx';
-import useForm from "../utils/useForm";
+import { useForm } from "../utils/utils";
 
 const isMentor = netid => ['ckr'].includes(netid);
 

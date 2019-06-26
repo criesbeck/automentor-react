@@ -1,5 +1,5 @@
 import React from 'react';
-import useForm from '../utils/useForm';
+import { useForm } from '../utils/utils';
 import 'rbx/index.css';
 import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useQueryParams } from 'hookrouter';
-import useForm from '../utils/useForm';
-import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
-import BlockEditor from './BlockEditor';
 import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
+import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
+import { fetchJson, useForm } from '../utils/utils';
+
+import BlockEditor from './BlockEditor';
+import Diagnoses from './Diagnoses';
 
 const authorStyle = isMentor => (
   isMentor ?  { backgroundColor: 'honeydew'} : { backgroundColor: 'lightyellow'}
@@ -18,7 +20,7 @@ const exercises = {
 
 const FilledField = ({block, mentor}) => (
   <Column size={10} offset={mentor ? 0 : 2}>
-    <Box as={block.isCode ? 'pre' : 'div'} style={authorStyle(mentor)}>
+    <Box as={block.isCode ? 'pre' : 'div'} style={authorStyle(mentor)} data-student-text={!mentor}>
       {mentor ? <Content as="span">{mentor}:</Content> : null} {block.text}
     </Box>
   </Column>
@@ -38,6 +40,19 @@ const TicketMaker = ({context}) => {
     };
     fetchTicket(tid);
   }, [tid]);
+
+  const [kb, setKb] = useState({});
+
+  useEffect(() => {
+    const fetchKb = async () => {
+      const [diagnoses, concepts] = await Promise.all([
+        fetchJson('./data/diagnoses.json'),
+        fetchJson('./data/concepts.json')
+      ]);
+      setKb({ diagnoses, concepts });
+    };
+    fetchKb();
+  }, []);
 
   const setBlocks = (blocks) => {
     setTicket({...ticket, blocks: blocks});
@@ -112,26 +127,40 @@ const TicketMaker = ({context}) => {
     <FilledField key={block.timestamp} block={block} mentor={block.fromMentor} />
   ));
 
+  const ResponseEditor = ({ dividerLabel, buttonLabel }) => (
+    <React.Fragment>
+      <Divider color="primary">{dividerLabel}</Divider>
+        <BlockEditor submitBlockHandler={saveBlock} context={context} />
+        <Field>
+          <Control>
+            <Button color="primary" onClick={submitTicket}>
+              {buttonLabel}
+            </Button>
+          </Control>
+        </Field>
+    </React.Fragment>
+  );
+
   // reset exercise to previous setting, if any
   values.exercise = ticket && ticket.exercise;
 
   return (
     !ticket ? null : (
       <React.Fragment>
-        <Divider color="primary">start of problem report</Divider>
+        <Divider color="primary">problem report</Divider>
         <Exercise />
         { boxes }
-        <Divider color="primary">end of problem report</Divider>
-        <BlockEditor submitBlockHandler={saveBlock} context={context} />
-        <Divider color="primary">
-          { context.isMentor ? 'respond to problem' : 'edit problem report' }</Divider>
-        <Field>
-          <Control>
-            <Button color="primary" onClick={submitTicket}>
-              { context.isMentor ? 'Send to student' : 'Send to mentors' }
-            </Button>
-          </Control>
-        </Field>
+        {
+          context.isMentor ? (
+            <React.Fragment>
+              <Divider color="primary">diagnoses</Divider>
+              <Diagnoses ticket={ticket} kb={kb} />
+              <ResponseEditor dividerLabel="respond" buttonLabel="Send to student" />
+            </React.Fragment>
+          ) : (
+            <ResponseEditor dividerLabel="update problem report" buttonLabel="Send to mentors" />
+          )
+         }
       </React.Fragment>
     )
   )
