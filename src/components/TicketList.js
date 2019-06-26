@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { A, setQueryParams } from 'hookrouter';
 import 'rbx/index.css';
-import { Button, Control, Field, Table } from 'rbx';
+import { Button, Content, Control, Field, Table } from 'rbx';
 import { ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
 
 const TicketRow = ({ id, ticket, context } ) => (
@@ -34,7 +34,7 @@ const TicketList = ({context}) => {
   ));
 
   return (
-    <React.Fragment>
+    <Content className="ticket-list">
       <Table>
         <Table.Head>
           <Table.Row>
@@ -57,7 +57,7 @@ const TicketList = ({context}) => {
           </Field>
         )
       }
-    </React.Fragment>
+    </Content>
   );
 };
 

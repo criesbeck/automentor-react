@@ -18,10 +18,18 @@ const exercises = {
   'ex-3': { name: 'Exercise 3' }
 };
 
-const FilledField = ({block, mentor}) => (
+const highlightMatches = (text, rexps) =>  {
+  const reducer = (html, rexp) => html.replace(rexp, '<span class="matched">$&</span>');
+  return rexps.reduce(reducer, text);
+};
+
+const FilledField = ({block, mentor, pattern}) => (
   <Column size={10} offset={mentor ? 0 : 2}>
     <Box as={block.isCode ? 'pre' : 'div'} style={authorStyle(mentor)} data-student-text={!mentor}>
-      {mentor ? <Content as="span">{mentor}:</Content> : null} {block.text}
+      {mentor ? <Content as="span">{mentor}:</Content> : null}
+      {!mentor && pattern.rexps
+        ? <span dangerouslySetInnerHTML={ {__html: highlightMatches(block.text, pattern.rexps)} } /> 
+        : block.text}
     </Box>
   </Column>
 );
@@ -31,6 +39,8 @@ const TicketMaker = ({context}) => {
   const [ queryParams ] = useQueryParams();
   const { tid } = queryParams;
   const [ ticket, setTicket ] = useState(null);
+  // for highlighting matches
+  const [ pattern, setPattern ] = useState({});
 
   useEffect(() => {
     const fetchTicket = async (tid) => {
@@ -124,7 +134,8 @@ const TicketMaker = ({context}) => {
   );
 
   const boxes = getBlocks().map(block => (
-    <FilledField key={block.timestamp} block={block} mentor={block.fromMentor} />
+    <FilledField key={block.timestamp} block={block}
+     mentor={block.fromMentor} pattern={pattern} />
   ));
 
   const ResponseEditor = ({ dividerLabel, buttonLabel }) => (
@@ -154,7 +165,7 @@ const TicketMaker = ({context}) => {
           context.isMentor ? (
             <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
-              <Diagnoses ticket={ticket} kb={kb} />
+              <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern}/>
               <ResponseEditor dividerLabel="respond" buttonLabel="Send to student" />
             </React.Fragment>
           ) : (

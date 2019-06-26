@@ -1,7 +1,61 @@
 {
+  "-Li6H08cqH7DaKHO3kG5" : {
+    "author" : "foo",
+    "blocks" : [ {
+      "isCode" : "",
+      "label" : "",
+      "text" : "This one is a really weird",
+      "timestamp" : 1561492061889
+    }, {
+      "isCode" : true,
+      "label" : "console",
+      "text" : "function car is undefined",
+      "timestamp" : 1561492089222
+    }, {
+      "isCode" : "",
+      "label" : "",
+      "text" : "also CDR is undefined",
+      "timestamp" : 1561498015778
+    }, {
+      "fromMentor" : "ckr",
+      "isCode" : "",
+      "label" : "",
+      "text" : "Send me an example of your code.",
+      "timestamp" : 1561515054204
+    } ],
+    "exercise" : "ex-3",
+    "timestamp" : 1561515063277
+  },
+  "-LiFHMkIb6B6XwVP2Tcu" : {
+    "author" : "foo",
+    "blocks" : [ {
+      "isCode" : "",
+      "label" : "",
+      "text" : "Still having trouble with Exercise 2. It says function overlay is not defined",
+      "timestamp" : 1561493719481
+    }, {
+      "isCode" : true,
+      "label" : "console",
+      "text" : "function overhay is not defined",
+      "timestamp" : 1561493832542
+    } ],
+    "exercise" : "ex-2",
+    "timestamp" : 1561558634739
+  },
+  "-LiFbVqBoSl5Tk4ZmIDs" : {
+    "author" : "foo",
+    "blocks" : [ {
+      "isCode" : "",
+      "label" : "",
+      "text" : "What's the best example to look at for this exercise?",
+      "timestamp" : 1561499401895
+    } ],
+    "exercise" : "ex-1",
+    "timestamp" : 1561515000917
+  },
   "sample-1": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=54",
     "blocks": [
@@ -10,27 +64,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "square.rkt",
         "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
         "isCode": true,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "computerOutput",
         "text": "function call: expected a function after the open parenthesis, but received #<image>.",
         "isCode": true,
         "timestamp": 1516428090000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-2": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "sct170",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=71",
     "blocks": [
@@ -39,20 +93,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "computerOutput",
         "text": "function overlay is not defined.",
         "isCode": true,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "sct170"
       }
     ]
   },
   "sample-3": {
     "timestamp": 1516773600000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=76",
     "blocks": [
@@ -61,27 +115,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516773630000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "square.rkt",
         "text": "(interpolate-colors blue red 0.5)",
         "isCode": true,
         "timestamp": 1516773660000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "computerOutput",
         "text": "blue: this variable is not defined.",
         "isCode": true,
         "timestamp": 1516773690000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-4": {
     "timestamp": 1516514400000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=61",
     "blocks": [
@@ -90,27 +144,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516514430000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "square.rkt",
         "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
         "isCode": true,
         "timestamp": 1516514460000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "computerOutput",
         "text": "overlay/xy: expects only 4 arguments, but found 11.",
         "isCode": true,
         "timestamp": 1516514490000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   },
   "sample-5": {
     "timestamp": 1516773603000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=81",
     "blocks": [
@@ -119,27 +173,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516773633000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "square.rkt",
         "text": "(interpolate-color (color1) (color2)",
         "isCode": true,
         "timestamp": 1516773663000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "computerOutput",
         "text": "function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
         "isCode": true,
         "timestamp": 1516773693000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-6": {
     "timestamp": 1516946400000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
     "blocks": [
@@ -148,20 +202,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516946430000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "computerOutput",
         "text": "function Iterated-overlay not defined.",
         "isCode": true,
         "timestamp": 1516946460000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-7": {
     "timestamp": 1517119200000,
-    "author": "clj8621",
+    "author": "nab636",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=102",
     "blocks": [
@@ -170,13 +224,13 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517119230000,
-        "author": "clj8621"
+        "author": "nab636"
       }
     ]
   },
   "sample-8": {
     "timestamp": 1517205600000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=114",
     "blocks": [
@@ -185,20 +239,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517205630000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "computerOutput",
         "text": "iterated-beside: expects procedure, given #< image >",
         "isCode": true,
         "timestamp": 1517205660000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   },
   "sample-9": {
     "timestamp": 1517810400000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=147",
     "blocks": [
@@ -207,20 +261,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517810430000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "computerOutput",
         "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
         "isCode": true,
         "timestamp": 1517810460000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-10": {
     "timestamp": 1518069600000,
-    "author": "clj8621",
+    "author": "sct170",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
     "blocks": [
@@ -229,20 +283,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1518069630000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "computerOutput",
         "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
         "isCode": true,
         "timestamp": 1518069660000,
-        "author": "clj8621"
+        "author": "sct170"
       }
     ]
   },
   "sample-11": {
     "timestamp": 1518415200000,
-    "author": "clj8621",
+    "author": "sct170",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=230",
     "blocks": [
@@ -251,27 +305,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1518415230000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "branch.rkt",
         "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
         "isCode": true,
         "timestamp": 1518415260000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "computerOutput",
         "text": "branch-val: expects a branch, given (make-leaf 1).",
         "isCode": true,
         "timestamp": 1518415290000,
-        "author": "clj8621"
+        "author": "sct170"
       }
     ]
   },
   "sample-12": {
     "timestamp": 1518588000000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=239",
     "blocks": [
@@ -280,20 +334,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1518588030000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "computerOutput",
         "text": "+: expects a number as 1st argument, given leaf-val",
         "isCode": true,
         "timestamp": 1518588060000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-13": {
     "timestamp": 1516687200000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=70",
     "blocks": [
@@ -302,27 +356,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516687230000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "Function",
         "text": "What is function interpolate-colors?",
         "isCode": false,
         "timestamp": 1516687260000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "Parameters",
         "text": "What does weight refers to?",
         "isCode": false,
         "timestamp": 1516687290000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   },
   "sample-14": {
     "timestamp": 1517637600000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=139",
     "blocks": [
@@ -331,20 +385,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517637630000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "Function",
         "text": "What function to use to get a boolean answer at the end?",
         "isCode": false,
         "timestamp": 1517637660000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-15": {
     "timestamp": 1517983200000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exam",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=177",
     "blocks": [
@@ -353,20 +407,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517983230000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "Concept",
         "text": "What the difference between ordinary, tail and iterative recursion?",
         "isCode": false,
         "timestamp": 1517983260000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-16": {
     "timestamp": 1515996000000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=27",
     "blocks": [
@@ -375,20 +429,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1515996030000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "StuckQuestion",
         "text": "How to move the stars from left to center?",
         "isCode": false,
         "timestamp": 1515996060000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-17": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "nab636",
     "exercise": "exercise1",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=52",
     "blocks": [
@@ -397,20 +451,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "nab636"
       },
       {
         "label": "StuckQuestion",
         "text": "How to align images to the correct position?",
         "isCode": false,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "nab636"
       }
     ]
   },
   "sample-18": {
     "timestamp": 1516773600000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=78",
     "blocks": [
@@ -419,20 +473,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516773630000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "StuckQuestion",
         "text": "How to add the alpha component when using the interpolate-colors?",
         "isCode": false,
         "timestamp": 1516773660000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-19": {
     "timestamp": 1516773604000,
-    "author": "clj8621",
+    "author": "nab636",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=79",
     "blocks": [
@@ -441,20 +495,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516773634000,
-        "author": "clj8621"
+        "author": "nab636"
       },
       {
         "label": "StuckQuestion",
         "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
         "isCode": false,
         "timestamp": 1516773664000,
-        "author": "clj8621"
+        "author": "nab636"
       }
     ]
   },
   "sample-20": {
     "timestamp": 1516946400000,
-    "author": "clj8621",
+    "author": "sct170",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=95",
     "blocks": [
@@ -463,20 +517,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516946430000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "StuckQuestion",
         "text": "Stuck in the swatch part.",
         "isCode": false,
         "timestamp": 1516946460000,
-        "author": "clj8621"
+        "author": "sct170"
       }
     ]
   },
   "sample-21": {
     "timestamp": 1517032800000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=98",
     "blocks": [
@@ -485,20 +539,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517032830000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "StuckQuestion",
         "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
         "isCode": false,
         "timestamp": 1517032860000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-22": {
     "timestamp": 1517032807000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=99",
     "blocks": [
@@ -507,20 +561,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517032837000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "StuckQuestion",
         "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
         "isCode": false,
         "timestamp": 1517032867000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   },
   "sample-23": {
     "timestamp": 1517119203000,
-    "author": "clj8621",
+    "author": "nab636",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=100",
     "blocks": [
@@ -529,20 +583,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517119233000,
-        "author": "clj8621"
+        "author": "nab636"
       },
       {
         "label": "StuckQuestion",
         "text": "How to up correctly use/order of swatch, iterated-above?",
         "isCode": false,
         "timestamp": 1517119263000,
-        "author": "clj8621"
+        "author": "nab636"
       }
     ]
   },
   "sample-24": {
     "timestamp": 1517119204000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise2",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=103",
     "blocks": [
@@ -551,20 +605,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517119234000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "StuckQuestion",
         "text": "How to give iterated-beside a function?",
         "isCode": false,
         "timestamp": 1517119264000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-25": {
     "timestamp": 1517637604000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=136",
     "blocks": [
@@ -573,20 +627,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517637634000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "computerOutput",
         "text": "'()",
         "isCode": true,
         "timestamp": 1517637664000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   },
   "sample-26": {
     "timestamp": 1517724005000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=142",
     "blocks": [
@@ -595,13 +649,13 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517724035000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-27": {
     "timestamp": 1517810406000,
-    "author": "clj8621",
+    "author": "rgu949",
     "exercise": "exercise3",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
     "blocks": [
@@ -610,27 +664,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517810436000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "inputCode",
         "text": "(filter Beatles? testing-library-1)",
         "isCode": true,
         "timestamp": 1517810466000,
-        "author": "clj8621"
+        "author": "rgu949"
       },
       {
         "label": "computerOutput",
         "text": "variable Beyonce? is undefined.",
         "isCode": true,
         "timestamp": 1517810496000,
-        "author": "clj8621"
+        "author": "rgu949"
       }
     ]
   },
   "sample-28": {
     "timestamp": 1518501600000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": "exercise4",
     "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=237",
     "blocks": [
@@ -639,20 +693,20 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1518501630000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "inputCode",
         "text": "(define (count-tree tree) (cond [(leaf? tree) (leaf-val tree)] [else (+ (+ 1(count-tree (branch-left tree))) (+ 1(count-tree (branch-right tree)))))])",
         "isCode": true,
         "timestamp": 1518501660000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-29": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "sct170",
     "exercise": null,
     "url": null,
     "blocks": [
@@ -661,27 +715,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "inputCode",
         "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
         "isCode": true,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "sct170"
       },
       {
         "label": "computerOutput",
         "text": "function overhay is not defined.",
         "isCode": true,
         "timestamp": 1516428090000,
-        "author": "clj8621"
+        "author": "sct170"
       }
     ]
   },
   "sample-30": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "cqn651",
     "exercise": null,
     "url": null,
     "blocks": [
@@ -690,27 +744,27 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "inputCode",
         "text": "((+ 1 2))",
         "isCode": true,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "cqn651"
       },
       {
         "label": "computerOutput",
         "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
         "isCode": true,
         "timestamp": 1516428090000,
-        "author": "clj8621"
+        "author": "cqn651"
       }
     ]
   },
   "sample-31": {
     "timestamp": 1516428000000,
-    "author": "clj8621",
+    "author": "zml303",
     "exercise": null,
     "url": null,
     "blocks": [
@@ -719,21 +773,21 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516428030000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "inputCode",
         "text": "(define (ancestors-names-2 pers",
         "isCode": true,
         "timestamp": 1516428060000,
-        "author": "clj8621"
+        "author": "zml303"
       },
       {
         "label": "computerOutput",
         "text": "read-syntax: expected a ) to close (",
         "isCode": true,
         "timestamp": 1516428090000,
-        "author": "clj8621"
+        "author": "zml303"
       }
     ]
   }

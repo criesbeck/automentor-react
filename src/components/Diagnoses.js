@@ -15,28 +15,9 @@ const patternRegExps = pattern => (
 
 const diagnosisRegExps = diagnosis => (
   patternRegExps(diagnosis.pattern)
+  .filter((x, i, lst) => i === lst.indexOf(x))
+  .map(pat => new RegExp(pat, "g"))
 );
-
-// highlight all bits of text that match a regular expression
-const getStudentTexts = () => (
-  Array.from(document.querySelectorAll('[data-student-text=true'))
-);
-
-const highlightHTML = (html, rexp) => (
-  html.replace(rexp, '<span class="matched">$&</span>')
-);
-
-const highlightTextMatches = (elt, rexps) =>  {
-  elt.innerHTML = rexps.reduce(highlightHTML, elt.innerHTML);
-  console.log(elt.innerHTML);
-};
-
-const highlightDiagnosisMatches = (pats) => {
-  if (!pats) return;
-  const rexps = pats.map(pat => new RegExp(pat, "g"));
-  const elts = getStudentTexts();
-  elts.forEach(elt => { highlightTextMatches(elt, rexps); });
-};
 
 const matchDiagnosis = (name, diagnosis, ticket, kb) => (
   conceptMatch(diagnosis.pattern, ticket, kb.concepts)
@@ -71,9 +52,11 @@ const Entry = ({ title, isSource, children }) => (
   </Card>  
 );
 
-const Diagnosis = ({ diagnosis, blists }) => {
+const Diagnosis = ({ diagnosis, blists, setPattern }) => {
   const rexps = diagnosisRegExps(diagnosis);
-  const highlight = () => highlightDiagnosisMatches(rexps);
+  const highlight = () => setPattern(prev => (
+    prev.diagnosis === diagnosis ? {} : { diagnosis, rexps }
+  ));
   return (
     <Button onClick={ highlight }>
       <Icon>
@@ -84,10 +67,10 @@ const Diagnosis = ({ diagnosis, blists }) => {
   ); 
 };
 
-const Diagnoses = ({ ticket, kb }) => {
+const Diagnoses = ({ setPattern, ticket, kb }) => {
   const results = diagnose(ticket, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
-    <Diagnosis key={name} diagnosis={diagnosis} blists={blists} />
+    <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />
   ));
   
   return  <Entry title="Diagnoses">{ diagnoses }</Entry>

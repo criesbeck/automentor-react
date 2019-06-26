@@ -16,3 +16,9 @@ code {
   background-color: #27AE60;
   color: white;
 }
+
+.ticket-list {
+  max-height: 15em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
