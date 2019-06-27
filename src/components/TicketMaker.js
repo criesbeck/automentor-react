@@ -3,7 +3,7 @@ import { useQueryParams } from 'hookrouter';
 import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
 import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
-import { fetchJson, useForm, showObject } from '../utils/utils';
+import { fetchJson, useForm } from '../utils/utils';
 import KB from '../utils/kb';
 
 import BlockEditor from './BlockEditor';
@@ -48,7 +48,6 @@ const TicketMaker = ({context}) => {
 
   const [kb, setKb] = useState(new KB({}));
   const exercises = kb.search(['exercise'], { course: 'cs111' });
-  showObject('exs', exercises)
 
   useEffect(() => {
     const fetchKb = async () => {

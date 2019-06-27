@@ -29,7 +29,9 @@ const TicketList = ({context}) => {
     return () => { ticketDb.off('value', handleData); };
   }, [context]);
 
-  const rows = tickets.map(([id, ticket]) => (
+  const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;
+
+  const rows = tickets.sort(byTicketTime).map(([id, ticket]) => (
     <TicketRow key={id} id={id} ticket={ticket} context={context} />
   ));
 
