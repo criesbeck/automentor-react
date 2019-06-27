@@ -12,6 +12,35 @@ class KB {
     this.absts = {}
   }
 
+  isa(spec, abst) {
+    return spec === abst || this.getAllAbsts(spec).includes(abst)
+  }
+
+  filler(x, ...path) {
+    return path.reduce((x, role) => x && this.inheritFiller(x, role), x)
+  }
+
+  search(absts = [], slots = {}) {
+    return (
+      this.removeAbstractions(
+        removeDuplicates(
+          Object.keys(this.concepts).filter(name => this.satisfies(name, absts, slots))
+        )
+      )
+    )
+  }
+
+  removeAbstractions(lst) {
+    return lst.filter(x => !(lst.some(y => x !== y && this.isa(y, x))));
+  }
+
+  satisfies(name, absts, slots) {
+    return (
+      absts.every(abst => this.isa(name, abst))
+      && Object.keys(slots).every(role => this.hasFiller(name, role, slots[role]))
+    )
+  }
+
   getAllAbsts(name) {
     if (!(this.concepts[name])) {
       return [name]
@@ -22,24 +51,6 @@ class KB {
       this.absts[name] = [name].concat(removeDuplicates(allAbsts));
     }
     return this.absts[name]
-  }
-
-  isa(spec, abst) {
-    return spec === abst || this.getAllAbsts(spec).includes(abst)
-  }
-
-  search(absts, slots) {
-    const results = Object.keys(this.concepts).filter(name => (
-      this.satisfies(name, absts, slots || {})
-    ))
-    return results.filter(x => !results.some(y => x !== y && this.isa(y, x)))
-  }
-
-  satisfies(name, absts, slots) {
-    return (
-      absts.every(abst => this.isa(name, abst))
-      && Object.keys(slots).every(role => this.hasFiller(name, role, slots[role]))
-    )
   }
 
   getFiller(name, role) {

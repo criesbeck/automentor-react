@@ -3,7 +3,7 @@ import { useQueryParams } from 'hookrouter';
 import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
 import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
-import { fetchJson, useForm } from '../utils/utils';
+import { fetchJson, useForm, showObject } from '../utils/utils';
 import KB from '../utils/kb';
 
 import BlockEditor from './BlockEditor';
@@ -12,12 +12,6 @@ import Diagnoses from './Diagnoses';
 const authorStyle = isMentor => (
   isMentor ?  { backgroundColor: 'honeydew'} : { backgroundColor: 'lightyellow'}
 );
-
-const exercises = {
-  'ex-1': { name: 'Exercise 1' },
-  'ex-2': { name: 'Exercise 2' },
-  'ex-3': { name: 'Exercise 3' }
-};
 
 const highlightMatches = (text, rexps) =>  {
   const reducer = (html, rexp) => html.replace(rexp, '<span class="matched">$&</span>');
@@ -53,6 +47,8 @@ const TicketMaker = ({context}) => {
   }, [tid]);
 
   const [kb, setKb] = useState(new KB({}));
+  const exercises = kb.search(['exercise'], { course: 'cs111' });
+  showObject('exs', exercises)
 
   useEffect(() => {
     const fetchKb = async () => {
@@ -60,7 +56,7 @@ const TicketMaker = ({context}) => {
         fetchJson('./data/diagnoses.json'),
         fetchJson('./data/concepts.json')
       ]);
-      setKb({ diagnoses, concepts });
+      setKb(new KB({ diagnoses, concepts }));
     };
     fetchKb();
   }, []);
@@ -119,8 +115,8 @@ const TicketMaker = ({context}) => {
           <Select.Container>
             <Select name="exercise" onChange={handleChange} value={values.exercise}>
               {
-                Object.entries(exercises).map(([id, ex]) => (
-                  <Select.Option key={id} value={id}>{ex.name}</Select.Option>
+                exercises.map(ex => (
+                  <Select.Option key={ex} value={ex}>{kb.filler(ex, 'name')}</Select.Option>
                 ))
               }
             </Select>
