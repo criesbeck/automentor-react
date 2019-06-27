@@ -357,20 +357,6 @@
         "isCode": false,
         "timestamp": 1516687230000,
         "author": "zml303"
-      },
-      {
-        "label": "Function",
-        "text": "What is function interpolate-colors?",
-        "isCode": false,
-        "timestamp": 1516687260000,
-        "author": "zml303"
-      },
-      {
-        "label": "Parameters",
-        "text": "What does weight refers to?",
-        "isCode": false,
-        "timestamp": 1516687290000,
-        "author": "zml303"
       }
     ]
   },
@@ -385,13 +371,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517637630000,
-        "author": "cqn651"
-      },
-      {
-        "label": "Function",
-        "text": "What function to use to get a boolean answer at the end?",
-        "isCode": false,
-        "timestamp": 1517637660000,
         "author": "cqn651"
       }
     ]
@@ -408,13 +387,6 @@
         "isCode": false,
         "timestamp": 1517983230000,
         "author": "rgu949"
-      },
-      {
-        "label": "Concept",
-        "text": "What the difference between ordinary, tail and iterative recursion?",
-        "isCode": false,
-        "timestamp": 1517983260000,
-        "author": "rgu949"
       }
     ]
   },
@@ -429,13 +401,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1515996030000,
-        "author": "rgu949"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to move the stars from left to center?",
-        "isCode": false,
-        "timestamp": 1515996060000,
         "author": "rgu949"
       }
     ]
@@ -452,13 +417,6 @@
         "isCode": false,
         "timestamp": 1516428030000,
         "author": "nab636"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to align images to the correct position?",
-        "isCode": false,
-        "timestamp": 1516428060000,
-        "author": "nab636"
       }
     ]
   },
@@ -473,13 +431,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516773630000,
-        "author": "cqn651"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to add the alpha component when using the interpolate-colors?",
-        "isCode": false,
-        "timestamp": 1516773660000,
         "author": "cqn651"
       }
     ]
@@ -496,13 +447,6 @@
         "isCode": false,
         "timestamp": 1516773634000,
         "author": "nab636"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
-        "isCode": false,
-        "timestamp": 1516773664000,
-        "author": "nab636"
       }
     ]
   },
@@ -517,13 +461,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1516946430000,
-        "author": "sct170"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "Stuck in the swatch part.",
-        "isCode": false,
-        "timestamp": 1516946460000,
         "author": "sct170"
       }
     ]
@@ -540,13 +477,6 @@
         "isCode": false,
         "timestamp": 1517032830000,
         "author": "cqn651"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
-        "isCode": false,
-        "timestamp": 1517032860000,
-        "author": "cqn651"
       }
     ]
   },
@@ -561,13 +491,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517032837000,
-        "author": "zml303"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
-        "isCode": false,
-        "timestamp": 1517032867000,
         "author": "zml303"
       }
     ]
@@ -584,13 +507,6 @@
         "isCode": false,
         "timestamp": 1517119233000,
         "author": "nab636"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to up correctly use/order of swatch, iterated-above?",
-        "isCode": false,
-        "timestamp": 1517119263000,
-        "author": "nab636"
       }
     ]
   },
@@ -605,13 +521,6 @@
         "label": "message",
         "isCode": false,
         "timestamp": 1517119234000,
-        "author": "rgu949"
-      },
-      {
-        "label": "StuckQuestion",
-        "text": "How to give iterated-beside a function?",
-        "isCode": false,
-        "timestamp": 1517119264000,
         "author": "rgu949"
       }
     ]
@@ -667,14 +576,14 @@
         "author": "rgu949"
       },
       {
-        "label": "inputCode",
+        "label": "source",
         "text": "(filter Beatles? testing-library-1)",
         "isCode": true,
         "timestamp": 1517810466000,
         "author": "rgu949"
       },
       {
-        "label": "computerOutput",
+        "label": "computer output",
         "text": "variable Beyonce? is undefined.",
         "isCode": true,
         "timestamp": 1517810496000,

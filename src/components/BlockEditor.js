@@ -29,34 +29,28 @@ const BlockEditor = ({context, submitBlockHandler}) => {
               onChange={handleChange} value={values.text} required />
           </Control>
         </Field>
-        <Field horizontal>
+        <Field.Body horizontal>
           <Field.Label as="label" htmlFor="isCode">Format as code</Field.Label>
           <Field>
             <Control>
               <Checkbox id="isCode" name="isCode" onChange={handleChange} checked={values.isCode} />
             </Control>
           </Field>
-          <Field.Label>
-            Helpful tag
-          </Field.Label>
-          <Field.Body>
-            <Field>
-              <Control>
-                  <Input type="text" name="label" placeholder="[Optional] e.g., file name, console output, ..."
-                    onChange={handleChange} value={values.label}
-                  />
-              </Control>
-            </Field>
-            <Field />
-            <Field>
-              <Control>
-                <Button color="outlined" onClick={submitBlock}>
-                  Save field
-                </Button>
-              </Control>
-            </Field>
-          </Field.Body>
-        </Field>
+          <Field>
+            <Control>
+                <Input type="text" name="label" placeholder="Optional tag, e.g., file name, console output, ..."
+                  onChange={handleChange} value={values.label}
+                />
+            </Control>
+          </Field>
+          <Field>
+            <Control>
+              <Button color="outlined" onClick={submitBlock}>
+                Save field
+              </Button>
+            </Control>
+          </Field>
+        </Field.Body>
       </Column>
     </Column.Group>
   );
