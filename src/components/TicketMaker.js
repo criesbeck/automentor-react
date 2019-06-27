@@ -4,6 +4,7 @@ import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
 import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
 import { fetchJson, useForm } from '../utils/utils';
+import KB from '../utils/kb';
 
 import BlockEditor from './BlockEditor';
 import Diagnoses from './Diagnoses';
@@ -51,7 +52,7 @@ const TicketMaker = ({context}) => {
     fetchTicket(tid);
   }, [tid]);
 
-  const [kb, setKb] = useState({});
+  const [kb, setKb] = useState(new KB({}));
 
   useEffect(() => {
     const fetchKb = async () => {

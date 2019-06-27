@@ -7,5 +7,29 @@
     "slots": {
       "library": "image.rkt"
     }
+  },
+  "cs111": {
+    "absts": ["course"]
+  },
+  "ex-1": {
+    "absts": ["exercise"],
+    "slots": {
+      "course": "cs111",
+      "name": "Exercise 1"
+    }
+  },
+  "ex-2": {
+    "absts": ["exercise"],
+    "slots": {
+      "course": "cs111",
+      "name": "Exercise 2"
+    }
+  },
+  "ex-3": {
+    "absts": ["exercise"],
+    "slots": {
+      "course": "cs111",
+      "name": "Exercise 3"
+    }
   }
 }

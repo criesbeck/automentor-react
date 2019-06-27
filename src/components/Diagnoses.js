@@ -1,9 +1,8 @@
 import React from 'react';
 import 'rbx/index.css';
-import { Button, Card, Content, Icon,  } from 'rbx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { Button, Card, Content } from 'rbx';
 import { conceptMatch } from '../utils/matcher';
+import { removeDuplicates } from '../utils/utils';
 
 // collect all regular expressions in a diagnosis pattern
 const patternRegExps = pattern => (
@@ -14,9 +13,7 @@ const patternRegExps = pattern => (
 );
 
 const diagnosisRegExps = diagnosis => (
-  patternRegExps(diagnosis.pattern)
-  .filter((x, i, lst) => i === lst.indexOf(x))
-  .map(pat => new RegExp(pat, "g"))
+  removeDuplicates(patternRegExps(diagnosis.pattern)).map(pat => new RegExp(pat, "g"))
 );
 
 const matchDiagnosis = (name, diagnosis, ticket, kb) => (
@@ -59,15 +56,14 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
   ));
   return (
     <Button onClick={ highlight }>
-      <Icon>
-        <FontAwesomeIcon icon={faQuestion} />
-      </Icon>
       <span>{instances(diagnosis.summary, blists)}</span>
     </Button>
   ); 
 };
 
 const Diagnoses = ({ setPattern, ticket, kb }) => {
+  console.log('match')
+  console.log(conceptMatch({"isa": "library-function"}, "overlay", kb.concepts))
   const results = diagnose(ticket, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />
