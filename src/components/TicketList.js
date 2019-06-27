@@ -17,16 +17,14 @@ const TicketList = ({context}) => {
   const [tickets, setTickets] = useState([]);
   
   useEffect(() => {
-    const canSeeTicket = ([id, ticket]) => (
-      !ticket.isClosed && (context.isMentor || context.netid === ticket.author)
-    );
     const handleData = snap => {
-      const tickets = Object.entries(snap.val() || {}).filter(canSeeTicket);
+      const tickets = Object.entries(snap.val() || {});
       setTickets(tickets.length ? tickets : []);
     };
-    ticketDb.on('value', handleData, error => alert(error));
+    const ref = context.isMentor ? ticketDb : ticketDb.orderByChild('author').equalTo(context.netid);
+    ref.on('value', handleData, error => alert(error));
 
-    return () => { ticketDb.off('value', handleData); };
+    return () => { ref.off('value', handleData); };
   }, [context]);
 
   const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;

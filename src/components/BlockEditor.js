@@ -29,7 +29,7 @@ const BlockEditor = ({context, submitBlockHandler}) => {
               onChange={handleChange} value={values.text} required />
           </Control>
         </Field>
-        <Field.Body horizontal>
+        <Field.Body>
           <Field.Label as="label" htmlFor="isCode">Format as code</Field.Label>
           <Field>
             <Control>

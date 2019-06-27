@@ -9,24 +9,34 @@ import KB from '../utils/kb';
 import BlockEditor from './BlockEditor';
 import Diagnoses from './Diagnoses';
 
-const authorStyle = isMentor => (
-  isMentor ?  { backgroundColor: 'honeydew'} : { backgroundColor: 'lightyellow'}
-);
-
 const highlightMatches = (text, rexps) =>  {
   const reducer = (html, rexp) => html.replace(rexp, '<span class="matched">$&</span>');
   return rexps.reduce(reducer, text);
 };
 
-const FilledField = ({block, mentor, pattern}) => (
-  <Column size={10} offset={mentor ? 0 : 2}>
-    <Box as={block.isCode ? 'pre' : 'div'} style={authorStyle(mentor)} data-student-text={!mentor}>
-      {mentor ? <Content as="span">{mentor}:</Content> : null}
-      {!mentor && pattern.rexps
+const MentorField = ({block, mentor}) => (
+  <Column size={10} offset={0}>
+    <Box as={block.isCode ? 'pre' : 'div'} style={{ backgroundColor: 'honeydew'}}>
+      <Content as="span">{mentor}:</Content>
+      { block.text }
+    </Box>
+  </Column>
+);
+
+const StudentField = ({block, pattern}) => (
+  <Column size={10} offset={2}>
+    <Box as={block.isCode ? 'pre' : 'div'} style={{ backgroundColor: 'lightyellow'}} data-student-text={true}>
+      {pattern.rexps
         ? <span dangerouslySetInnerHTML={ {__html: highlightMatches(block.text, pattern.rexps)} } /> 
         : block.text}
     </Box>
   </Column>
+);
+
+const FilledField = ({block, mentor, pattern}) => (
+  mentor 
+  ? <MentorField block={block} mentor={mentor} /> 
+  : <StudentField block={block} pattern={pattern} />
 );
 
 const TicketMaker = ({context}) => {
