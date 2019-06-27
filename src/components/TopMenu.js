@@ -11,7 +11,7 @@ const LogOut = ({state: [context, setContext]}) => (
   ) : null
 );
 
-const TopMenu = ({state}) => (
+const TopMenu = ({member, state}) => (
   <Navbar backgroundColor="primary">
     <Navbar.Brand >
       <Navbar.Item>
@@ -27,9 +27,11 @@ const TopMenu = ({state}) => (
     </Navbar.Brand>
     <Navbar.Menu>
       <Navbar.Segment align="start">
-      {
-        state[0].netid ? <Navbar.Item as="div"><Content size="large" textColor="white">Welcome, {state[0].netid}!</Content></Navbar.Item> : null
-      }
+        <Navbar.Item as="div">
+          <Content size="large" textColor="white">
+            Welcome{ member.name ? `, ${member.name}` : '' }!
+          </Content>
+        </Navbar.Item>
       </Navbar.Segment>
       <Navbar.Segment align="end">
         <Navbar.Item>

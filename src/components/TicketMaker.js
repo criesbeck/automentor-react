@@ -39,13 +39,11 @@ const FilledField = ({block, mentor, pattern}) => (
   : <StudentField block={block} pattern={pattern} />
 );
 
-const TicketMaker = ({context}) => {
+const TicketMaker = ({context, members}) => {
   const [ values, handleChange ] = useForm(['exercise', 'block']);
   const [ queryParams ] = useQueryParams();
   const { tid } = queryParams;
   const [ ticket, setTicket ] = useState(null);
-  // for highlighting matches
-  const [ pattern, setPattern ] = useState({});
 
   useEffect(() => {
     const fetchTicket = async (tid) => {
@@ -61,6 +59,9 @@ const TicketMaker = ({context}) => {
 
   const [kb, setKb] = useState(new KB({}));
   const exercises = kb.search(['exercise'], { course: 'cs111' });
+
+  // for highlighting matches
+  const [ pattern, setPattern ] = useState({});
 
   useEffect(() => {
     const fetchKb = async () => {
@@ -141,12 +142,15 @@ const TicketMaker = ({context}) => {
     </Column>
   );
 
-  const ExerciseSource = ({ticket}) => (
+  const ExerciseSource = ({member, ticket}) => (
     <Level>
-      <Level.Item align="left">
+      <Level.Item>
+        { member ? member.name : '' }
+      </Level.Item>
+      <Level.Item>
         <Exercise />
       </Level.Item>
-      <Level.Item align="right">
+      <Level.Item>
         { 
           ticket.url && context.isMentor
            ? <a href={ticket.url} target="_blank" rel="noopener noreferrer">
@@ -188,7 +192,7 @@ const TicketMaker = ({context}) => {
     (!ticket || !kb) ? null : (
       <React.Fragment>
         <Divider color="primary">problem report</Divider>
-        <ExerciseSource ticket={ticket} />
+        <ExerciseSource member={members[ticket.author]} ticket={ticket} />
         { boxes }
         {
           context.isMentor ? (

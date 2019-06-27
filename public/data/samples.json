@@ -1,6 +1,10 @@
 { 
   "cs111-f18": {
-    "students": {
+    "members": {
+      "ckr": {
+        "name": "Riesbeck, Chris",
+        "role": "Instructor"
+      },
       "foo": {
         "name": "Newman, Alfred E."
       },

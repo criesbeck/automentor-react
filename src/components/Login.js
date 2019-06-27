@@ -3,18 +3,17 @@ import 'rbx/index.css';
 import { Button, Column, Container, Control, Field, Input, Section } from 'rbx';
 import { useForm } from "../utils/utils";
 
-const isMentor = netid => ['ckr'].includes(netid);
-
-const Login = ({ state }) => {
+const Login = ({ state, members }) => {
   const [context, setContext] = state;
-
   const [ values, handleChange,] = useForm(['netid', 'password']);
 
-  function login(event) {
+  const isMentor = netid => members[netid] && members[netid].role === 'mentor';
+
+  const login = (event) => {
     event.preventDefault();
     const { netid } = values;
     setContext({...context, netid, isMentor: isMentor(netid) });
-  }
+  };
 
   return (
     <Section>
