@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQueryParams } from 'hookrouter';
 import 'rbx/index.css';
-import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
+import { Box, Button, Column, Content, Control, Divider, Field, Level, Select } from 'rbx';
 import { emptyTicket, getTicket, markTicketRead, updateTicket } from '../utils/tickets';
 import { fetchJson, useForm } from '../utils/utils';
 import KB from '../utils/kb';
@@ -124,7 +124,7 @@ const TicketMaker = ({context}) => {
   };
 
   const Exercise = () => (
-    <Column size={10} offset={2}>
+    <Column offset={2}>
       <Field>
         <Control>
           <Select.Container>
@@ -139,6 +139,23 @@ const TicketMaker = ({context}) => {
         </Control>
       </Field>
     </Column>
+  );
+
+  const ExerciseSource = ({ticket}) => (
+    <Level>
+      <Level.Item align="left">
+        <Exercise />
+      </Level.Item>
+      <Level.Item align="right">
+        { 
+          ticket.url && context.isMentor
+           ? <a href={ticket.url} target="_blank" rel="noopener noreferrer">
+              <em>Piazza source</em>
+            </a> 
+          : null
+        }
+      </Level.Item>
+    </Level>
   );
 
   const getBlocks = () => (
@@ -171,7 +188,7 @@ const TicketMaker = ({context}) => {
     (!ticket || !kb) ? null : (
       <React.Fragment>
         <Divider color="primary">problem report</Divider>
-        <Exercise />
+        <ExerciseSource ticket={ticket} />
         { boxes }
         {
           context.isMentor ? (
