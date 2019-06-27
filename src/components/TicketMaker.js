@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQueryParams } from 'hookrouter';
 import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Select } from 'rbx';
-import { emptyTicket, getTicket, updateTicket } from '../utils/tickets';
+import { emptyTicket, getTicket, markTicketRead, updateTicket } from '../utils/tickets';
 import { fetchJson, useForm } from '../utils/utils';
 import KB from '../utils/kb';
 
@@ -50,11 +50,14 @@ const TicketMaker = ({context}) => {
   useEffect(() => {
     const fetchTicket = async (tid) => {
       const ticket = await (!tid ? null : tid === '*' ? emptyTicket() : getTicket(tid));
+      if (ticket && ticket.unread && ticket.unread !== context.netid) {
+        markTicketRead(tid, ticket);
+      }
       setTicket(ticket);
       console.log(ticket)
     };
     fetchTicket(tid);
-  }, [tid]);
+  }, [context.netid, tid]);
 
   const [kb, setKb] = useState(new KB({}));
   const exercises = kb.search(['exercise'], { course: 'cs111' });
@@ -95,9 +98,12 @@ const TicketMaker = ({context}) => {
     }
   };
 
+  const firstOf = lst => lst && lst.length > 0 ? lst[0] : null;
+
   const updatedTicket = () => {
     ticket.author = ticket.author || context.netid;
-    ticket.exercise = values.exercise || ticket.exercise || 'ex-1';
+    ticket.exercise = values.exercise || ticket.exercise || firstOf(exercises);
+    ticket.unread = context.netid;
     ticket.timestamp = Date.now();
     return ticket;
   }

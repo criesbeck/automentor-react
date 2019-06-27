@@ -9,7 +9,13 @@ const TicketRow = ({ id, ticket, context } ) => (
     <Table.Cell>{ticketTime(ticket)}</Table.Cell>
     { context.isMentor && <Table.Cell>{ticket.author}</Table.Cell> }
     <Table.Cell>{ticket.exercise}</Table.Cell>
-    <Table.Cell><A href="#" onClick={() => setQueryParams({tid: id})}>{ticketSummary(ticket)}</A></Table.Cell>
+    <Table.Cell>
+      <A href="#" onClick={() => setQueryParams({tid: id})}>
+        <Content as="span" badge={ticket.unread && ticket.unread !== context.netid ? 'New' : null}>
+          {ticketSummary(ticket)}
+        </Content> 
+      </A>
+    </Table.Cell>
   </Table.Row>
 );
 

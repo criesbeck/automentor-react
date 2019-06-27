@@ -20,6 +20,26 @@ const getTickets = async () => {
   return Object.entries(snap.val() || {});
 };
 
+const markTicketRead = (id, ticket) => {
+  ticket.unread = null;
+  ticketDb.child(id).transaction(dbTicket => {
+    if (dbTicket.timestamp > ticket.timestamp) {
+      // abort -- something added since ticket opened for reading
+      return;
+    } else {
+      return ticket;
+    }
+  }, (error, committed, snapshot) => {
+    if (error) {
+      console.log('Transaction failure!', error);
+    } else if (!committed) {
+      console.log('Something new is unead!');
+    } else {
+      console.log('Marked as read');
+    }
+  });
+};
+
 const ticketSummary  = ticket => (
   ticket.blocks[0].text
 )
@@ -36,4 +56,4 @@ const updateTicket = async (id, ticket) => {
   }
 };
 
-export { emptyTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime, updateTicket };
+export { emptyTicket, getTicket, getTickets, markTicketRead, ticketDb, ticketSummary, ticketTime, updateTicket };

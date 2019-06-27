@@ -62,8 +62,6 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
 };
 
 const Diagnoses = ({ setPattern, ticket, kb }) => {
-  console.log('match')
-  console.log(conceptMatch({"isa": "library-function"}, "overlay", kb.concepts))
   const results = diagnose(ticket, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />
