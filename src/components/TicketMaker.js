@@ -3,8 +3,10 @@ import { useQueryParams } from 'hookrouter';
 import 'rbx/index.css';
 import { Box, Button, Column, Content, Control, Divider, Field, Level, Select } from 'rbx';
 import { emptyTicket, getTicket, markTicketRead, updateTicket } from '../utils/tickets';
-import { fetchJson, useForm } from '../utils/utils';
+import { useForm } from '../utils/utils';
 import KB from '../utils/kb';
+import concepts from 'data/concepts.json';
+import diagnoses from 'data/diagnoses.json';
 
 import BlockEditor from './BlockEditor';
 import Diagnoses from './Diagnoses';
@@ -57,22 +59,11 @@ const TicketMaker = ({context, members}) => {
     fetchTicket(tid);
   }, [context.netid, tid]);
 
-  const [kb, setKb] = useState(new KB({}));
+  const kb = new KB({ diagnoses, concepts });
   const exercises = kb.search(['exercise'], { course: 'cs111' });
 
   // for highlighting matches
   const [ pattern, setPattern ] = useState({});
-
-  useEffect(() => {
-    const fetchKb = async () => {
-      const [diagnoses, concepts] = await Promise.all([
-        fetchJson('./data/diagnoses.json'),
-        fetchJson('./data/concepts.json')
-      ]);
-      setKb(new KB({ diagnoses, concepts }));
-    };
-    fetchKb();
-  }, []);
 
   const setBlocks = (blocks) => {
     setTicket({...ticket, blocks: blocks});

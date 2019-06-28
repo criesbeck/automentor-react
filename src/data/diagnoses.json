@@ -60,22 +60,6 @@
       }
     }
   },
-  "var-not-defined": {
-    "summary": "?var not defined -- misspelled? not assigned? should be string?",
-    "pattern": {
-      "blocks": {
-        "some": {
-          "isCode": true,
-          "text": {
-            "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
-            "pats": [
-              "?var"
-            ]
-          }
-        }
-      }
-    }
-  },
   "wrong-number-of-arguments": {
     "summary": "wrong number of arguments - if too few, forgot one? if too many, missing parentheses?",
     "pattern": {
@@ -127,7 +111,7 @@
         "some": {
           "isCode": true,
           "text": {
-            "reg": "([^\\s]+):.*expected.*(?:given|but)",
+            "reg": "([^\\s]+):.*expected.*but given",
             "pats": [
               "?x"
             ]
@@ -136,34 +120,48 @@
       }
     }
   },
-  "var-not-defined-2": {
-    "summary": "?y not defined -- misspelled? not in scope?",
+  "wrong-argument-type-no-source": {
+    "summary": "wrong argument type -- source needed",
     "pattern": {
       "blocks": {
-        "and": [
-          {
-            "some": {
-              "isCode": true,
-              "text": {
-                "reg": "\\(([^\\s]+) [^\\(]+",
-                "pats": [
-                  "?x"
-                ]
-              }
-            }
-          },
-          {
-            "some": {
-              "isCode": true,
-              "text": {
-                "reg": "variable ([^\\s]+).*undefined",
-                "pats": [
-                  "?y"
-                ]
-              }
-            }
+        "some": {
+          "isCode": {"not": true},
+          "text": {
+            "reg": "([^\\s]+) expects .* given"
           }
-        ]
+        }
+      }
+    }
+  },
+  "var-not-defined": {
+    "summary": "?var not defined -- misspelled? not assigned? should be string?",
+    "pattern": {
+      "blocks": {
+        "some": {
+          "isCode": true,
+          "text": {
+            "reg": "([^\\s\\:]+)[:\\s].*variable.* not defined",
+            "pats": [
+              "?var"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "var-not-defined-no-source": {
+    "summary": "?x not defined -- misspelled? not in scope?",
+    "pattern": {
+      "blocks": {
+        "some": {
+          "isCode": { "not": true },
+          "text": {
+            "reg": "variable ([^\\s]+).*undefined",
+            "pats": [
+              "?x"
+            ]
+          }
+        }
       }
     }
   },
@@ -198,28 +196,16 @@
       }
     }
   },
-  "wrong-argument-type-3": {
-    "summary": "incorrect argument - bad parentheses?",
+  "result-in-function-position": {
+    "summary": "number seen as function -- bad parentheses?",
     "pattern": {
       "blocks": {
-        "and": [
-          {
-            "some": {
-              "isCode": true,
-              "text": {
-                "reg": "\\(\\(.*\\)\\)"
-              }
-            }
-          },
-          {
-            "some": {
-              "isCode": true,
-              "text": {
-                "reg": "([^\\s]+):.*expected.*(?:given|but)"
-              }
-            }
+        "some": {
+          "isCode": true,
+          "text": {
+            "reg": "expected a procedure that can be applied to arguments given: \\d+"
           }
-        ]
+        }
       }
     }
   },

@@ -33,7 +33,7 @@
           "text" : "This one is a really weird",
           "timestamp" : 1561492061889
         }, {
-          "isCode" :  {         "name": "Newman, Alfred E."       },
+          "isCode" : true,
           "label" : "console",
           "text" : "function car is undefined",
           "timestamp" : 1561492089222
@@ -305,17 +305,10 @@
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
         "blocks": [
           {
-            "text": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.",
+            "text": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.\n\noverlay: expects an image as first argument, given (lambda (a1) ...)",
             "label": "message",
             "isCode": false,
             "timestamp": 1518069630000,
-            "author": "sct170"
-          },
-          {
-            "label": "computerOutput",
-            "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
-            "isCode": true,
-            "timestamp": 1518069660000,
             "author": "sct170"
           }
         ]
@@ -595,24 +588,10 @@
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
         "blocks": [
           {
-            "text": "Stuck on Question 4, filter seems can't to get it to work with strings.",
+            "text": "I'm stuck on question 4 and I think I have it narrowed down to one problem. I know you have to use filter, but I can't seem to get it to work with strings. Every filter example I can find is with a list of numbers, the only example of filter with strings I can find is from last week's powerpoint (Lecture 8), but that method (filter Beatles? mymusic) isn't working. When I type something like (filter Beyonce? testing-library-1) it says that the variable Beyonce? is undefined. This also happens when I put Beyonce in quotes (it just lists the question mark as an undefined variable instead). Does anyone know how to deal with this?",
             "label": "message",
             "isCode": false,
             "timestamp": 1517810436000,
-            "author": "rgu949"
-          },
-          {
-            "label": "source",
-            "text": "(filter Beatles? testing-library-1)",
-            "isCode": true,
-            "timestamp": 1517810466000,
-            "author": "rgu949"
-          },
-          {
-            "label": "computer output",
-            "text": "variable Beyonce? is undefined.",
-            "isCode": true,
-            "timestamp": 1517810496000,
             "author": "rgu949"
           }
         ]

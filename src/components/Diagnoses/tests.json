@@ -1,0 +1,106 @@
+
+{
+  "-Li6H08cqH7DaKHO3kG5" : {
+    "diagnoses": ["function-is-not-defined"]
+  },
+  "-LiFHMkIb6B6XwVP2Tcu" : {
+    "diagnoses": ["function-is-not-defined","function-misspelled"]
+  },
+  "-LiFbVqBoSl5Tk4ZmIDs" : {
+    "diagnoses": []
+  },
+  "sample-1": {
+    "diagnoses": ["function-expected"]
+  },
+  "sample-2": {
+    "diagnoses": ["function-is-not-defined","library-function-is-not-defined"]
+  },
+  "sample-3": {
+    "diagnoses": ["var-not-defined"]
+  },
+  "sample-4": {
+    "diagnoses": ["wrong-number-of-arguments"]
+  },
+  "sample-5": {
+    "diagnoses": ["function-expected"]
+  },
+  "sample-6": {
+    "diagnoses": ["function-is-not-defined"]
+  },
+  "sample-7": {
+    "diagnoses": ["function-expected-no-source-code"]
+  },
+  "sample-8": {
+    "diagnoses": []
+  },
+  "sample-9": {
+    "diagnoses": []
+  },
+  "sample-10": {
+    "diagnoses": ["wrong-argument-type-no-source"]
+  },
+  "sample-11": {
+    "diagnoses": ["branch-leaf-confusion", "wrong-argument-type-no-source"]
+  },
+  "sample-12": {
+    "diagnoses": []
+  },
+  "sample-13": {
+    "diagnoses": []
+  },
+  "sample-14": {
+    "diagnoses": []
+  },
+  "sample-15": {
+    "diagnoses": []
+  },
+  "sample-16": {
+    "diagnoses": []
+  },
+  "sample-17": {
+    "diagnoses": []
+  },
+  "sample-18": {
+    "diagnoses": []
+  },
+  "sample-19": {
+    "diagnoses": []
+  },
+  "sample-20": {
+    "diagnoses": []
+  },
+  "sample-21": {
+    "diagnoses": []
+  },
+  "sample-22": {
+    "diagnoses": []
+  },
+  "sample-23": {
+    "diagnoses": []
+  },
+  "sample-24": {
+    "diagnoses": []
+  },
+  "sample-25": {
+    "diagnoses": []
+  },
+  "sample-26": {
+    "diagnoses": []
+  },
+  "sample-27": {
+    "diagnoses": ["var-not-defined-no-source"]
+  },
+  "sample-28": {
+    "diagnoses": []
+  },
+  "sample-29": {
+    "diagnoses": ["function-is-not-defined", "function-misspelled"]
+  },
+  "sample-30": {
+    "diagnoses": ["result-in-function-position"]
+  },
+  "sample-31": {
+    "diagnoses": ["close-paren-expected"]
+  }
+}
+
