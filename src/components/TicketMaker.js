@@ -41,7 +41,7 @@ const FilledField = ({block, mentor, pattern}) => (
   : <StudentField block={block} pattern={pattern} />
 );
 
-const TicketMaker = ({context, members}) => {
+const TicketMaker = ({user, members}) => {
   const [ values, handleChange ] = useForm(['exercise', 'block']);
   const [ queryParams ] = useQueryParams();
   const { tid } = queryParams;
@@ -50,14 +50,14 @@ const TicketMaker = ({context, members}) => {
   useEffect(() => {
     const fetchTicket = async (tid) => {
       const ticket = await (!tid ? null : tid === '*' ? emptyTicket() : getTicket(tid));
-      if (ticket && ticket.unread && ticket.unread !== context.netid) {
+      if (ticket && ticket.unread && ticket.unread !== user.uid) {
         markTicketRead(tid, ticket);
       }
       setTicket(ticket);
       console.log(ticket)
     };
     fetchTicket(tid);
-  }, [context.netid, tid]);
+  }, [user, tid]);
 
   const kb = new KB({ diagnoses, concepts });
   const exercises = kb.search(['exercise'], { course: 'cs111' });
@@ -93,9 +93,9 @@ const TicketMaker = ({context, members}) => {
   const firstOf = lst => lst && lst.length > 0 ? lst[0] : null;
 
   const updatedTicket = () => {
-    ticket.author = ticket.author || context.netid;
+    ticket.author = ticket.author || user.uid;
     ticket.exercise = values.exercise || ticket.exercise || firstOf(exercises);
-    ticket.unread = context.netid;
+    ticket.unread = user.uid;
     ticket.timestamp = Date.now();
     return ticket;
   }
@@ -133,18 +133,18 @@ const TicketMaker = ({context, members}) => {
     </Column>
   );
 
-  const ExerciseSource = ({member, ticket}) => (
+  const ExerciseSource = ({author, ticket}) => (
     <Level>
       <Level.Item>
-        { member ? member.name : '' }
+        { author ? author.name : '' }
       </Level.Item>
       <Level.Item>
         <Exercise />
       </Level.Item>
       <Level.Item>
         { 
-          ticket.url && context.isMentor
-           ? <a href={ticket.url} target="_blank" rel="noopener noreferrer">
+          ticket.url
+          ? <a href={ticket.url} target="_blank" rel="noopener noreferrer">
               <em>Piazza source</em>
             </a> 
           : null
@@ -165,7 +165,7 @@ const TicketMaker = ({context, members}) => {
   const ResponseEditor = ({ dividerLabel, buttonLabel }) => (
     <React.Fragment>
       <Divider color="primary">{dividerLabel}</Divider>
-        <BlockEditor submitBlockHandler={saveBlock} context={context} />
+        <BlockEditor submitBlockHandler={saveBlock} user={ user } />
         <Field>
           <Control>
             <Button color="primary" onClick={submitTicket}>
@@ -183,10 +183,10 @@ const TicketMaker = ({context, members}) => {
     (!ticket || !kb) ? null : (
       <React.Fragment>
         <Divider color="primary">problem report</Divider>
-        <ExerciseSource member={members[ticket.author]} ticket={ticket} />
+        <ExerciseSource author={members[ticket.author]} ticket={ticket} />
         { boxes }
         {
-          context.isMentor ? (
+          user.role === 'mentor' ? (
             <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
               <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern}/>

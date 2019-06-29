@@ -1,6 +1,7 @@
-import firedb from './firebase';
+import { firebase } from './firebase';
 
-const ticketDb = firedb.ref('cs111-f18/tickets');
+const course = 'cs111-f18';
+const ticketDb = firebase.database().ref(course).child('tickets');
 
 const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',

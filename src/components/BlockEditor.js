@@ -3,7 +3,7 @@ import { useForm } from '../utils/utils';
 import 'rbx/index.css';
 import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 
-const BlockEditor = ({context, submitBlockHandler}) => {
+const BlockEditor = ({user, submitBlockHandler}) => {
   const [ values, handleChange ] = useForm(['isCode', 'label', 'text']);
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
@@ -14,7 +14,7 @@ const BlockEditor = ({context, submitBlockHandler}) => {
 
   const submitBlock = (event) => {
     event.preventDefault();
-    values[context.isMentor ? 'fromMentor' : 'author'] = context.netid;
+    values[user.role === 'mentor' ? 'fromMentor' : 'author'] = user.uid;
     submitBlockHandler(values);
     resetValues()
   };

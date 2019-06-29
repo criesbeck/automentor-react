@@ -1,7 +1,7 @@
 import KB from 'utils/kb.js';
 import tests from './tests.json';
 import concepts from 'data/concepts.json';
-import course from 'data/samples.json';
+import course from 'data/sampleCourse.json';
 import diagnoses from 'data/diagnoses.json';
 import { diagnose } from './diagnose';
 import { conceptMatch } from 'utils/matcher';

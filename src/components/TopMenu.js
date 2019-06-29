@@ -2,16 +2,15 @@ import React from 'react';
 import 'rbx/index.css';
 import { Button, Content, Icon, Navbar } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
+import { faStethoscope } from '@fortawesome/free-solid-svg-icons';
 
-
-const LogOut = ({state: [context, setContext]}) => (
-  context.netid ? (
-    <Button onClick={() => setContext({...context, netid: undefined})}>Log out</Button>
-  ) : null
+const LogOut = ({signOut}) => (
+  <Button inverted outlined color="primary" onClick={ signOut }>
+    Log out
+  </Button>
 );
 
-const TopMenu = ({member, state}) => (
+const TopMenu = ({ userState }) => (
   <Navbar backgroundColor="primary">
     <Navbar.Brand >
       <Navbar.Item>
@@ -29,13 +28,13 @@ const TopMenu = ({member, state}) => (
       <Navbar.Segment align="start">
         <Navbar.Item as="div">
           <Content size="large" textColor="white">
-            Welcome{ member.name ? `, ${member.name}` : '' }!
+            Welcome { userState.user.displayName }!
           </Content>
         </Navbar.Item>
       </Navbar.Segment>
       <Navbar.Segment align="end">
-        <Navbar.Item>
-          <LogOut state={state} />
+        <Navbar.Item as="span">
+          <LogOut signOut={ userState.signOut } />
         </Navbar.Item>
       </Navbar.Segment>
     </Navbar.Menu>
