@@ -40,20 +40,22 @@ const TicketList = ({ user }) => {
   ));
 
   return (
-    <Content className="ticket-list">
-      <Table>
-        <Table.Head>
-          <Table.Row>
-            <Table.Heading>Date</Table.Heading>
-            { user.role === 'mentor' && <Table.Heading>Student</Table.Heading> }
-            <Table.Heading>Exercise</Table.Heading>
-            <Table.Heading>Message</Table.Heading>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          { rows }
-        </Table.Body>
-      </Table>
+    <React.Fragment>
+      <Content className="ticket-list">
+        <Table>
+          <Table.Head>
+            <Table.Row>
+              <Table.Heading>Date</Table.Heading>
+              { user.role === 'mentor' && <Table.Heading>Student</Table.Heading> }
+              <Table.Heading>Exercise</Table.Heading>
+              <Table.Heading>Message</Table.Heading>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            { rows }
+          </Table.Body>
+        </Table>
+      </Content>
       {
         user.role === 'mentor' ? null : (
           <Field horizontal align="center">
@@ -63,7 +65,7 @@ const TicketList = ({ user }) => {
           </Field>
         )
       }
-    </Content>
+    </React.Fragment>
   );
 };
 
