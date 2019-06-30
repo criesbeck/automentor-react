@@ -10,7 +10,7 @@ const LogOut = ({signOut}) => (
   </Button>
 );
 
-const TopMenu = ({ userState }) => (
+const Banner = ({ userState }) => (
   <Navbar backgroundColor="primary">
     <Navbar.Brand >
       <Navbar.Item>
@@ -24,21 +24,24 @@ const TopMenu = ({ userState }) => (
         </Content>
       </Navbar.Item>
     </Navbar.Brand>
-    <Navbar.Menu>
-      <Navbar.Segment align="start">
-        <Navbar.Item as="div">
-          <Content size="large" textColor="white">
-            Welcome { userState.user.displayName }!
-          </Content>
-        </Navbar.Item>
-      </Navbar.Segment>
-      <Navbar.Segment align="end">
-        <Navbar.Item as="span">
-          <LogOut signOut={ userState.signOut } />
-        </Navbar.Item>
-      </Navbar.Segment>
-    </Navbar.Menu>
+    { 
+      userState.user &&
+      <Navbar.Menu>
+        <Navbar.Segment align="start">
+          <Navbar.Item as="div">
+            <Content size="large" textColor="white">
+              Welcome { userState.user.displayName }!
+            </Content>
+          </Navbar.Item>
+        </Navbar.Segment>
+        <Navbar.Segment align="end">
+          <Navbar.Item as="span">
+            <LogOut signOut={ userState.signOut } />
+          </Navbar.Item>
+        </Navbar.Segment>
+      </Navbar.Menu>
+    }
   </Navbar>
 );
 
-export default TopMenu;
+export default Banner;

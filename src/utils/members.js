@@ -11,9 +11,11 @@ const addMember = async (uid, displayName, email, role = '') => {
   }
 }
 
-const getMembers = async () => {
-  const snap = await memberDb.once('value');
-  return snap.val() || {};
+// starts listening, returns function to stop listening
+const memberOff = (handleData) => {
+  const listener = snap => { if (snap.val()) handleData(snap.val())};
+  memberDb.on('value', listener, (error) => alert(error));
+  return () => memberDb.off('value', listener);
 };
 
-export { addMember, getMembers };
+export { addMember, memberOff };
