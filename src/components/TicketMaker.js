@@ -16,18 +16,19 @@ const highlightMatches = (text, rexps) =>  {
   return rexps.reduce(reducer, text);
 };
 
-const MentorField = ({block, mentor}) => (
+const MentorField = ({block}) => (
   <Column size={10} offset={0}>
     <Box as={block.isCode ? 'pre' : 'div'} style={{ backgroundColor: 'honeydew'}}>
-      <Content as="span">{mentor}:</Content>
+      <Content as="span">{block.fromMentor}:</Content>
       { block.text }
     </Box>
   </Column>
 );
 
-const StudentField = ({block, pattern}) => (
+const StudentField = ({ block, pattern, cloner }) => (
   <Column size={10} offset={2}>
-    <Box as={block.isCode ? 'pre' : 'div'} style={{ backgroundColor: 'lightyellow'}} data-student-text={true}>
+    <Box as={block.isCode ? 'pre' : 'div'} style={{ backgroundColor: 'lightyellow'}} 
+      data-student-text={true} onClick={()=> cloner()} >
       {pattern.rexps
         ? <span dangerouslySetInnerHTML={ {__html: highlightMatches(block.text, pattern.rexps)} } /> 
         : block.text}
@@ -35,10 +36,10 @@ const StudentField = ({block, pattern}) => (
   </Column>
 );
 
-const FilledField = ({block, mentor, pattern}) => (
-  mentor 
-  ? <MentorField block={block} mentor={mentor} /> 
-  : <StudentField block={block} pattern={pattern} />
+const FilledField = ({block, pattern, cloner}) => (
+  block.fromMentor 
+  ? <MentorField block={block} /> 
+  : <StudentField block={block} pattern={pattern} cloner={cloner}   />
 );
 
 const TicketMaker = ({user, members}) => {
@@ -46,6 +47,7 @@ const TicketMaker = ({user, members}) => {
   const [ queryParams ] = useQueryParams();
   const { tid } = queryParams;
   const [ ticket, setTicket ] = useState(null);
+  const [ block, setBlock ] = useState(null);
 
   useEffect(() => {
     const fetchTicket = async (tid) => {
@@ -158,14 +160,14 @@ const TicketMaker = ({user, members}) => {
   );
 
   const boxes = getBlocks().map(block => (
-    <FilledField key={block.timestamp} block={block}
-     mentor={block.fromMentor} pattern={pattern} />
+    <FilledField key={block.timestamp} block={block} pattern={pattern}
+      cloner={user.role === 'mentor' ? null : () => setBlock(block)} />
   ));
 
   const ResponseEditor = ({ dividerLabel, buttonLabel }) => (
     <React.Fragment>
       <Divider color="primary">{dividerLabel}</Divider>
-        <BlockEditor submitBlockHandler={saveBlock} user={ user } />
+        <BlockEditor submitBlockHandler={ saveBlock } user={ user } block={ block }/>
         <Field>
           <Control>
             <Button color="primary" onClick={submitTicket}>

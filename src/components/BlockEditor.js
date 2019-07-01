@@ -3,8 +3,8 @@ import { useForm } from '../utils/utils';
 import 'rbx/index.css';
 import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 
-const BlockEditor = ({user, submitBlockHandler}) => {
-  const [ values, handleChange ] = useForm(['isCode', 'label', 'text']);
+const BlockEditor = ({user, block, submitBlockHandler}) => {
+  const [ values, handleChange ] = useForm(['isCode', 'label', 'text'], block);
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
 

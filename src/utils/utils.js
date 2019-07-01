@@ -19,10 +19,10 @@ const showObject = (tag, x) => {
 };
 
 // https://github.com/criesbeck/custom-react-hooks-forms
-const useForm = (names) => {
+const useForm = (names, inits) => {
 
   const [values, setValues] 
-     = useState(names.reduce((obj, name) => ({...obj, [name]: ''}), {}));
+     = useState(names.reduce((obj, name) => ({...obj, [name]: (inits || {})[name] || ''}), {}));
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
