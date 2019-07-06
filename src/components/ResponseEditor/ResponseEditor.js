@@ -35,17 +35,14 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
     addBlock(addTimestamp(addAuthor(block)));
   };
 
-  // SubmitModal
-  // broken -- needs other block data to save
+  // SubmitModal responses
   const reply = choice => {
     setModalOpen(false);
     switch (choice) {
       case 'cancel': return;
-      case 'clear': break;
-      case 'save': saveBlock( { text: blockRef.current.value } ); break;
+      case 'send': ticketSubmitHandler(ticket); return;
       default: throw new Error(`Unknown response: ${choice}`)
     };
-    ticketSubmitHandler(ticket);;
   };
 
   return (

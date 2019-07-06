@@ -4,7 +4,6 @@ import 'rbx/index.css';
 import { Column, Control, Field, Select } from 'rbx';
 
 const Exercise = ({ exercise, exercises, setExercise }) => {
-  console.log(exercise)
   
   const changeHandler = (event) => {
     const id = event.target.value;
