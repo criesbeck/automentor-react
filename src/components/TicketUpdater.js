@@ -45,8 +45,6 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
 
 const ticketSubmitHandler = ticket => {
     updateTicket(id, ticket);
-    debugger;
-    window.scrollTo(0, 0);
   };
 
   return (

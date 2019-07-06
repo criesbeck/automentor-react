@@ -22,7 +22,10 @@ const TicketList = ({ user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
 
   useEffect(() => {
-    const onData = snap => setTickets(snap.val());
+    const onData = snap => {
+      window.scrollTo(0, 0);
+      setTickets(snap.val());
+    };
     const ref = user.role === 'mentor' ? ticketDb : ticketDb.orderByChild('author').equalTo(user.uid);
     ref.on('value', onData, error => alert(error));
     return () => { ref.off('value', onData); };
