@@ -5,7 +5,7 @@ import { Divider, Level } from 'rbx';
 import Diagnoses from 'components/Diagnoses';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
-import { cloneTicket, updateTicket } from 'utils/tickets';
+import { updateTicket } from 'utils/tickets';
 import KB from 'utils/kb';
 import concepts from 'data/concepts.json';
 import diagnoses from 'data/diagnoses.json';
@@ -22,7 +22,8 @@ const SampleSource = ({ url }) => (
   : null
 );
 
-const TicketUpdater = ({user, offering, ticketState: { id, ticket } }) => {
+const TicketUpdater = ({user, offering, setTicketState, ticketState }) => {
+  const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
   const kb = new KB({ concepts, diagnoses });
   const exNames = kb.search(['exercise'], { course: offering.course });
@@ -50,7 +51,8 @@ const ticketSubmitHandler = ticket => {
   return (
     <React.Fragment>
       <TicketData ticket={ ticket } selectBlock={ selectBlock }  highlighter={ highlighter } />
-      <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ cloneTicket(ticket) }
+      <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ ticket }
+        setTicketState= { setTicketState }
         ticketSubmitHandler={ ticketSubmitHandler } user={ user } />
       {
         user.role === 'mentor'

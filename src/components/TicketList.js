@@ -18,7 +18,7 @@ const TicketRow = ({ ticket, select, user } ) => (
   </Table.Row>
 );
 
-const TicketList = ({ user, setTicketState }) => {
+const TicketList = ({ user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const TicketList = ({ user, setTicketState }) => {
   }, [user]);
 
   const select = (id, ticket) => {
-    setTicketState({ id, ticket});
+    selectTicket(id, ticket);
   };
 
   const newTicket = () => {
-    setTicketState({id: ticketDb.push(), ticket: emptyTicket() });
+    selectTicket( ticketDb.push(), emptyTicket());
   }
   const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;
 

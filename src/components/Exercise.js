@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
 import { Column, Control, Field, Select } from 'rbx';
 
 const Exercise = ({ exercise, exercises, setExercise }) => {
-  const [value, setValue] = useState(exercise);
+  console.log(exercise)
   
   const changeHandler = (event) => {
     const id = event.target.value;
     if (id) {
       setExercise(id);
-      setValue(id);
     }
   };
 
@@ -19,7 +18,7 @@ const Exercise = ({ exercise, exercises, setExercise }) => {
       <Field>
         <Control>
           <Select.Container>
-            <Select name="exercise" onChange={changeHandler} value={value}>
+            <Select name="exercise" onChange={changeHandler} value={exercise}>
               <Select.Option value=''>Select an exercise...</Select.Option>
               {
                 Object.entries(exercises).map(([id, exercise]) => 
