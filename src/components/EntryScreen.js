@@ -54,17 +54,17 @@ const SignIn = ({ members, signIn }) => (
   </React.Fragment>
 );
 
-const EntryScreen = ({ offering }) => {
+const EntryScreen = ({ course, members }) => {
   const [user, setUser] = useState(null);
 
   const getMember = useCallback(({ uid, displayName, email}) => {
-    const member = offering.members[uid] || { uid, displayName, email };
-    if (!offering.members[uid]) {
+    const member = members[uid] || { uid, displayName, email };
+    if (!members[uid]) {
       console.log(`enrolling ${uid} ${displayName}`);
       addMember(member);
     }
     return member;
-  }, [offering]);
+  }, [members]);
   
   const setMember = useCallback(user => setUser(user ? getMember(user) : null), [getMember]);
 
@@ -78,10 +78,10 @@ const EntryScreen = ({ offering }) => {
   return (
     user
     ? <React.Fragment>
-        <Banner user={ user } offering={ offering } signOut={ signOut } />
-        <MainScreen user={ user } offering={ offering } /> 
+        <Banner user={ user } course={ course } signOut={ signOut } />
+        <MainScreen user={ user } course={ course } /> 
       </React.Fragment>
-    : <SignIn signIn={ signIn } members={ offering.members } />
+    : <SignIn signIn={ signIn } members={ members } />
   );
 };
 

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Column, Container, Section } from 'rbx';
 import EntryScreen from 'components/EntryScreen';
-import { courseTracker } from 'utils/course';
+import { courseTracker, membersTracker } from 'utils/course';
 
 const App = () => {
-  const [ offering, setOffering ] = useState(null);
+  const [ course, setCourse ] = useState(null);
+  const [ members, setMembers ] = useState(null);
+
   useEffect(() => {
-    return courseTracker(setOffering);
+    return courseTracker(setCourse);
+  }, []);
+
+  useEffect(() => {
+    return membersTracker(setMembers);
   }, []);
 
   return (
@@ -15,8 +21,8 @@ const App = () => {
         <Column.Group>
           <Column size={10} offset={1}>
           {
-            offering
-            ? <EntryScreen offering={ offering } />
+            course && members
+            ? <EntryScreen course={ course } members={ members } />
             : <Box>Loading class data...</Box>
           }
           </Column>

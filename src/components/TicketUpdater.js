@@ -22,11 +22,11 @@ const SampleSource = ({ url }) => (
   : null
 );
 
-const TicketUpdater = ({user, offering, setTicketState, ticketState }) => {
+const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
   const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
   const kb = new KB({ concepts, diagnoses });
-  const exNames = kb.search(['exercise'], { course: offering.course });
+  const exNames = kb.search(['exercise'], { course });
   const exercises = kb.toObject(exNames, ['name']);
 
    // for highlighting matches
@@ -45,6 +45,7 @@ const TicketUpdater = ({user, offering, setTicketState, ticketState }) => {
 
 const ticketSubmitHandler = ticket => {
     updateTicket(id, ticket);
+    debugger;
     window.scrollTo(0, 0);
   };
 

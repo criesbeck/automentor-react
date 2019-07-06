@@ -3,7 +3,7 @@ import TicketList from './TicketList';
 import TicketUpdater from './TicketUpdater';
 import { cloneTicket } from 'utils/tickets';
 
-const MainScreen = ({ user, offering }) => {
+const MainScreen = ({ user, course }) => {
   const [ticketState, setTicketState] = useState(null);
 
   const selectTicket = (id, ticket) => {
@@ -16,7 +16,7 @@ const MainScreen = ({ user, offering }) => {
       {
         !ticketState 
         ? null
-        : <TicketUpdater user={ user } offering={ offering } ticketState={ ticketState } setTicketState={ setTicketState } />
+        : <TicketUpdater user={ user } course={ course } ticketState={ ticketState } setTicketState={ setTicketState } />
       }
     </React.Fragment>
   );
