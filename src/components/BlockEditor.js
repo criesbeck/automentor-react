@@ -14,7 +14,6 @@ const BlockEditor = React.forwardRef(({user, block, submitBlockHandler}, ref) =>
 
   const submitBlock = (event) => {
     event.preventDefault();
-    values[user.role === 'mentor' ? 'fromMentor' : 'author'] = user.uid;
     submitBlockHandler(values);
     resetValues()
   };

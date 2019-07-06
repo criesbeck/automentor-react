@@ -42,12 +42,9 @@ const TicketUpdater = ({user, offering, ticketState: { id, ticket } }) => {
  
   const selectBlock = user.role === 'mentor' ? null : (block) => setBlock(block);
 
-  const ticketSubmitHandler = ticket => {
-    console.log(ticket)
-    if (window.confirm('save?')) {
-      updateTicket(id, ticket);
-      window.scrollTo(0, 0);
-    }
+const ticketSubmitHandler = ticket => {
+    updateTicket(id, ticket);
+    window.scrollTo(0, 0);
   };
 
   return (
