@@ -19,7 +19,7 @@ const Entry = ({ title, isSource, children }) => (
 const Diagnosis = ({ diagnosis, blists, setPattern }) => {
   const rexps = diagnosisRegExps(diagnosis);
   const highlight = () => setPattern(prev => (
-    prev.diagnosis === diagnosis ? {} : { diagnosis, rexps }
+    prev && (prev.diagnosis === diagnosis) ? {} : { diagnosis, rexps }
   ));
   return (
     <Button onClick={ highlight }>

@@ -3,7 +3,7 @@ import { useForm } from '../utils/utils';
 import 'rbx/index.css';
 import { Button, Checkbox, Column, Control, Field, Input, Textarea } from 'rbx';
 
-const BlockEditor = ({user, block, submitBlockHandler}) => {
+const BlockEditor = React.forwardRef(({user, block, submitBlockHandler}, ref) => {
   const [ values, handleChange ] = useForm(['isCode', 'label', 'text'], block);
   const placeholder = isCode => (isCode ? 'Code or output' : 'A message');
   const fontFamily = isCode => (isCode ? 'Courier New' : 'Arial');
@@ -24,7 +24,7 @@ const BlockEditor = ({user, block, submitBlockHandler}) => {
       <Column size={10} offset={1}>
         <Field>
           <Control>
-            <Textarea rows={5} size="small" name="text" 
+            <Textarea ref={ ref } rows={5} size="small" name="text" 
               placeholder={ placeholder(values.isCode) } style={ { fontFamily: fontFamily(values.isCode) } }
               onChange={handleChange} value={values.text} required />
           </Control>
@@ -54,6 +54,6 @@ const BlockEditor = ({user, block, submitBlockHandler}) => {
       </Column>
     </Column.Group>
   );
-};
+});
 
 export default BlockEditor;

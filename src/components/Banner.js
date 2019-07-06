@@ -10,7 +10,7 @@ const LogOut = ({signOut}) => (
   </Button>
 );
 
-const Banner = ({ userState }) => (
+const Banner = ({ user, signOut }) => (
   <Navbar backgroundColor="primary">
     <Navbar.Brand >
       <Navbar.Item>
@@ -25,18 +25,18 @@ const Banner = ({ userState }) => (
       </Navbar.Item>
     </Navbar.Brand>
     { 
-      userState.user &&
+      user &&
       <Navbar.Menu>
         <Navbar.Segment align="start">
           <Navbar.Item as="div">
             <Content size="large" textColor="white">
-              Welcome { userState.user.displayName }!
+              Welcome { user.displayName }!
             </Content>
           </Navbar.Item>
         </Navbar.Segment>
         <Navbar.Segment align="end">
           <Navbar.Item as="span">
-            <LogOut signOut={ userState.signOut } />
+            <LogOut signOut={ signOut } />
           </Navbar.Item>
         </Navbar.Segment>
       </Navbar.Menu>

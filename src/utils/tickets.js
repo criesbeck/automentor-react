@@ -7,6 +7,10 @@ const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',
 };
 
+const cloneTicket = ticket => (
+  {...ticket, blocks: [...ticket.blocks]}
+);
+
 const emptyTicket = () => ({
   blocks: []
 });
@@ -21,26 +25,6 @@ const getTickets = async () => {
   return Object.entries(snap.val() || {});
 };
 
-const markTicketRead = (id, ticket) => {
-  ticket.unread = null;
-  ticketDb.child(id).transaction(dbTicket => {
-    if (dbTicket.timestamp > ticket.timestamp) {
-      // abort -- something added since ticket opened for reading
-      return;
-    } else {
-      return ticket;
-    }
-  }, (error, committed, snapshot) => {
-    if (error) {
-      console.log('Transaction failure!', error);
-    } else if (!committed) {
-      console.log('Something new is unead!');
-    } else {
-      console.log('Marked as read');
-    }
-  });
-};
-
 const ticketSummary  = ticket => (
   ticket.blocks[0].text
 )
@@ -49,12 +33,17 @@ const ticketTime = ticket => (
   new Date(ticket.timestamp).toLocaleString('en-US', ticketTimeFormat)
 );
 
+const addTimestamp = obj => (
+  {...obj, timestamp: firebase.database.ServerValue.TIMESTAMP}
+);
+
 const updateTicket = async (id, ticket) => {
-  if (id) {
-    ticketDb.child(id).set(ticket);
+  const tsTicket = addTimestamp(ticket);
+  if (id === '*') {
+    ticketDb.push(tsTicket);
   } else {
-    ticketDb.push(ticket);
+    ticketDb.child(id).set(tsTicket);
   }
 };
 
-export { emptyTicket, getTicket, getTickets, markTicketRead, ticketDb, ticketSummary, ticketTime, updateTicket };
+export { addTimestamp, cloneTicket, emptyTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime, updateTicket };

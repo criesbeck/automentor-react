@@ -21,15 +21,25 @@ const showObject = (tag, x) => {
 // https://github.com/criesbeck/custom-react-hooks-forms
 const useForm = (names, inits) => {
 
-  const [values, setValues] 
-     = useState(names.reduce((obj, name) => ({...obj, [name]: (inits || {})[name] || ''}), {}));
+  const initVal = (name, inits) =>  inits ? inits[name] : '';
+
+  const [values, setValues] = useState(names.reduce((obj, name) => ({...obj, [name]: initVal(name)}), {}));
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
-    setValues({ ...values, [name]: type === 'checkbox' ? checked : value });
+    setValue(name, type === 'checkbox' ? checked : value);
   };
 
-  return [ values, handleChange ];
+  const setValue = (name, value) => {
+    setValues({ ...values, [name]: value });
+  };
+
+  const resetValues = (inits) => {
+    Object.entries(inits).forEach(([name, val]) => { values[name] = val; });
+    console.log(`reset ${JSON.stringify(values)}`)
+  }
+ 
+  return [ values, handleChange, resetValues ];
 };
 
 export { fetchJson, removeDuplicates, showObject, useForm };

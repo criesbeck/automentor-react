@@ -8,6 +8,12 @@
       "library": "image.rkt"
     }
   },
+  "image.rkt": {
+    "absts": ["library"],
+    "slots": {
+      "language": "Racket"
+    }
+  },
   "cs111": {
     "absts": ["course"]
   },
@@ -30,6 +36,13 @@
     "slots": {
       "course": "cs111",
       "name": "Exercise 3"
+    }
+  },
+  "ex-4": {
+    "absts": ["exercise"],
+    "slots": {
+      "course": "cs111",
+      "name": "Exercise 4"
     }
   }
 }

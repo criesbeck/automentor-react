@@ -3,7 +3,11 @@ import KB from './kb.js';
 const theKB = new KB({ concepts: {
     "overlay": { "absts": ["image-function"] },
     "image-function": {
-      "absts": ["library-function"], "slots": { "library": "image.rkt" } },
+      "absts": ["library-function"], "slots": { "library": "image.rkt" } 
+    },
+    "image.rkt": {
+        "absts": ["library"], "slots": { "language": "Racket" } 
+    },
     "cs111": { "absts": ["course"], "slots": { "name": "CS 111" }},
     "ex-1": { 
       "absts": ["exercise"],
@@ -74,8 +78,19 @@ test('Search failure returns empty list', () => {
   expect(theKB.search(['unicorn'])).toStrictEqual([]);
 })
 
-test('Search and reduce constructs structured answers', () => {
-  const obj = theKB.search(['exercise'], { course: 'cs111' })
-    .reduce((obj, key) => ({...obj, [key]: { name: theKB.filler(key, 'name')}}), {});
-  expect(obj).toStrictEqual({ 'ex-1': { name: 'Exercise 1'}, 'ex-2': { name: 'Exercise 2'}});
+test('toObject handles simple roles', () => {
+  const names = ['ex-1', 'ex-2'];
+  const obj = theKB.toObject(names, ['name', 'course']);
+  expect(obj).toStrictEqual({ 
+    'ex-1': { name: 'Exercise 1', course: 'cs111'}, 
+    'ex-2': { name: 'Exercise 2', course: 'cs111'}
+  });
+})
+
+test('toObject handles paths', () => {
+  const names = ['overlay'];
+  const obj = theKB.toObject(names, ['library.language']);
+  expect(obj).toStrictEqual({ 
+    'overlay': { 'library-language': 'Racket' }
+  });
 })
