@@ -11,7 +11,8 @@ const cloneTicket = ticket => (
   {...ticket, blocks: [...ticket.blocks]}
 );
 
-const emptyTicket = () => ({
+const emptyTicket = (author) => ({
+  author,
   blocks: []
 });
 

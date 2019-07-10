@@ -24,7 +24,7 @@ const StudentField = ({ block, selectBlock, highlighter }) => (
   </Column>
 );
 
-const FilledField = ({author, block, selectBlock, highlighter }) => (
+const FilledField = ({ block, selectBlock, highlighter }) => (
   block.fromMentor
   ? <MentorField block={ block } />
   : <StudentField block={ block } selectBlock={ selectBlock } highlighter={ highlighter }/>
@@ -32,7 +32,7 @@ const FilledField = ({author, block, selectBlock, highlighter }) => (
 
 const TicketData = ({ ticket, selectBlock, highlighter  }) => {
   const boxes = (ticket.blocks || []).map(block => (
-    <FilledField key={ block.timestamp } author={ ticket.author } block={ block }
+    <FilledField key={ block.timestamp } block={ block }
       selectBlock={ selectBlock } highlighter={ highlighter } />
   ));
 
@@ -57,7 +57,6 @@ MentorField.propTypes = {
 };
 
 FilledField.propTypes = {
-  author: PropTypes.string.isRequired,
   block: PropTypes.object.isRequired,
   selectBlock: PropTypes.func,
   highlighter: PropTypes.func

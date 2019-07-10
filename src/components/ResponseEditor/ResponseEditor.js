@@ -11,21 +11,22 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
   const [modalOpen, setModalOpen] = useState( false );
   const blockRef = useRef(null);
 
-  // ticketstate x { key: value ... }= new ticketstate
-  const updateTicketState = ({ id, ticket }, update) => (
-    { id, ticket: {...ticket, ...update} }
-  );
-
-  const setBlocks = blocks => {
-    setTicketState(ticketState => updateTicketState(ticketState, { blocks }));
+  const addBlock = block => {
+    setTicketState(({ id, ticket }) => (
+      { id,
+        ticket: { ...ticket, blocks: [...ticket.blocks, block] }
+      }
+    ));
     block = null;
   };
 
   const setExercise = exercise => {
-    setTicketState(ticketState => updateTicketState(ticketState, { exercise }));
-  }
-
-  const addBlock = (block) => setBlocks([...ticket.blocks, block]);
+    setTicketState(({ id, ticket }) => (
+      { id,
+        ticket: { ...ticket, exercise: exercise }
+      }
+    ));
+  };
 
   const addAuthor = block => (
     { ...block, [user.role === 'mentor' ? 'fromMentor' : 'author']: user.uid }
@@ -40,7 +41,7 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
     setModalOpen(false);
     switch (choice) {
       case 'cancel': return;
-      case 'send': ticketSubmitHandler(ticket); return;
+      case 'send': ticketSubmitHandler(); return;
       default: throw new Error(`Unknown response: ${choice}`)
     };
   };

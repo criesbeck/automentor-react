@@ -43,9 +43,10 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
  
   const selectBlock = user.role === 'mentor' ? null : (block) => setBlock(block);
 
-const ticketSubmitHandler = ticket => {
-    updateTicket(id, ticket);
-  };
+  const ticketSubmitHandler = () => {
+      console.log(id);
+      updateTicket(id, ticket);
+    };
 
   return (
     <React.Fragment>
@@ -68,8 +69,9 @@ const ticketSubmitHandler = ticket => {
 
 TicketUpdater.propTypes = {
   user: PropTypes.object.isRequired,
-  offering: PropTypes.object.isRequired, 
-  ticketState: PropTypes.object.isRequired
+  course: PropTypes.string.isRequired,
+  ticketState: PropTypes.object.isRequired,
+  setTicketState: PropTypes.func.isRequired
 };
 
 SampleSource.propTypes = {

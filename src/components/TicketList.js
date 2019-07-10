@@ -36,7 +36,7 @@ const TicketList = ({ user, selectTicket }) => {
   };
 
   const newTicket = () => {
-    selectTicket( ticketDb.push(), emptyTicket());
+    selectTicket( ticketDb.push().key, emptyTicket(user.uid));
   }
   const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;
 
