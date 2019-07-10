@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { Column, Select } from 'rbx';
-import Banner from 'components/Banner';
+import { Column, Notification, Select } from 'rbx';
 import MainScreen from 'components/MainScreen';
 import { addMember} from 'utils/course';
 import { firebase } from 'utils/firebase';
@@ -73,16 +73,24 @@ const EntryScreen = ({ course, members }) => {
   }, [setMember]);
 
   const signIn = (user) => { setMember(user); };
-  const signOut = () => { firebase.auth().signOut().then(() => setUser(null)); };
 
   return (
-    user
-    ? <React.Fragment>
-        <Banner user={ user } course={ course } signOut={ signOut } />
-        <MainScreen user={ user } course={ course } /> 
-      </React.Fragment>
-    : <SignIn signIn={ signIn } members={ members } />
+    <>
+      <Notification color="warning">
+        This is a page for app testing only.
+      </Notification>
+      {
+        user
+        ? <MainScreen user={ user } setUser={ setUser } course={ course } /> 
+        : <SignIn signIn={ signIn } members={ members } />
+      }
+    </>
   );
+};
+
+EntryScreen.propTypes = {
+  members: PropTypes.object.isRequired,
+  course: PropTypes.string.isRequired
 };
 
 export default EntryScreen;

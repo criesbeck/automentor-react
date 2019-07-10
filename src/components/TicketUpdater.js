@@ -59,7 +59,7 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
         ? <React.Fragment>
             <Divider color="primary">diagnoses</Divider>
             <Diagnoses ticket={ ticket } kb={kb} setPattern={ setPattern }/>
-            <SampleSource url={ ticket.url } />
+            { ticket.url ? <SampleSource url={ ticket.url } /> : null }
           </React.Fragment>
         : null
       }
