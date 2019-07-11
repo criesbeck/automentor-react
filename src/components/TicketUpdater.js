@@ -44,7 +44,6 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
   const selectBlock = user.role === 'mentor' ? null : (block) => setBlock(block);
 
   const ticketSubmitHandler = () => {
-      console.log(id);
       updateTicket(id, ticket);
     };
 

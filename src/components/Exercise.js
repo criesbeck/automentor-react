@@ -32,7 +32,6 @@ const Exercise = ({ exercise, exercises, setExercise }) => {
   );
 };
 
-
 Exercise.propTypes = {
   exercise: PropTypes.string,
   exercises: PropTypes.object.isRequired,

@@ -1,52 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Column, Container, Section } from 'rbx';
-import EntryScreen from 'components/EntryScreen';
-import MainScreen from 'components/MainScreen';
-import { courseTracker, membersTracker } from 'utils/course';
+import React from 'react';
+import 'rbx/index.css';
+import { Column, Container, Section } from 'rbx';
+import LoadScreen from 'pages/LoadScreen';
+import 'firebase';
 
-const getCachedUser = () => {
-  const text = window.sessionStorage.getItem('cachedUser');
-  return text ? JSON.parse(text) : null;
+const getOffering = () => {
+  const hash = window.location.hash;
+  return hash ? hash.slice(1) : 'cs111-f18';
 };
 
-const isRecent = time => (
-  (Date.now() - time) < 24 * 60 * 60 * 1000
+const getTestMode = () => !window.location.hash;
+
+const App = () => (
+  <Section>
+    <Container>
+      <Column.Group>
+        <Column size={10} offset={1}>
+          <LoadScreen offering={ getOffering() } testMode={ getTestMode() } />
+        </Column>
+      </Column.Group>
+    </Container>
+  </Section>
 );
-
-const App = () => {
-  const [ course, setCourse ] = useState(null);
-  const [ members, setMembers ] = useState(null);
-  const [ user, setUser ] = useState(getCachedUser());
-
-  console.log(`app ${JSON.stringify(user)}`)
-
-  useEffect(() => {
-    return courseTracker(setCourse);
-  }, []);
-
-  useEffect(() => {
-    return membersTracker(setMembers);
-  }, []);
-
-  return (
-    <Section>
-      <Container>
-        <Column.Group>
-          <Column size={10} offset={1}>
-          {
-            !course || !members
-            ? <Box>Loading class data...</Box>
-            : !user
-            ? <EntryScreen course={ course } members={ members } />
-            : !isRecent(user.time)
-            ? alert('Please log in again through Canvas')
-            : <MainScreen user={user} setUser={setUser} course={course} />
-          }
-          </Column>
-        </Column.Group>
-      </Container>
-    </Section>
-  );
-};
 
 export default App;

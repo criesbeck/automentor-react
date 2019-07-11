@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'rbx/index.css';
 import { Button, Content, Icon, Navbar } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,5 +44,10 @@ const Banner = ({ user, signOut }) => (
     }
   </Navbar>
 );
+
+Banner.propTypes = {
+  user: PropTypes.object,
+  signOut: PropTypes.func
+};
 
 export default Banner;
