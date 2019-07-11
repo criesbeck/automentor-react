@@ -9,7 +9,7 @@ const TicketRow = ({ ticket, select, user } ) => (
     { user.role === 'mentor' && <Table.Cell>{ticket.author}</Table.Cell> }
     <Table.Cell>{ticket.exercise}</Table.Cell>
     <Table.Cell>
-      <Content onClick={ select }>
+      <Content as="a" href="#ticket-editor" onClick={ select }>
         {ticketSummary(ticket)}
       </Content>
     </Table.Cell>
