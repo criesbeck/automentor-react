@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Divider, Level } from 'rbx';
+import { Divider, Level, Column } from 'rbx';
 import Diagnoses from 'components/Diagnoses';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
@@ -51,21 +51,25 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
     };
 
   return (
-    <React.Fragment>
-      <TicketData ticket={ ticket } selectBlock={ selectBlock }  highlighter={ highlighter } />
-      <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ ticket }
-        setTicketState= { setTicketState }
-        ticketSubmitHandler={ ticketSubmitHandler } user={ user } />
-      {
-        user.role === 'mentor'
-        ? <React.Fragment>
-            <Divider color="primary">diagnoses</Divider>
-            <Diagnoses ticket={ ticket } kb={kb} setPattern={ setPattern }/>
-            { ticket.url ? <SampleSource url={ ticket.url } /> : null }
-          </React.Fragment>
-        : null
-      }
-    </React.Fragment>
+    <Column.Group>
+      <Column size={8}>
+        <TicketData ticket={ ticket } selectBlock={ selectBlock }  highlighter={ highlighter } />
+        <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ ticket }
+          setTicketState= { setTicketState }
+          ticketSubmitHandler={ ticketSubmitHandler } user={ user } />
+      </Column>
+      <Column size={4}>
+        {
+          user.role === 'mentor'
+            ? <React.Fragment>
+              <Divider color="primary">diagnoses</Divider>
+              <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
+              {ticket.url ? <SampleSource url={ticket.url} /> : null}
+            </React.Fragment>
+            : null
+        }
+      </Column>
+    </Column.Group>
   )
 };
 

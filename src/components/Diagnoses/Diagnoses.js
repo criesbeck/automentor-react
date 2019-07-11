@@ -1,6 +1,6 @@
 import React from 'react';
 import 'rbx/index.css';
-import { Button, Card, Content } from 'rbx';
+import { Box, Card, Content } from 'rbx';
 import { diagnose, diagnosisRegExps, instances } from './diagnose';
 
 // components
@@ -22,9 +22,9 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
     prev && (prev.diagnosis === diagnosis) ? null : { diagnosis, rexps }
   ));
   return (
-    <Button onClick={ highlight }>
-      <span>{instances(diagnosis.summary, blists)}</span>
-    </Button>
+    <Box onClick={ highlight } size={2} style={{ padding: '5px' }}>
+      {instances(diagnosis.summary, blists)}
+    </Box>
   ); 
 };
 
