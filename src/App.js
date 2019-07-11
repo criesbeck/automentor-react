@@ -9,7 +9,7 @@ const getOffering = () => {
   return hash ? hash.slice(1) : 'cs111-f18';
 };
 
-const getTestMode = () => !window.location.hash;
+const getTestMode = () => window.location.hostname === 'localhost';
 
 const App = () => (
   <Section>
