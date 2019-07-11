@@ -39,7 +39,10 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
  
   const highlighter =  pattern ? text => highlightMatches(text, pattern.rexps) : null;
    
-  const labels = { divider: 'Update problem report', submit: 'Send to mentors' };
+  const labels = { 
+    divider: 'Update problem report', 
+    submit: user.role === 'mentor' ? 'Send to student' : 'Send to mentors' 
+  };
  
   const selectBlock = user.role === 'mentor' ? null : (block) => setBlock(block);
 
