@@ -14,9 +14,9 @@ const addMember = async ({ uid, displayName, email, role = ''} ) => {
 const dbTracker = (offering, child, handler) => {
   dbName = offering;
   db = firebase.database().ref(offering).child(child);
-
-  const listener = snap => { if (snap.val()) handler(snap.val())};
-  
+  const listener = snap => {
+    if (snap.val()) handler(snap.val())
+  };
   db.on('value', listener, (error) => alert(error));
   return () => db.off('value', listener);
 };

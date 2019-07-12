@@ -50,25 +50,27 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
       updateTicket(id, ticket);
     };
 
+  const ifMentor = (x, y = null) => user.role === 'mentor' ? x : y;
+
   return (
     <Column.Group>
-      <Column size={8}>
+      <Column size={ ifMentor(8, 10) }>
         <TicketData ticket={ ticket } selectBlock={ selectBlock }  highlighter={ highlighter } />
         <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ ticket }
           setTicketState= { setTicketState }
           ticketSubmitHandler={ ticketSubmitHandler } user={ user } />
       </Column>
-      <Column size={4}>
-        {
-          user.role === 'mentor'
-            ? <React.Fragment>
+      {
+        ifMentor(
+          <Column size={4}>
+            <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
               <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
               {ticket.url ? <SampleSource url={ticket.url} /> : null}
             </React.Fragment>
-            : null
-        }
-      </Column>
+          </Column>
+        )
+      }
     </Column.Group>
   )
 };

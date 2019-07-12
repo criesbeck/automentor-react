@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import 'rbx/index.css';
 import {Column, Select } from 'rbx';
 import { membersTracker } from 'utils/course';
+import { useCachedValue } from 'hooks/useCachedValue';
 
 // sort by last, first, not at all robust
 const reverseName = name => {
@@ -35,24 +36,24 @@ const SignIn = ({ members, signIn }) => (
 );
 
 const TestLogin = ({ offering, setUser }) => {
-  const [members, setMembers] = useState({});
+  const [members, setMembers] = useCachedValue('cachedMembers');
 
   useEffect(() => {
     return membersTracker(offering, setMembers);
-  }, [offering]);
-
+  }, [offering, setMembers]);
 
   const signIn = (user) => { 
     setUser(user);
   };
 
   return (
-    <SignIn signIn={ signIn } members={ members } />
+    <SignIn signIn={ signIn } members={ members || {} } />
   );
 };
 
 TestLogin.propTypes = {
-  offering: PropTypes.string.isRequired
+  offering: PropTypes.string.isRequired,
+  setUser: PropTypes.func.isRequired
 };
 
 export default TestLogin;

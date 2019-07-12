@@ -4,10 +4,15 @@ import { Column, Container, Section } from 'rbx';
 import LoadScreen from 'pages/LoadScreen';
 import 'firebase';
 
-const getOffering = () => {
-  const hash = window.location.hash;
-  return hash ? hash.slice(1) : 'cs111-f18';
+// https://en.wikipedia.org/wiki/Clean_URL#Slug
+const getSlug = (pathname) => {
+  const result = pathname.match(/^.*[/]([^/]+)(?:[/])?$/);
+  return result ? result[1] : null;
 };
+
+const getOffering = () => (
+  getSlug(window.location.pathname) || 'cs111-f18'
+);
 
 const getTestMode = () => window.location.hostname === 'localhost';
 
