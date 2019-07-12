@@ -13,7 +13,7 @@ const traceIf = (trace) => {
   match = trace ? _traceMatch : _match;
 };
 
-const _traceMatch = (pat, obj, blists = [{}])  => {
+const _traceMatch = (pat, obj, blists = [{}]) => {
   const indent = ' '.repeat(depth)
   console.log(`${indent}${JSON.stringify(pat)} = ${JSON.stringify(obj)} ${JSON.stringify(blists)}`)
   depth += 2;
@@ -23,7 +23,7 @@ const _traceMatch = (pat, obj, blists = [{}])  => {
   return result;
 };
 
-const _match = (pat, obj, blists = [{}])  => {
+const _match = (pat, obj, blists = [{}]) => {
   if (blists.length === 0) {
     return blists;
   } else if (isVar(pat)) {
@@ -46,6 +46,8 @@ const _match = (pat, obj, blists = [{}])  => {
     return matchRegex(pat, obj, blists);
   } else if (pat.isa) {
     return matchIsa(pat.isa, obj, blists);
+  } else if (pat.fn) {
+    return matchFunction(pat, obj, blists);
   } else if (typeof pat === "object") {
     return matchObject(pat, obj, blists);
   } else {
@@ -53,21 +55,20 @@ const _match = (pat, obj, blists = [{}])  => {
   }
 }
 
-const matchSubString = (pat, obj, blists)  => {
-  if(typeof obj != "string") return [];
-  return new RegExp(pat).exec(obj) ? blists : [];
-}
+const matchSubString = (pat, obj, blists) => (
+  (typeof obj != "string") ? [] : new RegExp(pat).exec(obj) ? blists : []
+)
 
-const isPrimitive = (x)  => {
+const isPrimitive = (x) => {
   let type = (typeof x);
   return x === null || type === "undefined" ||
       type === "number" || type === "string" ||
       type === "boolean";
 }
 
-const matchPrimitive = (pat, obj, blists)  => {
-  return pat === obj ? blists : [];
-}
+const matchPrimitive = (pat, obj, blists) => (
+  pat === obj ? blists : []
+)
 
 const absts = x =>  (concepts[x] && concepts[x].absts) || [];
 
@@ -79,7 +80,7 @@ const matchIsa = (pat, obj, blists) => (
   isa(obj, pat) ? blists : []
 );
 
-const matchRegex = (pat, obj, blists)  => {
+const matchRegex = (pat, obj, blists) => {
   if(typeof obj !== 'string') return [];
 
   let regExp = new RegExp(pat.reg, "g");
@@ -92,59 +93,58 @@ const matchRegex = (pat, obj, blists)  => {
   return match(pats, filtered.slice(1, pats.length+1), blists);
 }
 
-const matchArray = (pat, obj, blists)  => {
-  if (pat.length > obj.length) {
-    return [];
-  }
-  return matchingLoop(pat, obj, blists);
-}
+const matchArray = (pat, obj, blists) => (
+  (pat.length > obj.length) ? [] : matchingLoop(pat, obj, blists)
+)
 
-const matchObject = (pat, obj, blists)  => {
-  if (isPrimitive(obj) || Array.isArray(obj) ||
-    (Object.keys(pat).length > Object.keys(obj).length)) {
-    return [];
-  } else {
-    return matchingLoop(pat, obj, blists);
-  }
-}
+const matchObject = (pat, obj, blists) => (
+  (isPrimitive(obj) || Array.isArray(obj) ||
+    (Object.keys(pat).length > Object.keys(obj).length))
+    ? []
+    : matchingLoop(pat, obj, blists)
+)
 
-const matchingLoop = (pat, obj, blists)  => (
+const matchingLoop = (pat, obj, blists) => (
   Object.keys(pat).reduce((blists, key) => (
     match(pat[key], obj[key], blists)
   ), blists)
-);
+)
 
-const matchAnd = (pat, obj, blists)  => {
-  return Object.keys(pat).reduce((blists, key) => (
+const matchAnd = (pat, obj, blists) => (
+  Object.keys(pat).reduce((blists, key) => (
       match(pat[key], obj, blists)
-  ), blists);
-}
+  ), blists)
+)
 
-const matchOr = (pat, obj, blists)  => {
-  return Object.keys(pat).reduce((accumulator, key) => (
+const matchOr = (pat, obj, blists) => (
+  Object.keys(pat).reduce((accumulator, key) => (
     accumulator.concat(match(pat[key], obj, blists))
-  ), []);
-}
+  ), [])
+)
 
-const matchNot = (pat, obj, blists)  => {
-  return blists.filter(blist => (
+const matchNot = (pat, obj, blists) => (
+  blists.filter(blist => (
     match(pat, obj, [blist]).length === 0
   ))
-}
+)
 
-const matchSome = (pat, obj, blists)  => {
-  return !obj ? [] : Object.keys(obj).reduce((accumulator, key) => (
+const matchSome = (pat, obj, blists) => (
+  !obj ? [] : Object.keys(obj).reduce((accumulator, key) => (
     accumulator.concat(match(pat, obj[key], blists))
-  ), []);
-}
+  ), [])
+)
 
-const bindVar = (x, val, blists)  => {
-  return blists.reduce((accumulator, blist) => (
+const matchFunction = (pat, obj, blists) => (
+  match(pat.pat, pat.fn(obj, ...(pat.args || [])), blists)
+)
+
+const bindVar = (x, val, blists) => (
+  blists.reduce((accumulator, blist) => (
     accumulator.concat(matchVar(x, val, blist))
-  ), []);
-}
+  ), [])
+)
 
-const matchVar = (varx, val, blist)  => {
+const matchVar = (varx, val, blist) => {
   if (varx in blist) {
       return isVarInBinding(varx, val, blist);
   }
@@ -156,15 +156,14 @@ const matchVar = (varx, val, blist)  => {
   return newblist;
 }
 
-const isVarInBinding = (varx, val, blist)  => {
-  if (match(blist[varx], val).length) return blist;
-  else return [];
-}
+const isVarInBinding = (varx, val, blist) => (
+  (match(blist[varx], val).length) ? blist : []
+)
 
-const isVar = (x)  => {
-  return (typeof x) === 'string' && x.startsWith('?');
-}
+const isVar = (x) => (
+  (typeof x) === 'string' && x.startsWith('?')
+)
 
 let match = _match;
 
-export { conceptMatch, traceIf };
+export { conceptMatch, _match as match, traceIf };
