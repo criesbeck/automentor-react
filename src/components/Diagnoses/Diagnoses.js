@@ -18,11 +18,10 @@ const Entry = ({ title, isSource, children }) => (
 
 const Diagnosis = ({ diagnosis, blists, setPattern }) => {
   const rexps = diagnosisRegExps(diagnosis);
-  const highlight = () => setPattern(prev => (
-    prev && (prev.diagnosis === diagnosis) ? null : { diagnosis, rexps }
-  ));
+  const highlight = () => setPattern({ diagnosis, rexps });
+  const unhighlight = () => setPattern(null);
   return (
-    <Box onClick={ highlight } size={2} style={{ padding: '5px' }}>
+    <Box onMouseEnter={ highlight } onMouseLeave={ unhighlight } size={2} style={{ padding: '5px' }}>
       {instances(diagnosis.summary, blists)}
     </Box>
   ); 
