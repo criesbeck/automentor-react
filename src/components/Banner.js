@@ -12,7 +12,7 @@ const LogOut = ({signOut}) => (
 );
 
 const Banner = ({ user, signOut }) => (
-  <Navbar backgroundColor="primary">
+  <Navbar backgroundColor={ user.role === 'mentor' ? 'info' : 'primary' } >
     <Navbar.Brand >
       <Navbar.Item>
         <Content size="large" textColor="white">
