@@ -1,7 +1,7 @@
 import { firebase } from './firebase';
 
-const course = 'cs111-f18';
-const ticketDb = firebase.database().ref(course).child('tickets');
+const offering = 'EECS111-2019WI';
+const ticketDb = firebase.database().ref(offering).child('tickets');
 
 const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',

@@ -11,7 +11,7 @@ const getSlug = (pathname) => {
 };
 
 const getOffering = () => (
-  getSlug(window.location.pathname) || 'cs111-f18'
+  getSlug(window.location.pathname) || 'EECS111-2019WI'
 );
 
 const getTestMode = () => window.location.hostname === 'localhost';

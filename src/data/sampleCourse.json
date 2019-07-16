@@ -1,47 +1,54 @@
 { 
-  "cs111-f18": {
+  "EECS111-2019WI": {
     "course": "cs111",
     "members": {
-      "xlxiGoz8eETmchHuLtjTtwSI7c33": {
+      "ckr427": {
         "displayName": "Chris Riesbeck",
         "role": "mentor",
+        "netid": "ckr427",
         "email": "c-riesbeck@u.northwestern.edu",
-        "uid": "xlxiGoz8eETmchHuLtjTtwSI7c33"
+        "uid": "ckr427"
       },
-      "member-2": {
+      "aen101": {
         "displayName": "Alfred E. Newman",
         "email": "Newman@lol.com",
-        "uid": "member-2"
+        "netid": "aen101",
+        "uid": "aen101"
       },
-      "member-3": {
+      "cln484": {
         "displayName": "Cathy Nichols",
         "email": "Nichols@lol.com",
-        "uid": "member-3"
+        "netid": "cln484",
+        "uid": "cln484"
       },
-      "member-4": {
+      "sat432": {
         "displayName": "Susan Tam",
         "email": "Tam@lol.com",
-        "uid": "member-4"
+        "netid": "sat432",
+        "uid": "sat432"
       },
-      "member-5": {
+      "reu989": {
         "displayName": "Robert Untermeyer",
         "email": "Untermeyer@lol.com",
-        "uid": "member-5"
+        "netid": "reu989",
+        "uid": "reu989"
       },
-      "member-6": {
+      "zil046": {
         "displayName": "Zelda Lane",
         "email": "Lane@lol.com",
-        "uid": "member-6"
+        "netid": "zil046",
+        "uid": "zil046"
       },
-      "member-7": {
+      "nab758": {
         "displayName": "Norman Bates",
         "email": "Bates@lol.com",
-        "uid": "member-7"
+        "netid": "nab758",
+        "uid": "nab758"
       }
     },
     "tickets": {
       "-Li6H08cqH7DaKHO3kG5" : {
-        "author" : "member-2",
+        "author" : "aen101",
         "blocks" : [ {
           "isCode" : "",
           "label" : "",
@@ -68,7 +75,7 @@
         "timestamp" : 1561515063277
       },
       "-LiFHMkIb6B6XwVP2Tcu" : {
-        "author" : "member-2",
+        "author" : "aen101",
         "blocks" : [ {
           "isCode" : "",
           "label" : "",
@@ -84,7 +91,7 @@
         "timestamp" : 1561558634739
       },
       "-LiFbVqBoSl5Tk4ZmIDs" : {
-        "author" : "member-2",
+        "author" : "aen101",
         "blocks" : [ {
           "isCode" : "",
           "label" : "",
@@ -96,7 +103,7 @@
       },
       "sample-1": {
         "timestamp": 1516428000000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-1",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=54",
         "blocks": [
@@ -105,27 +112,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "square.rkt",
             "text": "(beside (a-red-square) (a-blue-square) (a-green-square))",
             "isCode": true,
             "timestamp": 1516428060000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "computerOutput",
             "text": "function call: expected a function after the open parenthesis, but received #<image>.",
             "isCode": true,
             "timestamp": 1516428090000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-2": {
         "timestamp": 1516428000000,
-        "author": "member-4",
+        "author": "sat432",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=71",
         "blocks": [
@@ -134,20 +141,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-4"
+            "author": "sat432"
           },
           {
             "label": "computerOutput",
             "text": "function overlay is not defined.",
             "isCode": true,
             "timestamp": 1516428060000,
-            "author": "member-4"
+            "author": "sat432"
           }
         ]
       },
       "sample-3": {
         "timestamp": 1516773600000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=76",
         "blocks": [
@@ -156,27 +163,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516773630000,
-            "author": "member-5"
+            "author": "reu989"
           },
           {
             "label": "square.rkt",
             "text": "(interpolate-colors blue red 0.5)",
             "isCode": true,
             "timestamp": 1516773660000,
-            "author": "member-5"
+            "author": "reu989"
           },
           {
             "label": "computerOutput",
             "text": "blue: this variable is not defined.",
             "isCode": true,
             "timestamp": 1516773690000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-4": {
         "timestamp": 1516514400000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": "ex-1",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=61",
         "blocks": [
@@ -185,27 +192,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516514430000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "square.rkt",
             "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
             "isCode": true,
             "timestamp": 1516514460000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "computerOutput",
             "text": "overlay/xy: expects only 4 arguments, but found 11.",
             "isCode": true,
             "timestamp": 1516514490000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       },
       "sample-5": {
         "timestamp": 1516773603000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=81",
         "blocks": [
@@ -214,27 +221,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516773633000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "square.rkt",
             "text": "(interpolate-color (color1) (color2)",
             "isCode": true,
             "timestamp": 1516773663000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "computerOutput",
             "text": "function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
             "isCode": true,
             "timestamp": 1516773693000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-6": {
         "timestamp": 1516946400000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
         "blocks": [
@@ -243,20 +250,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516946430000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "computerOutput",
             "text": "function Iterated-overlay not defined.",
             "isCode": true,
             "timestamp": 1516946460000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-7": {
         "timestamp": 1517119200000,
-        "author": "member-7",
+        "author": "nab758",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=102",
         "blocks": [
@@ -265,13 +272,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517119230000,
-            "author": "member-7"
+            "author": "nab758"
           }
         ]
       },
       "sample-8": {
         "timestamp": 1517205600000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=114",
         "blocks": [
@@ -280,20 +287,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517205630000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "computerOutput",
             "text": "iterated-beside: expects procedure, given #< image >",
             "isCode": true,
             "timestamp": 1517205660000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       },
       "sample-9": {
         "timestamp": 1517810400000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-3",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=147",
         "blocks": [
@@ -302,20 +309,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517810430000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "computerOutput",
             "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
             "isCode": true,
             "timestamp": 1517810460000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-10": {
         "timestamp": 1518069600000,
-        "author": "member-4",
+        "author": "sat432",
         "exercise": "ex-4",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
         "blocks": [
@@ -324,13 +331,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1518069630000,
-            "author": "member-4"
+            "author": "sat432"
           }
         ]
       },
       "sample-11": {
         "timestamp": 1518415200000,
-        "author": "member-4",
+        "author": "sat432",
         "exercise": "ex-4",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=230",
         "blocks": [
@@ -339,27 +346,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1518415230000,
-            "author": "member-4"
+            "author": "sat432"
           },
           {
             "label": "branch.rkt",
             "text": "(define (sum-tree tree) (local [(define (loop tree count) (if (leaf? tree) (leaf-val tree) (+(loop (branch-left tree) count) (loop (branch-right tree) count))) (define (loop_2 tree count_2) (if (branch? tree) (+(loop_2 (branch-left tree) count_2) (loop_2 (branch-right tree) count_2))(branch-val tree)))] (+(loop tree 0) (loop_2 tree 0) (branch-val tree))))",
             "isCode": true,
             "timestamp": 1518415260000,
-            "author": "member-4"
+            "author": "sat432"
           },
           {
             "label": "computerOutput",
             "text": "branch-val: expects a branch, given (make-leaf 1).",
             "isCode": true,
             "timestamp": 1518415290000,
-            "author": "member-4"
+            "author": "sat432"
           }
         ]
       },
       "sample-12": {
         "timestamp": 1518588000000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-4",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=239",
         "blocks": [
@@ -368,20 +375,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1518588030000,
-            "author": "member-5"
+            "author": "reu989"
           },
           {
             "label": "computerOutput",
             "text": "+: expects a number as 1st argument, given leaf-val",
             "isCode": true,
             "timestamp": 1518588060000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-13": {
         "timestamp": 1516687200000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=70",
         "blocks": [
@@ -390,13 +397,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516687230000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       },
       "sample-14": {
         "timestamp": 1517637600000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-3",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=139",
         "blocks": [
@@ -405,13 +412,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517637630000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-15": {
         "timestamp": 1517983200000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "exam",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=177",
         "blocks": [
@@ -420,13 +427,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517983230000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-16": {
         "timestamp": 1515996000000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-1",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=27",
         "blocks": [
@@ -435,13 +442,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1515996030000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-17": {
         "timestamp": 1516428000000,
-        "author": "member-7",
+        "author": "nab758",
         "exercise": "ex-1",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=52",
         "blocks": [
@@ -450,13 +457,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-7"
+            "author": "nab758"
           }
         ]
       },
       "sample-18": {
         "timestamp": 1516773600000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=78",
         "blocks": [
@@ -465,13 +472,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516773630000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-19": {
         "timestamp": 1516773604000,
-        "author": "member-7",
+        "author": "nab758",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=79",
         "blocks": [
@@ -480,13 +487,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516773634000,
-            "author": "member-7"
+            "author": "nab758"
           }
         ]
       },
       "sample-20": {
         "timestamp": 1516946400000,
-        "author": "member-4",
+        "author": "sat432",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=95",
         "blocks": [
@@ -495,13 +502,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516946430000,
-            "author": "member-4"
+            "author": "sat432"
           }
         ]
       },
       "sample-21": {
         "timestamp": 1517032800000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=98",
         "blocks": [
@@ -510,13 +517,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517032830000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-22": {
         "timestamp": 1517032807000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=99",
         "blocks": [
@@ -525,13 +532,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517032837000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       },
       "sample-23": {
         "timestamp": 1517119203000,
-        "author": "member-7",
+        "author": "nab758",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=100",
         "blocks": [
@@ -540,13 +547,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517119233000,
-            "author": "member-7"
+            "author": "nab758"
           }
         ]
       },
       "sample-24": {
         "timestamp": 1517119204000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-2",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=103",
         "blocks": [
@@ -555,13 +562,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517119234000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-25": {
         "timestamp": 1517637604000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": "ex-3",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=136",
         "blocks": [
@@ -570,20 +577,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517637634000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "computerOutput",
             "text": "'()",
             "isCode": true,
             "timestamp": 1517637664000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       },
       "sample-26": {
         "timestamp": 1517724005000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-3",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=142",
         "blocks": [
@@ -592,13 +599,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517724035000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-27": {
         "timestamp": 1517810406000,
-        "author": "member-5",
+        "author": "reu989",
         "exercise": "ex-3",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
         "blocks": [
@@ -607,13 +614,13 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1517810436000,
-            "author": "member-5"
+            "author": "reu989"
           }
         ]
       },
       "sample-28": {
         "timestamp": 1518501600000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": "ex-4",
         "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=237",
         "blocks": [
@@ -622,20 +629,20 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1518501630000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "inputCode",
             "text": "(define (count-tree tree) (cond [(leaf? tree) (leaf-val tree)] [else (+ (+ 1(count-tree (branch-left tree))) (+ 1(count-tree (branch-right tree)))))])",
             "isCode": true,
             "timestamp": 1518501660000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-29": {
         "timestamp": 1516428000000,
-        "author": "member-4",
+        "author": "sat432",
         "exercise": null,
         "url": null,
         "blocks": [
@@ -644,27 +651,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-4"
+            "author": "sat432"
           },
           {
             "label": "inputCode",
             "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
             "isCode": true,
             "timestamp": 1516428060000,
-            "author": "member-4"
+            "author": "sat432"
           },
           {
             "label": "computerOutput",
             "text": "function overhay is not defined.",
             "isCode": true,
             "timestamp": 1516428090000,
-            "author": "member-4"
+            "author": "sat432"
           }
         ]
       },
       "sample-30": {
         "timestamp": 1516428000000,
-        "author": "member-3",
+        "author": "cln484",
         "exercise": null,
         "url": null,
         "blocks": [
@@ -673,27 +680,27 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "inputCode",
             "text": "((+ 1 2))",
             "isCode": true,
             "timestamp": 1516428060000,
-            "author": "member-3"
+            "author": "cln484"
           },
           {
             "label": "computerOutput",
             "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
             "isCode": true,
             "timestamp": 1516428090000,
-            "author": "member-3"
+            "author": "cln484"
           }
         ]
       },
       "sample-31": {
         "timestamp": 1516428000000,
-        "author": "member-6",
+        "author": "zil046",
         "exercise": null,
         "url": null,
         "blocks": [
@@ -702,21 +709,21 @@
             "label": "message",
             "isCode": false,
             "timestamp": 1516428030000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "inputCode",
             "text": "(define (ancestors-names-2 pers",
             "isCode": true,
             "timestamp": 1516428060000,
-            "author": "member-6"
+            "author": "zil046"
           },
           {
             "label": "computerOutput",
             "text": "read-syntax: expected a ) to close (",
             "isCode": true,
             "timestamp": 1516428090000,
-            "author": "member-6"
+            "author": "zil046"
           }
         ]
       }

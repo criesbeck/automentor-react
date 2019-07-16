@@ -12,7 +12,7 @@ test('test data exists and is self-consistent', () => {
   expect(course).toBeDefined();
   
   // there are samples
-  const samples = course['cs111-f18'].tickets;
+  const samples = course['EECS111-2019WI-f18'].tickets;
   expect(samples).toBeDefined();
   const snames = Object.keys(samples);
   expect(snames.length).toBeGreaterThan(1);
@@ -42,7 +42,7 @@ test('test data exists and is self-consistent', () => {
 
 test('all expected diagnoses are found', () => {
   const kb = new KB({ diagnoses, concepts });
-  const samples = course['cs111-f18'].tickets;
+  const samples = course['EECS111-2019WI-f18'].tickets;
   Object.entries(samples).forEach(([sname, sample]) => {
     const expected = tests[sname].diagnoses;
     expect(expected).toBeDefined();
