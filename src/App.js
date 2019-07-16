@@ -4,15 +4,10 @@ import { Column, Container, Section } from 'rbx';
 import LoadScreen from 'pages/LoadScreen';
 import 'firebase';
 
-// https://en.wikipedia.org/wiki/Clean_URL#Slug
-const getSlug = (pathname) => {
-  const result = pathname.match(/^.*[/]([^/]+)(?:[/])?$/);
-  return result ? result[1] : null;
+const getOffering = () => {
+  const params = new URLSearchParams(document.location.search.substring(1));
+  return params.get('offering') || 'EECS111-2019WI';
 };
-
-const getOffering = () => (
-  getSlug(window.location.pathname) || 'EECS111-2019WI'
-);
 
 const getTestMode = () => window.location.hostname === 'localhost';
 
