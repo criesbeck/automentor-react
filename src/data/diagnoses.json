@@ -24,7 +24,7 @@
           "text": {
             "reg": "function ([^\\s]+)(?: is)? (?:not defined|undefined)",
             "pats": [
-              { "and": [ { "isa": "library-function" }, "?fn" ] }
+              { "and": [ { "if": "isa", "args": ["library-function"] }, "?fn" ] }
             ]
           }
         }

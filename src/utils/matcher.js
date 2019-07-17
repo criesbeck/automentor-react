@@ -1,12 +1,11 @@
-// conceptMatch() for patterns of the form { "isa": "function"}
-// see concepts.json for example ontology
-let concepts = {};
-let depth = 0;
+// functions enables arbitrary functions to be passed for matching
+let functions = {}
+let depth = 0
 
-const conceptMatch = (pat, obj, tree = {}) => {
-  concepts = tree;
-  return match(pat, obj);
-};
+const xmatch = (pat, obj, fns = {}) => {
+  functions = fns
+  return match(pat, obj)
+}
 
 const traceIf = (trace) => {
   depth = 0;
@@ -48,6 +47,8 @@ const _match = (pat, obj, blists = [{}]) => {
     return matchIsa(pat.isa, obj, blists);
   } else if (pat.fn) {
     return matchFunction(pat, obj, blists);
+  } else if (pat.if) {
+    return matchIf(pat, obj, blists);
   } else if (typeof pat === "object") {
     return matchObject(pat, obj, blists);
   } else {
@@ -114,29 +115,50 @@ const matchAnd = (pat, obj, blists) => (
   Object.keys(pat).reduce((blists, key) => (
       match(pat[key], obj, blists)
   ), blists)
-)
+);
 
 const matchOr = (pat, obj, blists) => (
   Object.keys(pat).reduce((accumulator, key) => (
     accumulator.concat(match(pat[key], obj, blists))
   ), [])
-)
+);
 
 const matchNot = (pat, obj, blists) => (
   blists.filter(blist => (
     match(pat, obj, [blist]).length === 0
   ))
-)
+);
 
 const matchSome = (pat, obj, blists) => (
   !obj ? [] : Object.keys(obj).reduce((accumulator, key) => (
     accumulator.concat(match(pat, obj[key], blists))
   ), [])
-)
+);
 
 const matchFunction = (pat, obj, blists) => (
-  match(pat.pat, pat.fn(obj, ...(pat.args || [])), blists)
+  blists.reduce((blists, blist) => (
+    blists.concat(
+      match(pat.pat, patCall(pat.fn, obj, pat.args, blist), [blist])
+    )
+  ), [])
 )
+
+const matchIf = (pat, obj, blists) => (
+  blists.filter(blist => (
+    patCall(pat.if, obj, pat.args, blist)
+  ))
+)
+
+const patCall = (fn, obj, args, blist) => (
+  fnLookup(fn)(obj, ...instantiate(args || [], blist))
+)
+
+const fnLookup = (x) => {
+  if (typeof x === 'function') return x
+  const fn = functions[x]
+  if (typeof fn === 'function') return fn
+  throw new Error(`${x} => ${fn} which is not a function`)
+}
 
 const bindVar = (x, val, blists) => (
   blists.reduce((accumulator, blist) => (
@@ -146,11 +168,11 @@ const bindVar = (x, val, blists) => (
 
 const matchVar = (varx, val, blist) => {
   if (varx in blist) {
-      return isVarInBinding(varx, val, blist);
+    return isVarInBinding(varx, val, blist);
   }
   var newblist = {};
   for (var attrname in blist) {
-      newblist[attrname] = blist[attrname];
+    newblist[attrname] = blist[attrname];
   }
   newblist[varx] = val;
   return newblist;
@@ -164,6 +186,20 @@ const isVar = (x) => (
   (typeof x) === 'string' && x.startsWith('?')
 )
 
+const instantiate = (obj, blist) => {
+  if (isVar(obj)) {
+    return blist[obj] || obj;
+  } else if (isPrimitive(obj)) {
+    return obj;
+  } else if (Array.isArray(obj)) {
+    return obj.map(x => instantiate(x, blist));
+  } else if (typeof obj === 'object') {
+    return Object.keys(obj).map(key => instantiate(obj[key], blist));
+  } else {
+    return obj;
+  }
+}
+
 let match = _match;
 
-export { conceptMatch, _match as match, traceIf };
+export { instantiate, _match as match, traceIf, xmatch };

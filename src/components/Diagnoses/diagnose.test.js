@@ -4,7 +4,7 @@ import concepts from 'data/concepts.json';
 import course from 'data/sampleCourse.json';
 import diagnoses from 'data/diagnoses.json';
 import { diagnose } from './diagnose';
-import { conceptMatch } from 'utils/matcher';
+import { xmatch } from 'utils/matcher';
 
 test('test data exists and is self-consistent', () => {
   expect(concepts).toBeDefined();
@@ -12,7 +12,7 @@ test('test data exists and is self-consistent', () => {
   expect(course).toBeDefined();
   
   // there are samples
-  const samples = course['EECS111-2019WI-f18'].tickets;
+  const samples = course['EECS111-2019WI'].tickets;
   expect(samples).toBeDefined();
   const snames = Object.keys(samples);
   expect(snames.length).toBeGreaterThan(1);
@@ -42,13 +42,16 @@ test('test data exists and is self-consistent', () => {
 
 test('all expected diagnoses are found', () => {
   const kb = new KB({ diagnoses, concepts });
-  const samples = course['EECS111-2019WI-f18'].tickets;
+  const conceptMatch = (pat, obj, kb) => (
+    xmatch(pat, obj, { isa: kb.isa.bind(kb) })
+  );
+  const samples = course['EECS111-2019WI'].tickets;
   Object.entries(samples).forEach(([sname, sample]) => {
     const expected = tests[sname].diagnoses;
     expect(expected).toBeDefined();
     expected.forEach(dname => {
       const pattern = diagnoses[dname].pattern;
-      if (!conceptMatch(pattern, sample, concepts).length) {
+      if (!conceptMatch(pattern, sample, kb).length) {
         console.log(`${dname} not returned for ${sname}`);
         console.log(JSON.stringify(pattern));
         console.log(JSON.stringify(sample));

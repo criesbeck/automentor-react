@@ -8,6 +8,9 @@
       "library": "image.rkt"
     }
   },
+  "library-function": {
+    "absts": ["function"]
+  },
   "image.rkt": {
     "absts": ["library"],
     "slots": {

@@ -1,4 +1,4 @@
-import { conceptMatch } from 'utils/matcher';
+import { xmatch } from 'utils/matcher';
 import { removeDuplicates } from 'utils/utils';
 
 // collect all regular expressions in a diagnosis pattern
@@ -13,8 +13,12 @@ const diagnosisRegExps = diagnosis => (
   removeDuplicates(patternRegExps(diagnosis.pattern)).map(pat => new RegExp(pat, "g"))
 );
 
+const conceptMatch = (pat, obj, kb) => (
+  xmatch(pat, obj, { isa: kb.isa.bind(kb)})
+)
+
 const matchDiagnosis = (name, diagnosis, ticket, kb) => (
-  conceptMatch(diagnosis.pattern, ticket, kb.concepts)
+  conceptMatch(diagnosis.pattern, ticket, kb)
 );
 
 // apply the knowledge base (patterns, concepts) to diagnose a ticket
