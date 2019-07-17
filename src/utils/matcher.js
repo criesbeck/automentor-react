@@ -43,8 +43,6 @@ const _match = (pat, obj, blists = [{}]) => {
     return matchSome(pat["some"], obj, blists);
   } else if (pat.reg) {
     return matchRegex(pat, obj, blists);
-  } else if (pat.isa) {
-    return matchIsa(pat.isa, obj, blists);
   } else if (pat.fn) {
     return matchFunction(pat, obj, blists);
   } else if (pat.if) {
@@ -70,16 +68,6 @@ const isPrimitive = (x) => {
 const matchPrimitive = (pat, obj, blists) => (
   pat === obj ? blists : []
 )
-
-const absts = x =>  (concepts[x] && concepts[x].absts) || [];
-
-const isa = (spec, abst) => (
-  spec === abst || absts(spec).some(x => isa(x, abst))
-);
-
-const matchIsa = (pat, obj, blists) => (
-  isa(obj, pat) ? blists : []
-);
 
 const matchRegex = (pat, obj, blists) => {
   if(typeof obj !== 'string') return [];
