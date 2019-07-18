@@ -25,7 +25,7 @@ const SampleSource = ({ url }) => (
 const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
   const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
-  const kb = ({ concepts, diagnoses });
+  const kb = KB({ concepts, diagnoses });
   const exNames = kb.search(['exercise'], { course });
   const exercises = kb.toObject(exNames, ['name']);
 
