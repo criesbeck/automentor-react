@@ -41,7 +41,7 @@ test('test data exists and is self-consistent', () => {
 });
 
 test('all expected diagnoses are found', () => {
-  const kb = new KB({ diagnoses, concepts });
+  const kb = KB({ diagnoses, concepts });
   const conceptMatch = (pat, obj, kb) => (
     xmatch(pat, obj, { isa: kb.isa.bind(kb) })
   );

@@ -1,90 +1,74 @@
 import { removeDuplicates } from './utils';
 
-// polyfill for node testing
-const flatmap = (lst, fn) => (
-  lst.flatMap ? lst.flatMap(fn) : lst.reduce((res, x) => res.concat(fn(x)), [])
-);
+const KB = ({ concepts, diagnoses }) => {
+  const absts = {};
+  
+  const lookup = id => concepts[id] || {};
 
-class KB {
-  constructor({ concepts, diagnoses }) {
-    this.concepts = concepts || {};
-    this.diagnoses = diagnoses || {}
-    this.absts = {}
-  }
+  const isa = (spec, abst) => spec === abst || getAllAbsts(spec).includes(abst);
 
-  lookup(id) {
-    return this.concepts[id] || {}
-  }
+  const filler = (x, ...path) => pathFiller(x, path);
 
-  isa(spec, abst) {
-    return spec === abst || this.getAllAbsts(spec).includes(abst)
-  }
+  const pathFiller = (x, path) => (
+    path.reduce((x, role) => x && inheritFiller(x, role), x)
+  );
 
-  filler(x, ...path) {
-    return this.pathFiller(x, path)
-  }
-
-  pathFiller(x, path) {
-    return path.reduce((x, role) => x && this.inheritFiller(x, role), x)
-  }
-
-  search(absts = [], slots = {}) {
-    return (
-      this.removeAbstractions(
-        removeDuplicates(
-          Object.keys(this.concepts).filter(name => this.satisfies(name, absts, slots))
-        )
+  const search = (absts = [], slots = {}) => (
+    removeAbstractions(
+      removeDuplicates(
+        Object.keys(concepts).filter(name => satisfies(name, absts, slots))
       )
     )
-  }
+  );
 
-  toObject(names, roles) {
+  const toObject = (names, roles) => {
     // map "roles" such as "parent.age" to parent-age: pathFiller(x, ['parent', 'age'])
-    const paths = roles.map(role => role.split('.'))
+    const paths = roles.map(role => role.split('.'));
     const fillerOf = (name) => (
-      paths.reduce((obj, path) => ({...obj, [path.join('-')]: this.pathFiller(name, path)}), {})
-    )
+      paths.reduce((obj, path) => ({...obj, [path.join('-')]: pathFiller(name, path)}), {})
+    );
     return (
       names.reduce((obj, name) => ({...obj, [name]: fillerOf(name)}), {})
     )
-  }
+  };
 
-  removeAbstractions(lst) {
-    return lst.filter(x => !(lst.some(y => x !== y && this.isa(y, x))));
-  }
+  const removeAbstractions = (lst) => (
+    lst.filter(x => !(lst.some(y => x !== y && isa(y, x))))
+  );
 
-  satisfies(name, absts, slots) {
-    return (
-      absts.every(abst => this.isa(name, abst))
-      && Object.keys(slots).every(role => this.hasFiller(name, role, slots[role]))
-    )
-  }
+  const satisfies = (name, absts, slots) => (
+    absts.every(abst => isa(name, abst))
+    && Object.keys(slots).every(role => hasFiller(name, role, slots[role]))
+  );
 
-  getAllAbsts(name) {
-    const concept = this.concepts[name]
+  const getAllAbsts = (name) => {
+    const concept = concepts[name]
     if (!concept) return [name]
-    if (!this.absts[name]) {
+    if (!absts[name]) {
       const parents = concept.absts || []
-      const allAbsts = flatmap(parents, abst => this.getAllAbsts(abst));
-      this.absts[name] = [name].concat(removeDuplicates(allAbsts));
+      // flatmap not in node so not available in npm run test
+      const allAbsts = parents.reduce((absts, abst) => absts.concat(getAllAbsts(abst)), []);
+      absts[name] = [name].concat(removeDuplicates(allAbsts));
     }
-    return this.absts[name]
-  }
+    return absts[name]
+  };
 
-  getFiller(name, role) {
-    const concept = this.concepts[name]
+  const getFiller = (name, role) => {
+    const concept = concepts[name]
     return concept && concept.slots && concept.slots[role]
+  };
+
+  const inheritFiller = (name, role) => {
+    const abst = getAllAbsts(name).find(abst => getFiller(abst, role) !== undefined);
+    return abst && getFiller(abst,role);
   }
 
-  inheritFiller(name, role) {
-    const abst = this.getAllAbsts(name).find(abst => this.getFiller(abst, role) !== undefined);
-    return abst && this.getFiller(abst,role);
+  const hasFiller = (name, role, filler) => {
+    const x = inheritFiller(name, role);
+    return x !== undefined && isa(x, filler)
   }
 
-  hasFiller(name, role, filler) {
-    const x = this.inheritFiller(name, role);
-    return x !== undefined && this.isa(x, filler)
-  }
+  return { diagnoses, isa, filler, lookup, search, toObject };
 }
 
 export default KB;

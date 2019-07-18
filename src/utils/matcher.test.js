@@ -22,6 +22,8 @@ test('{ pat: pat, fn: fn, args: [a, b] } matches x if pat matches (fn x a b)', (
   const minus = (x, y) => x - y;
   expect(match({ pat: 3, fn: minus, args: [2] }, 5)).toHaveLength(1);
   expect(match({ pat: 3, fn: minus, args: [2] }, 6)).toHaveLength(0);
+  expect(match([{ pat: '?x', fn: minus, args: [2] }, '?x'], [5, 3])).toHaveLength(1);
+  expect(match([{ pat: '?x', fn: minus, args: [2] }, '?x'], [5, 5])).toHaveLength(0);
   expect(match(['?x', { pat: 2, fn: minus, args: ['?x']}], [1, 3])).toHaveLength(1);
   expect(match(['?x', { pat: 2, fn: minus, args: ['?x']}], [1, 2])).toHaveLength(0);
 });
@@ -34,7 +36,7 @@ test('{ if: p, args: [ a, b ] } matches x if p(x, a, b) is true', () => {
   expect(match([ '?x', { if: less, args: ['?x'] }], [1, 3])).toHaveLength(0);
 })
 
-test('xmatch(x, y, functionContext) works', () => {
+test('xmatch({ if: "less", args: [m] }, n, { "less": ... })) matches if n < m', () => {
   const context = { less: (a, b) => a < b };
   expect(xmatch({ if: 'less', args: [4] }, 2, context)).toHaveLength(1);
   expect(xmatch({ if: 'less', args: [4] }, 4, context)).toHaveLength(0);
@@ -43,8 +45,7 @@ test('xmatch(x, y, functionContext) works', () => {
 })
 
 test('xmatch(x, y, kb) works for isa matching', () => {
-  const kb = new KB({ concepts });
-  const context = { isa: kb.isa.bind(kb) };
-  expect(xmatch({ if: 'isa', args: ['function'] }, 'overlay', context)).toHaveLength(1);
-  expect(xmatch({ if: 'isa', args: ['function']}, 'cs111', context)).toHaveLength(0);
+  const kb = KB({ concepts });
+  expect(xmatch({ if: 'isa', args: ['function'] }, 'overlay', kb)).toHaveLength(1);
+  expect(xmatch({ if: 'isa', args: ['function']}, 'cs111', kb)).toHaveLength(0);
 })

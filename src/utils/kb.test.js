@@ -1,6 +1,6 @@
 import KB from './kb.js';
 
-const theKB = new KB({ concepts: {
+const theKB = KB({ concepts: {
     "overlay": { "absts": ["image-function"] },
     "image-function": {
       "absts": ["library-function"], "slots": { "library": "image.rkt" } 
@@ -41,14 +41,14 @@ test('ISA is transitive', () => {
 });
 
 test('Local slots are returned', () => {
-  expect(theKB.inheritFiller('ex-1', 'course')).toBe('cs111');
-  expect(theKB.inheritFiller('ex-2', 'course')).toBe('cs111');
-  expect(theKB.inheritFiller('ex-2-1', 'course')).toBe('cs211');
+  expect(theKB.filler('ex-1', 'course')).toBe('cs111');
+  expect(theKB.filler('ex-2', 'course')).toBe('cs111');
+  expect(theKB.filler('ex-2-1', 'course')).toBe('cs211');
 })
 
 test('Slots are inherited', () => {
-  expect(theKB.inheritFiller('image-function', 'library')).toBe('image.rkt');
-  expect(theKB.inheritFiller('overlay', 'library')).toBe('image.rkt');
+  expect(theKB.filler('image-function', 'library')).toBe('image.rkt');
+  expect(theKB.filler('overlay', 'library')).toBe('image.rkt');
 });
 
 test('Filler paths work for roles, including ones that fail', () => {

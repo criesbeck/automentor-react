@@ -14,7 +14,7 @@ const diagnosisRegExps = diagnosis => (
 );
 
 const conceptMatch = (pat, obj, kb) => (
-  xmatch(pat, obj, { isa: kb.isa.bind(kb)})
+  xmatch(pat, obj, kb)
 )
 
 const matchDiagnosis = (name, diagnosis, ticket, kb) => (
