@@ -12,8 +12,15 @@ const LoadScreen = ({ offering, testMode }) => {
   const [course, setCourse] = useCachedValue('cachedCourse', expiration);
   const [user, setUser] = useCachedValue('cachedUser', expiration);
 
+  /*
+    const offeringDb = firebase.database().ref(offering).child('course');
+  const snap = await offeringDb.once('value');
+  const courseName = snap.val();
+  if (!courseName) throw new Error(`Database has no course for ${offering}`);
+  */
+
   useEffect(() => {
-    return courseTracker(offering, setCourse);
+    return courseTracker('cs111', setCourse);
   }, [offering, setCourse]);
 
   return (

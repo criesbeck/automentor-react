@@ -9,14 +9,14 @@ const getOffering = () => {
   return params.get('offering') || 'EECS111-2019WI';
 };
 
-const getTestMode = () => window.location.hostname === 'localhost';
+const isTestMode = () => window.location.hostname === 'localhost';
 
 const App = () => (
   <Section>
     <Container>
       <Column.Group>
         <Column size={10} offset={1}>
-          <LoadScreen offering={ getOffering() } testMode={ getTestMode() } />
+          <LoadScreen offering={ getOffering() } testMode={ isTestMode() } />
         </Column>
       </Column.Group>
     </Container>

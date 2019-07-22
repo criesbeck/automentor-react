@@ -21,7 +21,7 @@ const Exercise = ({ exercise, exercises, setExercise }) => {
               <Select.Option value=''>Select an exercise...</Select.Option>
               {
                 Object.entries(exercises).map(([id, exercise]) => 
-                  <Select.Option key={id} value={id}>{exercise.name}</Select.Option>
+                  <Select.Option key={id} value={id}>{exercise.title}</Select.Option>
                 )
               }
             </Select>

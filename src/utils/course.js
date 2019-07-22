@@ -8,12 +8,12 @@ const addMember = async ({ uid, displayName, email, role = ''} ) => {
   } catch (exc) {
     alert(`Could not add ${uid}: ${displayName} to ${dbName} -- ${exc}`);
   }
-}
+};
 
-// starts listening, returns function to stop listening
-const dbTracker = (offering, child, handler) => {
+// starts listening for offering membership changes, returns function to stop listening
+const membersTracker = (offering, handler) => {
   dbName = offering;
-  db = firebase.database().ref(offering).child(child);
+  db = firebase.database().ref(offering).child('members');
   const listener = snap => {
     if (snap.val()) handler(snap.val())
   };
@@ -21,7 +21,14 @@ const dbTracker = (offering, child, handler) => {
   return () => db.off('value', listener);
 };
 
-const courseTracker = (offering, handler) => dbTracker(offering, 'course', handler);
-const membersTracker = (offering, handler) => dbTracker(offering, 'members', handler);
+// starts listening for course exercise changes, returns function to stop listening
+const courseTracker = (courseName, handler) => {
+  const courseDb = firebase.database().ref(courseName);
+  const listener = snap => {
+    if (snap.val()) handler(snap.val())
+  };
+  courseDb.on('value', listener, (error) => alert(error));
+  return () => courseDb.off('value', listener);
+};
 
 export { addMember, courseTracker, membersTracker };

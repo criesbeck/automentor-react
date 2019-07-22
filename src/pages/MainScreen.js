@@ -23,7 +23,7 @@ const MainScreen = ({ user, setUser, course }) => {
 
   return (
     <React.Fragment>
-      <Banner user={user} course={course} signOut={signOut} />
+      <Banner user={user} course={course.title} signOut={signOut} />
       <TicketList user={ user } selectTicket ={ selectTicket } />
       {
         !ticketState 
@@ -37,7 +37,7 @@ const MainScreen = ({ user, setUser, course }) => {
 MainScreen.propTypes = {
   user: PropTypes.object.isRequired,
   setUser: PropTypes.func.isRequired,
-  course: PropTypes.string.isRequired
+  course: PropTypes.object.isRequired
 };
 
 export default MainScreen;

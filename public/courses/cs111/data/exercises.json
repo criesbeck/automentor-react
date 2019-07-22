@@ -1,0 +1,163 @@
+{
+  "name": "cs111",
+  "title": "Fundamentals of Computer Programming",
+  "exercises": {
+    "exercise_0": {
+      "title": "Exercise 0: Getting acquainted with Racket",
+      "level": "intermediate",
+      "requires": ["2htdp/image"],
+      "defines": [
+        "a-red-square",
+        "a-blue-circle",
+        "outlined-square",
+        "outlined-circle",
+        "row-of-squares",
+        "column-of-squares",
+        "nested-squares",
+        "rotated-squares",
+        "flag-of-chicago"
+      ]
+    },
+    "exercise_1": {
+      "title": "Exercise 1: Generating Iterated Images",
+      "level": "intermediate",
+      "requires": ["2htdp/image"],
+      "defines": [
+        "question-1a",
+        "question-1b",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "swatch",
+        "swatch-grid",
+        "bullseye/simple",
+        "bullseye/color"
+      ]
+    },
+    "exercise_2": {
+      "title": "Exercise 2: A Music Library",
+      "level": "intermediate",
+      "files": ["exercise_2.rkt", "remove_duplicates.rkt"],
+      "defines": [
+        "all-titles",
+        "all-artists",
+        "all-genres",
+        "artist-albums",
+        "artist-genres",
+        "artist-is-versatile?",
+        "versatile-artists",
+        "artist-album-counts",
+        "genre-album-counts"
+      ]
+    },
+    "exercise_3": {
+      "title": "Exercise 3: Great Times with Recursion",
+      "level": "intermediate",
+      "readings": ["exercise_3.pdf", "exercise_3_hints.pdf"],
+      "requires": ["2htdp/image"],
+      "files": ["iterated_images.rkt"],
+      "defines": [
+        "multiply-list",
+        "my-iterated-overlay",
+        "iterated-any",
+        "count-tree",
+        "sum-tree",
+        "max-tree",
+        "depth-tree",
+        "multiply-list/iter",
+        "iterated-overlay/iter",
+        "iterated-any/iter"
+      ]
+    },
+    "exercise_4": {
+      "title": "Exercise 4: Recursion on Trees",
+      "level": "intermediate",
+      "defines": [
+        "ancestors-names-",
+        "ancestors-names-2",
+        "related?",
+        "list-contents",
+        "lookup"
+      ]
+    },
+    "exercise_5": {
+      "title": "Exercise 5: A Simple Video Game",
+      "level": "advanced",
+      "requires": ["2htdp/image", "2htdp/universe"],
+      "files": ["define_struct.rkt"],
+      "defines": [
+        "on-left-press",
+        "on-left-release",
+        "on-right-press",
+        "on-right-release",
+        "on-up-press",
+        "on-up-release",
+        "firing-engines?",
+        "update-player!",
+        "on-space-press",
+        "update-missile!"
+      ]
+    },
+    "exercise_6": {
+      "title": "Exercise 6: Your Computer’s File System",
+      "level": "advanced",
+      "files": ["file_operations.rkt"],
+      "defines": [
+        "backup!",
+        "count-files",
+        "directory-size",
+        "search-directory",
+        "filter-directory",
+        "find-file-type",
+        "file-type-disk-usage"
+      ]
+    },
+    "exercise_7": {
+      "title": "Exercise 7: Asteroids Redux",
+      "level": "advanced",
+      "requires": ["2htdp/image", "2htdp/universe"],
+      "files": ["define_struct.rkt"],
+      "defines": [
+        "update! player",
+        "render player",
+        "radius player",
+        "render asteroid",
+        "radius asteroid",
+        "update! missile",
+        "render missile",
+        "radius missile",
+        "update! heat seeker missile",
+        "render heat seeker missile",
+        "radius heat seeker missile",
+        "update! UFO",
+        "render UFO",
+        "radius UFO"
+      ]
+    },
+    "snake": {
+      "title": "Final Exercise: Snake",
+      "level": "advanced",
+      "files": ["snake_lib.rkt"],
+      "defines": [
+        "add-food",
+        "change-direction",
+        "game-score",
+        "game-over?",
+        "advance-game"
+      ]
+    },
+    "extra_credit": {
+      "title": "Extra Credit",
+      "level": "intermediate",
+      "readings": [],
+      "defines": [
+        "filter-map",
+        "lookup",
+        "execute",
+        "while",
+        "sum-list"
+      ]
+    }
+  }
+}

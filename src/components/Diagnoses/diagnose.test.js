@@ -1,7 +1,7 @@
 import KB from 'utils/kb.js';
 import tests from './tests.json';
 import concepts from 'data/concepts.json';
-import course from 'data/sampleCourse.json';
+import offering from 'data/EECS111-2019WI.json';
 import diagnoses from 'data/diagnoses.json';
 import { diagnose } from './diagnose';
 import { xmatch } from 'utils/matcher';
@@ -9,10 +9,10 @@ import { xmatch } from 'utils/matcher';
 test('test data exists and is self-consistent', () => {
   expect(concepts).toBeDefined();
 
-  expect(course).toBeDefined();
+  expect(offering).toBeDefined();
   
   // there are samples
-  const samples = course['EECS111-2019WI'].tickets;
+  const samples = offering['EECS111-2019WI'].tickets;
   expect(samples).toBeDefined();
   const snames = Object.keys(samples);
   expect(snames.length).toBeGreaterThan(1);
@@ -45,7 +45,7 @@ test('all expected diagnoses are found', () => {
   const conceptMatch = (pat, obj, kb) => (
     xmatch(pat, obj, { isa: kb.isa.bind(kb) })
   );
-  const samples = course['EECS111-2019WI'].tickets;
+  const samples = offering['EECS111-2019WI'].tickets;
   Object.entries(samples).forEach(([sname, sample]) => {
     const expected = tests[sname].diagnoses;
     expect(expected).toBeDefined();

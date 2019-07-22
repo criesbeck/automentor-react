@@ -26,7 +26,17 @@ const getTickets = async () => {
   return Object.entries(snap.val() || {});
 };
 
-const ticketSummary  = ticket => (
+const shortenId = exerciseId => (
+  exerciseId.replace(/exercise_/, 'Ex ')
+);
+
+const ticketLabel = ticket => (
+  ticket.exercise
+  ? `${shortenId(ticket.exercise)}: ${ticket.define}`
+  : ''
+);
+
+const ticketSummary = ticket => (
   ticket.blocks[0].text
 )
 
@@ -47,4 +57,5 @@ const updateTicket = async (id, ticket) => {
   }
 };
 
-export { addTimestamp, cloneTicket, emptyTicket, getTicket, getTickets, ticketDb, ticketSummary, ticketTime, updateTicket };
+export { addTimestamp, cloneTicket, emptyTicket, getTicket, getTickets, 
+  ticketDb, ticketLabel, ticketSummary, ticketTime, updateTicket };

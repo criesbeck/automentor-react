@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import 'rbx/index.css';
 import { Button, Content, Control, Field, Table } from 'rbx';
-import { emptyTicket, ticketDb, ticketSummary, ticketTime } from '../utils/tickets';
+import { emptyTicket, ticketDb, ticketLabel, ticketSummary, ticketTime } from '../utils/tickets';
 
 const TicketRow = ({ ticket, select, user } ) => (
   <Table.Row>
     <Table.Cell>{ticketTime(ticket)}</Table.Cell>
     { user.role === 'mentor' && <Table.Cell>{ticket.author}</Table.Cell> }
-    <Table.Cell>{ticket.exercise}</Table.Cell>
+    <Table.Cell>{ticketLabel(ticket)}</Table.Cell>
     <Table.Cell>
       <Content as="a" href="#ticket-editor" onClick={ select }>
         {ticketSummary(ticket)}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Divider, Level, Column } from 'rbx';
+import { Card, Divider, Level, Column } from 'rbx';
 import Diagnoses from 'components/Diagnoses';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
@@ -22,12 +22,20 @@ const SampleSource = ({ url }) => (
   : null
 );
 
+const Viewer = ({ title, url }) => (
+  <Card>
+    <Card.Header>{title}</Card.Header>
+    <Card.Content>
+      <iframe title={title} src={ url } style={ { height: '10em', width: '100%' } } />
+    </Card.Content>
+  </Card>
+);
+
 const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
   const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
   const kb = KB({ concepts, diagnoses });
-  const exNames = kb.search(['exercise'], { course });
-  const exercises = kb.toObject(exNames, ['name']);
+  const exercises = course.exercises;
 
    // for highlighting matches
    const [ pattern, setPattern ] = useState(null);
@@ -56,6 +64,11 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
     <Column.Group>
       <Column size={ ifMentor(8, 10) }>
         <TicketData ticket={ ticket } selectBlock={ selectBlock }  highlighter={ highlighter } />
+        {
+          user.role === 'mentor' && ticket.url
+          ? <SampleSource url={ticket.url} /> 
+          : null
+        }
         <ResponseEditor labels={ labels } block={ block } exercises={ exercises } ticket={ ticket }
           setTicketState= { setTicketState }
           ticketSubmitHandler={ ticketSubmitHandler } user={ user } />
@@ -66,7 +79,7 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
             <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
               <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
-              {ticket.url ? <SampleSource url={ticket.url} /> : null}
+              <Viewer url="assets/Lecture 3 - Graphics language.pdf#page=4" />
             </React.Fragment>
           </Column>
         )
@@ -77,7 +90,7 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
 
 TicketUpdater.propTypes = {
   user: PropTypes.object.isRequired,
-  course: PropTypes.string.isRequired,
+  course: PropTypes.object.isRequired,
   ticketState: PropTypes.object.isRequired,
   setTicketState: PropTypes.func.isRequired
 };
