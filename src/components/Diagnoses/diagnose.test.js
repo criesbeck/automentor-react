@@ -12,7 +12,7 @@ test('test data exists and is self-consistent', () => {
   expect(offering).toBeDefined();
   
   // there are samples
-  const samples = offering['EECS111-2019WI'].tickets;
+  const samples = offering.tickets;
   expect(samples).toBeDefined();
   const snames = Object.keys(samples);
   expect(snames.length).toBeGreaterThan(1);
@@ -45,7 +45,7 @@ test('all expected diagnoses are found', () => {
   const conceptMatch = (pat, obj, kb) => (
     xmatch(pat, obj, { isa: kb.isa.bind(kb) })
   );
-  const samples = offering['EECS111-2019WI'].tickets;
+  const samples = offering.tickets;
   Object.entries(samples).forEach(([sname, sample]) => {
     const expected = tests[sname].diagnoses;
     expect(expected).toBeDefined();
