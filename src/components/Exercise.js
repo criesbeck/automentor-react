@@ -1,39 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Column, Control, Field, Select } from 'rbx';
+import { Column, Content, Icon } from 'rbx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import ExerciseModal from 'components/ExerciseModal';
 
 const Exercise = ({ exercise, exercises, setExercise }) => {
+  const [modalOpen, setModalOpen] = useState( false );
+  const title = exercises[exercise.id].title;
   
-  const changeHandler = (event) => {
-    const id = event.target.value;
-    if (id) {
-      setExercise(id);
+  const reply = (id, define) => {
+    setModalOpen(false);
+    if (id && define) {
+      setExercise({ id, define });
     }
   };
 
   return (
     <Column offset={2}>
-      <Field>
-        <Control>
-          <Select.Container>
-            <Select name="exercise" onChange={changeHandler} value={exercise}>
-              <Select.Option value=''>Select an exercise...</Select.Option>
-              {
-                Object.entries(exercises).map(([id, exercise]) => 
-                  <Select.Option key={id} value={id}>{exercise.title}</Select.Option>
-                )
-              }
-            </Select>
-          </Select.Container>
-        </Control>
-      </Field>
+      <Content>
+        {title}: {exercise.define}
+        <Icon onClick={ () => setModalOpen(true) }>
+          <FontAwesomeIcon icon={ faEdit } />
+        </Icon>
+      </Content>
+      <ExerciseModal isOpen={ modalOpen } reply={ reply } 
+         exercise={ exercise } exercises={ exercises }
+      />
     </Column>
-  );
+  )
 };
 
 Exercise.propTypes = {
-  exercise: PropTypes.string,
+  exercise: PropTypes.object.isRequired,
   exercises: PropTypes.object.isRequired,
   setExercise: PropTypes.func.isRequired
 };

@@ -13,7 +13,11 @@ const cloneTicket = ticket => (
 
 const emptyTicket = (author) => ({
   author,
-  blocks: []
+  blocks: [],
+  exercise: {
+    id: '?',
+    define: 'Question about error'
+  }
 });
 
 const getTicket = async id => {
@@ -32,7 +36,7 @@ const shortenId = exerciseId => (
 
 const ticketLabel = ticket => (
   ticket.exercise
-  ? `${shortenId(ticket.exercise)}: ${ticket.define}`
+  ? `${shortenId(ticket.exercise.id)}: ${ticket.exercise.define}`
   : ''
 );
 

@@ -23,7 +23,7 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
   const setExercise = exercise => {
     setTicketState(({ id, ticket }) => (
       { id,
-        ticket: { ...ticket, exercise: exercise }
+        ticket: { ...ticket, exercise }
       }
     ));
   };

@@ -2,6 +2,13 @@
   "name": "cs111",
   "title": "Fundamentals of Computer Programming",
   "exercises": {
+    "?": {
+      "title": "General questions",
+      "defines": [
+        "Question about error",
+        "Question about concept"
+      ]
+    },
     "exercise_0": {
       "title": "Exercise 0: Getting acquainted with Racket",
       "level": "intermediate",

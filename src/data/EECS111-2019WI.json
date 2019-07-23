@@ -75,8 +75,10 @@
           "timestamp": 1561515054204
         }
       ],
-      "exercise" : "exercise_0",
-      "define": "nested-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "nested-squares"
+      },
       "timestamp": 1561515063277
     },
     "-LiFHMkIb6B6XwVP2Tcu": {
@@ -95,8 +97,10 @@
           "timestamp": 1561493832542
         }
       ],
-      "exercise": "exercise_0",
-      "define": "nested-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "nested-squares"
+      },
       "timestamp": 1561558634739
     },
     "-LiFbVqBoSl5Tk4ZmIDs": {
@@ -109,15 +113,19 @@
           "timestamp": 1561499401895
         }
       ],
-      "exercise" : "exercise_0",
-      "define": "row-of-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "row-of-squares"
+      },
       "timestamp": 1561515000917
     },
     "sample-1": {
       "timestamp": 1516428000000,
       "author": "cln484",
-      "exercise": "exercise_0",
-      "define": "row-of-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "row-of-squares"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=54",
       "blocks": [
         {
@@ -146,8 +154,10 @@
     "sample-2": {
       "timestamp": 1516428000000,
       "author": "sat432",
-      "exercise": "exercise_0",
-      "define": "nested-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "nested-squares"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=71",
       "blocks": [
         {
@@ -169,8 +179,10 @@
     "sample-3": {
       "timestamp": 1516773600000,
       "author": "reu989",
-      "exercise" : "exercise_1",
-      "define": "question-5",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "question-5"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=76",
       "blocks": [
         {
@@ -199,8 +211,10 @@
     "sample-4": {
       "timestamp": 1516514400000,
       "author": "zil046",
-      "exercise": "exercise_0",
-      "define": "flag-of-chicago",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "flag-of-chicago"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=61",
       "blocks": [
         {
@@ -229,8 +243,10 @@
     "sample-5": {
       "timestamp": 1516773603000,
       "author": "cln484",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=81",
       "blocks": [
         {
@@ -259,8 +275,10 @@
     "sample-6": {
       "timestamp": 1516946400000,
       "author": "cln484",
-      "exercise": "exercise_3",
-      "define": "iterated-overlay/iter",
+      "exercise": {
+        "id": "exercise_3",
+        "define": "iterated-overlay/iter"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
       "blocks": [
         {
@@ -282,8 +300,10 @@
     "sample-7": {
       "timestamp": 1517119200000,
       "author": "nab758",
-      "exercise": "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=102",
       "blocks": [
         {
@@ -298,8 +318,10 @@
     "sample-8": {
       "timestamp": 1517205600000,
       "author": "zil046",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=114",
       "blocks": [
         {
@@ -321,8 +343,10 @@
     "sample-9": {
       "timestamp": 1517810400000,
       "author": "cln484",
-      "exercise" : "exercise_2",
-      "define": "all-titles",
+      "exercise": {
+        "id": "exercise_2",
+        "define": "all-titles"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=147",
       "blocks": [
         {
@@ -344,8 +368,10 @@
     "sample-10": {
       "timestamp": 1518069600000,
       "author": "sat432",
-      "exercise": "exercise_3",
-      "define": "iterated-overlay/iter",
+      "exercise": {
+        "id": "exercise_3",
+        "define": "iterated-overlay/iter"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=188",
       "blocks": [
         {
@@ -360,8 +386,10 @@
     "sample-11": {
       "timestamp": 1518415200000,
       "author": "sat432",
-      "exercise" : "exercise_3",
-      "define": "sum-tree",
+      "exercise": {
+        "id": "exercise_3",
+        "define": "sum-tree"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=230",
       "blocks": [
         {
@@ -390,8 +418,10 @@
     "sample-12": {
       "timestamp": 1518588000000,
       "author": "reu989",
-      "exercise" : "exercise_3",
-      "define": "sum-tree",
+      "exercise": {
+        "id": "exercise_3",
+        "define": "sum-tree"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=239",
       "blocks": [
         {
@@ -413,8 +443,10 @@
     "sample-13": {
       "timestamp": 1516687200000,
       "author": "zil046",
-      "exercise" : "exercise_1",
-      "define": "question-5",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "question-5"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=70",
       "blocks": [
         {
@@ -429,8 +461,10 @@
     "sample-14": {
       "timestamp": 1517637600000,
       "author": "cln484",
-      "exercise" : "exercise_2",
-      "define": "artist-is-versatile?",
+      "exercise": {
+        "id": "exercise_2",
+        "define": "artist-is-versatile?"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=139",
       "blocks": [
         {
@@ -445,7 +479,10 @@
     "sample-15": {
       "timestamp": 1517983200000,
       "author": "reu989",
-      "exercise": null,
+      "exercise": {
+        "id": "?",
+        "define": "Question about concept"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=177",
       "blocks": [
         {
@@ -460,8 +497,10 @@
     "sample-16": {
       "timestamp": 1515996000000,
       "author": "reu989",
-      "exercise" : "exercise_0",
-      "define": "row-of-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "row-of-squares"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=27",
       "blocks": [
         {
@@ -476,8 +515,10 @@
     "sample-17": {
       "timestamp": 1516428000000,
       "author": "nab758",
-      "exercise" : "exercise_0",
-      "define": "rotated-squares",
+      "exercise": {
+        "id": "exercise_0",
+        "define": "rotated-squares"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=52",
       "blocks": [
         {
@@ -492,8 +533,10 @@
     "sample-18": {
       "timestamp": 1516773600000,
       "author": "cln484",
-      "exercise" : "exercise_1",
-      "define": "question-5",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "question-5"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=78",
       "blocks": [
         {
@@ -508,8 +551,10 @@
     "sample-19": {
       "timestamp": 1516773604000,
       "author": "nab758",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=79",
       "blocks": [
         {
@@ -524,8 +569,10 @@
     "sample-20": {
       "timestamp": 1516946400000,
       "author": "sat432",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=95",
       "blocks": [
         {
@@ -540,8 +587,10 @@
     "sample-21": {
       "timestamp": 1517032800000,
       "author": "cln484",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=98",
       "blocks": [
         {
@@ -556,8 +605,10 @@
     "sample-22": {
       "timestamp": 1517032807000,
       "author": "zil046",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=99",
       "blocks": [
         {
@@ -572,8 +623,10 @@
     "sample-23": {
       "timestamp": 1517119203000,
       "author": "nab758",
-      "exercise" : "exercise_1",
-      "define": "swatch",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "swatch"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=100",
       "blocks": [
         {
@@ -588,8 +641,10 @@
     "sample-24": {
       "timestamp": 1517119204000,
       "author": "reu989",
-      "exercise" : "exercise_1",
-      "define": "question-2",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "question-2"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=103",
       "blocks": [
         {
@@ -604,8 +659,10 @@
     "sample-25": {
       "timestamp": 1517637604000,
       "author": "zil046",
-      "exercise" : "exercise_2",
-      "define": "artist-genres",
+      "exercise": {
+        "id": "exercise_2",
+        "define": "artist-genres"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=136",
       "blocks": [
         {
@@ -627,8 +684,10 @@
     "sample-26": {
       "timestamp": 1517724005000,
       "author": "reu989",
-      "exercise" : "exercise_2",
-      "define": "artist-album-counts",
+      "exercise": {
+        "id": "exercise_2",
+        "define": "artist-album-counts"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=142",
       "blocks": [
         {
@@ -643,8 +702,10 @@
     "sample-27": {
       "timestamp": 1517810406000,
       "author": "reu989",
-      "exercise" : "exercise_2",
-      "define": "artist-albums",
+      "exercise": {
+        "id": "exercise_2",
+        "define": "artist-albums"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=148",
       "blocks": [
         {
@@ -659,8 +720,10 @@
     "sample-28": {
       "timestamp": 1518501600000,
       "author": "cln484",
-      "exercise" : "exercise_3",
-      "define": "count-tree",
+      "exercise": {
+        "id": "exercise_3",
+        "define": "count-tree"
+      },
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=237",
       "blocks": [
         {
@@ -682,8 +745,10 @@
     "sample-29": {
       "timestamp": 1516428000000,
       "author": "sat432",
-      "exercise" : "exercise_1",
-      "define": "nested-squares",
+      "exercise": {
+        "id": "exercise_1",
+        "define": "nested-squares"
+      },
       "url": null,
       "blocks": [
         {
@@ -712,7 +777,10 @@
     "sample-30": {
       "timestamp": 1516428000000,
       "author": "cln484",
-      "exercise": null,
+      "exercise": {
+        "id": "?",
+        "define": "Question about error"
+      },
       "url": null,
       "blocks": [
         {
@@ -741,7 +809,10 @@
     "sample-31": {
       "timestamp": 1516428000000,
       "author": "zil046",
-      "exercise": null,
+      "exercise": {
+        "id": "?",
+        "define": "Question about error"
+      },
       "url": null,
       "blocks": [
         {
