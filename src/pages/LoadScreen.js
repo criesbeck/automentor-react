@@ -4,24 +4,26 @@ import { Box, Notification } from 'rbx';
 import LoggedOut from 'pages/LoggedOut';
 import MainScreen from 'pages/MainScreen';
 import TestLogin from 'pages/TestLogin';
-import { courseTracker } from 'utils/course';
+import { courseTracker, offeringCourse } from 'utils/course';
 import { useCachedValue } from 'hooks/useCachedValue';
 
 const LoadScreen = ({ offering, testMode }) => {
   const expiration = testMode ? 0 : 24 * 60 * 60 * 1000;
+  const [courseName, setCourseName] = useCachedValue('cachedCourseName', expiration);
   const [course, setCourse] = useCachedValue('cachedCourse', expiration);
   const [user, setUser] = useCachedValue('cachedUser', expiration);
 
-  /*
-    const offeringDb = firebase.database().ref(offering).child('course');
-  const snap = await offeringDb.once('value');
-  const courseName = snap.val();
-  if (!courseName) throw new Error(`Database has no course for ${offering}`);
-  */
+  useEffect(() => {
+    const getCourseName = async (offering) => {
+      const name = await offeringCourse(offering);
+      setCourseName(name);
+    };
+    getCourseName(offering);
+  }, [offering, setCourseName]);
 
   useEffect(() => {
-    return courseTracker('cs111', setCourse);
-  }, [offering, setCourse]);
+    if (courseName) return courseTracker(courseName, setCourse);
+  }, [courseName, setCourse]);
 
   return (
     <>

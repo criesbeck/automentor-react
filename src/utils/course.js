@@ -10,6 +10,12 @@ const addMember = async ({ uid, displayName, email, role = ''} ) => {
   }
 };
 
+const offeringCourse = async (offering) => {
+  const db = firebase.database().ref(offering).child('course');
+  const snap = await db.once('value');
+  return snap.val();
+}
+
 // starts listening for offering membership changes, returns function to stop listening
 const membersTracker = (offering, handler) => {
   dbName = offering;
@@ -31,4 +37,4 @@ const courseTracker = (courseName, handler) => {
   return () => courseDb.off('value', listener);
 };
 
-export { addMember, courseTracker, membersTracker };
+export { addMember, courseTracker, membersTracker, offeringCourse };

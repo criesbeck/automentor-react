@@ -20,7 +20,6 @@ const setCachedValue = (key, value) => {
 
 const useCachedValue = (key, expiration) => {
   const [value, setValue] = useState(getCachedValue(key, expiration));
-
   useEffect(() => {
     setCachedValue(key, value);
   }, [key, value]);
