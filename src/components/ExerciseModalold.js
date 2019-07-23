@@ -2,7 +2,7 @@ import React, { createRef, useEffect } from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Button, Content, Message, Heading } from 'rbx';
+import { Menu } from 'rbx';
 
 const DefineItem = ({ active, reply, define }) => {
   const ref = createRef();
@@ -14,18 +14,18 @@ const DefineItem = ({ active, reply, define }) => {
   });
 
   return (
-    <Button ref={ ref } color={ active ? 'success' : null }
+    <Menu.List.Item key={define} ref={ ref } active={ active }
+      style={{ padding: '0.1em' }}
       onClick={() => reply()}>
       {define}
-    </Button>
+    </Menu.List.Item>
   );
 };
 
 const ExerciseItem = ({ isActive, reply, id, exercise }) => (
-  <Message color="light">
-    <Message.Header>{exercise.title}</Message.Header>
-    <Message.Body>
-      <Button.Group>
+  <>
+    <Menu.Label>{exercise.title}</Menu.Label>
+    <Menu.List>
       { 
         exercise.defines.map(define => (
           <DefineItem key={ define } define={ define }
@@ -33,39 +33,47 @@ const ExerciseItem = ({ isActive, reply, id, exercise }) => (
           />
         ))
       }
-      </Button.Group>
-    </Message.Body>
-  </Message>
+    </Menu.List>
+  </>
 );
 
 const ExerciseModal = ({ isOpen, reply, exercise, exercises }) => {
-
-  const title = exercises[exercise.id].title;
 
   const isActive = (id, define) => (
     exercise && exercise.define === define && exercise.id === id
   );
 
+  const exerciseRefs = exercise => (
+    exercise.defines.reduce((refs, define) => ({
+      ...refs, [define]: createRef()
+    }), {})
+  );
+
+  const refs = Object.entries(exercises).reduce((refs, [id, exercise]) => ({
+    ...refs, [id]: exerciseRefs(exercise)
+    }), {}
+  );
+
+  useEffect(() => {
+    const ref = refs[exercise.id][exercise.define];
+    if (ref && ref.current) {
+      ref.current.scrollIntoView()
+    }
+  }, [refs, exercise]);
+
   return (
     <Modal appElement={document.getElementById('root')} isOpen={ isOpen }
       onRequestClose={ () => reply() }
-      style={ { 
+      style={ {
+        content: { top: '20%', left: '20%', height: '30%', width: '60%' }, 
         overlay: { zIndex: 10 } 
       } }>
-      <Content>
-        <Heading>Current thread topic: { title }: { exercise.define }</Heading>
-      </Content>
-      <Button.Group style={{ height: '20em', overflow: 'scroll' }}>
-        { 
-          Object.entries(exercises).map(([id, exercise]) => (
-            <ExerciseItem key={ id } id={ id } exercise={ exercise } 
-              isActive={ isActive } reply={ reply } />
-          )) 
-        }
-      </Button.Group>
-      <Button.Group>
-        <Button onClick={ ( ) => reply() }>Cancel</Button>
-      </Button.Group>
+      <Menu style={{ height: '20em', overflow: 'scroll' }}>
+        { Object.entries(exercises).map(([id, exercise]) => (
+          <ExerciseItem key={ id } id={ id } exercise={ exercise } 
+            isActive={ isActive } reply={ reply } refs={ refs } />
+        )) }
+      </Menu>
     </Modal>
   );
 };
