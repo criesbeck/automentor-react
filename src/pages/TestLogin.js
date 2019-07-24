@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
 import {Column, Select } from 'rbx';
-import { membersTracker } from 'utils/course';
 import { useCachedValue } from 'hooks/useCachedValue';
+import { useFirebase } from 'hooks/useFirebase';
 
 // sort by last, first, not at all robust
 const reverseName = name => {
@@ -38,9 +38,7 @@ const SignIn = ({ members, signIn }) => (
 const TestLogin = ({ offering, setUser }) => {
   const [members, setMembers] = useCachedValue('cachedMembers');
 
-  useEffect(() => {
-    return membersTracker(offering, setMembers);
-  }, [offering, setMembers]);
+  useFirebase(offering ? `${offering}/members` : null, setMembers);
 
   const signIn = (user) => { 
     setUser(user);

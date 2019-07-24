@@ -6,6 +6,7 @@ import Diagnoses from 'components/Diagnoses';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
 import { updateTicket } from 'utils/tickets';
+import { useFirebaseRef } from 'hooks/useFirebase';
 import KB from 'utils/kb';
 import concepts from 'data/concepts.json';
 import diagnoses from 'data/diagnoses.json';
@@ -31,9 +32,10 @@ const Viewer = ({ title, url }) => (
   </Card>
 );
 
-const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
+const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) => {
   const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
+  const ticketRef = useFirebaseRef(`${offering}/tickets`);
   const kb = KB({ concepts, diagnoses });
   const exercises = course.exercises;
 
@@ -55,7 +57,7 @@ const TicketUpdater = ({user, course, setTicketState, ticketState }) => {
   const selectBlock = user.role === 'mentor' ? null : (block) => setBlock(block);
 
   const ticketSubmitHandler = () => {
-      updateTicket(id, ticket);
+      updateTicket(ticketRef(), id, ticket);
     };
 
   const ifMentor = (x, y = null) => user.role === 'mentor' ? x : y;

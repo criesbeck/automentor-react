@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'rbx/index.css';
 import { Button, Content, Control, Field, Table } from 'rbx';
-import { emptyTicket, ticketDb, ticketLabel, ticketSummary, ticketTime } from '../utils/tickets';
+import { emptyTicket, ticketLabel, ticketSummary, ticketTime } from '../utils/tickets';
+import { useFirebase, useFirebaseRef } from 'hooks/useFirebase';
 
 const TicketRow = ({ ticket, select, user } ) => (
   <Table.Row>
@@ -16,25 +17,24 @@ const TicketRow = ({ ticket, select, user } ) => (
   </Table.Row>
 );
 
-const TicketList = ({ user, selectTicket }) => {
+const ticketsQuery = (path, user) => (
+  user.role === 'mentor'
+  ? path
+  : { path, orderByChild: 'author', equalTo: user.uid }
+);
+
+const TicketList = ({ offering, user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
-
-  useEffect(() => {
-    const onData = snap => {
-      window.scrollTo(0, 0);
-      setTickets(snap.val() || []);
-    };
-    const ref = user.role === 'mentor' ? ticketDb : ticketDb.orderByChild('author').equalTo(user.uid);
-    ref.on('value', onData, error => alert(error));
-    return () => { ref.off('value', onData); };
-  }, [user]);
-
+  const query = ticketsQuery(`${offering}/tickets`, user);
+  useFirebase(query, setTickets);
+  const ticketRef = useFirebaseRef(`${offering}/tickets`);
+  
   const select = (id, ticket) => {
     selectTicket(id, ticket);
   };
 
   const newTicket = () => {
-    selectTicket( ticketDb.push().key, emptyTicket(user.uid));
+    selectTicket( ticketRef().push().key, emptyTicket(user.uid));
   }
   const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;
 

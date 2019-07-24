@@ -6,7 +6,7 @@ import TicketUpdater from '../components/TicketUpdater';
 import { cloneTicket } from 'utils/tickets';
 import { firebase } from 'utils/firebase';
 
-const MainScreen = ({ user, setUser, course }) => {
+const MainScreen = ({ user, setUser, offering, course }) => {
   const [ticketState, setTicketState] = useState(null);
 
   const selectTicket = (id, ticket) => {
@@ -24,11 +24,11 @@ const MainScreen = ({ user, setUser, course }) => {
   return (
     <React.Fragment>
       <Banner user={user} course={course.title} signOut={signOut} />
-      <TicketList user={ user } selectTicket ={ selectTicket } />
+      <TicketList user={ user } offering={ offering } selectTicket ={ selectTicket } />
       {
         !ticketState 
         ? null
-        : <TicketUpdater user={ user } course={ course } ticketState={ ticketState } setTicketState={ setTicketState } />
+        : <TicketUpdater user={ user } course={ course } offering={ offering } ticketState={ ticketState } setTicketState={ setTicketState } />
       }
     </React.Fragment>
   );

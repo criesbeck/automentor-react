@@ -45,7 +45,7 @@ const BlockEditor = React.forwardRef(({user, block, submitBlockHandler}, ref) =>
           <Field>
             <Control>
               <Button color="outlined" onClick={submitBlock}>
-                Save field
+                Add to report
               </Button>
             </Control>
           </Field>

@@ -2,7 +2,7 @@ import React from 'react';
 import 'rbx/index.css';
 import { Column, Container, Section } from 'rbx';
 import LoadScreen from 'pages/LoadScreen';
-import 'firebase';
+
 
 const getOffering = () => {
   const params = new URLSearchParams(document.location.search.substring(1));
