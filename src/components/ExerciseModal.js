@@ -49,22 +49,23 @@ const ExerciseModal = ({ isOpen, reply, exercise, exercises }) => {
   return (
     <Modal appElement={document.getElementById('root')} isOpen={ isOpen }
       onRequestClose={ () => reply() }
-      style={ { 
+      style={ {
+        content: { top: '20%', left: '10%', height: '60%', width: '80%' }, 
         overlay: { zIndex: 10 } 
       } }>
       <Content>
         <Heading>Current thread topic: { title }: { exercise.define }</Heading>
+        <Button.Group>
+          <Button onClick={ ( ) => reply() }>Cancel</Button>
+        </Button.Group>
       </Content>
-      <Button.Group style={{ height: '20em', overflow: 'scroll' }}>
+      <Button.Group style={{ height: '80%', overflow: 'scroll' }}>
         { 
           Object.entries(exercises).map(([id, exercise]) => (
             <ExerciseItem key={ id } id={ id } exercise={ exercise } 
               isActive={ isActive } reply={ reply } />
           )) 
         }
-      </Button.Group>
-      <Button.Group>
-        <Button onClick={ ( ) => reply() }>Cancel</Button>
       </Button.Group>
     </Modal>
   );
