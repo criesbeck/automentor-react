@@ -145,6 +145,8 @@ const fnLookup = (x) => {
   if (typeof x === 'function') return x
   const fn = functions[x]
   if (typeof fn === 'function') return fn
+  console.log(functions)
+  if (fn === undefined) throw new Error(`${x} is undefined`)
   throw new Error(`${x} => ${fn} which is not a function`)
 }
 

@@ -81,7 +81,7 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
             <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
               <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
-              <Viewer url="assets/Lecture 3 - Graphics language.pdf#page=4" />
+              <Viewer url="courses/cs111/documents/Lecture 3 - Graphics language.pdf#page=4" />
             </React.Fragment>
           </Column>
         )
