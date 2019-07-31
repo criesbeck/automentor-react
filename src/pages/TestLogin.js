@@ -38,7 +38,7 @@ const SignIn = ({ members, signIn }) => (
 const TestLogin = ({ offering, setUser }) => {
   const [members, setMembers] = useCachedValue('cachedMembers');
 
-  useFirebase(offering ? `${offering}/members` : null, setMembers);
+  useFirebase(offering ? `offerings/${offering}/members` : null, setMembers);
 
   const signIn = (user) => { 
     setUser(user);

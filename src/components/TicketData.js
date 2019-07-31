@@ -31,8 +31,8 @@ const FilledField = ({ block, selectBlock, highlighter }) => (
 );
 
 const TicketData = ({ ticket, selectBlock, highlighter  }) => {
-  const boxes = (ticket.blocks || []).map(block => (
-    <FilledField key={ block.timestamp } block={ block }
+  const boxes = (ticket.blocks || []).map((block, index) => (
+    <FilledField key={ index } block={ block }
       selectBlock={ selectBlock } highlighter={ highlighter } />
   ));
 

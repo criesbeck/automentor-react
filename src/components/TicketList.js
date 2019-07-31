@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'rbx/index.css';
 import { Button, Content, Control, Field, Table } from 'rbx';
-import { emptyTicket, ticketLabel, ticketSummary, ticketTime } from '../utils/tickets';
+import { emptyTicket, ticketLabel, ticketSummary, ticketTime } from 'utils/tickets';
 import { useFirebase, useFirebaseRef } from 'hooks/useFirebase';
 
 const TicketRow = ({ ticket, select, user } ) => (
@@ -17,17 +17,25 @@ const TicketRow = ({ ticket, select, user } ) => (
   </Table.Row>
 );
 
-const ticketsQuery = (path, user) => (
-  user.role === 'mentor'
-  ? path
-  : { path, orderByChild: 'author', equalTo: user.uid }
+const ticketsPath = offering => (
+  `offerings/${offering}/tickets`
 );
+
+const ticketsQuery = (offering, user) => {
+  const path = ticketsPath(offering);
+  return (
+    user.role === 'mentor'
+    ? path
+    : { path, orderByChild: 'author', equalTo: user.uid }
+  );
+}
 
 const TicketList = ({ offering, user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
-  const query = ticketsQuery(`${offering}/tickets`, user);
+  const query = ticketsQuery(offering, user);
   useFirebase(query, setTickets);
-  const ticketRef = useFirebaseRef(`${offering}/tickets`);
+  // for adding new tickets
+  const ticketRef = useFirebaseRef(ticketsPath);
   
   const select = (id, ticket) => {
     selectTicket(id, ticket);

@@ -17,7 +17,6 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
         ticket: { ...ticket, blocks: [...ticket.blocks, block] }
       }
     ));
-    block = null;
   };
 
   const setExercise = exercise => {

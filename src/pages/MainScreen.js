@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Banner from 'components/Banner';
-import TicketList from '../components/TicketList';
-import TicketUpdater from '../components/TicketUpdater';
+import TicketList from 'components/TicketList';
+import TicketUpdater from 'components/TicketUpdater';
 import { cloneTicket } from 'utils/tickets';
 import { firebase } from 'utils/firebase';
 
