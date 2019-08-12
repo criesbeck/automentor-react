@@ -1,0 +1,854 @@
+[
+    {
+      "file": "Lecture 2 - Programming with text",
+      "items": [
+        {
+          "page": "4",
+          "summary": "Literal constants -- numbers, strings",
+          "code": "1, 7, -2.5, \"this is a string\"",
+          "notes": "Called \"names\" here"
+        },
+        {
+          "page": "5",
+          "summary": "Variables -- case-sensitive",
+          "code": "string-append, +, -, *, A, b, c, test, 1+ vs +1"
+        },
+        {
+          "page": "6",
+          "summary": "(define name value)"
+        },
+        {
+          "page": "7",
+          "summary": "Procedure calls -- +, string-append",
+          "code": "(+ 1 2), (+ 1 2 3), (string-append \"this is \" \"a test\")",
+          "notes": "Mentions + and string-append take variable # of arguments"
+        },
+        {
+          "page": "9-11",
+          "summary": "Nested calls",
+          "code": "(+1(+12)), (string-append \"this \" (string-append \"is a \" \"test\")), (square 10 \"solid\" \"blue\"), (above (square 10 \"solid\" \"blue\") (square 10 \"solid\" \"red\"))"
+        },
+        {
+          "page": "11",
+          "summary": "Not a procedure exception",
+          "code": "(2 + 2) ((+ 1 2) 2)"
+        },
+        {
+          "page": "16-19",
+          "summary": "Indentation",
+          "code": "(string-append (string-append (string-append \"this \"\r\n                                             \"is a \")\r\n                              \"tedious \")\r\n               (string-append \"example of \" \"nesting\"))"
+        },
+        {
+          "page": "20",
+          "summary": "Dr Racket UI - definition pane, interaction window, REPL"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 3 - Graphics language",
+      "items": [
+        {
+          "page": "2",
+          "summary": "require, libraries, declarations",
+          "code": "(require 2htdp/image)",
+          "notes": "equates \"your file\" with \"definition pane\""
+        },
+        {
+          "page": "3",
+          "summary": "image procedures: rectangle, square, ellipse, circle"
+        },
+        {
+          "page": "3",
+          "summary": "mode (solid, outline), color"
+        },
+        {
+          "page": "4",
+          "summary": "rectangle",
+          "code": "(rectangle 200 100 \"outline\" \"black\") (rectangle 200 100 \"solid\" \"red\"), (square 100 \"solid\" green\")"
+        },
+        {
+          "page": "5",
+          "summary": "ellipse",
+          "code": "(ellipse 200 100 \"solid\" \"blue\"), (cirle \"100\" \"outline\" \"black\")"
+        },
+        {
+          "page": "6",
+          "summary": "compositing -- overlay, underlay",
+          "code": "(overlay (square 50 \"solid\" \"blue\") (square 100 \"solid\" \"green\") (square 150 \"solid\" \"red\") (square 200 \"solid\" \"black\"))"
+        },
+        {
+          "page": "7",
+          "summary": "shifting -- overlay/offset",
+          "code": "(overlay (square 50 \"solid\" \"blue\") (square 200 \"solid\" \"black\")) vs (overlay/offset (square 50 \"solid\" \"blue\") 25 0 (square 200 \"solid\" \"black\"))"
+        },
+        {
+          "page": "8",
+          "summary": "above, beside",
+          "code": "(beside (square 100 \"solid\" \"red\") (square 100 \"solid\" \"green\") (square 100 \"solid\" \"blue\"))"
+        },
+        {
+          "page": "9",
+          "summary": "rotate",
+          "code": "(ellipse 200 50 \"solid\" \"blue\") vs (rotate 30 (ellipse 200 50 \"solid\" \"blue\"))"
+        },
+        {
+          "page": "10",
+          "summary": "scale",
+          "code": "(square 10 \"solid\" \"blue\") vs (scale 10 (square 10 \"solid\" \"blue\"))"
+        },
+        {
+          "page": "11",
+          "summary": "color names, web color names",
+          "code": "\"red\", \"green\", \"blue\", \"cyan\", \"magenta\", \"yellow\""
+        },
+        {
+          "page": "12",
+          "summary": "make-color, color",
+          "code": "(color 255 100 0), (circle 100 \"solid\" (color 255 100 0))"
+        },
+        {
+          "page": "13",
+          "summary": "rules of computation - constants, variables, procedure calls",
+          "notes": "later slides call these rules of execution"
+        },
+        {
+          "page": "14-21",
+          "summary": "square, row, grid complexity"
+        },
+        {
+          "page": "22",
+          "summary": "define to name things"
+        },
+        {
+          "page": "25-26",
+          "summary": "rules of computation - add define special form"
+        },
+        {
+          "page": "29",
+          "summary": "sequential naming",
+          "code": "(define unit (square 50 \"outline\" \"black\"))\r\n(define row (beside unit unit unit unit)) (above row row row row)"
+        },
+        {
+          "page": "31",
+          "summary": "circle grid",
+          "code": "(require 2htdp/image)\r\n(define circ-unit (circle 25\r\n\"outline\" \"black\"))\r\n(define circ-row\r\n(beside circ-unit circ-unit\r\ncirc-unit circ-unit))\r\n(above circ-row circ-row circ-row circ-row)"
+        },
+        {
+          "page": "33-36",
+          "summary": "defining procedures intro",
+          "code": "(grid (circle 25 \"outline\" \"black\"))"
+        },
+        {
+          "page": "36",
+          "summary": "(lambda (arg1 arg2 ... argn) exp)\r\n(λ (arg1 arg2 ... argn) exp)"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 4 - Compound procedures",
+      "items": [
+        {
+          "page": "2-3",
+          "summary": "rules of computation - same as previous"
+        },
+        {
+          "page": "12",
+          "summary": "defining grid procedure",
+          "code": "(define row\r\n  (λ (unit)\r\n   (beside unit unit unit unit)))\r\n(define stack\r\n  (λ (unit)\r\n   (above unit unit unit unit)))\r\n(define grid\r\n  (λ (unit)\r\n   (stack (row unit))))"
+        },
+        {
+          "page": "13",
+          "summary": "local variable names",
+          "code": "(define square (λ (n) (* n n)))\r\n\r\n(define polynomial\r\n  (λ (n)\r\n     (+ (square n) (* n 2)\r\n        4)))"
+        },
+        {
+          "page": "14-16",
+          "summary": "substitution model",
+          "code": "(polynomial 32)"
+        },
+        {
+          "page": "17",
+          "summary": "procedures as return values",
+          "code": "(define add\r\n (λ (x)\r\n  (λ (y)\r\n    (+ x y))))"
+        },
+        {
+          "page": "18",
+          "summary": "procedures as arguments",
+          "code": "(define squarish\r\n  (λ (proc)\r\n    (proc 10 10 \"outline\" \"white\")))\r\n\r\n(squarish rectangle)\r\n\r\n(squarish ellipse)"
+        },
+        {
+          "page": "19",
+          "summary": "both -- compose",
+          "code": "(define compose\r\n  (λ (p1 p2)\r\n    (λ (arg)\r\n      (p1 (p2 arg)))))\r\n\r\n(define square\r\n  (λ (n)\r\n    (* n n)))\r\n\r\n(define f (compose square sin))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 5 - Iterators and iteration",
+      "items": [
+        {
+          "page": "6",
+          "summary": "rules of computation - with define and lambda"
+        },
+        {
+          "page": "18",
+          "summary": "iterated-overlay, iterated-underlay, iterated-above, iterated-beside"
+        },
+        {
+          "page": "19",
+          "summary": "require iterated-images",
+          "code": "(require \"iterated-images.rkt\")"
+        },
+        {
+          "page": "21",
+          "summary": "iterated-overlay with rotate",
+          "code": "(iterated-overlay (λ (n) (rotate n\r\n(square 100 \"outline\" \"blue\"))) 10)"
+        },
+        {
+          "page": "26",
+          "summary": "above x 36",
+          "code": "(iterated-overlay (λ (n)\r\n(rotate (* 36 n)\r\n(square 100 \"outline\" \"blue\"))) 10)"
+        },
+        {
+          "page": "32",
+          "summary": "iterated-beside",
+          "code": "(iterated-beside boxes 10)"
+        },
+        {
+          "page": "35",
+          "summary": "zero-based counting"
+        },
+        {
+          "page": "37",
+          "summary": "(define (name inputs ...) output)",
+          "code": "(define boxes (λ (count)\r\n  (local [(define q (quotient 250 count))]\r\n    (iterated-overlay\r\n      (λ (n)\r\n        (square (* (+ n 1) q) \"solid\"\r\n                (color 0(- 250 (* n q)) 0)))\r\n        count))))"
+        },
+        {
+          "page": "38",
+          "summary": "local define defined"
+        },
+        {
+          "page": "43-44",
+          "summary": "error example -- expects procedure, given image",
+          "code": "(define row\r\n  (λ (item count)\r\n    (iterated-beside item count)))"
+        },
+        {
+          "page": "45-54",
+          "summary": "from column to grid",
+          "code": "(define grid\r\n  (λ (item columns rows)\r\n    (column (row item columns) rows)))  "
+        }
+      ]
+    },
+    {
+      "file": "Lecture 6 - Conditional expressions",
+      "items": [
+        {
+          "page": "2-3",
+          "summary": "rules of computation -- with define and local define"
+        },
+        {
+          "page": "4",
+          "summary": "conditionals",
+          "code": "(define absolute-value (λ (n)\r\n  (if (> n 0) n\r\n    (- n))))"
+        },
+        {
+          "page": "5",
+          "summary": "number?, Integer?, String? procedure?, odd?, even?, and, or, not"
+        },
+        {
+          "page": "6",
+          "summary": "boolean values"
+        },
+        {
+          "page": "7",
+          "summary": "true, false, #t, #f, #true, #false"
+        },
+        {
+          "page": "10",
+          "summary": "definition of predicate"
+        },
+        {
+          "page": "12",
+          "summary": "=, eq?, eqv?, equal?"
+        },
+        {
+          "page": "13",
+          "summary": "cond and []"
+        },
+        {
+          "page": "14",
+          "summary": "Sussman define form"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 7 - Composite data",
+      "items": [
+        {
+          "page": "6",
+          "summary": "define-struct"
+        },
+        {
+          "page": "7",
+          "summary": "album type - make-album, album? Album-title, ...",
+          "code": "(define-struct album [title artist genre])"
+        },
+        {
+          "page": "8",
+          "summary": "make-album",
+          "code": "(make-album \"Radioactivity\" \"Kraftwerk\" \"Kosmische Musik\")"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 8 - Lists",
+      "items": [
+        {
+          "page": "2-3",
+          "summary": "rules for execution - with if"
+        },
+        {
+          "page": "7",
+          "summary": "list, append"
+        },
+        {
+          "page": "8",
+          "summary": "first, second, tenth, rest"
+        },
+        {
+          "page": "9",
+          "summary": "length, list-ref"
+        },
+        {
+          "page": "10",
+          "summary": "example list calls",
+          "code": " (define my-list (list 1 2 3)) (list 1 2 3)\r\n(append my-list (list 4 5 6)) (list 1 2 3 4 5 6)\r\n(rest (append my-list (list 4 5 6))) (list 2 3 4 5 6)\r\n (list) \r\n‘()\r\nempty"
+        },
+        {
+          "page": "12",
+          "summary": "example length calls",
+          "code": "(length (list \"Lists can have\"\r\n              (list \"other\" \"lists\"))\r\n        \"as elements\"\")\r\n\r\n(length\r\n  (second\r\n    (list \"Lists can have\"\r\n         (list \"other\" \"lists\"))\r\n \"as elements\")))\""
+        },
+        {
+          "page": "14",
+          "summary": "list of albums",
+          "code": "(define mymusic\r\n  (list (make-album \"The white album\" \"The Beatles\" \"Rock\")\r\n        (make-album \"Sgt. Pepper's Lonely Hearts Club Band\" \"The Beatles\" \"Rock\")\r\n        (make-album \"Pod\" \"The Breeders\" \"Rock\")\r\n        (make-album \"Dummy\" \"Portishead\" \"Triphop\")))"
+        },
+        {
+          "page": "15",
+          "summary": "album code, comments",
+          "code": ";; Beatles?: album -> Boolean\r\n;; Determines whether an album is by the ;; Beatles\r\n\r\n(define (Beatles? album)\r\n  (string=? (album-artist album) \"The Beatles\"))\r\n  \r\n(check-expect\r\n (Beatles? (make-album \"Title\" \"The Beatles\" \"Genre\"))\r\n #true)\r\n\r\n(check-expect\r\n  (Beatles? (make-album \"Title\" \"MS MR\" \"Genre\"))\r\n  #false)"
+        },
+        {
+          "page": "16",
+          "summary": "filter, filter examples",
+          "code": "(filter odd? (list 1 2 3 4 5 6))\r\n\r\n(filter number? (list 1 2 \"three\")) (list 1 2)\r\n\r\n(filter string? (list 1 2 \"three\"))"
+        },
+        {
+          "page": "20",
+          "summary": "filter examples",
+          "code": "(filter Beatles? mymusic)"
+        },
+        {
+          "page": "21",
+          "summary": "filter with lambda",
+          "code": "(filter (λ (album)\r\n          (string=? (album-artist album)\r\n                    \"The Beatles\")) \r\n        mymusic)"
+        },
+        {
+          "page": "22",
+          "summary": "count with length filter",
+          "code": "(length (filter Beatles? mymusic))"
+        },
+        {
+          "page": "23",
+          "summary": "andmap, ormap",
+          "code": "(ormap Beatles? mymusic)\r\n\r\n(andmap Beatles? mymusic)"
+        },
+        {
+          "page": "24",
+          "summary": "map",
+          "code": "(map – (list 1 2 3 4)) "
+        },
+        {
+          "page": "25",
+          "summary": "map and remove-duplicates",
+          "code": "(map album-genre mymusic)\r\n\r\n(remove-duplicates (map album-genre mymusic))\r\n\r\n"
+        },
+        {
+          "page": "26",
+          "summary": "foldl, foldr",
+          "code": "(foldl + 0 (list123))\r\n\r\n(foldl max 0 (list123))"
+        },
+        {
+          "page": "27",
+          "summary": "sum and average with foldl",
+          "code": ";; sum: (listof number) -> number ;; The of the numbers in the list\r\n\r\n(define sum\r\n  (λ (lst) (foldl + 0 lst)))\r\n\r\n(check-expect (sum (list 1 2 3)) 6)\r\n\r\n;; mean: (listof number) -> number\r\n;; The average of the numbers in the list\r\n\r\n(define mean\r\n  (λ (lst)\r\n    (⁄ (sum lst)\r\n       (length lst))))\r\n       "
+        },
+        {
+          "page": "28",
+          "summary": "standard deviation",
+          "code": ";; square: number -> number\r\n;; The square of a number\r\n\r\n(define square\r\n  (λ (n) (* n n)))\r\n    (check-expect (square 2) 4)\r\n\r\n;; stdev: (listof number) -> number\r\n;; The standard deviation of the numbers\r\n;; (assuming zero-mean)\r\n\r\n(define stdev\r\n  (λ (lst)\r\n    (sqrt (mean (map square lst)))))\r\n\r\n(check-expect\r\n  (stdev (list 1 2 3 4 5 6))\r\n  3.8944405226628))"
+        },
+        {
+          "page": "29",
+          "summary": "build-list"
+        },
+        {
+          "page": "30",
+          "summary": "build-list example",
+          "code": "(map (λ (x) (* x x)) (list 0 1 2 3 4 5 6 7))\r\n\r\n(build-list 8 (λ (x) (* x x)))"
+        },
+        {
+          "page": "31",
+          "summary": "sum of squares",
+          "code": "(foldl + 0\r\n  (build-list 100\r\n    (λ (n) (* n n))))"
+        },
+        {
+          "page": "32",
+          "summary": "sum of elements",
+          "code": "(foldl + 0\r\n  (build-list 100\r\n    (λ (n) n)))"
+        },
+        {
+          "page": "34",
+          "summary": "find all elements",
+          "code": "(filter integer? (list 1 2 3.5 4))"
+        },
+        {
+          "page": "35",
+          "summary": "apply function to every element",
+          "code": "(map abs (list 1 -2 3 -4))\r\n\r\n(map (λ (number)\r\n       (+ number 1))\r\n     (list 1 2 3.5 4))"
+        },
+        {
+          "page": "36",
+          "summary": "aggregate a list",
+          "code": "(foldl + 0 (list 1 -2 3 -4))\r\n\r\n(foldl max 0 (list 1 2 3.5 4))"
+        },
+        {
+          "page": "39",
+          "summary": "sum the odd numbers",
+          "code": "(foldl + 0\r\n  (filter odd?\r\n    (list 1 2 3)))"
+        },
+        {
+          "page": "46",
+          "summary": "find titles of beatle albums",
+          "code": "(map album-title\r\n  (filter Beatles? mymusic))"
+        },
+        {
+          "page": "51",
+          "summary": "abstract previous code",
+          "code": "(define artist-album-titles\r\n  (λ (artist)\r\n    (map album-title\r\n      (filter (λ (a)\r\n                (string=? (album-artist a)\r\n                          artist)))\r\n              mymusic))))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 9 - Recursion",
+      "items": [
+        {
+          "page": "2-3",
+          "summary": "signatures of list functions"
+        },
+        {
+          "page": "16",
+          "summary": "substitution model"
+        },
+        {
+          "page": "19",
+          "summary": "recursive sum-list",
+          "code": "(define (sum-list list)\r\n  (if (empty? list)\r\n      0\r\n    (+ (first list)\r\n       (sum-list (rest list)))))"
+        },
+        {
+          "page": "26",
+          "summary": "generalize to foldr",
+          "code": "(define (myfoldr proc start list)\r\n  (if (empty? list)\r\n      start\r\n    (proc (first list)\r\n          (myfoldr proc start (rest list)))))"
+        },
+        {
+          "page": "27-29",
+          "summary": "recursion explained"
+        },
+        {
+          "page": "30",
+          "summary": "quoting, strings vs lists"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 10 - Iterative recursion",
+      "items": [
+        {
+          "page": "2-3",
+          "summary": "recursion recap"
+        },
+        {
+          "page": "4",
+          "summary": "special cases"
+        },
+        {
+          "page": "7",
+          "summary": "sum-list with partial sum",
+          "code": "(define (sum-list list partial-sum) \r\n  (if (empty? list)\r\n      partial-sum\r\n    (sum-list (rest list)\r\n              (+ (first list) partial-sum)))))"
+        },
+        {
+          "page": "9",
+          "summary": "iterative recursion"
+        },
+        {
+          "page": "11",
+          "summary": "iterative foldl",
+          "code": "(define (foldl proc partial-sum list)\r\n  (if (empty? list)\r\n      partial-sum\r\n   (foldl proc\r\n          (proc (first list) partial-sum))\r\n                (rest list))))"
+        },
+        {
+          "page": "15",
+          "summary": "using local helpers",
+          "code": "(define (mylength list)\r\n  (local [(define (help list length-so-far)\r\n            (if (empty? list)\r\n                length-so-far\r\n              (help (rest list)\r\n                    (+ length-so-far 1))))]\r\n    (help list 0)))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 12 - Linked lists",
+      "items": [
+        {
+          "page": "2",
+          "summary": "cons, definition and examples"
+        },
+        {
+          "page": "3",
+          "summary": "recursive map with cons",
+          "code": "(define (map proc lst)\r\n  (if (empty? lst)\r\n      (list) \r\n    (cons (proc (first lst))\r\n          (map proc (rest lst)))))"
+        },
+        {
+          "page": "9-25",
+          "summary": "cons, lists, and pairs"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 15 - Scope",
+      "items": [
+        {
+          "page": "2",
+          "summary": "local vs global variables (only functions)"
+        },
+        {
+          "page": "6-9",
+          "summary": "variable scope"
+        },
+        {
+          "page": "10",
+          "summary": "scope example",
+          "code": "(define (mylength list)\r\n  (local [(define (loop count rest)\r\n            (if (empty? rest) count\r\n              (loop (+ count 1)\r\n                    (rest rest))))]\r\n    (loop 0 list)))"
+        },
+        {
+          "page": "11-12",
+          "summary": "scope example with define value variable and function returning function",
+          "code": "(define x 1)\r\n(define (test x)\r\n  (λ (y) x)) \r\n(define f (test 2))\r\n(f 3)"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 1",
+      "items": [
+        {
+          "page": "4",
+          "summary": "side effects: define, require"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 2",
+      "items": [
+        {
+          "page": "5",
+          "summary": "types of side effects"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 3",
+      "items": [
+        {
+          "page": "6-7",
+          "summary": "imperative vs functional programming"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 4",
+      "items": [
+        {
+          "page": "9",
+          "summary": "advanced student language setting"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 5",
+      "items": [
+        {
+          "page": "11",
+          "summary": "! Convention"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 6",
+      "items": [
+        {
+          "page": "12",
+          "summary": "void type"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 7",
+      "items": [
+        {
+          "page": "13",
+          "summary": "set!"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 8",
+      "items": [
+        {
+          "page": "14",
+          "summary": "define vs set!"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 9",
+      "items": [
+        {
+          "page": "15",
+          "summary": "setting global variables"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 10",
+      "items": [
+        {
+          "page": "17",
+          "summary": "begin"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 11",
+      "items": [
+        {
+          "page": "18",
+          "summary": "begin example",
+          "code": "(define count 0)\r\n\r\n(define (increment!)\r\n  (begin (set! count (+ count 1))\r\n         count))\r\n\r\n(define (clear!)\r\n  (begin (set! count 0)\r\n         count))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 12",
+      "items": [
+        {
+          "page": "19",
+          "summary": "example imperative sum-list",
+          "code": "(define (sum-list lst)\r\n  (local [(define sum 0)\r\n            (define remaining lst)\r\n            (define (loop)\r\n              (if (empty? remaining)\r\n                  sum\r\n               (begin (set! sum\r\n                           (+ sum (first remaining)))\r\n                      (set! remaining\r\n                            (rest remaining))\r\n                      (loop))))]\r\n    (loop)))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 13",
+      "items": [
+        {
+          "page": "43",
+          "summary": "example ordering error",
+          "code": "(define (sum-list lst)\r\n  (local [(define sum 0)\r\n            (define remaining lst)\r\n            (define (loop)\r\n              (if (empty? remaining)\r\n                  sum\r\n               (begin (set! remaining\r\n                            (rest remaining))\r\n                      (set! sum\r\n                           (+ sum (first remaining)))\r\n                      (loop))))]\r\n    (loop)))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 14",
+      "items": [
+        {
+          "page": "57",
+          "summary": "sum-list with for-each, when, ",
+          "code": "(define (for-each proc lst) \r\n  (when (not (empty? lst))\r\n    (begin (proc (first lst))\r\n           (for-each proc (rest lst)))))\r\n\r\n(define (sum-list lst)\r\n  (local [(define sum 0)]\r\n    (begin (for-each\r\n             (λ (element)\r\n               (set! sum (+ sum element)))\r\n             lst)\r\n           sum)))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 16 - Imperative programming 15",
+      "items": [
+        {
+          "page": "71",
+          "summary": "sum-list functional vs imperative"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 18 - Imperative Programming 2 - Mutation",
+      "items": [
+        {
+          "page": "3-7",
+          "summary": "define-struct recap + set-type-field!"
+        },
+        {
+          "page": "8-10",
+          "summary": "structs as subtypes"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 19 - Imperative programming 3 - Files",
+      "items": [
+        {
+          "page": "3-5",
+          "summary": "rules for execution"
+        },
+        {
+          "page": "6",
+          "summary": "require cs111/file-operations"
+        },
+        {
+          "page": "8-16",
+          "summary": "directory trees and pathnames"
+        },
+        {
+          "page": "18",
+          "summary": "file-operations: copy-file!, file-exists?, delete-file!, file-or-directory-modify-seconds, rename-file-or-directory!"
+        },
+        {
+          "page": "19",
+          "summary": "directory operations: make-directory!, delete-directory!, directory-exists?, directory-subdirectories, directory-files"
+        },
+        {
+          "page": "22",
+          "summary": "all-files example",
+          "code": "(define (all-files directory)\r\n  (append (directory-files directory)\r\n          (apply append\r\n                 (map all-files\r\n                      (directory-subdirectories directory)))))"
+        },
+        {
+          "page": "25",
+          "summary": "copy-files! Example",
+          "code": "(define (copy-files! from to)\r\n  (for-each (λ (file)\r\n              (copy-file! file\r\n                          (build-path to\r\n                                      (path-filename file))))\r\n            (directory-files from))))"
+        },
+        {
+          "page": "30",
+          "summary": "copy-subtree! Example",
+          "code": "(define (copy-subtree! from to)\r\n  (begin (unless (directory-exists? to)\r\n           (make-directory! to))\r\n         (for-each (λ (file)\r\n           (copy-file! file\r\n                       (build-path to\r\n                                   (path-filename file))))\r\n           (directory-files from))\r\n        (for-each (λ (subdir)\r\n                    (copy-subtree! subdir\r\n                                   (build-path to\r\n                                               (path-filename subdir))))\r\n                  (directory-subdirectories from))))"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 21 - Debugging",
+      "items": [
+        {
+          "page": "4",
+          "summary": "steps in debugging"
+        },
+        {
+          "page": "6-9",
+          "summary": "Dr Racket error output -  expects a number, given a list"
+        },
+        {
+          "page": "10-14",
+          "summary": "error examples: define expected only one expression for the function body, iterated-overlay expects 2 arguments, saw only 1,  "
+        },
+        {
+          "page": "15-18",
+          "summary": "indentation rules"
+        },
+        {
+          "page": "19",
+          "summary": "indenting with tab in Racket"
+        },
+        {
+          "page": "22-24",
+          "summary": "diagnostic process"
+        },
+        {
+          "page": "25",
+          "summary": "common errors: procedure expects N arguments, procedure expected type, expected a function"
+        },
+        {
+          "page": "26",
+          "summary": "diagnosing wrong  number of arguments"
+        },
+        {
+          "page": "27",
+          "summary": "diagnosing wrong argument type"
+        },
+        {
+          "page": "28",
+          "summary": "diagnosing procedure expected"
+        },
+        {
+          "page": "31-32",
+          "summary": "rules for execution"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 22 - Methods",
+      "items": [
+        {
+          "page": "10",
+          "summary": "define-struct #methods",
+          "code": "(define-struct (cat animal) [sleeping-spot]\r\n  #:methods\r\n  (define (feed! c) ...))\r\n  \r\n(define-struct (dog animal) [best-friend]\r\n  #:methods\r\n  (define (feed! d) ...))\r\n  \r\n(define-struct (mouse animal) [hiding-spot]\r\n  #:methods\r\n  (define (feed! m) ...))"
+        },
+        {
+          "page": "13-14",
+          "summary": "method inheritance",
+          "code": "(define-struct animal [name weight age]\r\n  #:methods\r\n  (define (feed! a) ...))\r\n  \r\n(define-struct (cat animal) [sleeping-spot]\r\n  #:methods\r\n  (define (feed! c) ...))\r\n  \r\n(define-struct (dog animal) [best-friend]\r\n  #:methods\r\n  (define (feed! d) ...))\r\n  \r\n(define-struct (mouse animal) [hiding-spot])"
+        },
+        {
+          "page": "15",
+          "summary": "dispatch only on first argument"
+        },
+        {
+          "page": "16-19",
+          "summary": "missing methods and abstract types"
+        },
+        {
+          "page": "21-22",
+          "summary": "object oriented programming"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 23 - Methods - Asteroids",
+      "items": [
+        {
+          "page": "10",
+          "summary": "structs with supertypes",
+          "code": "(define-struct game-object\r\n  [position orientation velocity angular-velocity radius])\r\n\r\n(define-struct (player game-object)\r\n  [])\r\n(define-struct (asteroid game-object)\r\n  [])\r\n(define-struct (missile game-object)\r\n  [lifetime])"
+        },
+        {
+          "page": "11",
+          "summary": "position update example",
+          "code": "(for-each (λ (game-object)\r\n  (set-game-object-position!\r\n    object\r\n    (posn-+ (game-object-position game-object)\r\n            (posn-* inter-frame-interval\r\n                    (game-object-velocity game-object)))))\r\n  all-game-objects)"
+        },
+        {
+          "page": "14",
+          "summary": "method override",
+          "code": "(define-struct (player game-object) ()\r\n   #:methods\r\n  (define (update! player) ...)\r\n  (define (render player) ...))\r\n\r\n(define-struct (asteroid game-object) ()\r\n  #:methods\r\n  (define (update! asteroid) ...)\r\n  (define (render asteroid) ...))\r\n\r\n(define-struct (missile game-object) (lifetime)\r\n  #:methods\r\n  (define (update! missile) ...)\r\n  (define (render missile) ...))"
+        },
+        {
+          "page": "18",
+          "summary": "method inheritance again",
+          "code": "(define-struct game-object\r\n  ()\r\n  #:methods\r\n  (define (update! player)\r\n    (void)))\r\n    \r\n(define-struct (player game-object)\r\n  ()\r\n  #:methods\r\n  (define (update! player) ...)\r\n  (define (render player) ...))\r\n  \r\n\r\n(define-struct (asteroid game-object)\r\n  ()\r\n  #:methods\r\n  (define (render asteroid) ...))"
+        },
+        {
+          "page": "21-23",
+          "summary": "missing methods and abstract types"
+        }
+      ]
+    },
+    {
+      "file": "Lecture 24 - Methods - Quiz",
+      "items": [
+        {
+          "page": "4",
+          "summary": "method inheritance example",
+          "code": "(define-struct question\r\n  [text answer]\r\n  #:methods\r\n  (define (display q) ...)\r\n  (define (check-answer q response) ...))\r\n  \r\n(define-struct (multiple-choice-question question)\r\n  [number-of-choices choices]\r\n  #:methods\r\n  (define (display mcq) ...))\r\n  \r\n(define-struct (numeric-question question)\r\n  [error-range]\r\n  #:methods\r\n  (define (check-answer nq response) ...))"
+        }
+      ]
+    }
+  ]

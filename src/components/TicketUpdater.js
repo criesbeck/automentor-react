@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Card, Divider, Level, Column } from 'rbx';
+import { Button, Card, Divider, Icon, Level, Column } from 'rbx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 import Diagnoses from 'components/Diagnoses';
+import ResourcesModal from 'components/ResourcesModal';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
 import { updateTicket } from 'utils/tickets';
@@ -10,6 +13,7 @@ import { useFirebaseRef } from 'hooks/useFirebase';
 import KB from 'utils/kb';
 import concepts from 'data/concepts.json';
 import diagnoses from 'data/diagnoses.json';
+import resources from 'data/cs111-index.json';
 
 const SampleSource = ({ url }) => (
   url
@@ -38,6 +42,8 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
   const ticketRef = useFirebaseRef(`offerings/${offering}/tickets`);
   const kb = KB({ concepts, diagnoses });
   const exercises = course.exercises;
+
+  const [modalOpen, setModalOpen] = useState( false );
 
    // for highlighting matches
    const [ pattern, setPattern ] = useState(null);
@@ -81,6 +87,14 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
             <React.Fragment>
               <Divider color="primary">diagnoses</Divider>
               <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
+              <Button onClick={ () => setModalOpen(true) }>
+                <Icon>
+                  <FontAwesomeIcon icon={ faBook } />
+                </Icon>
+                <span>Resources</span>
+              </Button>
+              <ResourcesModal isOpen={ modalOpen } close={ () => setModalOpen(false) }
+                resources={ resources } />
             </React.Fragment>
           </Column>
         )
