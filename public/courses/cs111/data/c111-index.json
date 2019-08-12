@@ -1,0 +1,1354 @@
+{
+  "concepts": [
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "4",
+          "Summary": "Literal constants -- numbers, strings",
+          "Example code": "1, 7, -2.5, \"this is a string\"",
+          "Notes": "Called \"names\" here"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "5",
+          "Summary": "Variables -- case-sensitive",
+          "Example code": "string-append, +, -, *, A, b, c, test, 1+ vs +1"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "6",
+          "Summary": "(define name value)"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "7",
+          "Summary": "Procedure calls -- +, string-append",
+          "Example code": "(+ 1 2), (+ 1 2 3), (string-append \"this is \" \"a test\")",
+          "Notes": "Mentions + and string-append take variable # of arguments"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "9-11",
+          "Summary": "Nested calls",
+          "Example code": "(+1(+12)), (string-append \"this \" (string-append \"is a \" \"test\")), (square 10 \"solid\" \"blue\"), (above (square 10 \"solid\" \"blue\") (square 10 \"solid\" \"red\"))"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "11",
+          "Summary": "Not a procedure exception",
+          "Example code": "(2 + 2) ((+ 1 2) 2)"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "16-19",
+          "Summary": "Indentation",
+          "Example code": "(string-append (string-append (string-append \"this \"\r\n                                             \"is a \")\r\n                              \"tedious \")\r\n               (string-append \"example of \" \"nesting\"))"
+      },
+      {
+          "File": "Lecture 2 - Programming with text",
+          "Page": "20",
+          "Summary": "Dr Racket UI - definition pane, interaction window, REPL"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "2",
+          "Summary": "require, libraries, declarations",
+          "Example code": "(require 2htdp/image)",
+          "Notes": "equates \"your file\" with \"definition pane\""
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "3",
+          "Summary": "image procedures: rectangle, square, ellipse, circle"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "3",
+          "Summary": "mode (solid, outline), color"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "4",
+          "Summary": "rectangle",
+          "Example code": "(rectangle 200 100 \"outline\" \"black\") (rectangle 200 100 \"solid\" \"red\"), (square 100 \"solid\" green\")"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "5",
+          "Summary": "ellipse",
+          "Example code": "(ellipse 200 100 \"solid\" \"blue\"), (cirle \"100\" \"outline\" \"black\")"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "6",
+          "Summary": "compositing -- overlay, underlay",
+          "Example code": "(overlay (square 50 \"solid\" \"blue\") (square 100 \"solid\" \"green\") (square 150 \"solid\" \"red\") (square 200 \"solid\" \"black\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "7",
+          "Summary": "shifting -- overlay/offset",
+          "Example code": "(overlay (square 50 \"solid\" \"blue\") (square 200 \"solid\" \"black\")) vs (overlay/offset (square 50 \"solid\" \"blue\") 25 0 (square 200 \"solid\" \"black\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "8",
+          "Summary": "above, beside",
+          "Example code": "(beside (square 100 \"solid\" \"red\") (square 100 \"solid\" \"green\") (square 100 \"solid\" \"blue\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "9",
+          "Summary": "rotate",
+          "Example code": "(ellipse 200 50 \"solid\" \"blue\") vs (rotate 30 (ellipse 200 50 \"solid\" \"blue\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "10",
+          "Summary": "scale",
+          "Example code": "(square 10 \"solid\" \"blue\") vs (scale 10 (square 10 \"solid\" \"blue\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "11",
+          "Summary": "color names, web color names",
+          "Example code": "\"red\", \"green\", \"blue\", \"cyan\", \"magenta\", \"yellow\""
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "12",
+          "Summary": "make-color, color",
+          "Example code": "(color 255 100 0), (circle 100 \"solid\" (color 255 100 0))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "13",
+          "Summary": "rules of computation - constants, variables, procedure calls",
+          "Notes": "later slides call these rules of execution"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "14-21",
+          "Summary": "square, row, grid complexity"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "22",
+          "Summary": "define to name things"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "25-26",
+          "Summary": "rules of computation - add define special form"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "29",
+          "Summary": "sequential naming",
+          "Example code": "(define unit (square 50 \"outline\" \"black\"))\r\n(define row (beside unit unit unit unit)) (above row row row row)"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "31",
+          "Summary": "circle grid",
+          "Example code": "(require 2htdp/image)\r\n(define circ-unit (circle 25\r\n\"outline\" \"black\"))\r\n(define circ-row\r\n(beside circ-unit circ-unit\r\ncirc-unit circ-unit))\r\n(above circ-row circ-row circ-row circ-row)"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "33-36",
+          "Summary": "defining procedures intro",
+          "Example code": "(grid (circle 25 \"outline\" \"black\"))"
+      },
+      {
+          "File": "Lecture 3 - Graphics language",
+          "Page": "36",
+          "Summary": "(lambda (arg1 arg2 ... argn) exp)\r\n(λ (arg1 arg2 ... argn) exp)"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "2-3",
+          "Summary": "rules of computation - same as previous"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "12",
+          "Summary": "defining grid procedure",
+          "Example code": "(define row\r\n  (λ (unit)\r\n   (beside unit unit unit unit)))\r\n(define stack\r\n  (λ (unit)\r\n   (above unit unit unit unit)))\r\n(define grid\r\n  (λ (unit)\r\n   (stack (row unit))))"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "13",
+          "Summary": "local variable names",
+          "Example code": "(define square (λ (n) (* n n)))\r\n\r\n(define polynomial\r\n  (λ (n)\r\n     (+ (square n) (* n 2)\r\n        4)))"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "14-16",
+          "Summary": "substitution model",
+          "Example code": "(polynomial 32)"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "17",
+          "Summary": "procedures as return values",
+          "Example code": "(define add\r\n (λ (x)\r\n  (λ (y)\r\n    (+ x y))))"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "18",
+          "Summary": "procedures as arguments",
+          "Example code": "(define squarish\r\n  (λ (proc)\r\n    (proc 10 10 \"outline\" \"white\")))\r\n\r\n(squarish rectangle)\r\n\r\n(squarish ellipse)"
+      },
+      {
+          "File": "Lecture 4 - Compound procedures",
+          "Page": "19",
+          "Summary": "both -- compose",
+          "Example code": "(define compose\r\n  (λ (p1 p2)\r\n    (λ (arg)\r\n      (p1 (p2 arg)))))\r\n\r\n(define square\r\n  (λ (n)\r\n    (* n n)))\r\n\r\n(define f (compose square sin))"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "6",
+          "Summary": "rules of computation - with define and lambda"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "18",
+          "Summary": "iterated-overlay, iterated-underlay, iterated-above, iterated-beside"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "19",
+          "Summary": "require iterated-images",
+          "Example code": "(require \"iterated-images.rkt\")"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "21",
+          "Summary": "iterated-overlay with rotate",
+          "Example code": "(iterated-overlay (λ (n) (rotate n\r\n(square 100 \"outline\" \"blue\"))) 10)"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "26",
+          "Summary": "above x 36",
+          "Example code": "(iterated-overlay (λ (n)\r\n(rotate (* 36 n)\r\n(square 100 \"outline\" \"blue\"))) 10)"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "32",
+          "Summary": "iterated-beside",
+          "Example code": "(iterated-beside boxes 10)"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "35",
+          "Summary": "zero-based counting"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "37",
+          "Summary": "(define (name inputs ...) output)",
+          "Example code": "(define boxes (λ (count)\r\n  (local [(define q (quotient 250 count))]\r\n    (iterated-overlay\r\n      (λ (n)\r\n        (square (* (+ n 1) q) \"solid\"\r\n                (color 0(- 250 (* n q)) 0)))\r\n        count))))"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "38",
+          "Summary": "local define defined"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "43-44",
+          "Summary": "error example -- expects procedure, given image",
+          "Example code": "(define row\r\n  (λ (item count)\r\n    (iterated-beside item count)))"
+      },
+      {
+          "File": "Lecture 5 - Iterators and iteration",
+          "Page": "45-54",
+          "Summary": "from column to grid",
+          "Example code": "(define grid\r\n  (λ (item columns rows)\r\n    (column (row item columns) rows)))  "
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "2-3",
+          "Summary": "rules of computation -- with define and local define"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "4",
+          "Summary": "conditionals",
+          "Example code": "(define absolute-value (λ (n)\r\n  (if (> n 0) n\r\n    (- n))))"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "5",
+          "Summary": "number?, Integer?, String? procedure?, odd?, even?, and, or, not"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "6",
+          "Summary": "boolean values"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "7",
+          "Summary": "true, false, #t, #f, #true, #false"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "10",
+          "Summary": "definition of predicate"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "12",
+          "Summary": "=, eq?, eqv?, equal?"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "13",
+          "Summary": "cond and []"
+      },
+      {
+          "File": "Lecture 6 - Conditional expressions",
+          "Page": "14",
+          "Summary": "Sussman define form"
+      },
+      {
+          "File": "Lecture 7 - Composite data",
+          "Page": "6",
+          "Summary": "define-struct"
+      },
+      {
+          "File": "Lecture 7 - Composite data",
+          "Page": "7",
+          "Summary": "album type - make-album, album? Album-title, ...",
+          "Example code": "(define-struct album [title artist genre])"
+      },
+      {
+          "File": "Lecture 7 - Composite data",
+          "Page": "8",
+          "Summary": "make-album",
+          "Example code": "(make-album \"Radioactivity\" \"Kraftwerk\" \"Kosmische Musik\")"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "2-3",
+          "Summary": "rules for execution - with if"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "7",
+          "Summary": "list, append"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "8",
+          "Summary": "first, second, tenth, rest"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "9",
+          "Summary": "length, list-ref"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "10",
+          "Summary": "example list calls",
+          "Example code": " (define my-list (list 1 2 3)) (list 1 2 3)\r\n(append my-list (list 4 5 6)) (list 1 2 3 4 5 6)\r\n(rest (append my-list (list 4 5 6))) (list 2 3 4 5 6)\r\n (list) \r\n‘()\r\nempty"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "12",
+          "Summary": "example length calls",
+          "Example code": "(length (list \"Lists can have\"\r\n              (list \"other\" \"lists\"))\r\n        \"as elements\"\")\r\n\r\n(length\r\n  (second\r\n    (list \"Lists can have\"\r\n         (list \"other\" \"lists\"))\r\n \"as elements\")))\""
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "14",
+          "Summary": "list of albums",
+          "Example code": "(define mymusic\r\n  (list (make-album \"The white album\" \"The Beatles\" \"Rock\")\r\n        (make-album \"Sgt. Pepper's Lonely Hearts Club Band\" \"The Beatles\" \"Rock\")\r\n        (make-album \"Pod\" \"The Breeders\" \"Rock\")\r\n        (make-album \"Dummy\" \"Portishead\" \"Triphop\")))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "15",
+          "Summary": "album code, comments",
+          "Example code": ";; Beatles?: album -> Boolean\r\n;; Determines whether an album is by the ;; Beatles\r\n\r\n(define (Beatles? album)\r\n  (string=? (album-artist album) \"The Beatles\"))\r\n  \r\n(check-expect\r\n (Beatles? (make-album \"Title\" \"The Beatles\" \"Genre\"))\r\n #true)\r\n\r\n(check-expect\r\n  (Beatles? (make-album \"Title\" \"MS MR\" \"Genre\"))\r\n  #false)"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "16",
+          "Summary": "filter, filter examples",
+          "Example code": "(filter odd? (list 1 2 3 4 5 6))\r\n\r\n(filter number? (list 1 2 \"three\")) (list 1 2)\r\n\r\n(filter string? (list 1 2 \"three\"))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "20",
+          "Summary": "filter examples",
+          "Example code": "(filter Beatles? mymusic)"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "21",
+          "Summary": "filter with lambda",
+          "Example code": "(filter (λ (album)\r\n          (string=? (album-artist album)\r\n                    \"The Beatles\")) \r\n        mymusic)"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "22",
+          "Summary": "count with length filter",
+          "Example code": "(length (filter Beatles? mymusic))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "23",
+          "Summary": "andmap, ormap",
+          "Example code": "(ormap Beatles? mymusic)\r\n\r\n(andmap Beatles? mymusic)"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "24",
+          "Summary": "map",
+          "Example code": "(map – (list 1 2 3 4)) "
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "25",
+          "Summary": "map and remove-duplicates",
+          "Example code": "(map album-genre mymusic)\r\n\r\n(remove-duplicates (map album-genre mymusic))\r\n\r\n"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "26",
+          "Summary": "foldl, foldr",
+          "Example code": "(foldl + 0 (list123))\r\n\r\n(foldl max 0 (list123))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "27",
+          "Summary": "sum and average with foldl",
+          "Example code": ";; sum: (listof number) -> number ;; The of the numbers in the list\r\n\r\n(define sum\r\n  (λ (lst) (foldl + 0 lst)))\r\n\r\n(check-expect (sum (list 1 2 3)) 6)\r\n\r\n;; mean: (listof number) -> number\r\n;; The average of the numbers in the list\r\n\r\n(define mean\r\n  (λ (lst)\r\n    (⁄ (sum lst)\r\n       (length lst))))\r\n       "
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "28",
+          "Summary": "standard deviation",
+          "Example code": ";; square: number -> number\r\n;; The square of a number\r\n\r\n(define square\r\n  (λ (n) (* n n)))\r\n    (check-expect (square 2) 4)\r\n\r\n;; stdev: (listof number) -> number\r\n;; The standard deviation of the numbers\r\n;; (assuming zero-mean)\r\n\r\n(define stdev\r\n  (λ (lst)\r\n    (sqrt (mean (map square lst)))))\r\n\r\n(check-expect\r\n  (stdev (list 1 2 3 4 5 6))\r\n  3.8944405226628))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "29",
+          "Summary": "build-list"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "30",
+          "Summary": "build-list example",
+          "Example code": "(map (λ (x) (* x x)) (list 0 1 2 3 4 5 6 7))\r\n\r\n(build-list 8 (λ (x) (* x x)))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "31",
+          "Summary": "sum of squares",
+          "Example code": "(foldl + 0\r\n  (build-list 100\r\n    (λ (n) (* n n))))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "32",
+          "Summary": "sum of elements",
+          "Example code": "(foldl + 0\r\n  (build-list 100\r\n    (λ (n) n)))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "34",
+          "Summary": "find all elements",
+          "Example code": "(filter integer? (list 1 2 3.5 4))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "35",
+          "Summary": "apply function to every element",
+          "Example code": "(map abs (list 1 -2 3 -4))\r\n\r\n(map (λ (number)\r\n       (+ number 1))\r\n     (list 1 2 3.5 4))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "36",
+          "Summary": "aggregate a list",
+          "Example code": "(foldl + 0 (list 1 -2 3 -4))\r\n\r\n(foldl max 0 (list 1 2 3.5 4))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "39",
+          "Summary": "sum the odd numbers",
+          "Example code": "(foldl + 0\r\n  (filter odd?\r\n    (list 1 2 3)))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "46",
+          "Summary": "find titles of beatle albums",
+          "Example code": "(map album-title\r\n  (filter Beatles? mymusic))"
+      },
+      {
+          "File": "Lecture 8 - Lists",
+          "Page": "51",
+          "Summary": "abstract previous code",
+          "Example code": "(define artist-album-titles\r\n  (λ (artist)\r\n    (map album-title\r\n      (filter (λ (a)\r\n                (string=? (album-artist a)\r\n                          artist)))\r\n              mymusic))))"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "2-3",
+          "Summary": "signatures of list functions"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "16",
+          "Summary": "substitution model"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "19",
+          "Summary": "recursive sum-list",
+          "Example code": "(define (sum-list list)\r\n  (if (empty? list)\r\n      0\r\n    (+ (first list)\r\n       (sum-list (rest list)))))"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "26",
+          "Summary": "generalize to foldr",
+          "Example code": "(define (myfoldr proc start list)\r\n  (if (empty? list)\r\n      start\r\n    (proc (first list)\r\n          (myfoldr proc start (rest list)))))"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "27-29",
+          "Summary": "recursion explained"
+      },
+      {
+          "File": "Lecture 9 - Recursion",
+          "Page": "30",
+          "Summary": "quoting, strings vs lists"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "2-3",
+          "Summary": "recursion recap"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "4",
+          "Summary": "special cases"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "7",
+          "Summary": "sum-list with partial sum",
+          "Example code": "(define (sum-list list partial-sum) \r\n  (if (empty? list)\r\n      partial-sum\r\n    (sum-list (rest list)\r\n              (+ (first list) partial-sum)))))"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "9",
+          "Summary": "iterative recursion"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "11",
+          "Summary": "iterative foldl",
+          "Example code": "(define (foldl proc partial-sum list)\r\n  (if (empty? list)\r\n      partial-sum\r\n   (foldl proc\r\n          (proc (first list) partial-sum))\r\n                (rest list))))"
+      },
+      {
+          "File": "Lecture 10 - Iterative recursion",
+          "Page": "15",
+          "Summary": "using local helpers",
+          "Example code": "(define (mylength list)\r\n  (local [(define (help list length-so-far)\r\n            (if (empty? list)\r\n                length-so-far\r\n              (help (rest list)\r\n                    (+ length-so-far 1))))]\r\n    (help list 0)))"
+      },
+      {
+          "File": "Lecture 12 - Linked lists",
+          "Page": "2",
+          "Summary": "cons, definition and examples"
+      },
+      {
+          "File": "Lecture 12 - Linked lists",
+          "Page": "3",
+          "Summary": "recursive map with cons",
+          "Example code": "(define (map proc lst)\r\n  (if (empty? lst)\r\n      (list) \r\n    (cons (proc (first lst))\r\n          (map proc (rest lst)))))"
+      },
+      {
+          "File": "Lecture 12 - Linked lists",
+          "Page": "9-25",
+          "Summary": "cons, lists, and pairs"
+      },
+      {
+          "File": "Lecture 15 - Scope",
+          "Page": "2",
+          "Summary": "local vs global variables (only functions)"
+      },
+      {
+          "File": "Lecture 15 - Scope",
+          "Page": "6-9",
+          "Summary": "variable scope"
+      },
+      {
+          "File": "Lecture 15 - Scope",
+          "Page": "10",
+          "Summary": "scope example",
+          "Example code": "(define (mylength list)\r\n  (local [(define (loop count rest)\r\n            (if (empty? rest) count\r\n              (loop (+ count 1)\r\n                    (rest rest))))]\r\n    (loop 0 list)))"
+      },
+      {
+          "File": "Lecture 15 - Scope",
+          "Page": "11-12",
+          "Summary": "scope example with define value variable and function returning function",
+          "Example code": "(define x 1)\r\n(define (test x)\r\n  (λ (y) x)) \r\n(define f (test 2))\r\n(f 3)"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 1",
+          "Page": "4",
+          "Summary": "side effects: define, require"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 2",
+          "Page": "5",
+          "Summary": "types of side effects"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 3",
+          "Page": "6-7",
+          "Summary": "imperative vs functional programming"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 4",
+          "Page": "9",
+          "Summary": "advanced student language setting"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 5",
+          "Page": "11",
+          "Summary": "! Convention"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 6",
+          "Page": "12",
+          "Summary": "void type"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 7",
+          "Page": "13",
+          "Summary": "set!"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 8",
+          "Page": "14",
+          "Summary": "define vs set!"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 9",
+          "Page": "15",
+          "Summary": "setting global variables"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 10",
+          "Page": "17",
+          "Summary": "begin"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 11",
+          "Page": "18",
+          "Summary": "begin example",
+          "Example code": "(define count 0)\r\n\r\n(define (increment!)\r\n  (begin (set! count (+ count 1))\r\n         count))\r\n\r\n(define (clear!)\r\n  (begin (set! count 0)\r\n         count))"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 12",
+          "Page": "19",
+          "Summary": "example imperative sum-list",
+          "Example code": "(define (sum-list lst)\r\n  (local [(define sum 0)\r\n            (define remaining lst)\r\n            (define (loop)\r\n              (if (empty? remaining)\r\n                  sum\r\n               (begin (set! sum\r\n                           (+ sum (first remaining)))\r\n                      (set! remaining\r\n                            (rest remaining))\r\n                      (loop))))]\r\n    (loop)))"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 13",
+          "Page": "43",
+          "Summary": "example ordering error",
+          "Example code": "(define (sum-list lst)\r\n  (local [(define sum 0)\r\n            (define remaining lst)\r\n            (define (loop)\r\n              (if (empty? remaining)\r\n                  sum\r\n               (begin (set! remaining\r\n                            (rest remaining))\r\n                      (set! sum\r\n                           (+ sum (first remaining)))\r\n                      (loop))))]\r\n    (loop)))"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 14",
+          "Page": "57",
+          "Summary": "sum-list with for-each, when, ",
+          "Example code": "(define (for-each proc lst) \r\n  (when (not (empty? lst))\r\n    (begin (proc (first lst))\r\n           (for-each proc (rest lst)))))\r\n\r\n(define (sum-list lst)\r\n  (local [(define sum 0)]\r\n    (begin (for-each\r\n             (λ (element)\r\n               (set! sum (+ sum element)))\r\n             lst)\r\n           sum)))"
+      },
+      {
+          "File": "Lecture 16 - Imperative programming 15",
+          "Page": "71",
+          "Summary": "sum-list functional vs imperative"
+      },
+      {
+          "File": "Lecture 18 - Imperative Programming 2 - Mutation",
+          "Page": "3-7",
+          "Summary": "define-struct recap + set-type-field!"
+      },
+      {
+          "File": "Lecture 18 - Imperative Programming 2 - Mutation",
+          "Page": "8-10",
+          "Summary": "structs as subtypes"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "3-5",
+          "Summary": "rules for execution"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "6",
+          "Summary": "require cs111/file-operations"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "8-16",
+          "Summary": "directory trees and pathnames"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "18",
+          "Summary": "file-operations: copy-file!, file-exists?, delete-file!, file-or-directory-modify-seconds, rename-file-or-directory!"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "19",
+          "Summary": "directory operations: make-directory!, delete-directory!, directory-exists?, directory-subdirectories, directory-files"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "22",
+          "Summary": "all-files example",
+          "Example code": "(define (all-files directory)\r\n  (append (directory-files directory)\r\n          (apply append\r\n                 (map all-files\r\n                      (directory-subdirectories directory)))))"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "25",
+          "Summary": "copy-files! Example",
+          "Example code": "(define (copy-files! from to)\r\n  (for-each (λ (file)\r\n              (copy-file! file\r\n                          (build-path to\r\n                                      (path-filename file))))\r\n            (directory-files from))))"
+      },
+      {
+          "File": "Lecture 19 - Imperative programming 3 - Files",
+          "Page": "30",
+          "Summary": "copy-subtree! Example",
+          "Example code": "(define (copy-subtree! from to)\r\n  (begin (unless (directory-exists? to)\r\n           (make-directory! to))\r\n         (for-each (λ (file)\r\n           (copy-file! file\r\n                       (build-path to\r\n                                   (path-filename file))))\r\n           (directory-files from))\r\n        (for-each (λ (subdir)\r\n                    (copy-subtree! subdir\r\n                                   (build-path to\r\n                                               (path-filename subdir))))\r\n                  (directory-subdirectories from))))"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "4",
+          "Summary": "steps in debugging"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "6-9",
+          "Summary": "Dr Racket error output -  expects a number, given a list"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "10-14",
+          "Summary": "error examples: define expected only one expression for the function body, iterated-overlay expects 2 arguments, saw only 1,  "
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "15-18",
+          "Summary": "indentation rules"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "19",
+          "Summary": "indenting with tab in Racket"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "22-24",
+          "Summary": "diagnostic process"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "25",
+          "Summary": "common errors: procedure expects N arguments, procedure expected type, expected a function"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "26",
+          "Summary": "diagnosing wrong  number of arguments"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "27",
+          "Summary": "diagnosing wrong argument type"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "28",
+          "Summary": "diagnosing procedure expected"
+      },
+      {
+          "File": "Lecture 21 - Debugging",
+          "Page": "31-32",
+          "Summary": "rules for execution"
+      },
+      {
+          "File": "Lecture 22 - Methods",
+          "Page": "10",
+          "Summary": "define-struct #methods",
+          "Example code": "(define-struct (cat animal) [sleeping-spot]\r\n  #:methods\r\n  (define (feed! c) ...))\r\n  \r\n(define-struct (dog animal) [best-friend]\r\n  #:methods\r\n  (define (feed! d) ...))\r\n  \r\n(define-struct (mouse animal) [hiding-spot]\r\n  #:methods\r\n  (define (feed! m) ...))"
+      },
+      {
+          "File": "Lecture 22 - Methods",
+          "Page": "13-14",
+          "Summary": "method inheritance",
+          "Example code": "(define-struct animal [name weight age]\r\n  #:methods\r\n  (define (feed! a) ...))\r\n  \r\n(define-struct (cat animal) [sleeping-spot]\r\n  #:methods\r\n  (define (feed! c) ...))\r\n  \r\n(define-struct (dog animal) [best-friend]\r\n  #:methods\r\n  (define (feed! d) ...))\r\n  \r\n(define-struct (mouse animal) [hiding-spot])"
+      },
+      {
+          "File": "Lecture 22 - Methods",
+          "Page": "15",
+          "Summary": "dispatch only on first argument"
+      },
+      {
+          "File": "Lecture 22 - Methods",
+          "Page": "16-19",
+          "Summary": "missing methods and abstract types"
+      },
+      {
+          "File": "Lecture 22 - Methods",
+          "Page": "21-22",
+          "Summary": "object oriented programming"
+      },
+      {
+          "File": "Lecture 23 - Methods - Asteroids",
+          "Page": "10",
+          "Summary": "structs with supertypes",
+          "Example code": "(define-struct game-object\r\n  [position orientation velocity angular-velocity radius])\r\n\r\n(define-struct (player game-object)\r\n  [])\r\n(define-struct (asteroid game-object)\r\n  [])\r\n(define-struct (missile game-object)\r\n  [lifetime])"
+      },
+      {
+          "File": "Lecture 23 - Methods - Asteroids",
+          "Page": "11",
+          "Summary": "position update example",
+          "Example code": "(for-each (λ (game-object)\r\n  (set-game-object-position!\r\n    object\r\n    (posn-+ (game-object-position game-object)\r\n            (posn-* inter-frame-interval\r\n                    (game-object-velocity game-object)))))\r\n  all-game-objects)"
+      },
+      {
+          "File": "Lecture 23 - Methods - Asteroids",
+          "Page": "14",
+          "Summary": "method override",
+          "Example code": "(define-struct (player game-object) ()\r\n   #:methods\r\n  (define (update! player) ...)\r\n  (define (render player) ...))\r\n\r\n(define-struct (asteroid game-object) ()\r\n  #:methods\r\n  (define (update! asteroid) ...)\r\n  (define (render asteroid) ...))\r\n\r\n(define-struct (missile game-object) (lifetime)\r\n  #:methods\r\n  (define (update! missile) ...)\r\n  (define (render missile) ...))"
+      },
+      {
+          "File": "Lecture 23 - Methods - Asteroids",
+          "Page": "18",
+          "Summary": "method inheritance again",
+          "Example code": "(define-struct game-object\r\n  ()\r\n  #:methods\r\n  (define (update! player)\r\n    (void)))\r\n    \r\n(define-struct (player game-object)\r\n  ()\r\n  #:methods\r\n  (define (update! player) ...)\r\n  (define (render player) ...))\r\n  \r\n\r\n(define-struct (asteroid game-object)\r\n  ()\r\n  #:methods\r\n  (define (render asteroid) ...))"
+      },
+      {
+          "File": "Lecture 23 - Methods - Asteroids",
+          "Page": "21-23",
+          "Summary": "missing methods and abstract types"
+      },
+      {
+          "File": "Lecture 24 - Methods - Quiz",
+          "Page": "4",
+          "Summary": "method inheritance example",
+          "Example code": "(define-struct question\r\n  [text answer]\r\n  #:methods\r\n  (define (display q) ...)\r\n  (define (check-answer q response) ...))\r\n  \r\n(define-struct (multiple-choice-question question)\r\n  [number-of-choices choices]\r\n  #:methods\r\n  (define (display mcq) ...))\r\n  \r\n(define-struct (numeric-question question)\r\n  [error-range]\r\n  #:methods\r\n  (define (check-answer nq response) ...))"
+      }
+  ],
+  "exercises": [
+      {
+          "File": "Exercise 0",
+          "Name": "a-red-square",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "a-blue-circle",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "outlined-square",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "outlined-circle",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "row-of-squares",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "column-of-squares",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "nested-squares",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "rotated-squares",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 0",
+          "Name": "flag-of-chicago",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-1a",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-1b",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-2",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-3",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-4",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "question-5",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "swatch",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "swatch-grid",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "bullseye/simple",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 1",
+          "Name": "bullseye/color",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "all-titles",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "all-artists",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "all-genres",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "artist-albums",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "artist-genres",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "artist-is-versatile?",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "versatile-artists",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "artist-album-counts",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 2",
+          "Name": "genre-album-counts",
+          "Language": "Intermediate",
+          "Libraries": "remove_duplicates.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "multiply-list",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "my-iterated-overlay",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "iterated-any",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "count-tree",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "sum-tree",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "max-tree",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "depth-tree",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "multiply-list/iter",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "iterated-overlay/iter",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 3",
+          "Name": "iterated-any/iter",
+          "Language": "Intermediate",
+          "Libraries": "2htdp/image;iterated_images.rkt"
+      },
+      {
+          "File": "Exercise 4",
+          "Name": "ancestors-names-",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Exercise 4",
+          "Name": "ancestors-names-2",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Exercise 4",
+          "Name": "related?",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Exercise 4",
+          "Name": "list-contents",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Exercise 4",
+          "Name": "lookup",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-left-press",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-left-release",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-right-press",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-right-release",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-up-press",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-up-release",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "firing-engines?",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "update-player!",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "on-space-press",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 5",
+          "Name": "update-missile!",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "backup!",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "count-files",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "directory-size",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "search-directory",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "filter-directory",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "find-file-type",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 6",
+          "Name": "file-type-disk-usage",
+          "Language": "Advanced",
+          "Libraries": "file_operations.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "update! player",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "render player",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "radius player",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "render asteroid",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "radius asteroid",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "update! missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "render missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "radius missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "update! heat seeker missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "render heat seeker missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "radius heat seeker missile",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "update! UFO",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "render UFO",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Exercise 7",
+          "Name": "radius UFO",
+          "Language": "Advanced",
+          "Libraries": "2htdp/image;2htdp/universe;define_struct.rkt"
+      },
+      {
+          "File": "Snake",
+          "Name": "add-food",
+          "Language": "Advanced",
+          "Libraries": "snake_lib.rkt"
+      },
+      {
+          "File": "Snake",
+          "Name": "change-direction",
+          "Language": "Advanced",
+          "Libraries": "snake_lib.rkt"
+      },
+      {
+          "File": "Snake",
+          "Name": "game-score",
+          "Language": "Advanced",
+          "Libraries": "snake_lib.rkt"
+      },
+      {
+          "File": "Snake",
+          "Name": "game-over?",
+          "Language": "Advanced",
+          "Libraries": "snake_lib.rkt"
+      },
+      {
+          "File": "Snake",
+          "Name": "advance-game",
+          "Language": "Advanced",
+          "Libraries": "snake_lib.rkt"
+      },
+      {
+          "File": "Extra Credit",
+          "Name": "filter-map",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Extra Credit",
+          "Name": "lookup",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Extra Credit",
+          "Name": "execute",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Extra Credit",
+          "Name": "while",
+          "Language": "Intermediate",
+          "Libraries": ""
+      },
+      {
+          "File": "Extra Credit",
+          "Name": "sum-list",
+          "Language": "Intermediate",
+          "Libraries": ""
+      }
+  ]
+}
