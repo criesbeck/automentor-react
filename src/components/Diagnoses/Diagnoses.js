@@ -13,7 +13,7 @@ const collect = (lst, fn) => (
 );
 
 const isOnPage = (term, page) => {
-  const re = new RegExp(`\\${term}\\b`);
+  const re = new RegExp(`\\${term}\\b`, 'i');
   return re.exec(page.summary) || re.exec(page.code);
 };
 
@@ -60,6 +60,7 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
 
 const Diagnoses = ({ setPattern, ticket, kb }) => {
   const results = diagnose(ticket, kb);
+  console.log(results);
   const resourcePages = filterResources(results, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />

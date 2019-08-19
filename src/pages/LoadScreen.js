@@ -9,11 +9,13 @@ import { useFirebase, useFirebaseValue } from 'hooks/useFirebase';
 
 
 const LoadScreen = ({ offering, testMode }) => {
+  console.log(`Offering = "${offering}; Test mode is ${!!testMode}`);
   const expiration = testMode ? 0 : 24 * 60 * 60 * 1000;
   const [courseName, setCourseName] = useCachedValue('cachedCourseName', expiration);
   const [course, setCourse] = useCachedValue('cachedCourse', expiration);
   const [user, setUser] = useCachedValue('cachedUser', expiration);
 
+  console.log(`Cached course: "${courseName}; Cached user: ${user ? user.displayName : "N/A"}`);
   useFirebase(`courses/${courseName}`, setCourse);
   useFirebaseValue(offering ? `offerings/${offering}/course` : null, setCourseName);
 

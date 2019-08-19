@@ -282,17 +282,10 @@
       "url": "https://piazza.com/class/jbzfbbon3nt32i?cid=94",
       "blocks": [
         {
-          "text": "I'm getting error using Iterated-overlay function.",
+          "text": "All of a sudden DrRacket is telling me iterated-overlay is no longer defined?",
           "label": "message",
           "isCode": false,
           "timestamp": 1516946430000,
-          "author": "cln484"
-        },
-        {
-          "label": "computerOutput",
-          "text": "function Iterated-overlay not defined.",
-          "isCode": true,
-          "timestamp": 1516946460000,
           "author": "cln484"
         }
       ]

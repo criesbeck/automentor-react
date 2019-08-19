@@ -29,8 +29,7 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
   const [ block, setBlock ] = useState(null);
   const ticketRef = useFirebaseRef(`offerings/${offering}/tickets`);
   const kb = KB({ concepts, diagnoses, resources });
-  console.log(concepts)
-  console.log(resources)
+  console.log(kb)
   const exercises = course.exercises;
 
    // for highlighting matches
