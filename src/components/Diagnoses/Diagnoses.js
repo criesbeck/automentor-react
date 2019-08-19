@@ -1,7 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Box, Card, Content } from 'rbx';
+import { Box, Card, Container, Content } from 'rbx';
+import Resources from 'components/Resources';
 import { diagnose, diagnosisRegExps, instances } from './diagnose';
+
+const collect = (lst, fn) => (
+  lst.reduce((lst, x) => {
+    const y = fn(x);
+    return (y !== null) ? [...lst, y] : lst;
+  }, [])
+);
+
+const isOnPage = (term, page) => {
+  const re = new RegExp(`\\${term}\\b`);
+  return re.exec(page.summary) || re.exec(page.code);
+};
+
+const isRelevantPage = (page, diagnoses) => (
+  diagnoses.some(diagnosis => (
+    diagnosis.blists.some(blist => (
+      Object.values(blist).some(term => isOnPage(term, page))
+    ))
+  ))
+);
+
+const relevantResources = (resource, diagnoses) => {
+  const pages = resource.pages.filter(page => isRelevantPage(page, diagnoses));
+  return (pages.length === 0) ? null : { resource, pages };
+  };
+
+const filterResources = (diagnoses, kb) => (
+  collect(kb.resources, resource => relevantResources(resource, diagnoses))
+);
 
 // components
 
@@ -29,11 +60,29 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
 
 const Diagnoses = ({ setPattern, ticket, kb }) => {
   const results = diagnose(ticket, kb);
+  const resourcePages = filterResources(results, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />
   ));
   
-  return  <Entry title="Diagnoses">{ diagnoses }</Entry>
+  return (
+    <>
+      <Entry title="Diagnoses">{ diagnoses }</Entry>
+      <Container style={{ height: '20em', overflow: 'auto' }}>
+        <Resources resourcePages={resourcePages} />
+      </Container>
+    </>
+  );
+};
+
+Diagnoses.propTypes = {
+  setPattern: PropTypes.func.isRequired,
+  ticket: PropTypes.object.isRequired,
+  kb: PropTypes.shape({
+    concepts: PropTypes.object.isRequired,
+    diagnoses: PropTypes.object.isRequired,
+    resources: PropTypes.array.isRequired
+  })
 };
 
 export default Diagnoses;

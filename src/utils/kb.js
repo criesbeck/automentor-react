@@ -1,6 +1,6 @@
 import { removeDuplicates } from './utils';
 
-const KB = ({ concepts, diagnoses }) => {
+const KB = ({ concepts, diagnoses, resources }) => {
   const absts = {};
   
   const lookup = id => concepts[id] || {};
@@ -68,7 +68,7 @@ const KB = ({ concepts, diagnoses }) => {
     return x !== undefined && isa(x, filler)
   }
 
-  return { diagnoses, isa, filler, lookup, search, toObject };
+  return { concepts, diagnoses, isa, filler, lookup, resources, search, toObject };
 }
 
 export default KB;

@@ -1,7 +1,7 @@
 [
     {
       "file": "Lecture 2 - Programming with text",
-      "items": [
+      "pages": [
         {
           "page": "4",
           "summary": "Literal constants -- numbers, strings",
@@ -35,7 +35,7 @@
         },
         {
           "page": "16-19",
-          "summary": "Indentation",
+          "summary": "How to indent",
           "code": "(string-append (string-append (string-append \"this \"\r\n                                             \"is a \")\r\n                              \"tedious \")\r\n               (string-append \"example of \" \"nesting\"))"
         },
         {
@@ -46,12 +46,11 @@
     },
     {
       "file": "Lecture 3 - Graphics language",
-      "items": [
+      "pages": [
         {
           "page": "2",
           "summary": "require, libraries, declarations",
-          "code": "(require 2htdp/image)",
-          "notes": "equates \"your file\" with \"definition pane\""
+          "code": "(require 2htdp/image)"
         },
         {
           "page": "3",
@@ -146,7 +145,7 @@
     },
     {
       "file": "Lecture 4 - Compound procedures",
-      "items": [
+      "pages": [
         {
           "page": "2-3",
           "summary": "rules of computation - same as previous"
@@ -185,7 +184,7 @@
     },
     {
       "file": "Lecture 5 - Iterators and iteration",
-      "items": [
+      "pages": [
         {
           "page": "6",
           "summary": "rules of computation - with define and lambda"
@@ -241,7 +240,7 @@
     },
     {
       "file": "Lecture 6 - Conditional expressions",
-      "items": [
+      "pages": [
         {
           "page": "2-3",
           "summary": "rules of computation -- with define and local define"
@@ -283,7 +282,7 @@
     },
     {
       "file": "Lecture 7 - Composite data",
-      "items": [
+      "pages": [
         {
           "page": "6",
           "summary": "define-struct"
@@ -302,7 +301,7 @@
     },
     {
       "file": "Lecture 8 - Lists",
-      "items": [
+      "pages": [
         {
           "page": "2-3",
           "summary": "rules for execution - with if"
@@ -442,7 +441,7 @@
     },
     {
       "file": "Lecture 9 - Recursion",
-      "items": [
+      "pages": [
         {
           "page": "2-3",
           "summary": "signatures of list functions"
@@ -473,7 +472,7 @@
     },
     {
       "file": "Lecture 10 - Iterative recursion",
-      "items": [
+      "pages": [
         {
           "page": "2-3",
           "summary": "recursion recap"
@@ -505,7 +504,7 @@
     },
     {
       "file": "Lecture 12 - Linked lists",
-      "items": [
+      "pages": [
         {
           "page": "2",
           "summary": "cons, definition and examples"
@@ -523,7 +522,7 @@
     },
     {
       "file": "Lecture 15 - Scope",
-      "items": [
+      "pages": [
         {
           "page": "2",
           "summary": "local vs global variables (only functions)"
@@ -546,7 +545,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 1",
-      "items": [
+      "pages": [
         {
           "page": "4",
           "summary": "side effects: define, require"
@@ -555,7 +554,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 2",
-      "items": [
+      "pages": [
         {
           "page": "5",
           "summary": "types of side effects"
@@ -564,7 +563,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 3",
-      "items": [
+      "pages": [
         {
           "page": "6-7",
           "summary": "imperative vs functional programming"
@@ -573,7 +572,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 4",
-      "items": [
+      "pages": [
         {
           "page": "9",
           "summary": "advanced student language setting"
@@ -582,7 +581,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 5",
-      "items": [
+      "pages": [
         {
           "page": "11",
           "summary": "! Convention"
@@ -591,7 +590,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 6",
-      "items": [
+      "pages": [
         {
           "page": "12",
           "summary": "void type"
@@ -600,7 +599,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 7",
-      "items": [
+      "pages": [
         {
           "page": "13",
           "summary": "set!"
@@ -609,7 +608,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 8",
-      "items": [
+      "pages": [
         {
           "page": "14",
           "summary": "define vs set!"
@@ -618,7 +617,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 9",
-      "items": [
+      "pages": [
         {
           "page": "15",
           "summary": "setting global variables"
@@ -627,7 +626,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 10",
-      "items": [
+      "pages": [
         {
           "page": "17",
           "summary": "begin"
@@ -636,7 +635,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 11",
-      "items": [
+      "pages": [
         {
           "page": "18",
           "summary": "begin example",
@@ -646,7 +645,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 12",
-      "items": [
+      "pages": [
         {
           "page": "19",
           "summary": "example imperative sum-list",
@@ -656,7 +655,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 13",
-      "items": [
+      "pages": [
         {
           "page": "43",
           "summary": "example ordering error",
@@ -666,7 +665,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 14",
-      "items": [
+      "pages": [
         {
           "page": "57",
           "summary": "sum-list with for-each, when, ",
@@ -676,7 +675,7 @@
     },
     {
       "file": "Lecture 16 - Imperative programming 15",
-      "items": [
+      "pages": [
         {
           "page": "71",
           "summary": "sum-list functional vs imperative"
@@ -685,7 +684,7 @@
     },
     {
       "file": "Lecture 18 - Imperative Programming 2 - Mutation",
-      "items": [
+      "pages": [
         {
           "page": "3-7",
           "summary": "define-struct recap + set-type-field!"
@@ -698,7 +697,7 @@
     },
     {
       "file": "Lecture 19 - Imperative programming 3 - Files",
-      "items": [
+      "pages": [
         {
           "page": "3-5",
           "summary": "rules for execution"
@@ -738,7 +737,7 @@
     },
     {
       "file": "Lecture 21 - Debugging",
-      "items": [
+      "pages": [
         {
           "page": "4",
           "summary": "steps in debugging"
@@ -787,7 +786,7 @@
     },
     {
       "file": "Lecture 22 - Methods",
-      "items": [
+      "pages": [
         {
           "page": "10",
           "summary": "define-struct #methods",
@@ -814,7 +813,7 @@
     },
     {
       "file": "Lecture 23 - Methods - Asteroids",
-      "items": [
+      "pages": [
         {
           "page": "10",
           "summary": "structs with supertypes",
@@ -843,7 +842,7 @@
     },
     {
       "file": "Lecture 24 - Methods - Quiz",
-      "items": [
+      "pages": [
         {
           "page": "4",
           "summary": "method inheritance example",

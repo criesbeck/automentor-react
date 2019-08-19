@@ -12,7 +12,8 @@
     "exercise_0": {
       "title": "Exercise 0: Getting acquainted with Racket",
       "level": "intermediate",
-      "requires": ["2htdp/image"],
+      "requires": ["2htdp/image", "define", "rectangle", "ellipse", "overlay", "beside",
+      "square", "color", "row", "grid"],
       "defines": [
         "a-red-square",
         "a-blue-circle",
@@ -28,7 +29,8 @@
     "exercise_1": {
       "title": "Exercise 1: Generating Iterated Images",
       "level": "intermediate",
-      "requires": ["2htdp/image"],
+      "requires": ["2htdp/image", "iterated-overlay", "iterated-beside", "ellipse", 
+        "rectangle", "color", "interpolate-colors", "define"],
       "defines": [
         "question-1a",
         "question-1b",
@@ -45,7 +47,8 @@
     "exercise_2": {
       "title": "Exercise 2: A Music Library",
       "level": "intermediate",
-      "files": ["exercise_2.rkt", "remove_duplicates.rkt"],
+      "files": ["exercise_2.rkt", "remove_duplicates.rkt", "list", "define-struct",
+      "check-expect", "remove-duplicates", "filter", "string=?"],
       "defines": [
         "all-titles",
         "all-artists",
@@ -62,7 +65,8 @@
       "title": "Exercise 3: Great Times with Recursion",
       "level": "intermediate",
       "readings": ["exercise_3.pdf", "exercise_3_hints.pdf"],
-      "requires": ["2htdp/image"],
+      "requires": ["2htdp/image", "recursion", "check-expect", "if", "*", "+",
+      "empty-image", "square", "color", "max"],
       "files": ["iterated_images.rkt"],
       "defines": [
         "multiply-list",
@@ -80,6 +84,7 @@
     "exercise_4": {
       "title": "Exercise 4: Recursion on Trees",
       "level": "intermediate",
+      "requires": ["define", "define-struct", "<", ">", "="],
       "defines": [
         "ancestors-names-",
         "ancestors-names-2",

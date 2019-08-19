@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Button, Card, Divider, Icon, Level, Column } from 'rbx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { Divider, Level, Column } from 'rbx';
 import Diagnoses from 'components/Diagnoses';
-import ResourcesModal from 'components/ResourcesModal';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
 import { updateTicket } from 'utils/tickets';
@@ -27,23 +24,14 @@ const SampleSource = ({ url }) => (
   : null
 );
 
-const Viewer = ({ title, url }) => (
-  <Card>
-    <Card.Header>{title}</Card.Header>
-    <Card.Content>
-      <iframe title={title} src={ url } style={ { height: '10em', width: '100%' } } />
-    </Card.Content>
-  </Card>
-);
-
 const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) => {
   const { id, ticket } = ticketState;
   const [ block, setBlock ] = useState(null);
   const ticketRef = useFirebaseRef(`offerings/${offering}/tickets`);
-  const kb = KB({ concepts, diagnoses });
+  const kb = KB({ concepts, diagnoses, resources });
+  console.log(concepts)
+  console.log(resources)
   const exercises = course.exercises;
-
-  const [modalOpen, setModalOpen] = useState( false );
 
    // for highlighting matches
    const [ pattern, setPattern ] = useState(null);
@@ -84,18 +72,8 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
       {
         ifMentor(
           <Column size={4}>
-            <React.Fragment>
-              <Divider color="primary">diagnoses</Divider>
-              <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
-              <Button onClick={ () => setModalOpen(true) }>
-                <Icon>
-                  <FontAwesomeIcon icon={ faBook } />
-                </Icon>
-                <span>Resources</span>
-              </Button>
-              <ResourcesModal isOpen={ modalOpen } close={ () => setModalOpen(false) }
-                resources={ resources } />
-            </React.Fragment>
+            <Divider color="primary">diagnoses</Divider>
+            <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
           </Column>
         )
       }

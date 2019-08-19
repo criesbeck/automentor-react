@@ -1,4 +1,4 @@
-import { firebase } from './firebase';
+import { firebase } from 'utils/firebase';
 
 const ticketTimeFormat = {
   month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit',

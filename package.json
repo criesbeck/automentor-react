@@ -4,18 +4,19 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@testing-library/react": "^8.0.6",
-    "firebase": "^6.3.1",
+    "@testing-library/react": "^8.0.9",
+    "firebase": "^6.4.0",
     "npmlog": "^4.1.2",
     "prop-types": "^15.7.2",
     "rbx": "^2.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-modal": "^3.9.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-sidebar": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
