@@ -83,27 +83,6 @@ test('Filler paths work for roles, including ones that fail', () => {
   expect(theKB.filler('ex-1', 'instructor', 'name')).toBeFalsy();
 })
 
-test('Search returns the most specific concepts with no slots given', () => {
-  const exercises = theKB.search(['exercise']);
-  expect(exercises.length).toBe(3);
-  expect(exercises).toContain('ex-1');
-  expect(exercises).toContain('ex-2');
-  expect(exercises).toContain('ex-2-1');
-});
-
-test('Search returns the most specific concepts with slots as or more specific than those given', () => {
-  expect(theKB.search(['library-function'], { 'library': 'image.rkt'})).toStrictEqual(['overlay'])
-  const exercises = theKB.search(['exercise'], { course: 'cs111' });
-  expect(exercises.length).toBe(2);
-  expect(exercises).toContain('ex-1');
-  expect(exercises).toContain('ex-2');
-});
-
-test('Search failure returns empty list', () => {
-  expect(theKB.search(['exercise'], { course: 'cs214'})).toStrictEqual([]);
-  expect(theKB.search(['unicorn'])).toStrictEqual([]);
-})
-
 test('toObject handles simple roles', () => {
   const names = ['ex-1', 'ex-2'];
   const obj = theKB.toObject(names, ['name', 'course']);
@@ -121,6 +100,18 @@ test('toObject handles paths', () => {
   });
 })
 
-test('dmap(overlay) references overlay, with no endless loop', () => {
-  expect(theKB.references(theKB.dmap(['overlay']))).toContain('overlay');
+test('reference(exercise, course cs111, name Exercise 2) finds ex-2', () => {
+  expect(theKB.reference('exercise', { course: "cs111", name: "Exercise 2" }))
+    .toBe('ex-2');
 });
+
+test('dmap(overlay) references overlay, with no endless loop', () => {
+  expect(theKB.references(theKB.dmap('overlay'))).toContain('overlay');
+});
+
+test('dmap(call overlay) reference function-call with slot overlay', () => {
+  const exps = theKB.dmap('call overlay');
+  const refs = theKB.references(exps);
+  expect(refs).toContain('overlay');
+  expect(refs).toContain('function-call-overlay');
+})

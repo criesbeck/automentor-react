@@ -7,6 +7,13 @@ const fetchJson = async (url) => {
   return response.json();
 };
 
+// current CRA is node 10, and Firebase is node 8
+// neither have Array.flatMap
+
+const flatmap = (arr, fn) => (
+  arr.reduce((lst, x) => [...lst, ...fn(x)], [])
+);
+
 const removeDuplicates = lst => (
   lst.filter((x, i) => i === lst.lastIndexOf(x))
 );
@@ -42,4 +49,4 @@ const useForm = (names, inits) => {
   return [ values, handleChange, resetValues ];
 };
 
-export { fetchJson, removeDuplicates, showObject, useForm };
+export { fetchJson, flatmap, removeDuplicates, showObject, useForm };

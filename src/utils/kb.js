@@ -1,11 +1,22 @@
-import { removeDuplicates } from './utils';
-
 // a JavaScript port of the Lisp solutions to
 // http://www.cs.northwestern.edu/academics/courses/325/exercises/mop-exs.php
 
 const KB = ({ concepts, diagnoses, resources }) => {
   const absts = {};
   let defaultExpectations = null;
+
+  // current CRA is node 10, and Firebase is node 8
+  // neither have Array.flatMap
+
+  const flatmap = (arr, fn) => (
+    arr.reduce((lst, x) => [...lst, ...fn(x)], [])
+  );
+
+  const removeDuplicates = lst => (
+    lst.filter((x, i) => i === lst.lastIndexOf(x))
+  );
+
+  /* MOP hierarchy */
   
   const lookup = id => concepts[id] || {};
 
@@ -15,14 +26,6 @@ const KB = ({ concepts, diagnoses, resources }) => {
 
   const pathFiller = (x, path) => (
     path.reduce((x, role) => x && inheritFiller(x, role), x)
-  );
-
-  const search = (absts = [], slots = {}) => (
-    removeAbstractions(
-      removeDuplicates(
-        Object.keys(concepts).filter(name => satisfies(name, absts, slots))
-      )
-    )
   );
 
   const toObject = (names, roles) => {
@@ -35,15 +38,6 @@ const KB = ({ concepts, diagnoses, resources }) => {
       names.reduce((obj, name) => ({...obj, [name]: fillerOf(name)}), {})
     )
   };
-
-  const removeAbstractions = (lst) => (
-    lst.filter(x => !(lst.some(y => x !== y && isa(y, x))))
-  );
-
-  const satisfies = (name, absts, slots) => (
-    absts.every(abst => isa(name, abst))
-    && Object.keys(slots).every(role => hasFiller(name, role, slots[role]))
-  );
 
   const getAllAbsts = (name) => {
     const concept = concepts[name]
@@ -67,15 +61,33 @@ const KB = ({ concepts, diagnoses, resources }) => {
     return abst && getFiller(abst,role);
   }
 
-  const hasFiller = (name, role, filler) => {
-    const x = inheritFiller(name, role);
-    return x !== undefined && isa(x, filler)
-  }
+  const hasSlots = (name, slots) => (
+    Object.keys(slots).every(role => slots[role] === getFiller(name, role))
+  );
+
+  const findConcept = (abst, slots) => (
+    Object.keys(concepts).find(name => (
+      isa(name, abst) && hasSlots(name, slots)
+    ))
+  );
+
+  const makeConcept = (abst, slots) => {
+    const name = `${abst}-${Object.values(slots).join('-')}`;
+    concepts[name] = { absts: [abst], slots };
+    return name;
+  };
+
+  const reference = (abst, slots = {}) => (
+    findConcept(abst, slots) || makeConcept(abst, slots)
+  );
+
+  /* DMAP parser */
 
   const initialExpectations = () => {
+    const slots = {};
     const getExpectations = base => (
       (concepts[base].phrases || []).map(phrase => ({
-        phrase, base, slots: []
+        phrase, base, slots
       }))
     );
     if (!defaultExpectations) {
@@ -86,60 +98,76 @@ const KB = ({ concepts, diagnoses, resources }) => {
     return defaultExpectations;
   };
 
-  const nextExpectation = (expectation, role, filler) => (
-    role
-    ? {
-      phrase: expectation.phrase.slice(1),
-      slots: [...expectation.slots, { role, filler } ]
+  const target = exp => {
+    const focus = exp.phrase[0];
+    return typeof focus === 'string' ? focus : pathFiller(exp.base, focus);
+  };
+
+  const nextExpectation = (exp, item) => (
+    {
+      ...exp,
+      phrase: exp.phrase.slice(1),
+      slots:
+        item === target(exp) 
+        ? exp.slots 
+        : {...exp.slots, [exp.phrase[0]]: item }
     }
-    : { 
-      phrase: expectation.phrase.slice(1)
+  );
+
+  const wordMatches = (exp, word) => (
+    exp.phrase[0] && word === exp.phrase[0]
+  );
+
+  const conceptMatches = (exp, concept) => {
+    if (!exp.phrase[0] || typeof exp.phrase[0] === 'string') {
+      return false;
     }
+    return isa(concept, target(exp));
+  };
+
+  const wordAdvance = (expectations, word) => (
+    expectations
+      .filter(exp => wordMatches(exp, word))
+      .map(exp => nextExpectation(exp, word))
   );
 
-  const itemsAdvance = (expectations, items) => (
-    items.reduce((expectations, item) => (
-      [...expectations, ...itemAdvance(expectations, { concept: item })]
-    ), [])
+  const conceptAdvance = (expectations, concept) => (
+    expectations
+      .filter(exp => { if (!exp.phrase) debugger; return conceptMatches(exp, concept) })
+      .map(exp => nextExpectation(exp, concept))
   );
 
-  const pathMatch = (item, expectation) => (
-    Array.isArray(expectation.phrase[0]) 
-    && isa(item, pathFiller(expectation.base, expectation.phrase[0]))
+  const conceptsAdvance = (exps, concepts) => {
+    return flatmap(concepts, concept => conceptAdvance(exps, concept))
+  };
+
+  const nextExpectations = (newExps, exps) => {
+    return newExps.length === 0
+    ? []
+    : newExps.concat(nextExpectations(conceptsAdvance(exps, references(newExps)), exps))
+  };
+
+  const parseWord = (exps, word) => {
+    return nextExpectations(wordAdvance(exps, word), exps)
+  }
+
+  const parseWords = (exps, words) => (
+    words.length === 0
+      ? exps
+      : parseWords(parseWord(exps, words[0]).concat(exps), words.slice(1))
   );
 
-  const itemAdvance = (expectations, item ) => (
-    expectations.reduce((expectations, expectation) => (
-      [
-        ...expectations,
-        expectation.phrase.length === 0
-        ? expectation
-        : item.word && item.word === expectation.phrase[0]
-        ? nextExpectation(expectation)
-        : item.concept && pathMatch(item.concept, expectation)
-        ? nextExpectation(expectation, expectation.phrase[0][0], item)
-        : expectation
-      ]
-    ), [])
+  const dmap = (text, exps = initialExpectations()) => (
+    parseWords(exps, text.split(' '))
   );
 
-  const updateExpectations = (expectations, word) => (
-    itemsAdvance(expectations, references(itemAdvance(expectations, { word })))
-  );
-
-  const dmap = (text, expectations = initialExpectations()) => (
-    text.reduce((expectations, word) => (
-      [...updateExpectations(expectations, word), ...expectations]
-    ), expectations)
-  );
-
-  const references = expectations => (
-    expectations.filter(expectation => expectation.phrase.length === 0)
-      .map(expectation => search([expectation.base], expectation.slots))
-  );
+  const references = expectations => {
+    const finished = expectations.filter(expectation => expectation.phrase.length === 0);
+    return finished.map(expectation => reference(expectation.base, expectation.slots))
+  };
 
   return { concepts, diagnoses, dmap, isa, filler, lookup, 
-    references, resources, search, toObject };
+           reference, references, resources, toObject };
 };
 
 export default KB;
