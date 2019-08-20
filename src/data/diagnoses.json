@@ -15,6 +15,32 @@
       }
     }
   },
+  "function-is-not-defined-no-source": {
+    "summary": "?fn not defined, no source given",
+    "pattern": {
+      "blocks": {
+        "and": [
+          {
+            "some": {
+              "text": {
+                "reg": "(?: function)? ([^\\s]+)(?: is)? (?:not defined|undefined|no longer defined)",
+                "pats": [
+                  "?fn"
+                ]
+              }
+            }
+          },
+          {
+            "not": {
+              "some": {
+                "isCode": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
   "library-function-is-not-defined": {
     "summary": "?fn is a library function - library not loaded?",
     "pattern": {

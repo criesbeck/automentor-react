@@ -1,9 +1,35 @@
 import KB from './kb.js';
 
 const theKB = KB({ concepts: {
-    "overlay": { "absts": ["image-function"] },
+    "overlay": { 
+      "absts": ["image-function"],
+      "phrases": [
+        ["overlay"]
+      ]
+    },
+    "function-call": {
+      "absts": ["code-action"],
+      "slots": { "object": "function" },
+      "phrases": [
+        ["apply", ["object"]],
+        ["call", ["object"]],
+        ["run", ["object"]],
+        ["use", ["object"]]
+      ]
+    },
     "image-function": {
       "absts": ["library-function"], "slots": { "library": "image.rkt" } 
+    },
+    "library-function": {
+      "absts": ["function"],
+      "phrases": [
+        ["library", "function"]
+      ]
+    },
+    "function": {
+      "phrases": [
+        "function"
+      ]
     },
     "image.rkt": {
         "absts": ["library"], "slots": { "language": "Racket" } 
@@ -94,3 +120,7 @@ test('toObject handles paths', () => {
     'overlay': { 'library-language': 'Racket' }
   });
 })
+
+test('dmap(overlay) references overlay, with no endless loop', () => {
+  expect(theKB.references(theKB.dmap(['overlay']))).toContain('overlay');
+});

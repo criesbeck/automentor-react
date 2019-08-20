@@ -11,21 +11,21 @@ expect.extend({
     return (
       bindings(x, blists).includes(val)
       ? { pass: true }
-      : { pass: false, message: `expected ${x} to be bound to ${val}`}
+      : { pass: false, message: () => `expected ${x} to be bound to ${val}`}
     )
   },
   toFail(received) {
     return (
       received.length === 0
       ? { pass: true }
-      : { pass: false, message: `expected match failure`}
+      : { pass: false, message: () => `expected match failure`}
     )
   },
   toPass(received) {
     return (
       received.length > 0
       ? { pass: true }
-      : { pass: false, message: `expected match success`}
+      : { pass: false, message: () => `expected match success`}
     )
   }
 });
@@ -55,6 +55,11 @@ test('[?x, ?x] matches a tuple starting with the same item twice', () => {
   expect(match(['?x', '?x'], [1, 2])).toFail();
   expect(match(['?x', '?x'], [1])).toFail(0);
   expect(match(['?x', '?x'], [2, 1, 1])).toFail(0);
+});
+
+test('{ not: { some: 2 } } matches [1, 3] and not [1, 2]', () => {
+  expect(match({not: { some: 2 }}, [1, 3])).toPass();
+  expect(match({not: { some: 2 }}, [1, 2])).toFail();
 });
 
 test('{ pat: pat, fn: fn, args: [a, b] } matches x if pat matches (fn x a b)', () => {

@@ -25,7 +25,7 @@
     "diagnoses": ["function-expected"]
   },
   "sample-6": {
-    "diagnoses": ["function-is-not-defined"]
+    "diagnoses": ["function-is-not-defined-no-source"]
   },
   "sample-7": {
     "diagnoses": ["function-expected-no-source-code"]
@@ -88,7 +88,8 @@
     "diagnoses": []
   },
   "sample-27": {
-    "diagnoses": ["var-not-defined-no-source"]
+    "diagnoses": ["function-is-not-defined-no-source", "var-not-defined-no-source"],
+    "note": "latter should be preferred because it matches 27 better"
   },
   "sample-28": {
     "diagnoses": []
