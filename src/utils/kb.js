@@ -152,9 +152,9 @@ const KB = ({ concepts, diagnoses, resources }) => {
   }
 
   const parseWords = (exps, words) => (
-    words.length === 0
-      ? exps
-      : parseWords(parseWord(exps, words[0]).concat(exps), words.slice(1))
+    words.reduce((exps, word) => (
+      parseWord(exps, word).concat(exps)
+    ), exps)
   );
 
   const dmap = (text, exps = initialExpectations()) => (
