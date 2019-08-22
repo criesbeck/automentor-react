@@ -3,22 +3,17 @@ import Modal from 'react-modal';
 import 'rbx/index.css';
 import { Heading } from 'rbx';
 
-const isEmpty = obj => {
-  for (var prop in obj) {
-    if (obj.hasOwnProperty(prop)) return false;
-  }
-  return true;
-};
-
 const expToString = (exp, kb) => {
-  const slots = isEmpty(exp.slots) ? '' : `${JSON.stringify(exp.slots)}`;
-  if (!exp.phrase) debugger;
+  const slot = ([role, filler]) => `${role}=${filler}`;
+  const filled = Object.entries(exp.slots).map(slot);
   const expecting = exp.phrase.map(focus => (
-    typeof focus === 'string' ? [focus] : `${kb.filler(exp.base, focus)}`
+    typeof focus === 'string'
+    ? focus
+    : slot([focus, kb.filler(exp.base, focus)])
   ));
 
   return (
-    [...exp.matched, ...exp.phrase, '=>', exp.base, slots, expecting].join(' ')
+    [...exp.matched, ...expecting, '=>', exp.base, filled].join(' ')
   )
 };
 
