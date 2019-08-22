@@ -2,58 +2,6 @@ import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import 'rbx/index.css';
 import { Heading } from 'rbx';
-import KB from 'utils/kb';
-      
-const theKB = KB({
-  concepts: {
-    "overlay": {
-      "absts": ["image-function"],
-      "phrases": [
-        ["overlay"]
-      ]
-    },
-    "function-call": {
-      "absts": ["code-action"],
-      "slots": {"object": "function" },
-      "phrases": [
-        ["apply", ["object"]],
-        ["call", ["object"]],
-        ["run", ["object"]],
-        ["use", ["object"]]
-      ]
-    },
-    "image-function": {
-      "absts": ["library-function"], "slots": {"library": "image.rkt" }
-    },
-    "library-function": {
-      "absts": ["function"],
-      "phrases": [
-        ["library", "function"]
-      ]
-    },
-    "function": {
-      "phrases": [
-        "function"
-      ]
-    },
-    "image.rkt": {
-      "absts": ["library"], "slots": {"language": "Racket" }
-    },
-    "cs111": {"absts": ["course"], "slots": {"name": "CS 111" } },
-    "ex-1": {
-      "absts": ["exercise"],
-      "slots": {"course": "cs111", "name": "Exercise 1" }
-    },
-    "ex-2": {
-      "absts": ["exercise"],
-      "slots": {"course": "cs111", "name": "Exercise 2" }
-    },
-    "ex-2-1": {
-      "absts": ["exercise"],
-      "slots": {"course": "cs211", "name": "Exercise 2.1" }
-    }
-  }
-});
 
 const isEmpty = obj => {
   for (var prop in obj) {
@@ -62,16 +10,19 @@ const isEmpty = obj => {
   return true;
 };
 
-const expToString = exp => {
-  const slots = isEmpty(exp.slots) ? '' : ` slots: ${JSON.stringify(exp.slots)}`;
-  const matched = isEmpty(exp.matched) ? '' : ` matched: ${exp.matched.join(', ')}`;
+const expToString = (exp, kb) => {
+  const slots = isEmpty(exp.slots) ? '' : `${JSON.stringify(exp.slots)}`;
+  if (!exp.phrase) debugger;
+  const expecting = exp.phrase.map(focus => (
+    typeof focus === 'string' ? [focus] : `${kb.filler(exp.base, focus)}`
+  ));
 
   return (
-    `base: ${exp.base} phrase: ${exp.phrase}${slots}${matched}`
+    [...exp.matched, ...exp.phrase, '=>', exp.base, slots, expecting].join(' ')
   )
 };
 
-const KBrowserModal = ({ isOpen, close, resources }) => {
+const KBrowserModal = ({ isOpen, close, kb }) => {
   // use ref to not parse on every key stroke
   const [text, setText] = useState('');
   const ref = useRef('');
@@ -79,8 +30,8 @@ const KBrowserModal = ({ isOpen, close, resources }) => {
     setText(ref.current.value);
   }
 
-  const exps = theKB.dmap(text).filter(exp => exp.matched.length > 0);
-  const refs = theKB.references(exps)
+  const exps = kb.dmap(text).filter(exp => exp.matched.length > 0);
+  const refs = kb.references(exps)
 
   return (
     <Modal appElement={document.getElementById('root')} isOpen={isOpen}
@@ -102,7 +53,7 @@ const KBrowserModal = ({ isOpen, close, resources }) => {
     </div>
     <div>
       Expectations:
-      <pre id="parse-exps">{ exps.map(expToString).join('\n') }</pre>
+      <pre id="parse-exps">{ exps.map(exp => expToString(exp, kb)).join('\n') }</pre>
     </div>
   </Modal>
   );

@@ -80,7 +80,7 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
               </Level.Item>
             </Level>
 
-            <KBrowserModal isOpen={modalOpen} close={() => setModalOpen(false)} />
+            <KBrowserModal isOpen={modalOpen} close={() => setModalOpen(false)} kb={kb} />
           </Column>
         )
       }

@@ -21,10 +21,7 @@ const theKB = KB({ concepts: {
       "absts": ["library-function"], "slots": { "library": "image.rkt" } 
     },
     "library-function": {
-      "absts": ["function"],
-      "phrases": [
-        ["library", "function"]
-      ]
+      "absts": ["function"]
     },
     "function": {
       "phrases": [

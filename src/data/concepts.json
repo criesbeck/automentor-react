@@ -1,6 +1,20 @@
 {
   "overlay": {
-    "absts": ["image-function"]
+    "absts": ["image-function"],
+    "phrases": [["overlay"]]
+  },
+  "function": {
+    "phrases": ["function"]
+  },
+  "function-call": {
+    "absts": ["code-action"],
+    "slots": {"object": "function" },
+    "phrases": [
+      ["apply", ["object"]],
+      ["call", ["object"]],
+      ["run", ["object"]],
+      ["use", ["object"]]
+    ]
   },
   "image-function": {
     "absts": ["library-function"],
