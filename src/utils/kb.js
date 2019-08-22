@@ -85,9 +85,10 @@ const KB = ({ concepts, diagnoses, resources }) => {
 
   const initialExpectations = () => {
     const slots = {};
+    const matched = [];
     const getExpectations = base => (
       (concepts[base].phrases || []).map(phrase => ({
-        phrase, base, slots
+        phrase, base, slots, matched
       }))
     );
     if (!defaultExpectations) {
@@ -107,6 +108,7 @@ const KB = ({ concepts, diagnoses, resources }) => {
     {
       ...exp,
       phrase: exp.phrase.slice(1),
+      matched: [...exp.matched, item],
       slots:
         item === target(exp) 
         ? exp.slots 

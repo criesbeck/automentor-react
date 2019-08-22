@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Divider, Level, Column } from 'rbx';
+import { Button, Divider, Level, Column } from 'rbx';
 import Diagnoses from 'components/Diagnoses';
 import ResponseEditor from 'components/ResponseEditor';
 import TicketData from 'components/TicketData';
@@ -11,6 +11,7 @@ import KB from 'utils/kb';
 import concepts from 'data/concepts.json';
 import diagnoses from 'data/diagnoses.json';
 import resources from 'data/cs111-index.json';
+import KBrowserModal from 'components/KBrowserModal';
 
 const SampleSource = ({ url }) => (
   url
@@ -29,8 +30,8 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
   const [ block, setBlock ] = useState(null);
   const ticketRef = useFirebaseRef(`offerings/${offering}/tickets`);
   const kb = KB({ concepts, diagnoses, resources });
-  console.log(kb)
   const exercises = course.exercises;
+  const [modalOpen, setModalOpen] = useState(false);
 
    // for highlighting matches
    const [ pattern, setPattern ] = useState(null);
@@ -73,6 +74,13 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
           <Column size={4}>
             <Divider color="primary">diagnoses</Divider>
             <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
+            <Level>
+              <Level.Item>
+                <Button onClick={() => setModalOpen(true)}>[KB]</Button>
+              </Level.Item>
+            </Level>
+
+            <KBrowserModal isOpen={modalOpen} close={() => setModalOpen(false)} />
           </Column>
         )
       }

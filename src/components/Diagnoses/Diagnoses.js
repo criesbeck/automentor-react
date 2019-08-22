@@ -60,7 +60,6 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
 
 const Diagnoses = ({ setPattern, ticket, kb }) => {
   const results = diagnose(ticket, kb);
-  console.log(results);
   const resourcePages = filterResources(results, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
     <Diagnosis key={name} diagnosis={diagnosis} blists={blists} setPattern={setPattern} />
@@ -69,7 +68,7 @@ const Diagnoses = ({ setPattern, ticket, kb }) => {
   return (
     <>
       <Entry title="Diagnoses">{ diagnoses }</Entry>
-      <Container style={{ height: '20em', overflow: 'auto' }}>
+      <Container style={{ maxHeight: '20em', overflow: 'auto' }}>
         <Resources resourcePages={resourcePages} />
       </Container>
     </>

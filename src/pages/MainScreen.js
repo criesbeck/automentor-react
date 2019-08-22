@@ -4,7 +4,6 @@ import Banner from 'components/Banner';
 import TicketList from 'components/TicketList';
 import TicketUpdater from 'components/TicketUpdater';
 import { cloneTicket } from 'utils/tickets';
-import { firebase } from 'utils/firebase';
 
 const MainScreen = ({ user, setUser, offering, course }) => {
   const [ticketState, setTicketState] = useState(null);
@@ -13,12 +12,9 @@ const MainScreen = ({ user, setUser, offering, course }) => {
     setTicketState({ id, ticket: cloneTicket(ticket) });
   };
 
-
-  const signOut = () => { 
-    firebase.auth().signOut().then(() => {
-      sessionStorage.removeItem('cachedUser');
-      setUser(null);
-    });
+  const signOut = () => {
+    sessionStorage.removeItem('cachedUser');
+    setUser(null);
   };
 
   return (
