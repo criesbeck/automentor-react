@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'rbx/index.css';
-import { Button, Content, Control, Field, Table } from 'rbx';
+import { Button, Checkbox, Content, Control, Field, Label, Table } from 'rbx';
 import { emptyTicket, ticketLabel, ticketSummary, ticketTime } from 'utils/tickets';
 import { useFirebase, useFirebaseRef } from 'hooks/useFirebase';
 
@@ -32,6 +32,7 @@ const ticketsQuery = (offering, user) => {
 
 const TicketList = ({ offering, user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
+  const [showClosed, setShowClosed] = useState(false);
   const query = ticketsQuery(offering, user);
   useFirebase(query, setTickets);
   // for adding new tickets
@@ -46,13 +47,23 @@ const TicketList = ({ offering, user, selectTicket }) => {
   }
   const byTicketTime = ([id1, tkt1], [id2, tkt2]) => tkt1.timestamp - tkt2.timestamp;
 
-  const rows = Object.entries(tickets).sort(byTicketTime).map(([id, ticket]) => (
+  const rows = Object.entries(tickets)
+    .filter(([id, ticket]) => showClosed || !ticket.isClosed)
+    .sort(byTicketTime).map(([id, ticket]) => (
     <TicketRow key={id} ticket={ ticket } select={ () => select(id, ticket) } tickets={ tickets } user={ user } />
   ));
 
   return (
     <React.Fragment>
       <Content className="ticket-list">
+        <Label>
+        <Checkbox checked={showClosed ? 'checked' : null}
+           onChange={ () => setShowClosed(!showClosed) }
+        />
+        Show closed tickets
+        </Label>
+        
+
         <Table>
           <Table.Head>
             <Table.Row>

@@ -34,6 +34,14 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
   const saveBlock = (block) => {
     addBlock(addTimestamp(addAuthor(block)));
   };
+  
+  const toggleTicket = () => {
+    setTicketState(({ id, ticket }) => (
+      { id,
+        ticket: { ...ticket, isClosed: !ticket.isClosed }
+      }
+    ));
+  }
 
   // SubmitModal responses
   const reply = choice => {
@@ -52,9 +60,14 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
       <BlockEditor ref={ blockRef } submitBlockHandler={ saveBlock } user={ user } block={ block }/>
       <Field>
         <Control>
-          <Button color="primary" onClick={ () => setModalOpen(true) }>
-            { labels.submit }
-          </Button>
+          <Button.Group>
+            <Button color="primary" onClick={ () => setModalOpen(true) }>
+              { labels.submit }
+            </Button>
+            <Button color="primary" onClick={ () => toggleTicket() }>
+              { ticket.isClosed ? 'Reopen ticket' : 'Close ticket'}
+            </Button>
+          </Button.Group>
         </Control>
       </Field>
       <SubmitModal isOpen={ modalOpen } blockRef={ blockRef  } reply= { reply } ticket={ ticket }/>

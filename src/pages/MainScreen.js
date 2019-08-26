@@ -24,7 +24,8 @@ const MainScreen = ({ user, setUser, offering, course }) => {
       {
         !ticketState 
         ? null
-        : <TicketUpdater user={ user } course={ course } offering={ offering } ticketState={ ticketState } setTicketState={ setTicketState } />
+        : <TicketUpdater user={ user } course={ course } offering={ offering }
+           ticketState={ ticketState } setTicketState={ setTicketState } />
       }
     </React.Fragment>
   );
