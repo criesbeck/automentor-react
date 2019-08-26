@@ -58,7 +58,7 @@ const Diagnosis = ({ diagnosis, blists, setPattern }) => {
   ); 
 };
 
-const Diagnoses = ({ setPattern, ticket, kb }) => {
+const Diagnoses = ({ course, setPattern, ticket, kb }) => {
   const results = diagnose(ticket, kb);
   const resourcePages = filterResources(results, kb);
   const diagnoses = results.map(({name, diagnosis, blists}) => (
@@ -69,13 +69,14 @@ const Diagnoses = ({ setPattern, ticket, kb }) => {
     <>
       <Entry title="Diagnoses">{ diagnoses }</Entry>
       <Container style={{ maxHeight: '20em', overflow: 'auto' }}>
-        <Resources resourcePages={resourcePages} />
+        <Resources course={ course} resourcePages={resourcePages} />
       </Container>
     </>
   );
 };
 
 Diagnoses.propTypes = {
+  course: PropTypes.object.isRequired,
   setPattern: PropTypes.func.isRequired,
   ticket: PropTypes.object.isRequired,
   kb: PropTypes.shape({

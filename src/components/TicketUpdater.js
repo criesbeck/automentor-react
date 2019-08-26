@@ -73,7 +73,7 @@ const TicketUpdater = ({user, offering, course, setTicketState, ticketState }) =
         ifMentor(
           <Column size={4}>
             <Divider color="primary">diagnoses</Divider>
-            <Diagnoses ticket={ticket} kb={kb} setPattern={setPattern} />
+            <Diagnoses course={course} ticket={ticket} kb={kb} setPattern={setPattern} />
             <Level>
               <Level.Item>
                 <Button onClick={() => setModalOpen(true)}>[KB]</Button>

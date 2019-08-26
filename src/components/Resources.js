@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import 'rbx/index.css';
 import { Card, Column } from 'rbx';
 
-const Resource = ({ resource: { file }, pages }) => (
+const Resource = ({ course, resource: { file }, pages }) => (
   <Card>
     <Card.Header>
       <Card.Header.Title>{file}</Card.Header.Title>
@@ -13,7 +13,7 @@ const Resource = ({ resource: { file }, pages }) => (
         { 
           pages.map(({ summary, page }) => (
             <li key={ summary }>
-              <a href={`courses/cs111/documents/${file}.pdf#page=${page}`}
+              <a href={`courses/${course.name}/documents/${file}.pdf#page=${page}`}
                 target="_blank" rel="noopener noreferrer">
                 { summary }
               </a>
@@ -25,21 +25,23 @@ const Resource = ({ resource: { file }, pages }) => (
   </Card>
 );
 
-const Resources = ({ resourcePages }) => (
+const Resources = ({ course, resourcePages }) => (
   <Column>
   { 
     resourcePages.map(({resource, pages}) => (
-      <Resource key={ resource.file } resource={ resource } pages={ pages } />
+      <Resource key={ resource.file } course={ course } resource={ resource } pages={ pages } />
     ))
   }
   </Column>
 );
 
 Resource.propTypes = {
+  course: PropTypes.object.isRequired,
   resource: PropTypes.object.isRequired,
 };
 
 Resources.propTypes = {
+  course: PropTypes.object.isRequired,
   resourcePages: PropTypes.array.isRequired,
 };
 
