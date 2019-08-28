@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import 'rbx/index.css';
-import { Button, Control, Divider, Field } from 'rbx';
+import { Button, Checkbox, Control, Label, Divider, Field } from 'rbx';
 import BlockEditor from 'components/BlockEditor';
 import Exercise from 'components/Exercise';
 import SubmitModal from 'components/SubmitModal';
@@ -60,15 +60,18 @@ const ResponseEditor = ({ block, labels, exercises, ticket, setTicketState, tick
       <BlockEditor ref={ blockRef } submitBlockHandler={ saveBlock } user={ user } block={ block }/>
       <Field>
         <Control>
-          <Button.Group>
-            <Button color="primary" onClick={ () => setModalOpen(true) }>
-              { labels.submit }
-            </Button>
-            <Button color="primary" onClick={ () => toggleTicket() }>
-              { ticket.isClosed ? 'Reopen ticket' : 'Close ticket'}
-            </Button>
-          </Button.Group>
+          <Button color="primary" onClick={ () => setModalOpen(true) }>
+            { labels.submit }
+          </Button>
         </Control>
+      </Field>
+      <Field>
+        <Label>
+          <Checkbox checked={ticket.isClosed ? 'checked' : null}
+            onChange={ () => toggleTicket() }
+          />
+          Close ticket
+        </Label>
       </Field>
       <SubmitModal isOpen={ modalOpen } blockRef={ blockRef  } reply= { reply } ticket={ ticket }/>
     </>

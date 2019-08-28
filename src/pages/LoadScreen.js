@@ -14,7 +14,7 @@ const LoadScreen = ({ offering, testMode }) => {
   const [course, setCourse] = useCachedValue('cachedCourse', expiration);
   const [user, setUser] = useCachedValue('cachedUser', expiration);
 
-  useFirebase(`courses/${courseName}`, setCourse);
+  useFirebase(courseName ? `courses/${courseName}` : null, setCourse);
   useFirebaseValue(offering ? `offerings/${offering}/course` : null, setCourseName);
 
   useEffect(() => {

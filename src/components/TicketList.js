@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import 'rbx/index.css';
 import { Button, Checkbox, Content, Control, Field, Label, Table } from 'rbx';
 import { emptyTicket, ticketLabel, ticketSummary, ticketTime } from 'utils/tickets';
@@ -33,7 +33,7 @@ const ticketsQuery = (offering, user) => {
 const TicketList = ({ offering, user, selectTicket }) => {
   const [tickets, setTickets] = useState({});
   const [showClosed, setShowClosed] = useState(false);
-  const query = ticketsQuery(offering, user);
+  const query = useMemo(() => ticketsQuery(offering, user), [offering, user]);
   useFirebase(query, setTickets);
   // for adding new tickets
   const ticketRef = useFirebaseRef(ticketsPath);

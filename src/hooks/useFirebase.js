@@ -25,7 +25,6 @@ const useFirebaseRef = query => (
 const useFirebase = (query, handler, errorHandler = defaultErrorHandler) => {
   useEffect(() => {
     if (!query) return;
-
     const db = getFirebaseRef(query);
     const listener = snap => {
       handler(snap.val());
