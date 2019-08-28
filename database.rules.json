@@ -1,6 +1,13 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    ".write": true,
+    "offerings": {
+      "$offering_id": {
+	      "tickets": {
+  	      ".indexOn": ["author"]
+    	  }
+      }
+    }
   }
 }
