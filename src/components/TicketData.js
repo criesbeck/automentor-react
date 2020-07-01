@@ -14,7 +14,7 @@ const MentorField = ({block}) => (
 const StudentField = ({ block, selectBlock, highlighter }) => (
   <Column size={10} offset={0}>
     <Box as={ block.isCode ? 'pre' : 'div' } style={ { backgroundColor: 'lightyellow' } } 
-      data-student-text={ true } onClick={ () => selectBlock(block) } >
+      data-student-text={ true } onClick={ () => selectBlock && selectBlock(block) } >
       {
         highlighter
         ? <span dangerouslySetInnerHTML={ {__html: highlighter(block.text)} } /> 
