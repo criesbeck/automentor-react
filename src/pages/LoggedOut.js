@@ -5,7 +5,6 @@ import Banner from 'components/Banner';
 
 const LoggedOut = () => (
   <>
-    <Banner />
     <Notification>
       You are logged out. Return to Code Clinic via Canvas.
     </Notification>
