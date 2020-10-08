@@ -40,10 +40,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
     "typescript": "^3.9.7"
-=======
-    "typescript": "^3.9.6"
->>>>>>> a33f87b76757d4ecf023b4f4532be8ea5b850f60
   }
 }
